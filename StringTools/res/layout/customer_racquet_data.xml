@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:fillViewport="true">
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:background="#e2e2e2" >
+	    	  <!--  BrandName  -->
+	          <TextView 
+	              	android:id="@+id/lblBrandName"
+	              	android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/BrandName"/>
+	          <Spinner android:id="@+id/spinBrandName"
+	       		android:layout_width="fill_parent"
+	       		android:layout_height="wrap_content"/>
+	          <!--  Pattern  -->
+	          <TextView 
+	              	android:id="@+id/lblPattern"
+	              	android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/Pattern"/>
+	          <Spinner android:id="@+id/spinPattern"
+	       		android:layout_width="fill_parent"
+	       		android:layout_height="wrap_content"/>
+	          <!--  Model  -->
+	          <TextView 
+	                android:id="@+id/lblModel"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/Model"/>
+	          <EditText 
+	              	android:id="@+id/Model"
+	              	android:inputType="text"
+	              	android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="5dip"
+	                android:layout_marginBottom="20dip"
+	                android:singleLine="true"/>	 
+	          <!--  HeadSize  -->
+	          <TextView 
+	                android:id="@+id/lblHeadSize"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/HeadSize"/>
+	          <EditText 
+	              	android:id="@+id/HeadSize"
+	              	android:inputType="numberSigned"
+	              	android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="5dip"
+	                android:layout_marginBottom="20dip"
+	                android:singleLine="true"/>	
+	          <!--  Length  -->
+	          <TextView 
+	                android:id="@+id/lblLength"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/Length"/>
+	          <EditText 
+	              	android:id="@+id/Length"
+	              	android:inputType="numberSigned"
+	              	android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="5dip"
+	                android:layout_marginBottom="20dip"
+	                android:singleLine="true"/>	     
+	          <!--  GripSize  -->
+	          <TextView 
+	                android:id="@+id/lblGripSize"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/GripSize"/>
+	          <Spinner android:id="@+id/spinGripSize"
+	       		android:layout_width="fill_parent"
+	       		android:layout_height="wrap_content"/>  
+	       	 <!--  Serial  -->
+	          <TextView 
+	                android:id="@+id/lblSerial"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/serial"/>
+	          <EditText 
+	              	android:id="@+id/Serial"
+	              	android:inputType="text"
+	              	android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="5dip"
+	                android:layout_marginBottom="20dip"
+	                android:singleLine="true"/>	
+	          <!--  Weight Unstrung  -->
+	          <TextView 
+	                android:id="@+id/lblWeightUnstrung"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/WeightUnstrung"/>
+	          <EditText 
+	              	android:id="@+id/WeightUnstrung"
+	              	android:inputType="numberSigned"
+	              	android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="5dip"
+	                android:layout_marginBottom="20dip"
+	                android:singleLine="true"/>	  
+	          <!--  Weight Strung  -->
+	          <TextView 
+	                android:id="@+id/lblWeightStrung"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/WeightStrung"/>
+	          <EditText 
+	              	android:id="@+id/WeightStrung"
+	              	android:inputType="numberSigned"
+	              	android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="5dip"
+	                android:layout_marginBottom="20dip"
+	                android:singleLine="true"/>	
+	          <!--  Balance  -->
+	          <TextView 
+	                android:id="@+id/lblBalance"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/Balance"/>
+	          <EditText 
+	              	android:id="@+id/Balance"
+	              	android:inputType="numberSigned"
+	              	android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="5dip"
+	                android:layout_marginBottom="20dip"
+	                android:singleLine="true"/>	 
+	          <!--  Swingweight  -->
+	          <TextView 
+	                android:id="@+id/lblSwingweight"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/Swingweight"/>
+	          <EditText 
+	              	android:id="@+id/Swingweight"
+	              	android:inputType="numberSigned"
+	              	android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="5dip"
+	                android:layout_marginBottom="20dip"
+	                android:singleLine="true"/>	 
+	          <!--  Stiffness  -->
+	          <TextView 
+	                android:id="@+id/lblStiffness"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/Stiffness"/>
+	          <EditText 
+	              	android:id="@+id/Stiffness"
+	              	android:inputType="numberSigned"
+	              	android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="5dip"
+	                android:layout_marginBottom="20dip"
+	                android:singleLine="true"/>	  
+	          <!--  Beam Width  -->
+	          <TextView 
+	                android:id="@+id/lblBeamWidth"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/BeamWidth"/>
+	          <EditText 
+	              	android:id="@+id/BeamWidth"
+	              	android:inputType="text"
+	              	android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="5dip"
+	                android:layout_marginBottom="20dip"
+	                android:singleLine="true"/>
+	          
+	          <!--  Date Buy  -->
+	          <TextView 
+	                android:id="@+id/lblDateBuy"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/DateBuy"/>
+	          <RelativeLayout 
+				    android:layout_width="fill_parent"
+				    android:layout_height="fill_parent"
+				    android:orientation="horizontal" >
+
+			    <Button
+			        android:id="@+id/buttonSelectTime"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/SetDate"
+			        android:textColor="#666666"
+			        android:layout_alignParentRight="true"
+			         />
+
+			    <TextView
+			        android:id="@+id/DateBuy"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_alignBaseline="@+id/buttonSelectTime"
+			        android:layout_alignBottom="@+id/buttonSelectTime"
+			        android:layout_alignParentLeft="true"
+			        android:singleLine="true"
+			        android:text="@string/SetDate"
+			        android:textColor="#666666" />
+			
+			  </RelativeLayout>
+	          
+	         
+	          
+	          
+	          <!--  Note  -->
+	          <TextView 
+	                android:id="@+id/lblNote"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:textColor="#666666"
+	                android:text="@string/Note"/>
+	          <EditText 
+	              	android:id="@+id/Note"
+	              	android:inputType="text"
+	              	android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="5dip"
+	                android:layout_marginBottom="20dip"
+	                android:singleLine="false"/>
+	</LinearLayout>
+</ScrollView>
