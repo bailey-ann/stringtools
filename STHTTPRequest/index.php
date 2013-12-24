@@ -182,6 +182,10 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
 		$result = $db->addRacquetCustomer($_POST);
         $response["result"] = $result."";
     	echo json_encode($response);
+    }else if ($tag == 'removeracquetcustomer') {
+		$result = $db->removeRacquetCustomer($_POST);
+        $response["result"] = $result."";
+    	echo json_encode($response);
     }else {
         echo "Invalid Request";
     }

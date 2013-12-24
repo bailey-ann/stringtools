@@ -492,14 +492,20 @@
     			" where id = ". $value["id"];
     	$result = mysql_query($query) or die(mysql_error());
     	if($result){
-    		$idRacquetCustomer = mysql_insert_id();
-    		$query = "insert into log_racquet_user (id, '".$value["id_tbl_racquet_user"]."', weight_unstrung, weight_strung, balance, swingweight, stiffness, date_modify, note) values " .
-    				"(null,".$idRacquetCustomer.", '".$value["weight_unstrung"]."', '".$value["weight_strung"]."', '".$value["balance"]."', '".$value["swingweight"]."', '".$value["stiffness"]."', '".$value["date_modify"]."', '".$value["note"]."')";
+    		$query = "insert into log_racquet_user (id, id_tbl_racquet_user, weight_unstrung, weight_strung, balance, swingweight, stiffness, date_modify, note) values " .
+    				"(null,".$value["id"].", '".$value["weight_unstrung"]."', '".$value["weight_strung"]."', '".$value["balance"]."', '".$value["swingweight"]."', '".$value["stiffness"]."', now(), '".$value["note"]."')";
     		$result = mysql_query($query) or die(mysql_error());
 			return $result;	
     	}else 
     		return $result;		
     					
+    }
+    
+    public function removeRacquetCustomer($value){
+    	$query = "update tbl_racquets_user set active = 0 " .
+    			" where id = ". $value["id"];
+    	$result = mysql_query($query) or die(mysql_error());
+    	return $result;   		
     }
 
 }
