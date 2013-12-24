@@ -2,7 +2,7 @@ package it.napalm.stringtools;
 
 import org.json.JSONObject;
 
-import it.napalm.stringtools.utils.UserFunctions;
+import it.napalm.stringtools.utils.HttpFunctions;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -57,7 +57,7 @@ public class LoginActivity extends Activity {
 				String username = inputUsername.getText().toString();
                 String password = inputPassword.getText().toString();
 
-                UserFunctions userFunction = new UserFunctions();
+                HttpFunctions userFunction = new HttpFunctions();
                 JSONObject json = userFunction.loginUser(getResources().getString(R.string.URL), username, password);
                 
                 try{

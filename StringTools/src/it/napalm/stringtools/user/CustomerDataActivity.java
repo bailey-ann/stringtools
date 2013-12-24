@@ -12,7 +12,7 @@ import org.json.JSONException;
 import it.napalm.stringtools.R;
 import it.napalm.stringtools.object.PositionMenu;
 import it.napalm.stringtools.object.TblUsers;
-import it.napalm.stringtools.utils.UserFunctions;
+import it.napalm.stringtools.utils.HttpFunctions;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -35,7 +35,7 @@ public class CustomerDataActivity extends Activity implements OnItemSelectedList
 
 	private TblUsers customer = null;
 	private TblUsers stringer = null;
-	private UserFunctions function;
+	private HttpFunctions function;
 	private int position;
 	private boolean NEW_CUSTOMER = false;
 	
@@ -48,7 +48,7 @@ public class CustomerDataActivity extends Activity implements OnItemSelectedList
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 	    StrictMode.setThreadPolicy(policy);
 	    	    
-	    function = new UserFunctions();
+	    function = new HttpFunctions();
         Intent intent=getIntent();
         customer = (TblUsers)intent.getSerializableExtra("customer");
         stringer = (TblUsers)intent.getSerializableExtra("stringer");

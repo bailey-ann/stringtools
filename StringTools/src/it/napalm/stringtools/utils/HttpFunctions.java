@@ -24,7 +24,7 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-public class UserFunctions {
+public class HttpFunctions {
 	private JSONParser jsonParser;
     
      
@@ -40,10 +40,10 @@ public class UserFunctions {
     private static String getBrands  = "listbrand";
     private static String getRacquetsPattern  = "racquetspattern";
     private static String getGripSize  = "listgripsize";
-
+    private static String editRacquetCustomer  = "editracquetcustomer";
      
     // constructor
-    public UserFunctions(){
+    public HttpFunctions(){
         jsonParser = new JSONParser();
     }
      
@@ -370,5 +370,26 @@ public class UserFunctions {
 			listInside.add(element);
         }
         return listInside;
+    }
+    
+    public String editRacquetCustomer(String url, TblRacquetsUser value) throws JSONException{
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", editRacquetCustomer));
+        params.add(new BasicNameValuePair("tbl_grip_size_id", value.getTblGripSize()+""));
+        params.add(new BasicNameValuePair("serial", value.getSerial().toString()));
+        params.add(new BasicNameValuePair("weight_unstrung", String.format( "%.2f", value.getWeightUnstrung())));
+        params.add(new BasicNameValuePair("weight_strung", String.format( "%.2f", value.getWeightStrung())));
+        params.add(new BasicNameValuePair("balance", String.format( "%.2f", value.getBalance())));
+        params.add(new BasicNameValuePair("swingweight", String.format( "%.2f", value.getSwingweight())));
+        params.add(new BasicNameValuePair("stiffness",String.format( "%.2f", value.getStiffness() )));
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.getDefault()); 
+        params.add(new BasicNameValuePair("date_buy", dateFormat.format(value.getDateBuy().getTime())));
+        params.add(new BasicNameValuePair("note", value.getNote()));
+        params.add(new BasicNameValuePair("active", value.getActive()+""));
+        params.add(new BasicNameValuePair("id", value.getId()+""));
+        params.add(new BasicNameValuePair("id_tbl_racquet_user", value.getId()+""));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        return json.getString("result");
     }
 }

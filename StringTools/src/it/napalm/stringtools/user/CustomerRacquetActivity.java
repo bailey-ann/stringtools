@@ -13,7 +13,7 @@ import it.napalm.stringtools.object.PositionMenu;
 import it.napalm.stringtools.object.TblRacquets;
 import it.napalm.stringtools.object.TblRacquetsUser;
 import it.napalm.stringtools.object.TblUsers;
-import it.napalm.stringtools.utils.UserFunctions;
+import it.napalm.stringtools.utils.HttpFunctions;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -34,7 +34,7 @@ public class CustomerRacquetActivity extends Activity implements OnItemSelectedL
 
 	private static final int MOD_DATA_RACQUET = 1;
 	
-	private UserFunctions function;
+	private HttpFunctions function;
 	private TblUsers customer;
 	private ArrayList<CustomerRacquet> listRacquet;
 	private ListView list;
@@ -52,7 +52,7 @@ public class CustomerRacquetActivity extends Activity implements OnItemSelectedL
 	    
 	    Intent intent=getIntent();
 	    	    
-	    function = new UserFunctions();
+	    function = new HttpFunctions();
 	    customer = (TblUsers)intent.getSerializableExtra("customer");
 	    position = intent.getIntExtra("position", PositionMenu.CUSTOMERS_LIST_RACQUET);
 	    

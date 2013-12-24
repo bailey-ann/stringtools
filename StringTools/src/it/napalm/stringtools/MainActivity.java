@@ -7,7 +7,7 @@ import it.napalm.stringtools.user.CustomerDataActivity;
 import it.napalm.stringtools.user.CustomerRacquetActivity;
 import it.napalm.stringtools.user.CustomersFragment;
 import it.napalm.stringtools.user.PersonalDataActivity;
-import it.napalm.stringtools.utils.UserFunctions;
+import it.napalm.stringtools.utils.HttpFunctions;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 		int idUser  = prefs.getInt("id", 0);
 		
-		UserFunctions userFunction = new UserFunctions();
+		HttpFunctions userFunction = new HttpFunctions();
 		user = userFunction.getUser(getResources().getString(R.string.URL), "","", idUser);
 
 		// enable ActionBar app icon to behave as action to toggle nav drawer

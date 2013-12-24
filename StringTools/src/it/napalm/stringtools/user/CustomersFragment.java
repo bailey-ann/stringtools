@@ -10,7 +10,7 @@ import it.napalm.stringtools.R;
 import it.napalm.stringtools.adapter.CustomersAdapter;
 import it.napalm.stringtools.object.PositionMenu;
 import it.napalm.stringtools.object.TblUsers;
-import it.napalm.stringtools.utils.UserFunctions;
+import it.napalm.stringtools.utils.HttpFunctions;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.res.Resources.NotFoundException;
@@ -33,7 +33,7 @@ public class CustomersFragment extends Fragment {
 	ListView list;
 	ArrayList<TblUsers> listCustomers;
     CustomersAdapter adapter;
-    UserFunctions function;
+    HttpFunctions function;
     View rootView;
     EditText inputSearch;
     
@@ -60,7 +60,7 @@ public class CustomersFragment extends Fragment {
             Bundle savedInstanceState) {
 		
 		rootView = inflater.inflate(R.layout.customers_list, container, false);
-        function = new UserFunctions();
+        function = new HttpFunctions();
         new GetListCustomers().execute();
         
 		return rootView;

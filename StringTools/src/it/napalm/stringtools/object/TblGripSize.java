@@ -60,5 +60,10 @@ public class TblGripSize implements java.io.Serializable {
 	public void setTblRacquetsUsers(Set tblRacquetsUsers) {
 		this.tblRacquetsUsers = tblRacquetsUsers;
 	}
+	
+	@Override
+    public String toString() {
+        return this.europeSize + " (" + this.usaSize + ")";
+    }
 
 }

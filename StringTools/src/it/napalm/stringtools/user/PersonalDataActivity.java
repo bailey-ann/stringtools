@@ -9,7 +9,7 @@ import it.napalm.stringtools.R;
 import it.napalm.stringtools.object.TblCurrencyUnit;
 import it.napalm.stringtools.object.TblUsers;
 import it.napalm.stringtools.object.TblWeightUnit;
-import it.napalm.stringtools.utils.UserFunctions;
+import it.napalm.stringtools.utils.HttpFunctions;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -36,7 +36,7 @@ public class PersonalDataActivity extends Activity implements OnItemSelectedList
 	private ArrayList<TblWeightUnit> weightUnitList;
 	private ArrayList<TblCurrencyUnit> currencyUnitList;
 	private TblUsers user = null;
-	private UserFunctions function;
+	private HttpFunctions function;
 	private int position;
 	
 	@Override
@@ -48,7 +48,7 @@ public class PersonalDataActivity extends Activity implements OnItemSelectedList
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 	    StrictMode.setThreadPolicy(policy);
 	    	    
-	    function = new UserFunctions();
+	    function = new HttpFunctions();
 	    spinnerWeightUnit = (Spinner) findViewById(R.id.spinWeightUnit);
 	    spinnerCurrencyUnit = (Spinner) findViewById(R.id.spinCurrencyUnit);
         weightUnitList = new ArrayList<TblWeightUnit>();

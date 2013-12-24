@@ -73,7 +73,9 @@
 	                android:layout_height="wrap_content"
 	                android:layout_marginTop="5dip"
 	                android:layout_marginBottom="20dip"
-	                android:singleLine="true"/>	     
+	                android:singleLine="true"/>	   
+	                
+	          
 	          <!--  GripSize  -->
 	          <TextView 
 	                android:id="@+id/lblGripSize"
@@ -202,14 +204,7 @@
 				    android:layout_height="fill_parent"
 				    android:orientation="horizontal" >
 
-			    <Button
-			        android:id="@+id/buttonSelectTime"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:text="@string/SetDate"
-			        android:textColor="#666666"
-			        android:layout_alignParentRight="true"
-			         />
+			    
 
 			    <TextView
 			        android:id="@+id/DateBuy"
@@ -221,6 +216,15 @@
 			        android:singleLine="true"
 			        android:text="@string/SetDate"
 			        android:textColor="#666666" />
+			    
+			    <Button
+			        android:id="@+id/buttonSelectTime"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/SetDate"
+			        android:textColor="#666666"
+			        android:layout_alignParentRight="true"
+			         />
 			
 			  </RelativeLayout>
 	          
@@ -236,11 +240,12 @@
 	                android:text="@string/Note"/>
 	          <EditText 
 	              	android:id="@+id/Note"
-	              	android:inputType="text"
+	              	android:inputType="textMultiLine"
+	              	android:lines="8"
+	              	android:minLines="6"
+	              	android:scrollbars="vertical"
 	              	android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
-	                android:layout_marginTop="5dip"
-	                android:layout_marginBottom="20dip"
-	                android:singleLine="false"/>
+	                />
 	</LinearLayout>
 </ScrollView>

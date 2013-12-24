@@ -3,53 +3,56 @@ package it.napalm.stringtools.user;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
 
 import org.json.JSONException;
 
-
-
 import it.napalm.stringtools.R;
-import it.napalm.stringtools.adapter.CustomerRacquetAdapter;
 import it.napalm.stringtools.globalobject.CustomerRacquet;
-import it.napalm.stringtools.object.PositionMenu;
 import it.napalm.stringtools.object.TblBrands;
-import it.napalm.stringtools.object.TblCurrencyUnit;
-import it.napalm.stringtools.object.TblRacquets;
+import it.napalm.stringtools.object.TblGripSize;
 import it.napalm.stringtools.object.TblRacquetsPattern;
 import it.napalm.stringtools.object.TblRacquetsUser;
-import it.napalm.stringtools.object.TblUsers;
-import it.napalm.stringtools.object.TblWeightUnit;
-import it.napalm.stringtools.utils.UserFunctions;
+import it.napalm.stringtools.utils.Function;
+import it.napalm.stringtools.utils.HttpFunctions;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources.NotFoundException;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class EditCustomerRacquetActivity extends Activity  {
 
-	private UserFunctions function;
+	private HttpFunctions function;
 	private CustomerRacquet customerRacquet;
-	private ArrayList<CustomerRacquet> listRacquet;
 	private ArrayList<TblBrands> listTblBrands;
 	private ArrayList<TblRacquetsPattern> listTblRacquetsPattern;
-	private ListView list;
-	private CustomerRacquetAdapter adapter;
-	private int position;
+	private ArrayList<TblGripSize> listTblGripSize;
 	private Spinner spinBrandName ;
 	private Spinner spinPattern ;
+	private Spinner spinGripSize ;
+	
+	protected TextView mDateDisplay;
+    protected Button mPickDate;
+    protected int mYear;
+    protected int mMonth;
+    protected int mDay;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,17 +65,28 @@ public class EditCustomerRacquetActivity extends Activity  {
 	    
 	    spinBrandName = (Spinner) findViewById(R.id.spinBrandName);
 	    spinPattern = (Spinner) findViewById(R.id.spinPattern);
-	    function = new UserFunctions();
+	    spinGripSize = (Spinner) findViewById(R.id.spinGripSize);
+	    function = new HttpFunctions();
 	    listTblBrands = new ArrayList<TblBrands>();
 	    listTblRacquetsPattern = new ArrayList<TblRacquetsPattern>();
+	    listTblGripSize = new ArrayList<TblGripSize>();
 	    
 	    Intent intent=getIntent();
 	    customerRacquet = (CustomerRacquet)intent.getSerializableExtra("customerracquet");
-	    position = intent.getIntExtra("position", PositionMenu.CUSTOMERS_LIST_RACQUET);
 	    
 	    getActionBar().setTitle(getResources().getString(R.string.editcustomerracquet));
         getActionBar().setSubtitle(customerRacquet.getTblRacquets().getModel() + " " + customerRacquet.getTblRacquetsUser().getSerial());
 	    
+        mDateDisplay = (TextView) findViewById(R.id.DateBuy);
+        mPickDate = (Button) findViewById(R.id.buttonSelectTime);
+        
+        mPickDate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDialog(0);
+            }
+        });
+        
+        
 	    
 	    
 	    new CreateGui().execute();
@@ -95,8 +109,7 @@ public class EditCustomerRacquetActivity extends Activity  {
 		    	backTo();
 	            return true;
 	        case R.id.save:
-	            setResult(RESULT_OK, null);
-	        	finish();
+	        	updateRacquetCustomer();
 	            return true;
 	        case R.id.remove:
 	            //setResult(RESULT_OK, null);
@@ -105,6 +118,22 @@ public class EditCustomerRacquetActivity extends Activity  {
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
+	}
+	
+	private void updateRacquetCustomer(){
+		TblRacquetsUser racquet = customerRacquet.getTblRacquetsUser();
+		TblGripSize tblGripSize = (TblGripSize) spinGripSize.getItemAtPosition(spinGripSize.getSelectedItemPosition());
+		racquet.setTblGripSize(tblGripSize.getId());
+		racquet.setSerial(((EditText) findViewById(R.id.Serial)).getText().toString());
+		racquet.setWeightUnstrung(Function.stringToDouble( ((EditText) findViewById(R.id.WeightUnstrung)).getText().toString()));	
+		racquet.setWeightStrung(Function.stringToDouble( ((EditText) findViewById(R.id.WeightStrung)).getText().toString()));
+		racquet.setBalance(Function.stringToDouble( ((EditText) findViewById(R.id.Balance)).getText().toString()));
+		racquet.setSwingweight(Function.stringToDouble( ((EditText) findViewById(R.id.Swingweight)).getText().toString()));
+		racquet.setStiffness(Function.stringToDouble( ((EditText) findViewById(R.id.Stiffness)).getText().toString()));
+		racquet.setDateBuy(Function.stringToDateShort(((TextView) findViewById(R.id.DateBuy)).getText().toString()));		
+		racquet.setNote(((EditText) findViewById(R.id.Note)).getText().toString());
+		
+		new SaveDataRacquet().execute(racquet);
 	}
 	
 	private void backTo(){
@@ -143,22 +172,54 @@ public class EditCustomerRacquetActivity extends Activity  {
 	    	DecimalFormat format = new DecimalFormat();
 	        format.setDecimalSeparatorAlwaysShown(false);
 	    	try{
-		    	((EditText) findViewById(R.id.Model)).setText(customerRacquet.getTblRacquets().getModel());
-		    	((EditText) findViewById(R.id.HeadSize)).setText(format.format(customerRacquet.getTblRacquets().getHeadSize()));
-		    	((EditText) findViewById(R.id.Length)).setText(format.format(customerRacquet.getTblRacquets().getLength()));
+	    		TextView lblBrandName = ((TextView) findViewById(R.id.lblBrandName));
+	    		lblBrandName.setText(lblBrandName.getText() + "   " + getResources().getString(R.string.onlyread));
+	    		TextView lblPattern = ((TextView) findViewById(R.id.lblPattern));
+	    		lblPattern.setText(lblPattern.getText() + "   " + getResources().getString(R.string.onlyread));
+	    		TextView lblModel = ((TextView) findViewById(R.id.lblModel));
+	    		lblModel.setText(lblModel.getText() + "   " + getResources().getString(R.string.onlyread));
+	    		TextView lblHeadSize = ((TextView) findViewById(R.id.lblHeadSize));
+	    		lblHeadSize.setText(lblHeadSize.getText() + "   " + getResources().getString(R.string.onlyread));
+	    		TextView lblLength = ((TextView) findViewById(R.id.lblLength));
+	    		lblLength.setText(lblLength.getText() + "   " + getResources().getString(R.string.onlyread));
+	    		TextView lblBeamWidth = ((TextView) findViewById(R.id.lblBeamWidth));
+	    		lblBeamWidth.setText(lblBeamWidth.getText() + "   " + getResources().getString(R.string.onlyread));
+	    		
+	    		EditText model = ((EditText) findViewById(R.id.Model));
+	    		model.setText(customerRacquet.getTblRacquets().getModel());
+	    		model.setEnabled(false);
+	    		EditText HeadSize = ((EditText) findViewById(R.id.HeadSize));
+	    		HeadSize.setText(format.format(customerRacquet.getTblRacquets().getHeadSize()));
+	    		HeadSize.setEnabled(false);
+	    		EditText Length = ((EditText) findViewById(R.id.Length));
+	    		Length.setText(format.format(customerRacquet.getTblRacquets().getLength()));
+	    		Length.setEnabled(false);
+	    		
 		    	((EditText) findViewById(R.id.Serial)).setText(customerRacquet.getTblRacquetsUser().getSerial());
 		    	((EditText) findViewById(R.id.WeightUnstrung)).setText(format.format(customerRacquet.getTblRacquetsUser().getWeightUnstrung()));
 		    	((EditText) findViewById(R.id.WeightStrung)).setText(format.format(customerRacquet.getTblRacquetsUser().getWeightStrung()));
 		    	((EditText) findViewById(R.id.Balance)).setText(format.format(customerRacquet.getTblRacquetsUser().getBalance()));
 		    	((EditText) findViewById(R.id.Swingweight)).setText(format.format(customerRacquet.getTblRacquetsUser().getSwingweight()));
 		    	((EditText) findViewById(R.id.Stiffness)).setText(format.format(customerRacquet.getTblRacquetsUser().getStiffness()));
-		    	((EditText) findViewById(R.id.BeamWidth)).setText(customerRacquet.getTblRacquets().getBeamWidth());
+		    	EditText BeamWidth = ((EditText) findViewById(R.id.BeamWidth));
+	    		BeamWidth.setText(customerRacquet.getTblRacquets().getBeamWidth());
+	    		BeamWidth.setEnabled(false);
+	    		
 		    	((EditText) findViewById(R.id.Note)).setText(customerRacquet.getTblRacquetsUser().getNote());
+		    	
+		    	Calendar calendar = Calendar.getInstance();  
+		        calendar.setTime(customerRacquet.getTblRacquetsUser().getDateBuy());  
+		        mYear = calendar.get(Calendar.YEAR);
+		        mMonth = calendar.get(Calendar.MONTH);
+		        mDay = calendar.get(Calendar.DAY_OF_MONTH);
+		        
+		        updateDateDisplay();
 		    	
 		    	
 				try {
 					listTblBrands = function.getBrands(getResources().getString(R.string.URL), 0);
 					listTblRacquetsPattern = function.getRacquetsPattern(getResources().getString(R.string.URL), 0);
+					listTblGripSize = function.getGripSize(getResources().getString(R.string.URL), 0);
 				} catch (NotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -175,34 +236,6 @@ public class EditCustomerRacquetActivity extends Activity  {
 	    
 	
 		private void populateSpinner() {
-			//spinBrandName
-			/*Spinner spinBrandName = (Spinner) findViewById(R.id.spinBrandName);
-	    	List<TblBrands> listTblBrands = null;
-			try {
-				listTblBrands = function.getBrands(getResources().getString(R.string.URL), 0);
-			} catch (NotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		    ArrayAdapter<TblBrands> spinnerAdapterTblBrands = new ArrayAdapter<TblBrands>(getApplicationContext(),
-		            R.layout.simple_spinner_item, listTblBrands);
-		    spinnerAdapterTblBrands
-		            .setDropDownViewResource(R.layout.simple_spinner_dropdown_item);
-		    spinBrandName.setAdapter(spinnerAdapterTblBrands);
-		    Log.d("TEST", "Your message:"+listTblBrands.size());
-
-		    for(int i = 0; i < spinnerAdapterTblBrands.getCount(); i++) {
-				if (spinnerAdapterTblBrands.getItem(i).getId() == customerRacquet.getTblBrands().getId()){
-					spinBrandName.setSelection(i);
-					break;
-				}
-			}*/
 			
 			ArrayAdapter<TblBrands> spinnerAdapterTblBrands= new ArrayAdapter<TblBrands>(EditCustomerRacquetActivity.this,
 		            R.layout.simple_spinner_item, listTblBrands);
@@ -215,7 +248,7 @@ public class EditCustomerRacquetActivity extends Activity  {
 					break;
 				}
 			}
-			
+		    spinBrandName.setEnabled(false);
 			
 		    ArrayAdapter<TblRacquetsPattern> spinnerTblRacquetsPattern= new ArrayAdapter<TblRacquetsPattern>(EditCustomerRacquetActivity.this,
 		            R.layout.simple_spinner_item, listTblRacquetsPattern);
@@ -228,6 +261,20 @@ public class EditCustomerRacquetActivity extends Activity  {
 					break;
 				}
 			}
+		    spinPattern.setEnabled(false);
+		    
+		    ArrayAdapter<TblGripSize> spinnerTblGripSize= new ArrayAdapter<TblGripSize>(EditCustomerRacquetActivity.this,
+		            R.layout.simple_spinner_item, listTblGripSize);
+		    spinnerTblGripSize.setDropDownViewResource(R.layout.simple_spinner_dropdown_item);
+		    spinGripSize.setAdapter(spinnerTblGripSize);
+		    id = customerRacquet.getTblRacquetsUser().getTblGripSize();
+		    for(int i = 0; i < spinnerTblGripSize.getCount(); i++) {
+		    	if (spinnerTblGripSize.getItem(i).getId() == id){
+		    		spinGripSize.setSelection(i);
+					break;
+				}
+			}
+		    spinGripSize.setEnabled(true);
 		}
 		
 		@Override
@@ -239,6 +286,90 @@ public class EditCustomerRacquetActivity extends Activity  {
 	        
 	    }
 	}
+	
+	private class SaveDataRacquet extends AsyncTask<TblRacquetsUser, Void, Void> {
+		private ProgressDialog pDialog ;
+		private String return_type = "";
+	    @Override
+	    protected void onPreExecute() {
+	        super.onPreExecute();	
+	        pDialog = new ProgressDialog(EditCustomerRacquetActivity.this);
+	        pDialog.setMessage(getResources().getString(R.string.wait_save));
+	        pDialog.setCancelable(false);
+	        pDialog.show();
+	    }
+	 
+	    @Override
+	    protected Void doInBackground(TblRacquetsUser... arg0) {
+	    	try {
+	    		return_type = function.editRacquetCustomer(getResources().getString(R.string.URL), arg0[0]);
+			} catch (NotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        return null;
+	    }
+	 
+	    @Override
+	    protected void onPostExecute(Void result) {
+	        super.onPostExecute(result);
+	        if (pDialog.isShowing())
+	            pDialog.dismiss();
+	        if(return_type.equals("1")){
+		        Intent output = new Intent();
+		        setResult(RESULT_OK, output);
+		        finish();
+	        }else{
+	        	AlertDialog.Builder builder1 = new AlertDialog.Builder(EditCustomerRacquetActivity.this);
+	        	builder1.setMessage(getResources().getString(R.string.wrong_save))
+	        		.setTitle(getResources().getString(R.string.attention));
+	            builder1.setCancelable(true);
+	            builder1.setPositiveButton("Ok",
+	                    new DialogInterface.OnClickListener() {
+	                public void onClick(DialogInterface dialog, int id) {
+	                    dialog.cancel();
+	                }
+	            });
+
+	            AlertDialog alert11 = builder1.create();
+	            alert11.show();
+	        }
+	    }
+	 
+	}
+	
+	
+	protected void updateDateDisplay() {
+        mDateDisplay.setText(
+            new StringBuilder()
+            		.append(mDay).append("-")
+                    .append(mMonth + 1).append("-")                   
+                    .append(mYear).append(""));
+    }
+	
+	protected Dialog onCreateDialog(int id) {
+        return new DatePickerDialog(this,
+                    mDateSetListener,
+                    mYear, mMonth, mDay);
+	}
+	
+	 protected DatePickerDialog.OnDateSetListener mDateSetListener =
+		        new DatePickerDialog.OnDateSetListener() {
+
+
+					@Override
+					public void onDateSet(DatePicker view, int year,
+							int monthOfYear, int dayOfMonth) {
+						mYear = year;
+		                mMonth = monthOfYear;
+		                mDay = dayOfMonth;
+		                updateDateDisplay();
+						
+					}
+		    };
 }
 
 
