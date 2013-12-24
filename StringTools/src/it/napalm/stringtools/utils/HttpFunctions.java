@@ -41,6 +41,7 @@ public class HttpFunctions {
     private static String getRacquetsPattern  = "racquetspattern";
     private static String getGripSize  = "listgripsize";
     private static String editRacquetCustomer  = "editracquetcustomer";
+    private static String removeRacquetCustomer  = "removeracquetcustomer";
      
     // constructor
     public HttpFunctions(){
@@ -389,6 +390,15 @@ public class HttpFunctions {
         params.add(new BasicNameValuePair("active", value.getActive()+""));
         params.add(new BasicNameValuePair("id", value.getId()+""));
         params.add(new BasicNameValuePair("id_tbl_racquet_user", value.getId()+""));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        return json.getString("result");
+    }
+    
+    public String removeRacquetCustomer(String url, TblRacquetsUser value) throws JSONException{
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", removeRacquetCustomer));
+        params.add(new BasicNameValuePair("id", value.getId()+""));
         JSONObject json = jsonParser.getJSONFromUrl(url, params);
         return json.getString("result");
     }

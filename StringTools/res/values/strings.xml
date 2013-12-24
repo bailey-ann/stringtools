@@ -60,4 +60,6 @@
 	<string name="cm">(cm)</string>
 	<string name="onlyread">**Only read</string>
 	<string name="editcustomerracquet">Edit data customer racquet</string>
+	<string name="cancel">Cancel</string>
+	<string name="delete_racquet">Confirm delete racquet?</string>
 </resources>

@@ -112,8 +112,7 @@ public class EditCustomerRacquetActivity extends Activity  {
 	        	updateRacquetCustomer();
 	            return true;
 	        case R.id.remove:
-	            //setResult(RESULT_OK, null);
-	        	//finish();
+	        	removeRacquetCustomer();
 	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
@@ -134,6 +133,32 @@ public class EditCustomerRacquetActivity extends Activity  {
 		racquet.setNote(((EditText) findViewById(R.id.Note)).getText().toString());
 		
 		new SaveDataRacquet().execute(racquet);
+	}
+	
+	private void removeRacquetCustomer(){
+		final TblRacquetsUser racquet = customerRacquet.getTblRacquetsUser();
+		
+		AlertDialog.Builder builder1 = new AlertDialog.Builder(EditCustomerRacquetActivity.this);
+    	builder1.setMessage(getResources().getString(R.string.delete_racquet))
+    		.setTitle(getResources().getString(R.string.attention));
+        builder1.setCancelable(true);
+        builder1.setPositiveButton("Ok",
+                new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+            	dialog.cancel();
+                new DeleteRacquet().execute(racquet);
+            }
+        });
+        
+        builder1.setNegativeButton(getResources().getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
 	}
 	
 	private void backTo(){
@@ -341,6 +366,59 @@ public class EditCustomerRacquetActivity extends Activity  {
 	 
 	}
 	
+	private class DeleteRacquet extends AsyncTask<TblRacquetsUser, Void, Void> {
+		private ProgressDialog pDialog ;
+		private String return_type = "";
+	    @Override
+	    protected void onPreExecute() {
+	        super.onPreExecute();	
+	        pDialog = new ProgressDialog(EditCustomerRacquetActivity.this);
+	        pDialog.setMessage(getResources().getString(R.string.wait_save));
+	        pDialog.setCancelable(false);
+	        pDialog.show();
+	    }
+	 
+	    @Override
+	    protected Void doInBackground(TblRacquetsUser... arg0) {
+	    	try {
+	    		return_type = function.removeRacquetCustomer(getResources().getString(R.string.URL), arg0[0]);
+			} catch (NotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        return null;
+	    }
+	 
+	    @Override
+	    protected void onPostExecute(Void result) {
+	        super.onPostExecute(result);
+	        if (pDialog.isShowing())
+	            pDialog.dismiss();
+	        if(return_type.equals("1")){
+		        Intent output = new Intent();
+		        setResult(RESULT_OK, output);
+		        finish();
+	        }else{
+	        	AlertDialog.Builder builder1 = new AlertDialog.Builder(EditCustomerRacquetActivity.this);
+	        	builder1.setMessage(getResources().getString(R.string.wrong_save))
+	        		.setTitle(getResources().getString(R.string.attention));
+	            builder1.setCancelable(true);
+	            builder1.setPositiveButton("Ok",
+	                    new DialogInterface.OnClickListener() {
+	                public void onClick(DialogInterface dialog, int id) {
+	                    dialog.cancel();
+	                }
+	            });
+
+	            AlertDialog alert11 = builder1.create();
+	            alert11.show();
+	        }
+	    }
+	 
+	}
 	
 	protected void updateDateDisplay() {
         mDateDisplay.setText(

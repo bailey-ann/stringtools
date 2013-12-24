@@ -47,4 +47,6 @@
 	<string name="ozorgr">(oz o gr)</string>
 	<string name="onlyread">**Sola lettura</string>
 	<string name="editcustomerracquet">Modifica dati racchetta cliente</string>
+	<string name="cancel">Cancella</string>
+	<string name="delete_racquet">Sicuro di voler rimuovere la racchetta?</string>
 </resources>
