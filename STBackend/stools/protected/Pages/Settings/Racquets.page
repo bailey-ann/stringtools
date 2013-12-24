@@ -1,0 +1,147 @@
+<%@ Title="Manage Racquets" %>
+<com:TContent ID="sidebar">
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+<hr />
+
+</com:TContent>
+
+
+<com:TContent ID="content">
+<h3><%= Prado::localize('List racquets') %></h3>
+
+<com:TLabel Text="<%= Prado::localize('BrandName') %>" /> 
+<com:TFilterCollection Id="FilterCollection_brand" >
+	<com:TFilterText  DataField="description" />
+</com:TFilterCollection>
+
+<com:TLabel Text="<%= Prado::localize('Model') %>" /> 
+<com:TFilterCollection Id="FilterCollection_model" >
+	<com:TFilterText  DataField="model" />
+</com:TFilterCollection>
+<br>
+<com:TImageButton ID="Search" onClick="onSearch" />
+<com:TImageButton ID="Cancel" onClick="onClear" "/>
+
+<com:TFilterDataGrid
+	SkinID="datagrid_10"
+	
+    ID="DataGridRacquets"
+    CellPadding="2"
+    DataKeyField="id"
+    
+    OnPageIndexChanged="changePage"
+    OnPagerCreated="pagerCreated"
+    OnSelectedIndexChanged="selectRacquet"
+    >
+    <com:TBoundColumn
+    	ID="IDColumn"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	ID="brand_name"
+        HeaderText="<%= Prado::localize('BrandName') %>"
+        DataField="brand_name"
+        />
+    <com:TBoundColumn
+    	ID="modelColumn"
+        HeaderText="<%= Prado::localize('Model') %>"
+        DataField="model"
+        />
+    <com:TBoundColumn
+    	ID="patternColumn"
+        HeaderText="<%= Prado::localize('Pattern') %>"
+        DataField="pattern"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Edit') %>"
+        ImageUrl="themes/White/images/edit.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        ID="SelectCustomer"
+        CommandName="select"
+        />
+</com:TFilterDataGrid>
+<br/>
+<com:TImageButton 
+	ID="New"
+	OnClick="createClicked" />
+
+</com:TContent>
+
+<com:TContent ID="editable">
+
+<h3><com:TLabel ID="TypeEdit" /></h3>
+
+<com:TValidationSummary
+	Display="Dynamic"
+	ValidationGroup="user" />
+
+<span class="input-label"><%= Prado::localize('BrandName') %></span>
+<br/>
+<com:TDropDownList ID="DDLBrands" DataTextField="description" DataValueField="id" />
+<br/>
+<span class="input-label"><%= Prado::localize('Pattern') %></span>
+<br/>
+<com:TDropDownList ID="DDLPatterns" DataTextField="description" DataValueField="id" />
+<br/>
+<span class="input-label"><%= Prado::localize('Model') %></span>
+<br/>
+<com:TTextBox ID="Model" Columns="40" />
+<com:TRequiredFieldValidator
+	ControlToValidate="Model"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a model.') %>"
+	ControlCssClass="input-error1" />
+<br/>
+<span class="input-label"><%= Prado::localize('Head Size') %></span>
+<br/>
+<com:TTextBox ID="HeadSize"  />(in or cm)
+<br/>
+<span class="input-label"><%= Prado::localize('Length') %></span>
+<br/>
+<com:TTextBox ID="Length"  />(in or cm)
+<br/>
+<span class="input-label"><%= Prado::localize('Weight Unstrung') %></span>
+<br/>
+<com:TTextBox ID="WeightUnstrung"  />(oz or gr)
+<br/>
+<span class="input-label"><%= Prado::localize('Weight Strung') %></span>
+<br/>
+<com:TTextBox ID="WeightStrung"  />(oz or gr)
+<br/>
+<span class="input-label"><%= Prado::localize('Balance') %></span>
+<br/>
+<com:TTextBox ID="Balance"  />(cm)
+<br/>
+<span class="input-label"><%= Prado::localize('Swingweight') %></span>
+<br/>
+<com:TTextBox ID="Swingweight"  />
+<br/>
+<span class="input-label"><%= Prado::localize('Stiffness') %></span>
+<br/>
+<com:TTextBox ID="Stiffness"  />
+<br/>
+<span class="input-label"><%= Prado::localize('Beam Width') %></span>
+<br/>
+<com:TTextBox ID="BeamWidth"  />
+<br/>
+<span class="input-label"><%= Prado::localize('Note') %></span>
+<br/>
+<com:TTextBox ID="Note" TextMode="MultiLine" Rows="6" Columns="60" />
+
+<br/><br/>
+<com:TImageButton 
+	ID="Save"
+	ValidationGroup="user"
+	OnClick="saveClicked"/>
+<com:TImageButton 
+	ID="Cancel_2"
+	OnClick="cancelClicked"/>
+</com:TContent>
+
+<com:TContent ID="rightbar">
+</com:TContent>

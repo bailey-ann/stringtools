@@ -1,0 +1,7 @@
+<%@ MasterClass="Application.Pages.Layout_popup" %>
+<com:TContent ID="main" >
+	<br/><br/><br/><br/><br/>
+	<com:TLabel ID="Type" />
+	<br/>
+	<com:TImageButton ID="Close" onClick="onClose" "/>
+</com:TContent>

@@ -1,0 +1,107 @@
+<com:TContent ID="sidebar">
+
+<com:LoginPortlet Visible="<%= $this->User->IsGuest %>" />
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+<com:ActivateUser Visible="<%= $this->User->Active == 0 && !$this->User->IsGuest %>" />
+<hr />
+
+</com:TContent>
+
+<com:TContent ID="reg_ok">
+<h3><%= Prado::localize('NOT_LOGIN_HOME_TEXT')%></h3>
+</com:TContent>
+<com:TContent ID="content">
+<br/>
+<table>
+	<tr>
+		<td>
+			<%= Prado::localize('COUNT_LIST_CUSTOMERS')%>:
+		</td>
+		<td>
+			<com:TLabel ID="COUNT_LIST_CUSTOMERS" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= Prado::localize('COUNT_LIST_STRINGING')%>:
+		</td>
+		<td>
+			<com:TLabel ID="COUNT_LIST_STRINGING" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= Prado::localize('DATA_LAST_STRINGING')%>:
+		</td>
+		<td>
+			<com:TLabel ID="DATA_LAST_STRINGING" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br/>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<com:TRepeater ID="RepeaterStringType" EnableViewState="false">
+				<table >
+				<prop:HeaderTemplate>
+					
+						<tr style="color:white;background-color:black">
+						  <th><%= Prado::localize('TYPE_STRING')%></th>
+						  <th><%= Prado::localize('NUMBER_OF_STRINGING')%></th>
+						</tr>
+				</prop:HeaderTemplate>
+				<prop:ItemTemplate>
+						<tr style="background-color:#BFCFFF">
+							<td><%#$this->Data['description']%></td>
+							<td><%#$this->Data['value']%></td>
+						</tr>
+				</prop:ItemTemplate>
+				 
+				<prop:AlternatingItemTemplate>
+						<tr style="background-color:#E6ECFF">
+							<td><%#$this->Data['description']%></td>
+							<td><%#$this->Data['value']%></td>
+						</tr>
+					
+				</prop:AlternatingItemTemplate>
+				</table>
+			</com:TRepeater>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br/>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<com:TRepeater ID="RepeaterString" EnableViewState="false">
+				<table >
+				<prop:HeaderTemplate>
+						<tr style="color:white;background-color:black">
+						  <th><%= Prado::localize('MODEL_STRING')%></th>
+						  <th><%= Prado::localize('NUMBER_OF_STRINGING')%></th>
+						</tr>
+				</prop:HeaderTemplate>
+				<prop:ItemTemplate>
+						<tr style="background-color:#BFCFFF">
+							<td><%#$this->Data['description']%></td>
+							<td><%#$this->Data['value']%></td>
+						</tr>
+				</prop:ItemTemplate>
+				 
+				<prop:AlternatingItemTemplate>
+						<tr style="background-color:#E6ECFF">
+							<td><%#$this->Data['description']%></td>
+							<td><%#$this->Data['value']%></td>
+						</tr>					
+				</prop:AlternatingItemTemplate>
+				</table>
+			</com:TRepeater>
+		</td>
+	</tr>
+</table>
+</com:TContent>

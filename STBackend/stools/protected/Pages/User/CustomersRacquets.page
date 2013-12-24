@@ -1,0 +1,359 @@
+<%@ Title="Manage Customers Racquets" %>
+<com:TContent ID="sidebar">
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+<hr />
+
+</com:TContent>
+
+<com:TContent ID="content">
+<h3><%= Prado::localize('List customers') %></h3>
+<com:TLabel Text="<%= Prado::localize('Name') %>" /> 
+<com:TFilterCollection Id="FilterCollection_name" >
+	<com:TFilterText  DataField="name" />
+</com:TFilterCollection>
+
+<com:TLabel Text="<%= Prado::localize('Surname') %>" /> 
+<com:TFilterCollection Id="FilterCollection_surname" >
+	<com:TFilterText  DataField="surname" />
+</com:TFilterCollection>
+<br>
+<com:TImageButton ID="Search" onClick="onSearch" />
+<com:TImageButton ID="Cancel" onClick="onClear" "/>
+
+<com:TFilterDataGrid
+	SkinID="datagrid_1"
+	
+	ID="DataGridCustomers"
+    CellPadding="2"
+    DataKeyField="id"
+    OnSelectedIndexChanged="selectCustomer"
+    OnPageIndexChanged="changePage"
+    OnPagerCreated="pagerCreated"
+    >
+    <com:TBoundColumn
+    	ID="IDColumn"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	ID="NameColumn"
+        HeaderText="<%= Prado::localize('Name') %>"
+        DataField="name"
+        />
+    <com:TBoundColumn
+    	ID="SurnameColumn"
+        HeaderText="<%= Prado::localize('Surname') %>"
+        DataField="surname"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Select') %>"
+        ImageUrl="themes/White/images/select.png"
+        ButtonType="ImageButton"
+        ItemStyle.HorizontalAlign="Center"
+        ID="SelectCustomer"
+        CommandName="select"
+        />
+</com:TFilterDataGrid>
+
+</com:TContent>
+
+
+
+
+
+
+
+
+
+<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<com:TContent ID="zone_list_racquets_customer">
+<h3><com:TLabel ID="LBL_LIST_RACQUETS_USER"  /></h3>
+<br/>
+
+<com:TLabel Text="<%= Prado::localize('Brand') %>" /> 
+<com:TFilterCollection Id="FilterCollection_user_brand_racquet" >
+	<com:TFilterText  DataField="description" />
+</com:TFilterCollection>
+
+<com:TLabel Text="<%= Prado::localize('Model') %>" /> 
+<com:TFilterCollection Id="FilterCollection_user_model_racquet" >
+	<com:TFilterText  DataField="model" />
+</com:TFilterCollection>
+<br>
+<com:TLabel Text="<%= Prado::localize('Serial') %>" /> 
+<com:TFilterCollection Id="FilterCollection_serial_model_racquet" >
+	<com:TFilterText  DataField="serial" />
+</com:TFilterCollection>
+<br>
+<com:TImageButton ID="Search_1" onClick="onSearchUserRacquets" />
+<com:TImageButton ID="Cancel_1" onClick="onClearUserRacquets" "/>
+
+
+<com:TFilterDataGrid
+	SkinID="datagrid_1"
+	
+    ID="DataGridUserRacquets"
+    CellPadding="2"
+    DataKeyField="id"
+    OnPageIndexChanged="changePageUserRacquets"
+    OnPagerCreated="pagerCreatedUserRacquets"
+    OnSelectedIndexChanged="selectRacquetCustomer"
+    OnItemCommand="onItemCommand"
+    >
+    <com:TBoundColumn
+    	ID="IDColumnUserRacquet"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	ID="brandNameColumn"
+        HeaderText="<%= Prado::localize('Brand') %>"
+        DataField="racquet.brand_name"
+        />
+    <com:TBoundColumn
+    	ID="modelColumn"
+        HeaderText="<%= Prado::localize('Model') %>"
+        DataField="racquet.model"
+        />
+    <com:TBoundColumn
+    	ID="serialColumn"
+        HeaderText="<%= Prado::localize('Serial') %>"
+        DataField="serial"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Select') %>"
+        ImageUrl="themes/White/images/select.png"
+        ButtonType="ImageButton"
+        ItemStyle.HorizontalAlign="Center"
+        ID="SelectRacquetCustomer"
+        CommandName="select"
+        />
+   <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Delete') %>"
+        ImageUrl="themes/White/images/delete.png"
+        ButtonType="ImageButton"
+        ItemStyle.HorizontalAlign="Center"
+        ID="DeleteRacquetCustomer"
+        CommandName="delete"
+        />
+</com:TFilterDataGrid>
+<br/>
+
+</com:TContent>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<com:TContent ID="zone_list_add_racquets_customer">
+<h3><com:TLabel ID="LBL_LIST_RACQUETS_TO_ADD"  /></h3>
+
+
+
+<com:TLabel Text="<%= Prado::localize('Brand') %>" /> 
+<com:TFilterCollection Id="FilterCollection_brand_add_racquet" >
+	<com:TFilterText  DataField="description" />
+</com:TFilterCollection>
+
+<com:TLabel Text="<%= Prado::localize('Model') %>" /> 
+<com:TFilterCollection Id="FilterCollection_model_add_racquet" >
+	<com:TFilterText  DataField="model" />
+</com:TFilterCollection>
+<br>
+<com:TImageButton ID="Search_2" onClick="onSearchAddRacquet" />
+<com:TImageButton ID="Cancel_2" onClick="onClearAddRacquet" "/>
+
+<com:TFilterDataGrid
+	SkinID="datagrid_1"
+	
+    ID="DataGridAddRacquets"
+    CellPadding="2"
+    DataKeyField="id"	
+    OnSelectedIndexChanged="selectAddRacquet"
+    OnPageIndexChanged="changePageAddRacquets"
+    OnPagerCreated="pagerCreatedAddRacquets"
+    >
+    <com:TBoundColumn
+    	ID="IDColumnRacquet"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	ID="brand_nameRacquet"
+        HeaderText="<%= Prado::localize('Brand') %>"
+        DataField="brand_name"
+        />
+    <com:TBoundColumn
+    	ID="modelColumnRacquet"
+        HeaderText="<%= Prado::localize('Model') %>"
+        DataField="model"
+        />
+    <com:TBoundColumn
+    	ID="patternColumnRacquet"
+        HeaderText="<%= Prado::localize('Pattern') %>"
+        DataField="pattern"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Select') %>"
+        Text="<%= Prado::localize('Select') %>"
+        ID="SelectAddRacquet"
+        ItemStyle.HorizontalAlign="Center"
+        ItemStyle.Font.Italic="false"
+        CommandName="select"
+        />
+</com:TFilterDataGrid>
+
+
+</com:TContent>
+
+
+
+
+
+<com:TContent ID="editable">
+
+<h3><com:TLabel ID="TypeEdit" /></h3>
+
+	<span class="input-label"><%= Prado::localize('BrandName') %></span>
+	<br/>
+	<com:TDropDownList ID="DDLBrands" DataTextField="description" DataValueField="id" Enabled="false" /> **<%= Prado::localize('ReadOnly') %>
+	<br/>
+	<span class="input-label"><%= Prado::localize('Pattern') %></span>
+	<br/>
+	<com:TDropDownList ID="DDLPatterns" DataTextField="description" DataValueField="id" Enabled="false" /> **<%= Prado::localize('ReadOnly') %>
+	<br/>
+	<span class="input-label"><%= Prado::localize('Model') %></span>
+	<br/>
+	<com:TTextBox ID="Model" Columns="40" Enabled="false" /> **<%= Prado::localize('ReadOnly') %>
+	<br/>
+	<span class="input-label"><%= Prado::localize('Head Size') %></span>
+	<br/>
+	<com:TTextBox ID="HeadSize" Enabled="false" />(in or cm) **<%= Prado::localize('ReadOnly') %>
+	<br/>
+	<span class="input-label"><%= Prado::localize('Length') %></span>
+	<br/>
+	<com:TTextBox ID="Length" Enabled="false" />(in or cm) **<%= Prado::localize('ReadOnly') %>
+	<br/>
+	<span class="input-label"><%= Prado::localize('Grip Size') %></span>
+	<br/>
+	<com:TDropDownList ID="DDLGripSize" />
+	<br/>
+	<span class="input-label"><%= Prado::localize('Serial') %></span>
+	<br/>
+	<com:TTextBox ID="Serial"  />
+	<br/>
+	<span class="input-label"><%= Prado::localize('Weight Unstrung') %></span>
+	<br/>
+	<com:TTextBox ID="WeightUnstrung"  />(oz or gr)
+	<br/>
+	<span class="input-label"><%= Prado::localize('Weight Strung') %></span>
+	<br/>
+	<com:TTextBox ID="WeightStrung"  />(oz or gr)
+	<br/>
+	<span class="input-label"><%= Prado::localize('Balance') %></span>
+	<br/>
+	<com:TTextBox ID="Balance"  />(cm)
+	<br/>
+	<span class="input-label"><%= Prado::localize('Swingweight') %></span>
+	<br/>
+	<com:TTextBox ID="Swingweight"  />
+	<br/>
+	<span class="input-label"><%= Prado::localize('Stiffness') %></span>
+	<br/>
+	<com:TTextBox ID="Stiffness"  />
+	<br/>
+	<span class="input-label"><%= Prado::localize('Beam Width') %></span>
+	<br/>
+	<com:TTextBox ID="BeamWidth" Enabled="false" /> **<%= Prado::localize('ReadOnly') %>
+	<br/>	
+	<span class="input-label"><%= Prado::localize('Date Buy') %></span>
+	<br/>
+	<com:OPSDatePicker ID="DateBuy" ShowHours="false" ShowMinutes="false" />
+	<br/>
+	<span class="input-label"><%= Prado::localize('Note') %></span> 
+	<br/>
+	<com:TTextBox ID="Note" TextMode="MultiLine" Rows="6" Columns="60" />
+	
+	<br/><br/>
+	<com:TImageButton 
+		ID="Save"
+		ValidationGroup="user"
+		OnClick="saveAddClicked"/>
+	<com:TImageButton 
+		ID="Cancel_3"
+		OnClick="cancelAddClicked"/>
+		
+</com:TContent>
+
+
+
+
+
+
+
+
+
+
+<br/>
+<com:TContent ID="rightbar">
+	<com:TImageButton  ID="btnAddRacquet" OnClick="addRacquet"/>
+	<com:TImageButton  ID="btnCancelSelect" OnClick="cancelSelect"/>
+	<com:TImageButton ID="Help" >
+		<prop:Attributes.onclick>
+					var finestra = window.open("index.php?page=Help&type=cr", 'miaFinestra', 'width=500,height=300 ,toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no');
+					finestra.focus();
+		</prop:Attributes.onclick>
+	</com:TImageButton>
+</com:TContent>

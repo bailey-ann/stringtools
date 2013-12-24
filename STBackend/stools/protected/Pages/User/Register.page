@@ -1,0 +1,161 @@
+<com:TContent ID="sidebar">
+
+</com:TContent>
+
+<com:TContent ID="content">
+
+<h3><%= Prado::localize('Request an Account') %></h3>
+
+
+<com:TValidationSummary
+	Display="Dynamic"
+	ValidationGroup="user" />
+
+<span class="input-label"><%= Prado::localize('Username') %></span>
+<br/>
+<com:TTextBox ID="Username" />
+<com:TRequiredFieldValidator
+	ControlToValidate="Username"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a username.') %>"
+	ControlCssClass="input-error1" />
+<com:TRegularExpressionValidator
+	ControlToValidate="Username"
+	ValidationGroup="user"
+	Display="Dynamic"
+	RegularExpression="[\w]{3,16}"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Your username must contain only letters, digits and underscores, and it must contain at least 3 and at most 16 characters.') %>"
+	ControlCssClass="input-error2" />
+<com:TCustomValidator
+	ControlToValidate="Username"
+	ValidationGroup="user"
+	Display="Dynamic"
+	OnServerValidate="checkUsername"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Sorry, your username is taken by someone else. Please choose another username.') %>"
+	ControlCssClass="input-error3" />
+
+<br/>
+
+
+
+<span class="input-label"><%= Prado::localize('Password') %></span>
+<br/>
+<com:TTextBox ID="Password" TextMode="Password" />
+<com:TRequiredFieldValidator
+	ControlToValidate="Password"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a password.') %>"
+	ControlCssClass="input-error1" />
+<com:TRegularExpressionValidator
+	ControlToValidate="Password"
+	ValidationGroup="user"
+	Display="Dynamic"
+	RegularExpression="[\w\.]{6,16}"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Your password must contain only letters, digits and underscores, and it must contain at least 6 and at most 16 characters.') %>"
+	ControlCssClass="input-error2" />
+
+<br/>
+
+<span class="input-label"><%= Prado::localize('Re-type Password') %></span>
+<br/>
+<com:TTextBox ID="Password2" TextMode="Password" />
+<com:TCompareValidator
+	ControlToValidate="Password"
+	ControlToCompare="Password2"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Your password entries did not match.') %>"
+	ControlCssClass="input-error3" />
+
+<br/>
+
+<span class="input-label"><%= Prado::localize('Email Address') %></span>
+<br/>
+<com:TTextBox ID="Email" />
+<com:TRequiredFieldValidator
+	ControlToValidate="Email"
+	ValidationGroup="user"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please provide your email address.') %>"
+	ControlCssClass="input-error1" />
+<com:TEmailAddressValidator
+	ControlToValidate="Email"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('You entered an invalid email address.') %>"
+	ControlCssClass="input-error2" />
+<com:TCustomValidator
+	ControlToValidate="Email"
+	ValidationGroup="user"
+	Display="Dynamic"
+	OnServerValidate="checkEmail"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Sorry, your email is already present on database') %>"
+	ControlCssClass="input-error3" />
+
+<br/>
+
+<span class="input-label"><%= Prado::localize('Name') %></span>
+<br/>
+<com:TTextBox ID="Name" />
+<com:TRequiredFieldValidator
+	ControlToValidate="Name"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a Name.') %>"
+	ControlCssClass="input-error1" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Surname') %></span>
+<br/>
+<com:TTextBox ID="Surname" />
+<com:TRequiredFieldValidator
+	ControlToValidate="Surname"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a Surname.') %>"
+	ControlCssClass="input-error1" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Telephone') %></span>
+<br/>
+<com:TTextBox ID="Telephone" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Mobile Telephone') %></span>
+<br/>
+<com:TTextBox ID="MobileTelephone" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Piva') %></span>
+<br/>
+<com:TTextBox ID="Piva" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Fax') %></span>
+<br/>
+<com:TTextBox ID="Fax" />
+<br/>
+<com:TImageButton 
+	ID="Save"
+	ValidationGroup="user"
+	OnClick="createUser"/>
+
+</com:TContent>
+<com:TContent ID="reg_ok">
+
+<h3><%= Prado::localize('REGISTRATION_OK') %></h3>
+
+<p><%= Prado::localize('LINK_ACTIVATE_MAIL') %></p>
+</com:TContent>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- File di configurazione delle sqlMap -->
+
+<sqlMapConfig>
+    <sqlMaps>
+        <sqlMap resource="datamap/Common.xml"/>
+    </sqlMaps>
+</sqlMapConfig>

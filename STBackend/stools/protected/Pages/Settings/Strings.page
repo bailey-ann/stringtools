@@ -1,0 +1,151 @@
+<%@ Title="Manage Strings" %>
+<com:TContent ID="sidebar">
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+<hr />
+
+</com:TContent>
+
+<com:TContent ID="content">
+<h3><%= Prado::localize('List strings') %></h3>
+
+<com:TLabel Text="<%= Prado::localize('BrandName') %>" /> 
+<com:TFilterCollection Id="FilterCollection_brand" >
+	<com:TFilterText  DataField="description" />
+</com:TFilterCollection>
+
+<com:TLabel Text="<%= Prado::localize('Model') %>" /> 
+<com:TFilterCollection Id="FilterCollection_model" >
+	<com:TFilterText  DataField="model" />
+</com:TFilterCollection>
+<br>
+<com:TImageButton ID="Search" onClick="onSearch" />
+<com:TImageButton ID="Cancel" onClick="onClear" "/>
+
+<com:TDataGrid
+	SkinID="datagrid_10"
+	
+    ID="DataGridStrings"
+    CellPadding="2"
+    DataKeyField="id"
+    
+    OnPageIndexChanged="changePage"
+    OnPagerCreated="pagerCreated"
+    OnSelectedIndexChanged="selectString"
+    >
+    <com:TBoundColumn
+    	ID="IDColumn"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	ID="brand_name"
+        HeaderText="<%= Prado::localize('BrandName') %>"
+        DataField="brand_name"
+        />
+    <com:TBoundColumn
+    	ID="modelColumn"
+        HeaderText="<%= Prado::localize('Model') %>"
+        DataField="model"
+        />
+    <com:TBoundColumn
+    	ID="gaugeColumn"
+        HeaderText="<%= Prado::localize('Gauge') %>"
+        DataField="gauge_desc"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Edit') %>"
+        ImageUrl="themes/White/images/edit.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        ID="SelectCustomer"
+        CommandName="select"
+        />
+</com:TDataGrid>
+<br/>
+<com:TImageButton 
+	ID="New"
+	OnClick="createClicked" />
+</com:TContent>
+
+<com:TContent ID="editable">
+
+<h3><com:TLabel ID="TypeEdit" /></h3>
+
+<com:TValidationSummary
+	Display="Dynamic"
+	ValidationGroup="user" />
+
+<span class="input-label"><%= Prado::localize('BrandName') %></span>
+<br/>
+<com:TDropDownList ID="DDLBrands" DataTextField="description" DataValueField="id" />
+<br/>
+<span class="input-label"><%= Prado::localize('Model') %></span>
+<br/>
+<com:TTextBox ID="Model" />
+<com:TRequiredFieldValidator
+	ControlToValidate="Model"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a model.') %>"
+	ControlCssClass="input-error1" />
+<br/>
+<span class="input-label"><%= Prado::localize('Code') %></span>
+<br/>
+<com:TTextBox ID="Code" />
+<com:TRequiredFieldValidator
+	ControlToValidate="Code"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a code.') %>"
+	ControlCssClass="input-error1" />
+<br/>
+<span class="input-label"><%= Prado::localize('Gauges') %></span>
+<br/>
+<com:TDropDownList ID="DDLGauges"  />
+<br/>
+<span class="input-label"><%= Prado::localize('Exact Gauge') %></span>
+<br/>
+<com:TTextBox ID="ExactGauge" />
+<com:TRequiredFieldValidator
+	ControlToValidate="ExactGauge"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a Exact Gauge.') %>"
+	ControlCssClass="input-error1" />
+<br/>
+<span class="input-label"><%= Prado::localize('Type String') %></span>
+<br/>
+<com:TDropDownList ID="DDLType" DataTextField="description" DataValueField="id" />
+<br/>
+<span class="input-label"><%= Prado::localize('Price') %></span>
+<br/>
+<com:TTextBox ID="Price" /><%= $this->User->UserDB->currency_unit->description %>
+<com:TRequiredFieldValidator
+	ControlToValidate="Price"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a price.') %>"
+	ControlCssClass="input-error1" />
+<br/><br/>
+<com:TImageButton 
+	ID="Save"
+	ValidationGroup="user"
+	OnClick="saveClicked"/>
+<com:TImageButton 
+	ID="Cancel_2"
+	OnClick="cancelClicked"/>
+</com:TContent>
+
+<com:TContent ID="rightbar">
+	<com:TImageButton ID="Help" >
+		<prop:Attributes.onclick>
+					var finestra = window.open("index.php?page=Help&type=strings", 'miaFinestra', 'width=500,height=200 ,toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no');
+					finestra.focus();
+		</prop:Attributes.onclick>
+	</com:TImageButton>
+</com:TContent>

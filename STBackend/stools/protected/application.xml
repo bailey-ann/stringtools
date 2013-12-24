@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<application id="personal" mode="Normal">
+  <paths>
+  	<alias id="PHPMAILER" path="..\..\PHPMailer_5.2.4" />
+  	<alias id="FPDF" path="..\..\fpdf17" />
+  	<alias id="TCPDF" path="..\..\tcpdf" />
+  	
+    <using namespace="Application.Common.*" />
+    <using namespace="Application.DbMapping.*" />
+    <using namespace="System.Data.*" />
+    <using namespace="System.Data.ActiveRecord.*" />  
+	<using namespace="Application.database.*" />
+	<using namespace="System.I18N.*" />
+	<using namespace="PHPMAILER.*" />
+	<using namespace="FPDF.*" />
+	<using namespace="TCPDF.*" />
+  </paths>
+  <!-- modules configured and loaded for all services -->
+  <modules>
+    <!-- Database connection -->
+    <module id="db" class="System.Data.TDataSourceConfig">
+       <database ConnectionString="mysql:host=localhost;dbname=stringto_svil" username="stringto_svil" password="stringto_svil1" />
+    </module>
+    
+    <!-- Enable Active Record -->
+    <module class="System.Data.ActiveRecord.TActiveRecordConfig" ConnectionID="db" />
+       
+    <!-- configurazione di sqlmap -->
+	<module id="sqlmap" class="System.Data.SqlMap.TSqlMapConfig" EnableCache="false" ConfigFile="Application.sqlmap" ConnectionID="db" />
+	
+	<!-- configurazione di traduzione -->
+	<module id="globalization" class="TGlobalizationAutoDetect" charset="UTF-8">
+    	<translation type="XLIFF"
+        	source="Application.messages"
+        	marker="@@"
+        	autosave="true" cache="true" />
+	</module>	
+       
+    <!-- Remove this comment mark to enable caching
+    <module id="cache" class="System.Caching.TSqliteCache" />
+    -->
+    <!-- Remove this comment mark to enable PATH url format
+    <module id="request" class="THttpRequest" UrlFormat="Path" />
+    -->
+    <!-- Remove this comment mark to enable logging
+    <module id="log" class="System.Util.TLogRouter">
+      <route class="TBrowserLogRoute" Categories="System" />
+      <route class="TFileLogRoute" Categories="System" Levels="Notice,Warning,Error,Alert,Fatal" />
+    </module>
+    -->
+  </modules>
+  <services>
+    <!-- page service -->
+    <service id="page" class="TPageService" BasePath="Application.Pages">
+      <!-- modules configured and loaded when page service is requested -->
+      <modules>
+        <!-- user manager module -->
+        <module id="users" class="System.Security.TDbUserManager"  UserClass="Application.Pages.SToolsUser" />
+        <!-- auth manager module -->
+        <module id="auth" class="System.Security.TAuthManager" UserManager="users" LoginPage="UserLogin" />
+      </modules>
+    </service>
+  </services>
+  <parameters>
+	<parameter id="siteName" value="StringTools" />
+	<parameter id="SMTP_HOST" value="mail.stringtools.it" />
+	<parameter id="SMTP_PORT" value="25" />
+	<parameter id="SMTP_USERNAME" value="assistenza@stringtools.it" />
+	<parameter id="SMTP_PASSWORD" value="gabber1979" />
+	<parameter id="EMAIL_ADMIN" value="amministrazione@stringtools.it" />
+	<parameter id="EMAIL_ASSISTENZE" value="assistenza@stringtools.it" />
+	<parameter id="SITE_LINK" value="http://www.stringtools.it/stools" />
+	<parameter id="languages" value="('en'=>'English','it'=>'Italian')" />
+  </parameters>
+</application>

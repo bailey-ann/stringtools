@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- 
+	File di configurazione SqlMap
+	Contiene la mappatura delle Sql per la zona Comune
+-->
+
+<sqlMapConfig>
+
+	<select id="SelectCustomersByStringer" resultClass="TblUsers">
+		SELECT tbl_users.* FROM tbl_users INNER JOIN rel_stringer_customer ON rel_stringer_customer.id_customer = tbl_users.id where rel_stringer_customer.id_stringer = #id#
+	</select>
+	
+	
+	<select id="SelectTblStringingJobs" resultClass="TblStringingJobs">
+		SELECT
+			tbl_stringing_jobs.*
+			FROM
+			tbl_stringing_jobs
+			INNER JOIN tbl_racquets_user ON tbl_stringing_jobs.tbl_racquets_user_id = tbl_racquets_user.id
+			INNER JOIN tbl_racquets ON tbl_racquets_user.tbl_racquets_id = tbl_racquets.id
+			INNER JOIN tbl_brands ON tbl_racquets.tbl_brands_id = tbl_brands.id
+			where tbl_racquets_user.tbl_users_id = #id# 
+			AND tbl_racquets_user.serial LIKE #serial#   
+			AND tbl_brands.description LIKE #brand#
+			AND tbl_racquets.model LIKE #model#
+			AND tbl_racquets_user.active = 1
+			order by tbl_stringing_jobs.date_stringing desc,tbl_brands.description desc, tbl_racquets.model desc, tbl_racquets_user.serial  desc 
+	</select>
+	
+	<select id="SelectTblStringingJobsForStringer" resultClass="TblStringingJobs">
+		SELECT
+			tbl_stringing_jobs.*
+			FROM
+			tbl_stringing_jobs
+			INNER JOIN tbl_racquets_user ON tbl_stringing_jobs.tbl_racquets_user_id = tbl_racquets_user.id
+			INNER JOIN tbl_racquets ON tbl_racquets_user.tbl_racquets_id = tbl_racquets.id
+			INNER JOIN tbl_brands ON tbl_racquets.tbl_brands_id = tbl_brands.id
+			where tbl_stringing_jobs.tbl_users_id_stringer = #id# 
+			AND tbl_racquets_user.active = 1
+			order by tbl_stringing_jobs.date_stringing desc,tbl_brands.description desc, tbl_racquets.model desc, tbl_racquets_user.serial  desc 
+	</select>
+	
+	<select id="SelectTblRacquetUser" resultClass="TblRacquetsUser">
+		SELECT
+			tbl_racquets_user.*
+			FROM
+			tbl_racquets_user
+			INNER JOIN tbl_racquets ON tbl_racquets_user.tbl_racquets_id = tbl_racquets.id
+			INNER JOIN tbl_brands ON tbl_racquets.tbl_brands_id = tbl_brands.id
+			where tbl_racquets_user.tbl_users_id = #id# 
+			AND tbl_racquets_user.serial LIKE #serial#   
+			AND tbl_brands.description LIKE #brand#
+			AND tbl_racquets.model LIKE #model#
+			AND tbl_racquets_user.active = 1
+			order by tbl_brands.description desc, tbl_racquets.model desc, tbl_racquets_user.serial  desc 
+	</select>
+	
+	<select id="CountListCustomersByStringer" resultClass="int">
+		SELECT COUNT(*) as numero FROM rel_stringer_customer where rel_stringer_customer.id_stringer = #id# AND rel_stringer_customer.id_customer != #id#
+	</select>
+	
+	<select id="CountListJobByStringer" resultClass="int">
+		SELECT Count(*) AS numero FROM tbl_stringing_jobs where tbl_stringing_jobs.tbl_users_id_stringer = #id#
+	</select>
+	
+	<select id="GetLastDateStringing" resultClass="string">
+		SELECT tbl_stringing_jobs.date_stringing FROM tbl_stringing_jobs where tbl_stringing_jobs.tbl_users_id_stringer = #id# order by date_stringing desc limit 1
+	</select>
+	
+</sqlMapConfig>

@@ -1,0 +1,959 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+ <file source-language="EN" target-language="fr_FR" datatype="plaintext" original="messages" date="2013-11-22T12:54:15Z" product-name="messages">
+  <body>
+  
+<trans-unit id="1">
+<source><![CDATA[LOST_PWD]]></source>
+<target><![CDATA[]]>Password Dimenticata</target>
+</trans-unit>
+
+<trans-unit id="2">
+<source><![CDATA[REGISTRATI]]></source>
+<target><![CDATA[]]>REGISTRATI</target>
+</trans-unit>
+
+<trans-unit id="3">
+<source><![CDATA[Remember me next time]]></source>
+<target><![CDATA[]]>Ricordami</target>
+</trans-unit>
+
+<trans-unit id="4">
+<source><![CDATA[Login to Site]]></source>
+<target><![CDATA[]]>Entra nel sito</target>
+</trans-unit>
+
+<trans-unit id="5">
+<source><![CDATA[...invalid]]></source>
+<target><![CDATA[]]>...invalida</target>
+</trans-unit>
+
+<trans-unit id="6">
+<source><![CDATA[Lost Password]]></source>
+<target><![CDATA[]]>Password dimenticata</target>
+</trans-unit>
+
+<trans-unit id="7">
+<source><![CDATA[Create a new account]]></source>
+<target><![CDATA[]]>Iscriviti</target>
+</trans-unit>
+
+<trans-unit id="8">
+<source><![CDATA[or]]></source>
+<target><![CDATA[]]>o</target>
+</trans-unit>
+
+
+
+<trans-unit id="10">
+<source><![CDATA[Personal Data]]></source>
+<target><![CDATA[]]>Dati Utente</target>
+</trans-unit>
+
+<trans-unit id="11">
+<source><![CDATA[Customers]]></source>
+<target><![CDATA[]]>Clienti</target>
+</trans-unit>
+
+<trans-unit id="12">
+<source><![CDATA[Customers Racquets]]></source>
+<target><![CDATA[]]>Racchette Clienti</target>
+</trans-unit>
+
+<trans-unit id="13">
+<source><![CDATA[Brands]]></source>
+<target><![CDATA[]]>Marchi</target>
+</trans-unit>
+
+<trans-unit id="14">
+<source><![CDATA[Grips]]></source>
+<target><![CDATA[]]>Grips</target>
+</trans-unit>
+
+<trans-unit id="15">
+<source><![CDATA[Overgrips]]></source>
+<target><![CDATA[]]>Overgrips</target>
+</trans-unit>
+
+<trans-unit id="16">
+<source><![CDATA[Racquets]]></source>
+<target><![CDATA[]]>Racchette</target>
+</trans-unit>
+
+<trans-unit id="17">
+<source><![CDATA[Strings]]></source>
+<target><![CDATA[]]>Corde</target>
+</trans-unit>
+
+<trans-unit id="18">
+<source><![CDATA[Stringing Machine]]></source>
+<target><![CDATA[]]>Macchine incordatrici</target>
+</trans-unit>
+
+<trans-unit id="19">
+<source><![CDATA[Personal Settings]]></source>
+<target><![CDATA[]]>Dati Personali</target>
+</trans-unit>
+
+<trans-unit id="20">
+<source><![CDATA[Global Setting]]></source>
+<target><![CDATA[]]>Dati Globali</target>
+</trans-unit>
+
+<trans-unit id="21">
+<source><![CDATA[ACTIVATE_ROW_1]]></source>
+<target><![CDATA[]]>Account da attivare, per favore cliccare sul link ricevuto nel mail di conferma registrazione</target>
+</trans-unit>
+
+<trans-unit id="22">
+<source><![CDATA[ACTIVATE_ROW_2]]></source>
+<target><![CDATA[]]>In caso non si fosse ricevuta l'mail di conferma registrazione cliccare nel bottone sottostante</target>
+</trans-unit>
+
+<trans-unit id="23">
+<source><![CDATA[Welcome]]></source>
+<target><![CDATA[]]>Benvenuto</target>
+</trans-unit>
+
+<trans-unit id="24">
+<source><![CDATA[Insert your email, new password send via mail]]></source>
+<target><![CDATA[]]>Inserire la vostra email, la nuova password sarà inviata</target>
+</trans-unit>
+
+<trans-unit id="25">
+<source><![CDATA[Please provide your email address.]]></source>
+<target><![CDATA[]]>Prego, inserire un indirizzo email valido</target>
+</trans-unit>
+
+<trans-unit id="26">
+<source><![CDATA[You entered an invalid email address.]]></source>
+<target><![CDATA[]]>Indirizzo email inserito non valido</target>
+</trans-unit>
+
+<trans-unit id="27">
+<source><![CDATA[Sorry, the email not on system.]]></source>
+<target><![CDATA[]]>Ci spiace, l'email inserita non è nel sistema</target>
+</trans-unit>
+
+<trans-unit id="28">
+<source><![CDATA[BTN_SEND]]></source>
+<target><![CDATA[]]>Invia</target>
+</trans-unit>
+
+<trans-unit id="29">
+<source><![CDATA[Email Address]]></source>
+<target><![CDATA[]]>Indirizzo Email</target>
+</trans-unit>
+
+<trans-unit id="30">
+<source><![CDATA[Request an Account]]></source>
+<target><![CDATA[]]>Creazione nuovo account</target>
+</trans-unit>
+
+<trans-unit id="31">
+<source><![CDATA[Username]]></source>
+<target><![CDATA[]]>Username</target>
+</trans-unit>
+
+<trans-unit id="32">
+<source><![CDATA[Please choose a username.]]></source>
+<target><![CDATA[]]>Prego, scegliere un'Username</target>
+</trans-unit>
+
+<trans-unit id="33">
+<source><![CDATA[Your username must contain only letters, digits and underscores, and it must contain at least 3 and at most 16 characters.]]></source>
+<target><![CDATA[]]>L'username deve contenere solo lettere, numeri o underscore e deve essere minimo 3 caratteri</target>
+</trans-unit>
+
+<trans-unit id="34">
+<source><![CDATA[Sorry, your username is taken by someone else. Please choose another username.]]></source>
+<target><![CDATA[]]>Ci spiace, l'username scelto è già in uso</target>
+</trans-unit>
+
+<trans-unit id="35">
+<source><![CDATA[Password]]></source>
+<target><![CDATA[]]>Password</target>
+</trans-unit>
+
+<trans-unit id="36">
+<source><![CDATA[Please choose a password.]]></source>
+<target><![CDATA[]]>Prego, scegliere una Password</target>
+</trans-unit>
+
+<trans-unit id="37">
+<source><![CDATA[Your password must contain only letters, digits and underscores, and it must contain at least 6 and at most 16 characters.]]></source>
+<target><![CDATA[]]>La passowrd deve contenere solo lettere, numeri o underscore e deve essere minimo 6 caratteri</target>
+</trans-unit>
+
+<trans-unit id="38">
+<source><![CDATA[Re-type Password]]></source>
+<target><![CDATA[]]>Re-inserisci la password</target>
+</trans-unit>
+
+<trans-unit id="39">
+<source><![CDATA[Your password entries did not match.]]></source>
+<target><![CDATA[]]>Le due password non sono uguali</target>
+</trans-unit>
+
+<trans-unit id="40">
+<source><![CDATA[Sorry, your email is already present on database]]></source>
+<target><![CDATA[]]>Ci spiace, l'email inserita non è nel sistema</target>
+</trans-unit>
+
+<trans-unit id="41">
+<source><![CDATA[Name]]></source>
+<target><![CDATA[]]>Nome</target>
+</trans-unit>
+
+<trans-unit id="42">
+<source><![CDATA[Please choose a Name.]]></source>
+<target><![CDATA[]]>Prego scegliere un nome</target>
+</trans-unit>
+
+<trans-unit id="43">
+<source><![CDATA[Surname]]></source>
+<target><![CDATA[]]>Cognome</target>
+</trans-unit>
+
+<trans-unit id="44">
+<source><![CDATA[Telephone]]></source>
+<target><![CDATA[]]>Telefono</target>
+</trans-unit>
+
+<trans-unit id="45">
+<source><![CDATA[Mobile Telephone]]></source>
+<target><![CDATA[]]>Cellulare</target>
+</trans-unit>
+
+<trans-unit id="46">
+<source><![CDATA[Fax]]></source>
+<target><![CDATA[]]>Fax</target>
+</trans-unit>
+
+<trans-unit id="47">
+<source><![CDATA[Register]]></source>
+<target><![CDATA[]]>Registrati</target>
+</trans-unit>
+
+<trans-unit id="48">
+<source><![CDATA[Please choose a Surname.]]></source>
+<target><![CDATA[]]>Prego scegliere un cognome</target>
+</trans-unit>
+
+<trans-unit id="49">
+<source><![CDATA[REGISTRATION_OK]]></source>
+<target><![CDATA[]]>Registrazione effettuata con successo</target>
+</trans-unit>
+
+<trans-unit id="50">
+<source><![CDATA[LINK_ACTIVATE_MAIL]]></source>
+<target><![CDATA[]]>nella mail di conferma registrazione troverete il link per attivare l'account</target>
+</trans-unit>
+
+<trans-unit id="51">
+<source><![CDATA[Stringing Iobs]]></source>
+<target><![CDATA[]]>Gestione Incordature</target>
+</trans-unit>
+
+<trans-unit id="52">
+<source><![CDATA[List Jobs]]></source>
+<target><![CDATA[]]>Lista Incordature</target>
+</trans-unit>
+
+<trans-unit id="53">
+<source><![CDATA[Select]]></source>
+<target><![CDATA[]]>Seleziona</target>
+</trans-unit>
+
+<trans-unit id="54">
+<source><![CDATA[List_Jobs_Customer]]></source>
+<target><![CDATA[]]>Lista Incordature </target>
+</trans-unit>
+
+<trans-unit id="55">
+<source><![CDATA[Telephone.]]></source>
+<target><![CDATA[]]>Telefono</target>
+</trans-unit>
+
+<trans-unit id="56">
+<source><![CDATA[Stringing Cost]]></source>
+<target><![CDATA[]]>Costo Incordatura</target>
+</trans-unit>
+
+<trans-unit id="57">
+<source><![CDATA[List Customers]]></source>
+<target><![CDATA[]]>Lista clienti</target>
+</trans-unit>
+
+<trans-unit id="58">
+<source><![CDATA[Email]]></source>
+<target><![CDATA[]]>Email</target>
+</trans-unit>
+
+<trans-unit id="59">
+<source><![CDATA[Cost]]></source>
+<target><![CDATA[]]>Costo Incordatura</target>
+</trans-unit>
+
+<trans-unit id="60">
+<source><![CDATA[Edit]]></source>
+<target><![CDATA[]]>Modifica</target>
+</trans-unit>
+
+<trans-unit id="61">
+<source><![CDATA[Edita_Data_Customer]]></source>
+<target><![CDATA[]]>Modifica dati </target>
+</trans-unit>
+
+<trans-unit id="62">
+<source><![CDATA[Stringing Cost ** leave blank or 0 if the cost it's not special]]></source>
+<target><![CDATA[]]>Costo incordatura ** lasciare in bianco o a 0 se non è un cliente speciale, farà fede il costo incordatura globale</target>
+</trans-unit>
+
+<trans-unit id="63">
+<source><![CDATA[New Customer]]></source>
+<target><![CDATA[]]>Creare nuovo cliente</target>
+</trans-unit>
+
+<trans-unit id="64">
+<source><![CDATA[List Brands]]></source>
+<target><![CDATA[]]>Lista Marchi</target>
+</trans-unit>
+
+<trans-unit id="65">
+<source><![CDATA[Brand Name]]></source>
+<target><![CDATA[]]>Nome</target>
+</trans-unit>
+
+<trans-unit id="66">
+<source><![CDATA[Save]]></source>
+<target><![CDATA[]]>Salva</target>
+</trans-unit>
+
+<trans-unit id="67">
+<source><![CDATA[Please choose a brand name.]]></source>
+<target><![CDATA[]]>Prego inserire un nome del marchio</target>
+</trans-unit>
+
+<trans-unit id="68">
+<source><![CDATA[Cancel]]></source>
+<target><![CDATA[]]>Annulla</target>
+</trans-unit>
+
+<trans-unit id="69">
+<source><![CDATA[Insert new Brands]]></source>
+<target><![CDATA[]]>Inserimento nuovo marchio</target>
+</trans-unit>
+
+<trans-unit id="70">
+<source><![CDATA[Model]]></source>
+<target><![CDATA[]]>Modello</target>
+</trans-unit>
+
+<trans-unit id="71">
+<source><![CDATA[Price]]></source>
+<target><![CDATA[]]>Prezzo</target>
+</trans-unit>
+
+<trans-unit id="72">
+<source><![CDATA[Note]]></source>
+<target><![CDATA[]]>Note</target>
+</trans-unit>
+
+<trans-unit id="73">
+<source><![CDATA[List grips]]></source>
+<target><![CDATA[]]>Lista grips</target>
+</trans-unit>
+
+<trans-unit id="74">
+<source><![CDATA[Edit Grip]]></source>
+<target><![CDATA[]]>Modifica grip</target>
+</trans-unit>
+
+<trans-unit id="75">
+<source><![CDATA[Please choose a model.]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="76">
+<source><![CDATA[Please choose a price.]]></source>
+<target><![CDATA[]]>Prego, scegliere un modello</target>
+</trans-unit>
+
+<trans-unit id="77">
+<source><![CDATA[BrandName]]></source>
+<target><![CDATA[]]>Marchio</target>
+</trans-unit>
+
+<trans-unit id="78">
+<source><![CDATA[Insert new grip]]></source>
+<target><![CDATA[]]>Inserire nuovo grip</target>
+</trans-unit>
+
+<trans-unit id="79">
+<source><![CDATA[List Overgrips]]></source>
+<target><![CDATA[]]>Lista overgrips</target>
+</trans-unit>
+
+<trans-unit id="80">
+<source><![CDATA[Edit Overgrip]]></source>
+<target><![CDATA[]]>Modifica overgrip</target>
+</trans-unit>
+
+<trans-unit id="81">
+<source><![CDATA[Insert New Overgrip]]></source>
+<target><![CDATA[]]>Inserire nuovo overgrip</target>
+</trans-unit>
+
+<trans-unit id="82">
+<source><![CDATA[Page]]></source>
+<target><![CDATA[]]>Pagina</target>
+</trans-unit>
+
+<trans-unit id="83">
+<source><![CDATA[Pattern]]></source>
+<target><![CDATA[]]>Pattern</target>
+</trans-unit>
+
+<trans-unit id="84">
+<source><![CDATA[List racquets]]></source>
+<target><![CDATA[]]>Lista racchette</target>
+</trans-unit>
+
+<trans-unit id="85">
+<source><![CDATA[Insert new racquet]]></source>
+<target><![CDATA[]]>Inserisci nuova racchetta</target>
+</trans-unit>
+
+<trans-unit id="86">
+<source><![CDATA[Head Size]]></source>
+<target><![CDATA[]]>Ovale</target>
+</trans-unit>
+
+<trans-unit id="87">
+<source><![CDATA[Length]]></source>
+<target><![CDATA[]]>Lunghezza</target>
+</trans-unit>
+
+<trans-unit id="88">
+<source><![CDATA[Weight Unstrung]]></source>
+<target><![CDATA[]]>Peso non incordata</target>
+</trans-unit>
+
+<trans-unit id="89">
+<source><![CDATA[Weight Strung]]></source>
+<target><![CDATA[]]>Peso incordata</target>
+</trans-unit>
+
+<trans-unit id="90">
+<source><![CDATA[Balance]]></source>
+<target><![CDATA[]]>Bilanciamento</target>
+</trans-unit>
+
+<trans-unit id="91">
+<source><![CDATA[Swingweight]]></source>
+<target><![CDATA[]]>Swingweight</target>
+</trans-unit>
+
+<trans-unit id="92">
+<source><![CDATA[Stiffness]]></source>
+<target><![CDATA[]]>Rigidità</target>
+</trans-unit>
+
+<trans-unit id="93">
+<source><![CDATA[Beam Width]]></source>
+<target><![CDATA[]]>Spessore del telaio</target>
+</trans-unit>
+
+<trans-unit id="94">
+<source><![CDATA[Edit racquet]]></source>
+<target><![CDATA[]]>Edita racchetta</target>
+</trans-unit>
+
+<trans-unit id="95">
+<source><![CDATA[Gauge]]></source>
+<target><![CDATA[]]>Diametro</target>
+</trans-unit>
+
+<trans-unit id="96">
+<source><![CDATA[List strings]]></source>
+<target><![CDATA[]]>Lista corde</target>
+</trans-unit>
+
+<trans-unit id="97">
+<source><![CDATA[Edit string]]></source>
+<target><![CDATA[]]>Modifica corda selezionata</target>
+</trans-unit>
+
+<trans-unit id="98">
+<source><![CDATA[Code]]></source>
+<target><![CDATA[]]>Codice</target>
+</trans-unit>
+
+<trans-unit id="99">
+<source><![CDATA[Please choose a code.]]></source>
+<target><![CDATA[]]>Prego inserisci un codice</target>
+</trans-unit>
+
+<trans-unit id="100">
+<source><![CDATA[Gauges]]></source>
+<target><![CDATA[]]>Diametro</target>
+</trans-unit>
+
+<trans-unit id="101">
+<source><![CDATA[Exact Gauge]]></source>
+<target><![CDATA[]]>Diametro esatto</target>
+</trans-unit>
+
+<trans-unit id="102">
+<source><![CDATA[Please choose a Exact Gauge.]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="103">
+<source><![CDATA[Type String]]></source>
+<target><![CDATA[]]>Tipo materiale</target>
+</trans-unit>
+
+<trans-unit id="104">
+<source><![CDATA[Insert new string]]></source>
+<target><![CDATA[]]>Inserimento nuova corda</target>
+</trans-unit>
+
+<trans-unit id="105">
+<source><![CDATA[List stringing machine]]></source>
+<target><![CDATA[]]>Lista macchina incordatrici</target>
+</trans-unit>
+
+<trans-unit id="106">
+<source><![CDATA[Edit stringing machine]]></source>
+<target><![CDATA[]]>Edita macchina incordatrice selezionata</target>
+</trans-unit>
+
+<trans-unit id="107">
+<source><![CDATA[TypeStringingMachine]]></source>
+<target><![CDATA[]]>Tipologia</target>
+</trans-unit>
+
+<trans-unit id="108">
+<source><![CDATA[Serial]]></source>
+<target><![CDATA[]]>Seriale</target>
+</trans-unit>
+
+<trans-unit id="109">
+<source><![CDATA[Please choose a serial.]]></source>
+<target><![CDATA[]]>Prego selezionare un seriale</target>
+</trans-unit>
+
+<trans-unit id="110">
+<source><![CDATA[Date Buy]]></source>
+<target><![CDATA[]]>Data acquisto</target>
+</trans-unit>
+
+<trans-unit id="111">
+<source><![CDATA[Date Calibration]]></source>
+<target><![CDATA[]]>Data calibrazione</target>
+</trans-unit>
+
+<trans-unit id="112">
+<source><![CDATA[Insert new stringing machine]]></source>
+<target><![CDATA[]]>Inserimento nuova macchina incordatrice</target>
+</trans-unit>
+
+<trans-unit id="113">
+<source><![CDATA[List customers]]></source>
+<target><![CDATA[]]>Lista Clienti</target>
+</trans-unit>
+
+<trans-unit id="114">
+<source><![CDATA[List racquets insert for the customer]]></source>
+<target><![CDATA[]]>Lista racchette per </target>
+</trans-unit>
+
+<trans-unit id="115">
+<source><![CDATA[Brand]]></source>
+<target><![CDATA[]]>Marchio</target>
+</trans-unit>
+
+<trans-unit id="116">
+<source><![CDATA[ReadOnly]]></source>
+<target><![CDATA[]]>Sola lettura</target>
+</trans-unit>
+
+<trans-unit id="117">
+<source><![CDATA[Grip Size]]></source>
+<target><![CDATA[]]>Manico</target>
+</trans-unit>
+
+<trans-unit id="118">
+<source><![CDATA[Edit racquet customer]]></source>
+<target><![CDATA[]]>Edita i dati della racchetta selezionata</target>
+</trans-unit>
+
+<trans-unit id="119">
+<source><![CDATA[List racquets to add for the customer]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="120">
+<source><![CDATA[List racquets to add ]]></source>
+<target><![CDATA[]]>Lista racchette da inserire</target>
+</trans-unit>
+
+<trans-unit id="121">
+<source><![CDATA[WeightUnit]]></source>
+<target><![CDATA[]]>Unità di peso</target>
+</trans-unit>
+
+<trans-unit id="122">
+<source><![CDATA[CurrencyUnit]]></source>
+<target><![CDATA[]]>Unità di valuta</target>
+</trans-unit>
+
+<trans-unit id="123">
+<source><![CDATA[NewJob]]></source>
+<target><![CDATA[]]>Nuova incordatura</target>
+</trans-unit>
+
+<trans-unit id="124">
+<source><![CDATA[DataJob]]></source>
+<target><![CDATA[]]>Dati incordatura</target>
+</trans-unit>
+
+<trans-unit id="125">
+<source><![CDATA[StringingMAchine]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="126">
+<source><![CDATA[StringingMachine]]></source>
+<target><![CDATA[]]>Incordatrice</target>
+</trans-unit>
+
+<trans-unit id="127">
+<source><![CDATA[StringMains]]></source>
+<target><![CDATA[]]>Verticali</target>
+</trans-unit>
+
+<trans-unit id="128">
+<source><![CDATA[StringCross]]></source>
+<target><![CDATA[]]>Orizzontali</target>
+</trans-unit>
+
+<trans-unit id="129">
+<source><![CDATA[StringingType]]></source>
+<target><![CDATA[]]>Tipologia</target>
+</trans-unit>
+
+<trans-unit id="130">
+<source><![CDATA[You must enter a floating number.]]></source>
+<target><![CDATA[]]>Inserire un valore numero ( usare il . per i decimali)</target>
+</trans-unit>
+
+<trans-unit id="131">
+<source><![CDATA[Date Stringing]]></source>
+<target><![CDATA[]]>Data Incordatura</target>
+</trans-unit>
+
+<trans-unit id="132">
+<source><![CDATA[DynamicTension]]></source>
+<target><![CDATA[]]>DT</target>
+</trans-unit>
+
+<trans-unit id="133">
+<source><![CDATA[No]]></source>
+<target><![CDATA[]]>No</target>
+</trans-unit>
+
+<trans-unit id="134">
+<source><![CDATA[Yes]]></source>
+<target><![CDATA[]]>Si</target>
+</trans-unit>
+
+<trans-unit id="135">
+<source><![CDATA[Stencyl]]></source>
+<target><![CDATA[]]>Stencil</target>
+</trans-unit>
+
+<trans-unit id="136">
+<source><![CDATA[GrommetsGuard]]></source>
+<target><![CDATA[]]>Grommets/Guard</target>
+</trans-unit>
+
+<trans-unit id="137">
+<source><![CDATA[NoGrip]]></source>
+<target><![CDATA[]]>Nessuno</target>
+</trans-unit>
+
+<trans-unit id="138">
+<source><![CDATA[NoOvergrip]]></source>
+<target><![CDATA[]]>Nessuno</target>
+</trans-unit>
+
+<trans-unit id="139">
+<source><![CDATA[NoteStringing]]></source>
+<target><![CDATA[]]>Note incordatura</target>
+</trans-unit>
+
+<trans-unit id="140">
+<source><![CDATA[TotalPrice]]></source>
+<target><![CDATA[]]>Prezzo Totale</target>
+</trans-unit>
+
+<trans-unit id="141">
+<source><![CDATA[DataNewJob]]></source>
+<target><![CDATA[]]>Dati nuova incordatura</target>
+</trans-unit>
+
+<trans-unit id="142">
+<source><![CDATA[Date]]></source>
+<target><![CDATA[]]>Data</target>
+</trans-unit>
+
+<trans-unit id="143">
+<source><![CDATA[EditJob]]></source>
+<target><![CDATA[]]>Editi dati incordatura</target>
+</trans-unit>
+
+<trans-unit id="144">
+<source><![CDATA[EditNewJob]]></source>
+<target><![CDATA[]]>Editi dati incordatura</target>
+</trans-unit>
+
+<trans-unit id="145">
+<source><![CDATA[LINK_ACTIVATE_MAIL]]></source>
+<target><![CDATA[]]>Il link per attivare l'account ti è stato spedito con la mail di registrazione</target>
+</trans-unit>
+
+<trans-unit id="146">
+<source><![CDATA[ACTIVATION_OK]]></source>
+<target><![CDATA[]]>Utente attivato correttamente, prego effetuare il login</target>
+</trans-unit>
+
+<trans-unit id="146">
+<source><![CDATA[USER_NOT_EXIST]]></source>
+<target><![CDATA[]]>Utente inesistente, prego riportare il problema a: </target>
+</trans-unit>
+
+<trans-unit id="147">
+<source><![CDATA[ASSISTENZE]]></source>
+<target><![CDATA[]]>Assistenza</target>
+</trans-unit>
+
+<trans-unit id="148">
+<source><![CDATA[USER_ALREADY_ACTIVE]]></source>
+<target><![CDATA[]]>Utente già attivo, prego riportare il problema a: </target>
+</trans-unit>
+
+<trans-unit id="149">
+<source><![CDATA[USER_WRONG_CODE]]></source>
+<target><![CDATA[]]>Code attivazione errato, prego riportare il problema a: </target>
+</trans-unit>
+
+<trans-unit id="150">
+<source><![CDATA[ManageBrand]]></source>
+<target><![CDATA[]]>Gestione Marchi</target>
+</trans-unit>
+
+<trans-unit id="151">
+<source><![CDATA[PersonalData]]></source>
+<target><![CDATA[]]>Dati Personali</target>
+</trans-unit>
+
+<trans-unit id="152">
+<source><![CDATA[ManageCustomers]]></source>
+<target><![CDATA[]]>Gestione Clienti</target>
+</trans-unit>
+
+<trans-unit id="153">
+<source><![CDATA[ManageCustomersRacquets]]></source>
+<target><![CDATA[]]>Gestione Racchette Clienti</target>
+</trans-unit>
+
+<trans-unit id="154">
+<source><![CDATA[ManageGrips]]></source>
+<target><![CDATA[]]>Gestione Grips</target>
+</trans-unit>
+
+<trans-unit id="155">
+<source><![CDATA[ManageOvergrips]]></source>
+<target><![CDATA[]]>Gestione Overgrips</target>
+</trans-unit>
+
+<trans-unit id="156">
+<source><![CDATA[ManageRacquets]]></source>
+<target><![CDATA[]]>Gestione Racchette</target>
+</trans-unit>
+
+<trans-unit id="157">
+<source><![CDATA[ManageStrings]]></source>
+<target><![CDATA[]]>Gestione Corde</target>
+</trans-unit>
+
+<trans-unit id="158">
+<source><![CDATA[ManageStringingMachines]]></source>
+<target><![CDATA[]]>Gestione macchine Incordatrici</target>
+</trans-unit>
+
+<trans-unit id="159">
+<source><![CDATA[ListJobs]]></source>
+<target><![CDATA[]]>Lista Incordature</target>
+</trans-unit>
+
+<trans-unit id="160">
+<source><![CDATA[ManageJob]]></source>
+<target><![CDATA[]]>Gestione Incordatura</target>
+</trans-unit>
+
+<trans-unit id="161">
+<source><![CDATA[LostPassword]]></source>
+<target><![CDATA[]]>Password Dimenticata</target>
+</trans-unit>
+
+<trans-unit id="162">
+<source><![CDATA[ExplanationString]]></source>
+<target><![CDATA[]]>Qua puoi gestione le tue corde, inserire nuove corde o modificare corde esistenti anche inserite da altri utenti<br/>
+Quando vuoi usare una corda già inserita da altri controlla il valore del prezzo, ti basterà fare la modifica del prezzo e quella modifica varrà solo per le tue incordature</target>
+</trans-unit>
+
+<trans-unit id="163">
+<source><![CDATA[NO_USER_RACQUET]]></source>
+<target><![CDATA[]]>Il cliente selezionato non ha racchette associate, vai alla gestione racchette clienti</target>
+</trans-unit>
+
+<trans-unit id="164">
+<source><![CDATA[ExplanationUserRacquet]]></source>
+<target><![CDATA[]]>Gestione Racchette Clienti
+
+Entrati nella pagina vi compare la lista dei clienti a voi associati, selezionato un cliente vi compare una griglia dopo
+potete vedere la lista delle racchette che sono state associate al cliente selezionato.
+Selezionata un racchetta vi compariranno i dati della racchetta stessa in modo da poterli consultare oppure in modo da modificarli.
+
+Per aggiungere una racchetta al cliente i passi sono i seguenti: selezionato il cliente desiderato vi compare a destra un pulsante 
+"nuova racchetta", cliccando questo pulsante verrete reindirizzati in una pagina dove sarà visualizzata una griglia contenente la lista
+delle racchette presenti nel database con i dati originali ( da casa madre ) inseriti e altri dati propri della racchetta del cliente; 
+qua potete modificare i dati, facendo salva ritornerete alla vista delle racchette del cliente visualizzando la racchetta appena inserita</target>
+</trans-unit>
+
+<trans-unit id="165">
+<source><![CDATA[SITE_NAME]]></source>
+<target><![CDATA[]]>StringTools la risorsa definitiva per gli incordatori di racchette</target>
+</trans-unit>
+
+<trans-unit id="166">
+<source><![CDATA[Clone]]></source>
+<target><![CDATA[]]>Clona</target>
+</trans-unit>
+
+<trans-unit id="167">
+<source><![CDATA[NOT_LOGIN_HOME_TEXT]]></source>
+<target><![CDATA[]]>Iscrizione Aperte!!! Fase alpha partita!!!</target>
+</trans-unit>
+
+<trans-unit id="168">
+<source><![CDATA[COUNT_LIST_CUSTOMERS]]></source>
+<target><![CDATA[]]>Numero utenti serviti</target>
+</trans-unit>
+
+<trans-unit id="169">
+<source><![CDATA[COUNT_LIST_STRINGING]]></source>
+<target><![CDATA[]]>Numero incordature effettuate</target>
+</trans-unit>
+
+<trans-unit id="170">
+<source><![CDATA[DATA_LAST_STRINGING]]></source>
+<target><![CDATA[]]>Data ultima incordatura</target>
+</trans-unit>
+
+<trans-unit id="171">
+<source><![CDATA[TYPE_STRING]]></source>
+<target><![CDATA[]]>Tipologia Corda</target>
+</trans-unit>
+
+<trans-unit id="172">
+<source><![CDATA[NUMBER_OF_STRINGING]]></source>
+<target><![CDATA[]]>Numero Incordature</target>
+</trans-unit>
+
+<trans-unit id="173">
+<source><![CDATA[MODEL_STRING]]></source>
+<target><![CDATA[]]>Modello Corda</target>
+</trans-unit>
+
+<trans-unit id="174">
+<source><![CDATA[SelectRacquet]]></source>
+<target><![CDATA[]]>Seleziona la racchetta da aggiungere</target>
+</trans-unit>
+
+<trans-unit id="175">
+<source><![CDATA[Delete]]></source>
+<target><![CDATA[]]>Elimina</target>
+</trans-unit>
+
+<trans-unit id="176">
+<source><![CDATA[Piva]]></source>
+<target><![CDATA[]]>Partita IVA</target>
+</trans-unit>
+
+<trans-unit id="177">
+<source><![CDATA[NewCustomer]]></source>
+<target><![CDATA[]]>Nuovo Cliente</target>
+</trans-unit>
+
+<trans-unit id="178">
+<source><![CDATA[PersonalLogo]]></source>
+<target><![CDATA[]]>Logo Personale</target>
+</trans-unit>
+
+<trans-unit id="179">
+<source><![CDATA[CorrectImage]]></source>
+<target><![CDATA[]]>Seleziona un immagine( jpg, jpeg, png, bmp )</target>
+</trans-unit>
+
+<trans-unit id="180">
+<source><![CDATA[PDF]]></source>
+<target><![CDATA[]]>PDF</target>
+</trans-unit>
+
+<trans-unit id="181">
+<source><![CDATA[CLAIM_CHECK]]></source>
+<target><![CDATA[]]>Ricevuta Incordatura</target>
+</trans-unit>
+
+<trans-unit id="182">
+<source><![CDATA[Customer]]></source>
+<target><![CDATA[]]>Cliente</target>
+</trans-unit>
+
+<trans-unit id="183">
+<source><![CDATA[JobID]]></source>
+<target><![CDATA[]]>Incordatura #</target>
+</trans-unit>
+
+<trans-unit id="184">
+<source><![CDATA[Racquet]]></source>
+<target><![CDATA[]]>Racchetta</target>
+</trans-unit>
+
+<trans-unit id="185">
+<source><![CDATA[SerialRacquet]]></source>
+<target><![CDATA[]]>Seriale #</target>
+</trans-unit>
+
+<trans-unit id="186">
+<source><![CDATA[Stringer]]></source>
+<target><![CDATA[]]>Incordatore</target>
+</trans-unit>
+
+<trans-unit id="187">
+<source><![CDATA[Tension]]></source>
+<target><![CDATA[]]>Tensione</target>
+</trans-unit>
+
+<trans-unit id="188">
+<source><![CDATA[Prestretch]]></source>
+<target><![CDATA[]]>Prestretch</target>
+</trans-unit>
+</body>
+ </file>
+</xliff>

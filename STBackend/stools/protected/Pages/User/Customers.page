@@ -1,0 +1,176 @@
+<%@ Title="Manage Customers" %>
+<com:TContent ID="sidebar">
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+<hr />
+
+</com:TContent>
+
+<com:TContent ID="content">
+<h3><%= Prado::localize('List Customers') %></h3>
+
+<com:TLabel Text="<%= Prado::localize('Name') %>" /> 
+<com:TFilterCollection Id="FilterCollection_name" >
+	<com:TFilterText  DataField="name" />
+</com:TFilterCollection>
+
+<com:TLabel Text="<%= Prado::localize('Surname') %>" /> 
+<com:TFilterCollection Id="FilterCollection_surname" >
+	<com:TFilterText  DataField="surname" />
+</com:TFilterCollection>
+<br>
+<com:TImageButton ID="Search" onClick="onSearch" />
+<com:TImageButton ID="Cancel" onClick="onClear" "/>
+
+<com:TFilterDataGrid
+	SkinID="datagrid_1_little"
+	
+    ID="DataGridCustomers"
+    CellPadding="2"
+    DataKeyField="id"
+    
+    OnSelectedIndexChanged="selectCustomer"
+    OnPageIndexChanged="changePage"
+    OnPagerCreated="pagerCreated"
+
+    >
+    <com:TBoundColumn
+    	ID="IDColumn"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	ID="NameColumn"
+        HeaderText="<%= Prado::localize('Name') %>"
+        DataField="name"
+        />
+    <com:TBoundColumn
+    	ID="SurnameColumn"
+        HeaderText="<%= Prado::localize('Surname') %>"
+        DataField="surname"
+        />
+    <com:TBoundColumn
+    	ID="EmailColumn"
+        HeaderText="<%= Prado::localize('Email') %>"
+        DataField="email"
+        />
+    <com:TBoundColumn
+    	ID="TelephoneColumn"
+        HeaderText="<%= Prado::localize('Telephone') %>"
+        DataField="telephone"
+        />
+    <com:TBoundColumn
+    	ID="MobileTelephoneColumn"
+        HeaderText="<%= Prado::localize('Mobile Telephone') %>"
+        DataField="mobile_telephone"
+        />
+    <com:TBoundColumn
+    	ID="FaxColumn"
+        HeaderText="<%= Prado::localize('Fax') %>"
+        DataField="fax"
+        />
+    <com:TBoundColumn
+    	ID="CostColumn"
+        HeaderText="<%= Prado::localize('Cost') %>"
+        DataField="cost"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Edit') %>"
+        ImageUrl="themes/White/images/edit.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        ID="SelectCustomer"
+        CommandName="select"
+        />
+</com:TFilterDataGrid>
+<br/>
+<com:TImageButton 
+	OnClick="createClicked"
+	ID="New"/>
+</com:TContent>
+
+<com:TContent ID="editable">
+
+<h3><com:TLabel ID="EDIT_CUSTOMER_DATA"  /></h3>
+
+<com:TValidationSummary
+	Display="Dynamic"
+	ValidationGroup="user" />
+
+<span class="input-label"><%= Prado::localize('Email Address') %></span>
+<br/>
+<com:TTextBox ID="Email" />
+<com:TRequiredFieldValidator
+	ControlToValidate="Email"
+	ValidationGroup="user"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please provide your email address.') %>"
+	ControlCssClass="input-error1" />
+<com:TEmailAddressValidator
+	ControlToValidate="Email"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('You entered an invalid email address.') %>"
+	ControlCssClass="input-error2" />
+
+<br/>
+<span class="input-label"><%= Prado::localize('Name') %></span>
+<br/>
+<com:TTextBox ID="Name" />
+<com:TRequiredFieldValidator
+	ControlToValidate="Name"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a Name.') %>"
+	ControlCssClass="input-error1" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Surname') %></span>
+<br/>
+<com:TTextBox ID="Surname" />
+<com:TRequiredFieldValidator
+	ControlToValidate="Surname"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a Surname.') %>"
+	ControlCssClass="input-error1" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Telephone') %></span>
+<br/>
+<com:TTextBox ID="Telephone" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Mobile Telephone') %></span>
+<br/>
+<com:TTextBox ID="MobileTelephone" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Piva') %></span>
+<br/>
+<com:TTextBox ID="Piva" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Fax') %></span>
+<br/>
+<com:TTextBox ID="Fax" />
+<br/>
+<span class="input-label"><%= Prado::localize('Stringing Cost ** leave blank or 0 if the cost it\'s not special') %></span>
+<br/>
+<com:TTextBox ID="Cost" /><%= $this->User->UserDB->currency_unit->description %>
+<br/><br/>
+<com:TImageButton 
+	ID="Save"
+	OnClick="saveClicked"/>
+<com:TImageButton 
+	ID="Cancel_2"
+	OnClick="cancelClicked"/>
+</com:TContent>
+
+<com:TContent ID="rightbar">
+
+
+</com:TContent>

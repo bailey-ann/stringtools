@@ -1,0 +1,159 @@
+<%@ Title="Gestione Incordature" %>
+<com:TContent ID="sidebar">
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+<hr />
+
+</com:TContent>
+
+<com:TContent ID="content">
+<h3><%= Prado::localize('List customers') %></h3>
+<com:TLabel Text="<%= Prado::localize('Name') %>" /> 
+<com:TFilterCollection Id="FilterCollection_name" >
+	<com:TFilterText  DataField="name" />
+</com:TFilterCollection>
+
+<com:TLabel Text="<%= Prado::localize('Surname') %>" /> 
+<com:TFilterCollection Id="FilterCollection_surname" >
+	<com:TFilterText  DataField="surname" />
+</com:TFilterCollection>
+<br>
+<com:TImageButton ID="Search" onClick="onSearch" />
+<com:TImageButton ID="Cancel" onClick="onClear" "/>
+
+<com:TFilterDataGrid
+	SkinID="datagrid_1"
+	
+    ID="DataGridCustomers"
+    CellPadding="2"
+    DataKeyField="id"
+    OnSelectedIndexChanged="selectCustomer"
+    OnPageIndexChanged="changePage"
+    OnPagerCreated="pagerCreated"
+    >
+    <com:TBoundColumn
+    	ID="IDColumn"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	ID="NameColumn"
+        HeaderText="<%= Prado::localize('Name') %>"
+        DataField="name"
+        />
+    <com:TBoundColumn
+    	ID="SurnameColumn"
+        HeaderText="<%= Prado::localize('Surname') %>"
+        DataField="surname"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Select') %>"
+        Text="<%= Prado::localize('Select') %>"
+        ImageUrl="themes/White/images/select.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        ID="SelectCustomer"
+        CommandName="select"
+        />
+</com:TFilterDataGrid>
+
+</com:TContent>
+<com:TContent ID="zone_label">
+	<com:TLabel ID="NO_USER_RACQUET"  />
+</com:TContent>
+<com:TContent ID="zone_list_jobs">
+<h3><com:TLabel ID="LBL_LIST_JOB"  /></h3>
+
+<com:TLabel Text="<%= Prado::localize('BrandName') %>" /> 
+<com:TFilterCollection Id="FilterCollection_brand" >
+	<com:TFilterText  DataField="description" />
+</com:TFilterCollection>
+
+<com:TLabel Text="<%= Prado::localize('Model') %>" /> 
+<com:TFilterCollection Id="FilterCollection_model" >
+	<com:TFilterText  DataField="model" />
+</com:TFilterCollection>
+<br/>
+<com:TLabel Text="<%= Prado::localize('Serial') %>" /> 
+<com:TFilterCollection Id="FilterCollection_serial" >
+	<com:TFilterText  DataField="serial" />
+</com:TFilterCollection>
+<br/>
+<com:TImageButton ID="SearchRacquet" onClick="onSearchRacquet" />
+<com:TImageButton ID="CancelRacquet" onClick="onClearRacquet" "/>
+
+<com:TFilterDataGrid
+	SkinID="datagrid_10"
+	
+    ID="DataGridListJobs"
+    CellPadding="2"
+    DataKeyField="id"
+    OnSelectedIndexChanged="selectJob"
+    OnPageIndexChanged="changePageJob"
+    OnPagerCreated="pagerCreatedJob"
+    OnItemCommand="onItemCommand"
+    >
+    <com:TBoundColumn
+    	ID="IDJobColumn"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	ID="DateStringingJobColumn"
+        HeaderText="<%= Prado::localize('Date') %>"
+        DataField="date_stringing"
+        DataFormatString="#date('d/m/Y',strtotime({0}))"
+        />
+    <com:TBoundColumn
+    	ID="brand_name"
+        HeaderText="<%= Prado::localize('BrandName') %>"
+        DataField="user_racquet.racquet.brand_name"
+        />
+    <com:TBoundColumn
+    	ID="model"
+        HeaderText="<%= Prado::localize('Model') %>"
+        DataField="user_racquet.racquet.model"
+        />
+    <com:TBoundColumn
+    	ID="serial"
+        HeaderText="<%= Prado::localize('Serial') %>"
+        DataField="user_racquet.serial"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Select') %>"
+        Text="<%= Prado::localize('Select') %>"
+        ImageUrl="themes/White/images/select.png"
+        ButtonType="ImageButton"
+        ItemStyle.HorizontalAlign="Center"
+        ID="SelectJob"
+        CommandName="select"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Clone') %>"
+        Text="<%= Prado::localize('Clone') %>"
+        ID="CloneJob"
+        ImageUrl="themes/White/images/clone.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        CommandName="clonazione"
+        />
+    <com:TButtonColumn
+        HeaderText=""
+        Text="<%= Prado::localize('CLAIM_CHECK') %>"
+        ImageUrl="themes/White/images/pdf.png"
+        ButtonType="ImageButton"
+        ItemStyle.HorizontalAlign="Center"
+        ID="PDFJob"
+        CommandName="pdf"
+        />
+</com:TFilterDataGrid>
+<br/>
+<com:TImageButton 
+	OnClick="addJob"	
+	ID="btnAddJob" />
+<hr />
+</com:TContent>
+
+<com:TContent ID="rightbar">
+</com:TContent>

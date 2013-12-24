@@ -1,0 +1,262 @@
+<com:TContent ID="sidebar">
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+</com:TContent>
+
+<com:TContent ID="zone_list_racquets_customer">
+<h3><com:TLabel ID="MANAGE_JOB_TITLE"  /></h3>
+
+<com:TLabel Text="<%= Prado::localize('Brand') %>" /> 
+<com:TFilterCollection Id="FilterCollection_user_brand_racquet" >
+	<com:TFilterText  DataField="description" />
+</com:TFilterCollection>
+
+<com:TLabel Text="<%= Prado::localize('Model') %>" /> 
+<com:TFilterCollection Id="FilterCollection_user_model_racquet" >
+	<com:TFilterText  DataField="model" />
+</com:TFilterCollection>
+<br>
+<com:TLabel Text="<%= Prado::localize('Serial') %>" /> 
+<com:TFilterCollection Id="FilterCollection_serial_model_racquet" >
+	<com:TFilterText  DataField="serial" />
+</com:TFilterCollection>
+<br>
+<com:TImageButton ID="Search" onClick="onSearchUserRacquets" />
+<com:TImageButton ID="Cancel" onClick="onClearUserRacquets" "/>
+
+
+<com:TFilterDataGrid
+	SkinID="datagrid_1"
+	
+    ID="DataGridUserRacquets"
+    CellPadding="2"
+    DataKeyField="id"
+    OnPageIndexChanged="changePageUserRacquets"
+    OnPagerCreated="pagerCreatedUserRacquets"
+    OnSelectedIndexChanged="selectRacquetCustomer"
+    >
+    <com:TBoundColumn
+    	ID="IDColumnUserRacquet"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	ID="brandNameColumn"
+        HeaderText="<%= Prado::localize('Brand') %>"
+        DataField="racquet.brand_name"
+        />
+    <com:TBoundColumn
+    	ID="modelColumn"
+        HeaderText="<%= Prado::localize('Model') %>"
+        DataField="racquet.model"
+        />
+    <com:TBoundColumn
+    	ID="serialColumn"
+        HeaderText="<%= Prado::localize('Serial') %>"
+        DataField="serial"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Select') %>"
+        Text="<%= Prado::localize('Select') %>"
+        ImageUrl="themes/White/images/select.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        ID="SelectRacquetCustomer"
+        CommandName="select"
+        />
+</com:TFilterDataGrid>
+<com:TImageButton 
+		ID="Back"
+		OnClick="backClicked"/>
+</com:TContent>
+
+<com:TContent ID="editable">
+<h3><com:TLabel ID="DATA_JOB_TITLE"  /></h3>
+<h4><com:TLabel ID="EDIT_RACQUET"  /></h4>
+
+
+<com:TValidationSummary
+	Display="Dynamic"
+	ValidationGroup="user" />
+	
+<table>
+	<tr>
+		<td>
+			<span class="input-label"><%= Prado::localize('Date Stringing') %></span>
+		</td>
+		<td>
+			<com:OPSDatePicker ID="DateStringing" ShowHours="false" ShowMinutes="false" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class="input-label"><%= Prado::localize('StringingMachine') %></span>
+		</td>
+		<td>
+			<com:TDropDownList ID="DDLStriningMachine"  />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class="input-label"><%= Prado::localize('StringMains') %></span>
+		</td>
+		<td>
+			<com:TDropDownList ID="DDLStringMains"  /> <com:TTextBox ID="WeightMains" Columns="5" AutoTrim="true" /> <%= $this->User->UserDB->weight_unit->description %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class="input-label"><%= Prado::localize('Prestretch') %></span>
+		</td>
+		<td>
+			<com:TTextBox ID="PrestretchMain" Columns="5" AutoTrim="true" /> %
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<com:TDataTypeValidator
+			    ValidationGroup="user"
+			    ControlToValidate="WeightMains"
+			    DataType="Float"
+			    Text="<%= Prado::localize('You must enter a floating number.') %>" />
+			<com:TDataTypeValidator
+			    ValidationGroup="user"
+			    ControlToValidate="PrestretchMain"
+			    DataType="Float"
+			    Text="<%= Prado::localize('You must enter a floating number.') %>" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class="input-label"><%= Prado::localize('StringCross') %></span>
+		</td>
+		<td>
+			<com:TDropDownList ID="DDLStringCross"  /> <com:TTextBox ID="WeightCross" Columns="5" AutoTrim="true" /> <%= $this->User->UserDB->weight_unit->description %> <com:TCheckBox ID="ActivateStringCross" OnCheckedChanged="ActivateStringCrossClicked" AutoPostBack="true"  />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class="input-label"><%= Prado::localize('Prestretch') %></span>
+		</td>
+		<td>
+			<com:TTextBox ID="PrestretchCross" Columns="5" AutoTrim="true" /> %
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<com:TDataTypeValidator
+			    ValidationGroup="user"
+			    ControlToValidate="WeightCross"
+			    DataType="Float"
+			    Text="<%= Prado::localize('You must enter a floating number.') %>" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class="input-label"><%= Prado::localize('StringingType') %></span>
+		</td>
+		<td>
+			<com:TDropDownList ID="DDLStringingType"  />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class="input-label"><%= Prado::localize('DynamicTension') %></span>
+		</td>
+		<td>
+			<com:TTextBox ID="DynamicTension" Columns="5" AutoTrim="true" />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<com:TDataTypeValidator
+			    ValidationGroup="user"
+			    ControlToValidate="DynamicTension"
+			    DataType="Float"
+			    Text="<%= Prado::localize('You must enter a floating number.') %>" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class="input-label"><%= Prado::localize('Stencyl') %></span>
+		</td>
+		<td>
+			<com:TDropDownList ID="DDLStencyl"  >
+				<com:TListItem Value="0" Text="<%= Prado::localize('No') %>" Selected="true"/>
+  				<com:TListItem Value="1" Text="<%= Prado::localize('Yes') %>"  />
+  			</com:TDropDownList>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class="input-label"><%= Prado::localize('GrommetsGuard') %></span>
+		</td>
+		<td>
+			<com:TDropDownList ID="DDLGrommetsGuard"  >
+				<com:TListItem Value="0" Text="<%= Prado::localize('No') %>" Selected="true"/>
+  				<com:TListItem Value="1" Text="<%= Prado::localize('Yes') %>"  />
+  			</com:TDropDownList>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class="input-label"><%= Prado::localize('Grips') %></span>
+		</td>
+		<td>
+			<com:TDropDownList ID="DDLGrips"  />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class="input-label"><%= Prado::localize('Overgrips') %></span>
+		</td>
+		<td>
+			<com:TDropDownList ID="DDLOvergrips"  />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<span class="input-label"><%= Prado::localize('NoteStringing') %></span>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<com:TTextBox ID="Note" TextMode="MultiLine" Rows="6" Columns="60" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<span class="input-label"><%= Prado::localize('TotalPrice') %></span>
+		</td>
+		<td>
+			<com:TTextBox ID="TotalPrice" Columns="5" AutoTrim="true" />
+			<com:TImageButton 
+				ID="CalculatePrice"
+				OnClick="checkPrice"/>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<com:TDataTypeValidator
+			    ValidationGroup="user"
+			    ControlToValidate="TotalPrice"
+			    DataType="Float"
+			    Text="<%= Prado::localize('You must enter a floating number.') %>" />
+		</td>
+	</tr>
+</table>
+
+<br/>
+<com:TImageButton 
+		ID="Save"
+		ValidationGroup="user"
+		OnClick="saveClicked"/>
+	<com:TImageButton 
+		ID="Cancel_2"
+		OnClick="cancelNewClicked"/>
+	<com:TImageButton 
+		ID="Delete"
+		OnClick="DeleteJob"/>
+		
+
+</com:TContent>

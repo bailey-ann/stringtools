@@ -1,0 +1,113 @@
+<%@ Title="Manage Stringing Machines" %>
+<com:TContent ID="sidebar">
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+<hr />
+
+</com:TContent>
+
+<com:TContent ID="content">
+<h3><%= Prado::localize('List stringing machine') %></h3>
+<com:TDataGrid
+	SkinID="datagrid_10"
+	
+    ID="DataGridMachines"
+    CellPadding="2"
+    DataKeyField="id"
+    
+    OnPageIndexChanged="changePage"
+    OnPagerCreated="pagerCreated"
+    OnSelectedIndexChanged="selectStringingMachine"
+    >
+    <com:TBoundColumn
+    	ID="IDColumn"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	ID="brand_name"
+        HeaderText="<%= Prado::localize('BrandName') %>"
+        DataField="brand_name"
+        />
+    <com:TBoundColumn
+    	ID="modelColumn"
+        HeaderText="<%= Prado::localize('Model') %>"
+        DataField="model"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Edit') %>"
+        ImageUrl="themes/White/images/edit.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        ID="SelectCustomer"
+        CommandName="select"
+        />
+</com:TDataGrid>
+<br/>
+<com:TImageButton 
+	ID="New"
+	OnClick="createClicked" />
+</com:TContent>
+
+<com:TContent ID="editable">
+
+<h3><com:TLabel ID="TypeEdit" /></h3>
+
+<com:TValidationSummary
+	Display="Dynamic"
+	ValidationGroup="user" />
+
+<span class="input-label"><%= Prado::localize('BrandName') %></span>
+<br/>
+<com:TDropDownList ID="DDLBrands" DataTextField="description" DataValueField="id" />
+<br/>
+<span class="input-label"><%= Prado::localize('TypeStringingMachine') %></span>
+<br/>
+<com:TDropDownList ID="DDLType" DataTextField="description" DataValueField="id" />
+<br/>
+<span class="input-label"><%= Prado::localize('Model') %></span>
+<br/>
+<com:TTextBox ID="Model" />
+<com:TRequiredFieldValidator
+	ControlToValidate="Model"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a model.') %>"
+	ControlCssClass="input-error1" />
+<br/>
+<span class="input-label"><%= Prado::localize('Serial') %></span>
+<br/>
+<com:TTextBox ID="Serial" />
+<com:TRequiredFieldValidator
+	ControlToValidate="Serial"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a serial.') %>"
+	ControlCssClass="input-error1" />
+<br/>
+<span class="input-label"><%= Prado::localize('Date Buy') %></span>
+<br/>
+<com:OPSDatePicker ID="DateBuy" ShowHours="false" ShowMinutes="false" />
+<br/>
+<span class="input-label"><%= Prado::localize('Date Calibration') %></span>
+<br/>
+<com:OPSDatePicker ID="DateCalibration" ShowHours="false" ShowMinutes="false" />
+<com:TCheckBox ID="ActivateDateCalibration" OnCheckedChanged="ActivateDateCalibrationClicked" AutoPostBack="true" Text="Activate date"  />
+<br/>
+<span class="input-label"><%= Prado::localize('Note') %></span>
+<br/>
+<com:TTextBox ID="Note" />
+<br/><br/>
+<com:TImageButton 
+	ID="Save"
+	ValidationGroup="user"
+	OnClick="saveClicked"/>
+<com:TImageButton 
+	ID="Cancel"
+	OnClick="cancelClicked"/>
+</com:TContent>
+
+<com:TContent ID="rightbar">
+</com:TContent>

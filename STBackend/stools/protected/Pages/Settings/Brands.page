@@ -1,0 +1,76 @@
+<%@ Title="Manage Brands" %>
+<com:TContent ID="sidebar">
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+<hr />
+
+</com:TContent>
+
+<com:TContent ID="content">
+<h3><%= Prado::localize('List Brands') %></h3>
+
+<com:TDataGrid
+	SkinID="datagrid_10"
+	
+    ID="DataGridBrands"
+    CellPadding="2"
+    DataKeyField="id"
+    
+    OnPageIndexChanged="changePage"
+    OnPagerCreated="pagerCreated"
+    OnEditCommand="editItem"
+    OnUpdateCommand="saveItem"
+    OnCancelCommand="cancelItem"
+    OnDeleteCommand="deleteItem"
+    >
+    <com:TBoundColumn
+    	ID="BrandNameColumn"
+        HeaderText="<%= Prado::localize('Brand Name') %>"
+        DataField="description"
+        />
+    <com:TEditCommandColumn
+    	ButtonType="ImageButton"
+        ItemStyle.HorizontalAlign="Center"
+    	EditImageUrl="themes/White/images/edit.png"
+    	CancelImageUrl="themes/White/images/back.png"
+    	UpdateImageUrl="themes/White/images/save.png"
+        />
+</com:TDataGrid>
+<br/>
+<com:TImageButton 
+	ID="New"
+	OnClick="createClicked" />
+<hr />
+
+</com:TContent>
+
+<com:TContent ID="editable">
+
+<h3><%= Prado::localize('Insert new Brands') %></h3>
+
+<com:TValidationSummary
+	Display="Dynamic"
+	ValidationGroup="user" />
+
+<span class="input-label"><%= Prado::localize('Brand Name') %></span>
+<com:TTextBox ID="BrandName" />
+<com:TRequiredFieldValidator
+	ControlToValidate="BrandName"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a brand name.') %>"
+	ControlCssClass="input-error1" />
+<br/><br/>
+<com:TImageButton 
+	ID="Save"
+	ValidationGroup="user"
+	OnClick="saveClicked"/>
+<com:TImageButton 
+	ID="Cancel"
+	OnClick="cancelClicked"/>
+	
+</com:TContent>
+
+<com:TContent ID="rightbar">
+
+</com:TContent>

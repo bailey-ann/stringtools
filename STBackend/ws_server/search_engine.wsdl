@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding ="utf-8"?>
+<definitions
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://www.html.it/php_ws_soap"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    targetNamespace="http://www.html.it/php_ws_soap">
+    <types>
+        <xs:schema targetNamespace="http://www.html.it/php_ws_soap">
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="weburl" type="xs:string" />
+            <xs:element name="username" type="xs:string" />
+            <xs:element name="password" type="xs:string" />
+            <xs:element name="loginok" type="xs:string" />
+        </xs:schema>
+    </types>
+    <message name="getWebUrl">
+        <part name="name" type="xs:string" />
+    </message>
+    <message name="returnWebUrl">
+        <part name="weburl" type="xs:string" />
+    </message>
+    <message name="getLogin">
+        <part name="username" type="xs:string" />
+        <part name="password" type="xs:string" />
+    </message>
+    <message name="returnLogin">
+        <part name="loginok" type="xs:string" />
+    </message>
+    <portType name="WebServiceTest">
+        <operation name="getWebUrl">
+            <input message="tns:getWebUrl" />
+            <output message="tns:returnWebUrl" />
+        </operation>
+        <operation name="getLogin">
+            <input message="tns:getLogin" />
+            <output message="tns:returnLogin" />
+        </operation>
+    </portType>
+    <binding name="WebServiceSOAPBinding" type="WebServiceTest">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getWebUrl">
+            <soap:operation soapAction="http://www.stringtools.it/ws_server/SearchEngineWS.php/getWebUrl" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="http://www.html.it/php_ws_soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://www.html.it/php_ws_soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="getLogin">
+            <soap:operation soapAction="http://www.stringtools.it/ws_server/SearchEngineWS.php/getLogin" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="http://www.html.it/php_ws_soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://www.html.it/php_ws_soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="GetWebUrl">
+        <port name="WebUrl" binding="tns:WebServiceSOAPBinding">
+            <soap:address location="http://www.stringtools.it/ws_server/SearchEngineWS.php"/>
+        </port>
+    </service>
+    <service name="GetLogin">
+        <port name="Login" binding="tns:WebServiceSOAPBinding">
+            <soap:address location="http://www.stringtools.it/ws_server/SearchEngineWS.php"/>
+        </port>
+    </service>
+</definitions>

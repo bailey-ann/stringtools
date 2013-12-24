@@ -1,0 +1,9 @@
+<com:TContent ID="sidebar">
+
+</com:TContent>
+
+<com:TContent ID="content">
+
+<h3><com:TLabel id="result" /></h3>
+
+</com:TContent>

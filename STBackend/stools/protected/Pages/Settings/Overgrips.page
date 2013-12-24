@@ -1,0 +1,112 @@
+<%@ Title="Manage Overgrips" %>
+<com:TContent ID="sidebar">
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+<hr />
+
+</com:TContent>
+
+<com:TContent ID="content">
+<h3><%= Prado::localize('List Overgrips') %></h3>
+
+<com:TDataGrid
+	SkinID="datagrid_10"
+	
+    ID="DataGridOvergrips"
+    CellPadding="2"
+    DataKeyField="id"
+    
+    OnPageIndexChanged="changePage"
+    OnPagerCreated="pagerCreated"
+    OnSelectedIndexChanged="selectOvergrip"
+    
+    >
+    <com:TBoundColumn
+    	ID="IDColumn"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	ID="brand_name"
+        HeaderText="<%= Prado::localize('BrandName') %>"
+        DataField="brand_name"
+        />
+    <com:TBoundColumn
+    	ID="modelColumn"
+        HeaderText="<%= Prado::localize('Model') %>Model"
+        DataField="model"
+        />
+    <com:TBoundColumn
+    	ID="priceColumn"
+        HeaderText="<%= Prado::localize('Price') %>"
+        DataField="price"
+        />
+    <com:TBoundColumn
+    	ID="noteColumn"
+        HeaderText="<%= Prado::localize('Note') %>"
+        DataField="note"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Edit') %>"
+        ImageUrl="themes/White/images/edit.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        ID="SelectCustomer"
+        CommandName="select"
+        />
+</com:TDataGrid>
+<br/>
+<com:TImageButton 
+	ID="New"
+	OnClick="createClicked" />
+</com:TContent>
+
+<com:TContent ID="editable">
+
+<h3><com:TLabel ID="TypeEdit" /></h3>
+
+<com:TValidationSummary
+	Display="Dynamic"
+	ValidationGroup="user" />
+
+<span class="input-label"><%= Prado::localize('BrandName') %></span>
+<br/>
+<com:TDropDownList ID="DDLBrands" DataTextField="description" DataValueField="id" />
+<br/>
+<span class="input-label"><%= Prado::localize('Model') %></span>
+<br/>
+<com:TTextBox ID="Model" />
+<com:TRequiredFieldValidator
+	ControlToValidate="Model"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a model.') %>"
+	ControlCssClass="input-error1" />
+<br/>
+<span class="input-label"><%= Prado::localize('Price') %></span>
+<br/>
+<com:TTextBox ID="Price" /><%= $this->User->UserDB->currency_unit->description %>
+<com:TRequiredFieldValidator
+	ControlToValidate="Price"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a price.') %>"
+	ControlCssClass="input-error1" />
+<br/>
+<span class="input-label"><%= Prado::localize('Note') %></span>
+<br/>
+<com:TTextBox ID="Note" />
+<br/><br/>
+<com:TImageButton 
+	ID="Save"
+	ValidationGroup="user"
+	OnClick="saveClicked"/>
+<com:TImageButton 
+	ID="Cancel"
+	OnClick="cancelClicked"/>
+</com:TContent>
+
+<com:TContent ID="rightbar">
+</com:TContent>
