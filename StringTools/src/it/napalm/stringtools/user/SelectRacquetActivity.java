@@ -21,7 +21,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,6 +34,7 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 
 public class SelectRacquetActivity extends Activity implements OnItemSelectedListener {
 
@@ -40,7 +43,6 @@ public class SelectRacquetActivity extends Activity implements OnItemSelectedLis
 	private HttpFunctions function;
 	private ListView list;
 	private RacquetAdapter adapter;
-	private EditText inputSearch;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -64,10 +66,41 @@ public class SelectRacquetActivity extends Activity implements OnItemSelectedLis
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    // Inflate the menu items for use in the action bar
 	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.menu_h, menu);
+	    inflater.inflate(R.menu.menu_sh, menu);
+	    
+	 // Get the SearchView and set the searchable configuration
+	    SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+	    SearchView searchView = (SearchView) menu.findItem(R.id.grid_default_search).getActionView();
+	    // Assumes current activity is the searchable activity
+	    searchView.setOnQueryTextListener(listener);
+	    searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
 
 	    return super.onCreateOptionsMenu(menu);
 	}
+	
+	private OnQueryTextListener listener = new OnQueryTextListener(){
+
+		@Override
+		public boolean onQueryTextChange(String newText) {
+			if (TextUtils.isEmpty(newText)) {
+		        //adapter.getFilter().filter("");
+		        Log.i("Nomad", "onQueryTextChange Empty String");
+		        //placesListView.clearTextFilter();
+		    } else {
+		        Log.i("Nomad", "onQueryTextChange " + newText.toString());
+		        adapter.getFilter().filter(newText.toString());
+		        list.setFilterText(newText.toString());
+		    }
+		    return true;
+		}
+
+		@Override
+		public boolean onQueryTextSubmit(String query) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+	};
 	
 	
 	@Override
