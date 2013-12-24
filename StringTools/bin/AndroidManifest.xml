@@ -74,6 +74,12 @@
 	            android:name="android.support.PARENT_ACTIVITY"
 	            android:value="it.napalm.stringtools.CustomerRacquetActivity" />
         </activity>
+        <activity
+            android:label="@string/personal_data"
+            android:name="it.napalm.stringtools.user.SelectRacquetActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@android:style/Theme.Holo.Light" >
+        </activity>
     </application>
 
 </manifest>

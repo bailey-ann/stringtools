@@ -75,12 +75,21 @@ public class CustomerRacquetActivity extends Activity implements OnItemSelectedL
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle presses on the action bar items
 	    switch (item.getItemId()) {
+		    case R.id.newCustomer:
+		    	addRacquet();
+	            return true;
 	        case android.R.id.home:
 	        	finish();
 	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
+	}
+	
+	public void addRacquet(){
+		Intent selectNewCustomerRacquet = new Intent(CustomerRacquetActivity.this, SelectRacquetActivity.class);
+		selectNewCustomerRacquet.putExtra("customer", customer);
+		startActivity(selectNewCustomerRacquet);
 	}
 	
 	@Override
