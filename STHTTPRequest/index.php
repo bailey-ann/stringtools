@@ -174,6 +174,9 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
     }else if ($tag == 'racquets') {
 		$response = $db->getRacquets($_POST['id']);
 		echo json_encode($response);
+    }else if ($tag == 'racquetstext') {
+		$response = $db->getRacquetsText();
+		echo json_encode($response);
     }else if ($tag == 'editracquetcustomer') {
 		$result = $db->updateRacquetCustomer($_POST);
         $response["result"] = $result."";

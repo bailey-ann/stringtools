@@ -462,6 +462,27 @@
         return $response;
     }
     
+    public function getRacquetsText() {
+    	$response = array();
+    	$response["racquets"] = array();
+    
+    	$query = "select tbl_racquets.id, concat(tbl_brands.description, ' ', tbl_racquets.model,' ', tbl_racquets_pattern.description) as description from tbl_racquets
+			inner join tbl_brands on tbl_brands.id = tbl_racquets.tbl_brands_id
+			inner join tbl_racquets_pattern on tbl_racquets_pattern.id = tbl_racquets.tbl_racquets_pattern_id
+			order by tbl_brands.description, tbl_racquets.model, tbl_racquets_pattern.description";
+    
+    	$result = mysql_query($query) or die(mysql_error());
+    
+    	while($row = mysql_fetch_array($result)){
+    		$tmp = array();
+    		$tmp["id"] = $row["id"];
+    		$tmp["description"] = $row["description"];
+    		array_push($response["racquets"], $tmp);
+    	}
+    
+    	return $response;
+    }
+    
     public function addRacquetCustomer($value){
     	$query = "insert into tbl_racquets_user (id, tbl_racquets_id, tbl_users_id, tbl_grip_size_id, serial, weight_unstrung, weight_strung, balance, swingweight, stiffness, date_buy, note, active) " .
     			"VALUES (null, ".$value["tbl_racquets_id"].",'".$value["tbl_users_id"]."','".$value["tbl_grip_size_id"]."','".$value["serial"]."','".$value["weight_unstrung"]."'," .
