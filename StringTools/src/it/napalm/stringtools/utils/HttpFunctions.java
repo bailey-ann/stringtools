@@ -1,5 +1,6 @@
 package it.napalm.stringtools.utils;
 
+import it.napalm.stringtools.globalobject.RacquetText;
 import it.napalm.stringtools.object.TblBrands;
 import it.napalm.stringtools.object.TblCurrencyUnit;
 import it.napalm.stringtools.object.TblGripSize;
@@ -42,7 +43,8 @@ public class HttpFunctions {
     private static String getGripSize  = "listgripsize";
     private static String editRacquetCustomer  = "editracquetcustomer";
     private static String removeRacquetCustomer  = "removeracquetcustomer";
-     
+    private static String getListRacquetText  = "racquetstext";
+    
     // constructor
     public HttpFunctions(){
         jsonParser = new JSONParser();
@@ -310,6 +312,24 @@ public class HttpFunctions {
 			String dateStr = catObj.getString("date_modify");
 			Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(dateStr);
 			racquet.setDateModify(date);
+			racquetList.add(racquet);
+        }
+        return racquetList;
+    }
+    
+    public ArrayList<RacquetText> getListRacquetText(String url) throws JSONException, ParseException{
+        // Building for TblRacquetsUser
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", getListRacquetText));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        JSONArray firstList = json.getJSONArray("racquets"); 
+        
+        ArrayList<RacquetText> racquetList = new ArrayList<RacquetText>();
+        for (int i = 0; i < firstList.length(); i++) {
+            JSONObject catObj = (JSONObject) firstList.get(i);
+            RacquetText racquet = new RacquetText();
+            racquet.setId(catObj.getInt("id"));
+            racquet.setDescription(catObj.getString("description"));
 			racquetList.add(racquet);
         }
         return racquetList;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import it.napalm.stringtools.R;
 import it.napalm.stringtools.globalobject.CustomerRacquet;
 import it.napalm.stringtools.globalobject.Racquet;
+import it.napalm.stringtools.globalobject.RacquetText;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
@@ -18,11 +19,11 @@ import android.widget.TextView;
 public class RacquetAdapter extends BaseAdapter{
 	
 	private Activity activity;
-	private ArrayList<Racquet> data;
-	private ArrayList<Racquet> originalData;
+	private ArrayList<RacquetText> data;
+	private ArrayList<RacquetText> originalData;
 	private static LayoutInflater inflater=null;
 	
-	public RacquetAdapter(Activity a, ArrayList<Racquet> list){
+	public RacquetAdapter(Activity a, ArrayList<RacquetText> list){
 		activity = a;
 		data = list;
 		originalData = list;
@@ -45,10 +46,10 @@ public class RacquetAdapter extends BaseAdapter{
 	}
 	
 	private void clear() {
-		data = new ArrayList<Racquet>();
+		data = new ArrayList<RacquetText>();
 	}
 	
-	private void add(Racquet item) {
+	private void add(RacquetText item) {
 		// TODO Auto-generated method stub
 		data.add(item);
 	}
@@ -61,8 +62,8 @@ public class RacquetAdapter extends BaseAdapter{
 	 
 	    TextView firstLine = (TextView)vi.findViewById(R.id.firstLine); 
 	    TextView secondLine = (TextView)vi.findViewById(R.id.secondLine); 
-	    Racquet racquet = data.get(position); 
-	    firstLine.setText(racquet.getTblBrands().getDescription() + " " + racquet.getTblRacquets().getModel());
+	    RacquetText racquet = data.get(position); 
+	    firstLine.setText(racquet.getDescription());
 	    secondLine.setText("");
         return vi;
 	}
@@ -74,11 +75,10 @@ public class RacquetAdapter extends BaseAdapter{
 	        protected FilterResults performFiltering(CharSequence constraint) {
 	             constraint = constraint.toString().toLowerCase();
 	             FilterResults result = new FilterResults();
-	             Log.i("Nomad", "CharSequence " + constraint);
 	                if (constraint != null && constraint.toString().length() > 0) {
-	                  ArrayList<Racquet> founded = new ArrayList<Racquet>();
-	                  for(Racquet item: originalData){
-	                	  String testo = item.getTblBrands().getDescription() + " " + item.getTblRacquets().getModel();
+	                  ArrayList<RacquetText> founded = new ArrayList<RacquetText>();
+	                  for(RacquetText item: originalData){
+	                	  String testo = item.getDescription();
 	                      if(testo.toString().toLowerCase().contains(constraint)){
 	                    	  founded.add(item);
 	                      }
@@ -86,7 +86,10 @@ public class RacquetAdapter extends BaseAdapter{
 
 	                    result.values = founded;
 	                    result.count = founded.size();
-	            }
+	            }else {
+                    result.values = originalData;
+                    result.count = originalData.size();
+                }
 	            return result;
 
 
@@ -95,7 +98,7 @@ public class RacquetAdapter extends BaseAdapter{
 			@Override
 			protected void publishResults(CharSequence arg0, FilterResults arg1) {
 				clear();
-		        for (Racquet item : (ArrayList<Racquet>) arg1.values) {
+		        for (RacquetText item : (ArrayList<RacquetText>) arg1.values) {
 		        	add(item);
 		        }
 				notifyDataSetChanged();

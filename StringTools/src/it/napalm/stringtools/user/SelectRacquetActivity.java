@@ -8,6 +8,7 @@ import org.json.JSONException;
 import it.napalm.stringtools.R;
 import it.napalm.stringtools.adapter.RacquetAdapter;
 import it.napalm.stringtools.globalobject.Racquet;
+import it.napalm.stringtools.globalobject.RacquetText;
 import it.napalm.stringtools.object.TblRacquets;
 import it.napalm.stringtools.object.TblUsers;
 import it.napalm.stringtools.utils.HttpFunctions;
@@ -39,7 +40,7 @@ import android.widget.SearchView.OnQueryTextListener;
 public class SelectRacquetActivity extends Activity implements OnItemSelectedListener {
 
 	private TblUsers customer;
-	private ArrayList<Racquet> listRacquets;
+	private ArrayList<RacquetText> listRacquets;
 	private HttpFunctions function;
 	private ListView list;
 	private RacquetAdapter adapter;
@@ -83,11 +84,8 @@ public class SelectRacquetActivity extends Activity implements OnItemSelectedLis
 		@Override
 		public boolean onQueryTextChange(String newText) {
 			if (TextUtils.isEmpty(newText)) {
-		        //adapter.getFilter().filter("");
-		        Log.i("Nomad", "onQueryTextChange Empty String");
-		        //placesListView.clearTextFilter();
+		        adapter.getFilter().filter("");
 		    } else {
-		        Log.i("Nomad", "onQueryTextChange " + newText.toString());
 		        adapter.getFilter().filter(newText.toString());
 		        list.setFilterText(newText.toString());
 		    }
@@ -148,17 +146,7 @@ public class SelectRacquetActivity extends Activity implements OnItemSelectedLis
 	    	
 	    	try {
 	    		try {
-	    			listRacquets = new ArrayList<Racquet>();
-	    			ArrayList<TblRacquets> listTblRacquet = 
-	    					function.getListRacquet(getResources().getString(R.string.URL), 0);
-	    			
-	    			for (TblRacquets item : listTblRacquet){
-	    				Racquet racquet = new Racquet();
-	    				racquet.setTblRacquets(item);
-	    				racquet.setTblBrands(function.getBrands(getResources().getString(R.string.URL), item.getTblBrands()).get(0));
-	    				racquet.setTblRacquetsPattern(function.getRacquetsPattern(getResources().getString(R.string.URL), item.getTblRacquetsPattern()).get(0));
-	    				listRacquets.add(racquet);
-	    			}
+	    			listRacquets  = function.getListRacquetText(getResources().getString(R.string.URL));
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
