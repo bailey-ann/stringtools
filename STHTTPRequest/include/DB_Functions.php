@@ -434,7 +434,7 @@
         $response = array();
 		$response["racquets"] = array();
 		
-		$query = "select * from tbl_racquets limit 10";
+		$query = "select * from tbl_racquets";
 		if($id != 0)
 			$query = "select * from tbl_racquets where id = " . $id;
 
