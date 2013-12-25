@@ -52,4 +52,5 @@
 	<string name="select_racquet_toadd">Seleziona la racchetta da aggiungere</string>
 	<string name="search_racquet_hint">Cerca racchetta..</string>
 	<string name="action_search">Cerca</string>
+	<string name="newcustomerracquet">Nuova racchetta cliente</string>
 </resources>

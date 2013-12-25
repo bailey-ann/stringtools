@@ -86,6 +86,16 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
+        <activity
+            android:label="@string/personal_data"
+            android:name="it.napalm.stringtools.user.NewCustomerRacquetActivity"
+            android:parentActivityName="it.napalm.stringtools.SelectRacquetActivity" 
+            android:theme="@android:style/Theme.Holo.Light" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+	        <meta-data
+	            android:name="android.support.PARENT_ACTIVITY"
+	            android:value="it.napalm.stringtools.SelectRacquetActivity" />
+        </activity>
     </application>
 
 </manifest>

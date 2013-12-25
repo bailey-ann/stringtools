@@ -79,7 +79,7 @@ public class PersonalDataActivity extends Activity implements OnItemSelectedList
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    // Inflate the menu items for use in the action bar
 	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.personal_data_activity_actions, menu);
+	    inflater.inflate(R.menu.menu_save, menu);
 	    return super.onCreateOptionsMenu(menu);
 	}
 	

@@ -1,14 +1,12 @@
 package it.napalm.stringtools.adapter;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import it.napalm.stringtools.R;
-import it.napalm.stringtools.globalobject.CustomerRacquet;
-import it.napalm.stringtools.globalobject.Racquet;
 import it.napalm.stringtools.globalobject.RacquetText;
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,14 +34,16 @@ public class RacquetAdapter extends BaseAdapter{
 	}
 
 	@Override
-	public Object getItem(int arg0) {
-		return arg0;
+	public Object getItem(int position) {
+	    return data.get(position);
 	}
 
 	@Override
 	public long getItemId(int arg0) {
 		return arg0;
 	}
+	
+	
 	
 	private void clear() {
 		data = new ArrayList<RacquetText>();
@@ -73,13 +73,13 @@ public class RacquetAdapter extends BaseAdapter{
 
 	        @Override
 	        protected FilterResults performFiltering(CharSequence constraint) {
-	             constraint = constraint.toString().toLowerCase();
+	             constraint = constraint.toString().toLowerCase(Locale.ENGLISH);
 	             FilterResults result = new FilterResults();
 	                if (constraint != null && constraint.toString().length() > 0) {
 	                  ArrayList<RacquetText> founded = new ArrayList<RacquetText>();
 	                  for(RacquetText item: originalData){
 	                	  String testo = item.getDescription();
-	                      if(testo.toString().toLowerCase().contains(constraint)){
+	                      if(testo.toString().toLowerCase(Locale.ENGLISH).contains(constraint)){
 	                    	  founded.add(item);
 	                      }
 	                    }

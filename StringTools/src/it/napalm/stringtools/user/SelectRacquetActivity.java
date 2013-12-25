@@ -7,9 +7,7 @@ import org.json.JSONException;
 
 import it.napalm.stringtools.R;
 import it.napalm.stringtools.adapter.RacquetAdapter;
-import it.napalm.stringtools.globalobject.Racquet;
 import it.napalm.stringtools.globalobject.RacquetText;
-import it.napalm.stringtools.object.TblRacquets;
 import it.napalm.stringtools.object.TblUsers;
 import it.napalm.stringtools.utils.HttpFunctions;
 import android.app.Activity;
@@ -21,16 +19,12 @@ import android.content.res.Resources.NotFoundException;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -39,6 +33,7 @@ import android.widget.SearchView.OnQueryTextListener;
 
 public class SelectRacquetActivity extends Activity implements OnItemSelectedListener {
 
+	protected static final int NEW_RACQUET_CUSTOMER = 1;
 	private TblUsers customer;
 	private ArrayList<RacquetText> listRacquets;
 	private HttpFunctions function;
@@ -70,7 +65,7 @@ public class SelectRacquetActivity extends Activity implements OnItemSelectedLis
 	    inflater.inflate(R.menu.menu_sh, menu);
 	    
 	 // Get the SearchView and set the searchable configuration
-	    SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+	    //SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 	    SearchView searchView = (SearchView) menu.findItem(R.id.grid_default_search).getActionView();
 	    // Assumes current activity is the searchable activity
 	    searchView.setOnQueryTextListener(listener);
@@ -185,14 +180,29 @@ public class SelectRacquetActivity extends Activity implements OnItemSelectedLis
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				// TODO Auto-generated method stub
-				/*CustomerRacquet customerRacquet = listRacquet.get(arg2);
-				Intent editCustomerRacquet = new Intent(CustomerRacquetActivity.this, EditCustomerRacquetActivity.class);
-				editCustomerRacquet.putExtra("customerracquet", customerRacquet);
-				editCustomerRacquet.putExtra("position", PositionMenu.CUSTOMERS_LIST_RACQUET);
-				startActivityForResult(editCustomerRacquet, MOD_DATA_RACQUET);*/
+				RacquetText racquetText = (RacquetText)adapter.getItem(arg2);
+				Intent newCustomerRacquet = new Intent(SelectRacquetActivity.this, NewCustomerRacquetActivity.class);
+				newCustomerRacquet.putExtra("customer", customer);
+				newCustomerRacquet.putExtra("idracquet", racquetText.getId());
+				startActivityForResult(newCustomerRacquet, NEW_RACQUET_CUSTOMER);
 			}
         });
 	}
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        switch (requestCode) {
+            case NEW_RACQUET_CUSTOMER:                      	
+            	
+            	if (resultCode == RESULT_OK){
+            		finish();
+            		//rigenerare la lista racchette
+                } else if (resultCode == RESULT_CANCELED){
+            		//notting to do
+                } 
+            default:
+                break;
+        }
+    }
 
 
 }
