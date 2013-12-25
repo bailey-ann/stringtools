@@ -32,7 +32,8 @@ import android.widget.ListView;
 
 public class CustomerRacquetActivity extends Activity implements OnItemSelectedListener  {
 
-	private static final int MOD_DATA_RACQUET = 1;
+	private static final int NEW_RACQUET_CUSTOMER = 1;
+	private static final int MOD_DATA_RACQUET = 2;
 	
 	private HttpFunctions function;
 	private TblUsers customer;
@@ -89,7 +90,7 @@ public class CustomerRacquetActivity extends Activity implements OnItemSelectedL
 	public void addRacquet(){
 		Intent selectNewCustomerRacquet = new Intent(CustomerRacquetActivity.this, SelectRacquetActivity.class);
 		selectNewCustomerRacquet.putExtra("customer", customer);
-		startActivity(selectNewCustomerRacquet);
+		startActivityForResult(selectNewCustomerRacquet, NEW_RACQUET_CUSTOMER);
 	}
 	
 	@Override
@@ -189,6 +190,10 @@ public class CustomerRacquetActivity extends Activity implements OnItemSelectedL
 	protected void onActivityResult(int requestCode, int resultCode, Intent data){
         switch (requestCode) {
             case MOD_DATA_RACQUET:                      	
+            	if (resultCode == RESULT_OK){
+            		new GetListCustomerRacquet().execute();
+                } 
+            case NEW_RACQUET_CUSTOMER:                      	
             	if (resultCode == RESULT_OK){
             		new GetListCustomerRacquet().execute();
                 } 

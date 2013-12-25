@@ -77,8 +77,13 @@
         <activity
             android:label="@string/personal_data"
             android:name="it.napalm.stringtools.user.SelectRacquetActivity"
+            android:parentActivityName="it.napalm.stringtools.CustomerRacquetActivity" 
             android:windowSoftInputMode="stateHidden"
             android:theme="@android:style/Theme.Holo.Light" >
+	        <!-- Parent activity meta-data to support 4.0 and lower -->
+	        <meta-data
+	            android:name="android.support.PARENT_ACTIVITY"
+	            android:value="it.napalm.stringtools.CustomerRacquetActivity" />
 	        <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>

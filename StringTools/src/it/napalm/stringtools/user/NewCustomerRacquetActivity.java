@@ -24,6 +24,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources.NotFoundException;
@@ -35,6 +36,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -135,23 +137,27 @@ public class NewCustomerRacquetActivity extends Activity  {
 	}
 	
 	private void saveRacquetCustomer(){
-		/*TblRacquetsUser racquet = customerRacquet.getTblRacquetsUser();
+		TblRacquetsUser racquetUser = new TblRacquetsUser();
+		racquetUser.setTblRacquets(racquet.getId());
+		racquetUser.setTblUsers(customer.getId());
 		TblGripSize tblGripSize = (TblGripSize) spinGripSize.getItemAtPosition(spinGripSize.getSelectedItemPosition());
-		racquet.setTblGripSize(tblGripSize.getId());
-		racquet.setSerial(((EditText) findViewById(R.id.Serial)).getText().toString());
-		racquet.setWeightUnstrung(Function.stringToDouble( ((EditText) findViewById(R.id.WeightUnstrung)).getText().toString()));	
-		racquet.setWeightStrung(Function.stringToDouble( ((EditText) findViewById(R.id.WeightStrung)).getText().toString()));
-		racquet.setBalance(Function.stringToDouble( ((EditText) findViewById(R.id.Balance)).getText().toString()));
-		racquet.setSwingweight(Function.stringToDouble( ((EditText) findViewById(R.id.Swingweight)).getText().toString()));
-		racquet.setStiffness(Function.stringToDouble( ((EditText) findViewById(R.id.Stiffness)).getText().toString()));
-		racquet.setDateBuy(Function.stringToDateShort(((TextView) findViewById(R.id.DateBuy)).getText().toString()));		
-		racquet.setNote(((EditText) findViewById(R.id.Note)).getText().toString());
-		
-		new SaveDataRacquet().execute(racquet);*/
+		racquetUser.setTblGripSize(tblGripSize.getId());
+		racquetUser.setSerial(((EditText) findViewById(R.id.Serial)).getText().toString());
+		racquetUser.setWeightUnstrung(Function.stringToDouble( ((EditText) findViewById(R.id.WeightUnstrung)).getText().toString()));	
+		racquetUser.setWeightStrung(Function.stringToDouble( ((EditText) findViewById(R.id.WeightStrung)).getText().toString()));
+		racquetUser.setBalance(Function.stringToDouble( ((EditText) findViewById(R.id.Balance)).getText().toString()));
+		racquetUser.setSwingweight(Function.stringToDouble( ((EditText) findViewById(R.id.Swingweight)).getText().toString()));
+		racquetUser.setStiffness(Function.stringToDouble( ((EditText) findViewById(R.id.Stiffness)).getText().toString()));
+		racquetUser.setDateBuy(Function.stringToDateShort(((TextView) findViewById(R.id.DateBuy)).getText().toString()));		
+		racquetUser.setNote(((EditText) findViewById(R.id.Note)).getText().toString());
+		racquetUser.setActive(1);
+		new SaveDataRacquet().execute(racquetUser);
 	}
 	
 	
 	private void backTo(){
+		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(((EditText) findViewById(R.id.Serial)).getWindowToken(), 0);
         setResult(RESULT_CANCELED, null);
         finish();
 	}

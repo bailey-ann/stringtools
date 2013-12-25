@@ -194,8 +194,9 @@ public class SelectRacquetActivity extends Activity implements OnItemSelectedLis
             case NEW_RACQUET_CUSTOMER:                      	
             	
             	if (resultCode == RESULT_OK){
-            		finish();
-            		//rigenerare la lista racchette
+            		Intent output = new Intent();
+    		        setResult(RESULT_OK, output);
+    		        finish();
                 } else if (resultCode == RESULT_CANCELED){
             		//notting to do
                 } 
