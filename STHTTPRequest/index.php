@@ -157,16 +157,16 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
 		$response = $db->getRacquetsPattern($_POST['id']);
 		echo json_encode($response);
     }else if ($tag == 'strings') {
-		$response = $db->getStrings();
+		$response = $db->getStrings($_POST['id']);
 		echo json_encode($response);
     }else if ($tag == 'stringingmachines') {
-		$response = $db->getStringingMachines();
+		$response = $db->getStringingMachines($_POST['id']);
 		echo json_encode($response);
     }else if ($tag == 'overgrips') {
-		$response = $db->getOvergrips();
+		$response = $db->getOvergrips($_POST['id']);
 		echo json_encode($response);
     }else if ($tag == 'grips') {
-		$response = $db->getGrips();
+		$response = $db->getGrips($_POST['id']);
 		echo json_encode($response);
     }else if ($tag == 'racquetcustomer') {
 		$response = $db->getRacquetCustomer($_POST['id']);
@@ -195,6 +195,17 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
 		echo json_encode($response);
     }else if ($tag == 'newbrand') {
 		$result = $db->newBrand($_POST);
+		$response["result"] = $result."";
+		echo json_encode($response);
+    }else if ($tag == 'gripstext') {
+		$response = $db->getGripsText();
+		echo json_encode($response);
+    }else if ($tag == 'editdatagrip') {
+		$result = $db->editDataGrip($_POST);
+		$response["result"] = $result."";
+		echo json_encode($response);
+    }else if ($tag == 'newbrand') {
+		$result = $db->newGrip($_POST);
 		$response["result"] = $result."";
 		echo json_encode($response);
     }else {

@@ -324,11 +324,15 @@
         return $response;
     }
     
-    public function getStrings() {
+    public function getStrings($id) {
         $response = array();
 		$response["strings"] = array();
+		
+		$query = "select * from tbl_strings order by id";
+		if($id != 0)
+			$query = "select * from tbl_strings  where id = " . $id;
      
-		$result = mysql_query("select * from tbl_strings order by id") or die(mysql_error());
+		$result = mysql_query($query) or die(mysql_error());
 
 		while($row = mysql_fetch_array($result)){
 			$tmp = array();
@@ -345,11 +349,15 @@
         return $response;
     }
     
-    public function getStringingMachines() {
+    public function getStringingMachines($id) {
         $response = array();
 		$response["stringingmachines"] = array();
+		
+		$query = "select * from tbl_stringing_machines order by id";
+		if($id != 0)
+			$query = "select * from tbl_stringing_machines  where id = " . $id;
      
-		$result = mysql_query("select * from tbl_stringing_machines order by id") or die(mysql_error());
+		$result = mysql_query($query) or die(mysql_error());
 
 		while($row = mysql_fetch_array($result)){
 			$tmp = array();
@@ -363,11 +371,15 @@
         return $response;
     }
     
-    public function getOvergrips() {
+    public function getOvergrips($id) {
         $response = array();
 		$response["overgrips"] = array();
+		
+		$query = "select * from tbl_overgrips order by id";
+		if($id != 0)
+			$query = "select * from tbl_overgrips  where id = " . $id;
      
-		$result = mysql_query("select * from tbl_overgrips order by id") or die(mysql_error());
+		$result = mysql_query($query) or die(mysql_error());
 
 		while($row = mysql_fetch_array($result)){
 			$tmp = array();
@@ -383,11 +395,15 @@
         return $response;
     }
     
-    public function getGrips() {
+    public function getGrips($id) {
         $response = array();
 		$response["grips"] = array();
+		
+		$query = "select * from tbl_grips order by id";
+		if($id != 0)
+			$query = "select * from tbl_grips  where id = " . $id;
      
-		$result = mysql_query("select * from tbl_grips order by id") or die(mysql_error());
+		$result = mysql_query($query) or die(mysql_error());
 
 		while($row = mysql_fetch_array($result)){
 			$tmp = array();
@@ -539,6 +555,43 @@
     public function newBrand($value){
     	$query = "insert into tbl_brands (id,description) values(  " .
     			" null,  '". $value["description"]."')";
+    	$result = mysql_query($query) or die(mysql_error());
+    	return $result;
+    }
+    
+    public function getGripsText() {
+    	$response = array();
+    	$response["grips"] = array();
+    
+    	$query = "select tbl_grips.id, concat(tbl_brands.description, ' ', tbl_grips.model) as description from tbl_grips
+			inner join tbl_brands on tbl_brands.id = tbl_grips.tbl_brands_id
+			order by tbl_brands.description, tbl_grips.model";
+    
+    	$result = mysql_query($query) or die(mysql_error());
+    
+    	while($row = mysql_fetch_array($result)){
+    		$tmp = array();
+    		$tmp["id"] = $row["id"];
+    		$tmp["description"] = $row["description"];
+    		array_push($response["grips"], $tmp);
+    	}
+    
+    	return $response;
+    }
+    
+    public function editDataGrip($value){
+    	$query = "update tbl_grips set model =  '" . $value["model"] . "', " .
+    	" tbl_brands_id = " . $value["tbl_brands_id"] .", " .
+    	" price = '" . $value["price"] ."', " .
+    	" note = '" . $value["note"] ."' " .
+    	" where id = ". $value["id"];
+    	$result = mysql_query($query) or die(mysql_error());
+    	return $result;
+    }
+    
+    public function newGrip($value){
+    	$query = "insert into tbl_grips (id, tbl_brands_id, model, price, note) values(  " .
+    			" null, " . $value["tbl_brands_id"] .", '". $value["model"]."', '". $value["price"]."', '". $value["note"]."')";
     	$result = mysql_query($query) or die(mysql_error());
     	return $result;
     }
