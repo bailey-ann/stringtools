@@ -62,4 +62,8 @@
 	<string name="edit_grip">Modifica grip</string>
 	<string name="new_grip">Nuovo grip</string>
 	<string name="cost">Prezzo</string>
+	<string name="list_overgrips">Lista overgrips</string>
+	<string name="overgrips">Overgrips</string>
+	<string name="edit_overgrip">Modifica overgrip</string>
+	<string name="new_overgrip">Nuovo overgrip</string>
 </resources>

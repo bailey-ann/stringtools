@@ -11,19 +11,19 @@ public class TblOvergrips implements java.io.Serializable {
 	private Integer id;
 	private int idTblBrands;
 	private String model;
-	private BigDecimal price;
+	private double price;
 	private String note;
 
 	public TblOvergrips() {
 	}
 
-	public TblOvergrips(int idTblBrands, String model, BigDecimal price) {
+	public TblOvergrips(int idTblBrands, String model, double price) {
 		this.idTblBrands = idTblBrands;
 		this.model = model;
 		this.price = price;
 	}
 
-	public TblOvergrips(int idTblBrands, String model, BigDecimal price,
+	public TblOvergrips(int idTblBrands, String model, double price,
 			String note) {
 		this.idTblBrands = idTblBrands;
 		this.model = model;
@@ -55,12 +55,12 @@ public class TblOvergrips implements java.io.Serializable {
 		this.model = model;
 	}
 
-	public BigDecimal getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
+	public void setPrice(double d) {
+		this.price = d;
 	}
 
 	public String getNote() {

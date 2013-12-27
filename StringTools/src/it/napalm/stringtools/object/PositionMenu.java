@@ -8,6 +8,7 @@ public class PositionMenu {
 	public static int CUSTOMERS_LIST_RACQUET = 3;
 	public static int BRANDS_LIST = 4;
 	public static int GRIPS_LIST = 5;
+	public static int OVERGRIPS_LIST = 6;
 	public static int HOME = 100;
 	
 }

@@ -71,4 +71,8 @@
 	<string name="edit_grip">Edit grip</string>
 	<string name="new_grip">New grip</string>
 	<string name="cost">Cost</string>
+	<string name="list_overgrips">List overgrips</string>
+	<string name="overgrips">Overgrips</string>
+	<string name="edit_overgrip">Edit overgrip</string>
+	<string name="new_overgrip">New overgrip</string>
 </resources>
