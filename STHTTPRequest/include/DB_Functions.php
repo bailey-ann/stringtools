@@ -595,6 +595,43 @@
     	$result = mysql_query($query) or die(mysql_error());
     	return $result;
     }
+    
+    public function getOvergripsText() {
+    	$response = array();
+    	$response["overgrips"] = array();
+    
+    	$query = "select tbl_overgrips.id, concat(tbl_brands.description, ' ', tbl_overgrips.model) as description from tbl_overgrips
+			inner join tbl_brands on tbl_brands.id = tbl_overgrips.tbl_brands_id
+			order by tbl_brands.description, tbl_overgrips.model";
+    
+    	$result = mysql_query($query) or die(mysql_error());
+    
+    	while($row = mysql_fetch_array($result)){
+    		$tmp = array();
+    		$tmp["id"] = $row["id"];
+    		$tmp["description"] = $row["description"];
+    		array_push($response["overgrips"], $tmp);
+    	}
+    
+    	return $response;
+    }
+    
+    public function editDataOvergrip($value){
+    	$query = "update tbl_overgrips set model =  '" . $value["model"] . "', " .
+    			" tbl_brands_id = " . $value["tbl_brands_id"] .", " .
+    			" price = '" . $value["price"] ."', " .
+    			" note = '" . $value["note"] ."' " .
+    			" where id = ". $value["id"];
+    	$result = mysql_query($query) or die(mysql_error());
+    	return $result;
+    }
+    
+    public function newOvergrip($value){
+    	$query = "insert into tbl_overgrips (id, tbl_brands_id, model, price, note) values(  " .
+    			" null, " . $value["tbl_brands_id"] .", '". $value["model"]."', '". $value["price"]."', '". $value["note"]."')";
+    	$result = mysql_query($query) or die(mysql_error());
+    	return $result;
+    }
 
 }
 ?>

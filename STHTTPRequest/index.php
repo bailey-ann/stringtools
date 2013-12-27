@@ -204,8 +204,19 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
 		$result = $db->editDataGrip($_POST);
 		$response["result"] = $result."";
 		echo json_encode($response);
-    }else if ($tag == 'newbrand') {
+    }else if ($tag == 'newgrip') {
 		$result = $db->newGrip($_POST);
+		$response["result"] = $result."";
+		echo json_encode($response);
+    }else if ($tag == 'overgripstext') {
+		$response = $db->getOvergripsText();
+		echo json_encode($response);
+    }else if ($tag == 'editdataovergrip') {
+		$result = $db->editDataOvergrip($_POST);
+		$response["result"] = $result."";
+		echo json_encode($response);
+    }else if ($tag == 'newovergrip') {
+		$result = $db->newOvergrip($_POST);
 		$response["result"] = $result."";
 		echo json_encode($response);
     }else {
