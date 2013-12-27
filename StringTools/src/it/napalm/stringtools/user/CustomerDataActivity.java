@@ -5,6 +5,7 @@ package it.napalm.stringtools.user;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
+import java.util.Locale;
 import java.util.Random;
 
 import org.json.JSONException;
@@ -12,6 +13,7 @@ import org.json.JSONException;
 import it.napalm.stringtools.R;
 import it.napalm.stringtools.object.PositionMenu;
 import it.napalm.stringtools.object.TblUsers;
+import it.napalm.stringtools.utils.Function;
 import it.napalm.stringtools.utils.HttpFunctions;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -82,7 +84,7 @@ public class CustomerDataActivity extends Activity implements OnItemSelectedList
 		((EditText) findViewById(R.id.mobile_telephone)).setText(customer.getMobileTelephone());
 		((EditText) findViewById(R.id.piva)).setText(customer.getPiva());
 		((EditText) findViewById(R.id.fax)).setText(customer.getFax());
-		((EditText) findViewById(R.id.stringing_cost)).setText(String.format( "%.2f", customer.getCost() ));		
+		((EditText) findViewById(R.id.stringing_cost)).setText(String.format(Locale.ENGLISH,  "%.2f", customer.getCost() ));		
 	}
 	
 
@@ -124,14 +126,7 @@ public class CustomerDataActivity extends Activity implements OnItemSelectedList
 		customer.setSurname(((EditText) findViewById(R.id.surname)).getText().toString());		
 		customer.setTelephone(((EditText) findViewById(R.id.telephone)).getText().toString());
 		customer.setMobileTelephone(((EditText) findViewById(R.id.mobile_telephone)).getText().toString());
-		customer.setCost(0);
-		try {
-	        String eAm = ((EditText) findViewById(R.id.stringing_cost)).getText().toString();
-	        DecimalFormat dF = new DecimalFormat("0.00");
-	        Number num = dF.parse(eAm);
-	        customer.setCost(num.doubleValue());
-	    } catch (Exception e) { }				
-		
+		customer.setCost( Function.stringToDouble(((EditText) findViewById(R.id.stringing_cost)).getText().toString().replace(',', '.')) );
 		customer.setTblWeightUnitId(1);
 		customer.setTblCurrencyUnitId(1);
 		customer.setPiva(((EditText) findViewById(R.id.piva)).getText().toString());

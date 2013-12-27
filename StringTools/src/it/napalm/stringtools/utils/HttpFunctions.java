@@ -180,7 +180,7 @@ public class HttpFunctions {
         params.add(new BasicNameValuePair("email", user.getEmail().toString()));
         params.add(new BasicNameValuePair("telephone", user.getTelephone().toString()));
         params.add(new BasicNameValuePair("mobile_telephone", user.getMobileTelephone().toString()));
-        params.add(new BasicNameValuePair("cost",String.format( "%.2f", user.getCost() )));
+        params.add(new BasicNameValuePair("cost",String.format( "%.2f", user.getCost() ).replace(',', '.')));
         params.add(new BasicNameValuePair("tbl_weight_unit_id", user.getTblWeightUnitId()+""));
         params.add(new BasicNameValuePair("tbl_currency_unit_id", user.getTblCurrencyUnitId()+""));
         params.add(new BasicNameValuePair("piva", user.getPiva().toString()));
@@ -251,7 +251,7 @@ public class HttpFunctions {
         params.add(new BasicNameValuePair("email", user.getEmail().toString()));
         params.add(new BasicNameValuePair("telephone", user.getTelephone().toString()));
         params.add(new BasicNameValuePair("mobile_telephone", user.getMobileTelephone().toString()));
-        params.add(new BasicNameValuePair("cost",String.format( "%.2f", user.getCost() )));
+        params.add(new BasicNameValuePair("cost",String.format( "%.2f", user.getCost() ).replace(',', '.')));
         params.add(new BasicNameValuePair("tbl_weight_unit_id", user.getTblWeightUnitId()+""));
         params.add(new BasicNameValuePair("tbl_currency_unit_id", user.getTblCurrencyUnitId()+""));
         params.add(new BasicNameValuePair("piva", user.getPiva().toString()));
@@ -497,8 +497,7 @@ public class HttpFunctions {
         params.add(new BasicNameValuePair("tag", editDataGrip));
         params.add(new BasicNameValuePair("id", item.getId().toString()));
         params.add(new BasicNameValuePair("tbl_brands_id", item.getIdTblBrands()+""));
-        params.add(new BasicNameValuePair("model", item.getModel()));
-        Log.d("in query", String.format( "%.2f", item.getPrice()));
+        params.add(new BasicNameValuePair("model", item.getModel()));        
         params.add(new BasicNameValuePair("price", String.format( "%.2f", item.getPrice()).replace(',', '.')));
         params.add(new BasicNameValuePair("note", item.getNote()));
         JSONObject json = jsonParser.getJSONFromUrl(url, params);

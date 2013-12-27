@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 import org.json.JSONException;
@@ -96,7 +97,7 @@ public class GripDataActivity extends Activity implements OnItemSelectedListener
 			}
 		    
 		    ((EditText) findViewById(R.id.model)).setText(item.getModel());	
-		    ((EditText) findViewById(R.id.cost)).setText(String.format( "%.2f", item.getPrice()));
+		    ((EditText) findViewById(R.id.cost)).setText(String.format(Locale.ENGLISH,  "%.2f", item.getPrice()));
 		    ((EditText) findViewById(R.id.Note)).setText(item.getNote());
 	    }
 		
@@ -136,7 +137,7 @@ public class GripDataActivity extends Activity implements OnItemSelectedListener
 		TblBrands tblBrands = (TblBrands) spinBrandName.getItemAtPosition(spinBrandName.getSelectedItemPosition());
 		item.setIdTblBrands(tblBrands.getId());
 		item.setModel(((EditText) findViewById(R.id.model)).getText().toString());
-		item.setPrice( Function.stringToDouble(((EditText) findViewById(R.id.cost)).getText().toString()) );
+		item.setPrice( Function.stringToDouble(((EditText) findViewById(R.id.cost)).getText().toString().replace(',', '.')) );
 		item.setNote(((EditText) findViewById(R.id.Note)).getText().toString());
 		
 		new SaveData().execute(NEW);

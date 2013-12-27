@@ -9,12 +9,20 @@ import java.util.Locale;
 
 public class Function {
 
-	public static double stringToDouble(String value){
+	/*public static double stringToDouble(String value){
 		double returnValue = 0;
 		try {
 	        DecimalFormat dF = new DecimalFormat("0.00");
 	        Number num = dF.parse(value);
 	        returnValue = num.doubleValue();
+	    } catch (Exception e) { }		
+		return returnValue;
+	}*/
+	
+	public static double stringToDouble(String value){
+		double returnValue = 0;
+		try {
+			returnValue = Double.valueOf(value);
 	    } catch (Exception e) { }		
 		return returnValue;
 	}
