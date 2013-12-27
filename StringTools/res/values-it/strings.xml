@@ -53,4 +53,8 @@
 	<string name="search_racquet_hint">Cerca racchetta..</string>
 	<string name="action_search">Cerca</string>
 	<string name="newcustomerracquet">Nuova racchetta cliente</string>
+	<string name="list_brands">Lista Marchi</string>
+	<string name="brand">Marchio</string>
+	<string name="edit_brand">Modifica marchio</string>
+	<string name="new_brand">Nuovo marchio</string>
 </resources>

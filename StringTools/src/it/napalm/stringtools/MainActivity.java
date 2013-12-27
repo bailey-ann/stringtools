@@ -2,7 +2,10 @@ package it.napalm.stringtools;
 
 
 import it.napalm.stringtools.object.PositionMenu;
+import it.napalm.stringtools.object.TblBrands;
 import it.napalm.stringtools.object.TblUsers;
+import it.napalm.stringtools.settings.BrandDataActivity;
+import it.napalm.stringtools.settings.BrandsFragment;
 import it.napalm.stringtools.user.CustomerDataActivity;
 import it.napalm.stringtools.user.CustomerRacquetActivity;
 import it.napalm.stringtools.user.CustomersFragment;
@@ -32,6 +35,7 @@ public class MainActivity extends Activity {
 
 	
 	private static final int MOD_DATA_USER = 1;
+	private static final int MOD_DATA_BRAND = 2;
 	private ListView mDrawerList;
 	private DrawerLayout mDrawerLayout;
 	private String[] mTitles;
@@ -150,6 +154,9 @@ public class MainActivity extends Activity {
     	else if(position == PositionMenu.CUSTOMERS_LIST_RACQUET){
     		fragment = CustomersFragment.newInstance(position);
     	}
+    	else if(position == PositionMenu.BRANDS_LIST){
+    		fragment = BrandsFragment.newInstance(position);
+    	}
     	else if(position == PositionMenu.LOGOUT){
     		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         	SharedPreferences.Editor editor = prefs.edit();
@@ -225,6 +232,8 @@ public class MainActivity extends Activity {
                 		selectItem(PositionMenu.CUSTOMERS);
                 	}
                 } 
+            case MOD_DATA_BRAND:
+            	selectItem(PositionMenu.BRANDS_LIST);
             default:
                 break;
         }
@@ -273,6 +282,16 @@ public class MainActivity extends Activity {
     	customerRacquet.putExtra("customer", customer);
     	customerRacquet.putExtra("position", PositionMenu.CUSTOMERS_LIST_RACQUET);
 		startActivity(customerRacquet);		
+    }
+    
+    public void callEditDataBrand(TblBrands item){
+    	mDrawerList.setItemChecked(-1, true);
+        mDrawerLayout.closeDrawer(mDrawerList);
+    	Intent personalData = new Intent(this, BrandDataActivity.class);
+		personalData.putExtra("brand", item);
+		personalData.putExtra("position", PositionMenu.BRANDS_LIST);
+		startActivityForResult(personalData, MOD_DATA_BRAND);
+		
     }
     
     

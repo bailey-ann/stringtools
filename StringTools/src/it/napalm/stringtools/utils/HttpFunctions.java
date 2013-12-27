@@ -44,6 +44,8 @@ public class HttpFunctions {
     private static String editRacquetCustomer  = "editracquetcustomer";
     private static String removeRacquetCustomer  = "removeracquetcustomer";
     private static String getListRacquetText  = "racquetstext";
+    private static String editDataBrand = "editdatabrand";
+    private static String newBrand = "newbrand";
     
     // constructor
     public HttpFunctions(){
@@ -419,6 +421,25 @@ public class HttpFunctions {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("tag", removeRacquetCustomer));
         params.add(new BasicNameValuePair("id", value.getId()+""));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        return json.getString("result");
+    }
+    
+    public String editDataBrand(String url, TblBrands item) throws JSONException{
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", editDataBrand));
+        params.add(new BasicNameValuePair("id", item.getId().toString()));
+        params.add(new BasicNameValuePair("description", item.getDescription()));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        return json.getString("result");
+    }
+    
+    public String newBrand(String url, TblBrands item) throws JSONException{
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", newBrand));
+        params.add(new BasicNameValuePair("description", item.getDescription()));
         JSONObject json = jsonParser.getJSONFromUrl(url, params);
         return json.getString("result");
     }

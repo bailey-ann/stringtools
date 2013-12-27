@@ -62,4 +62,8 @@
 	<string name="search_racquet_hint">Search racquets..</string>
 	<string name="action_search">Search</string>
 	<string name="newcustomerracquet">New customer racquet</string>
+	<string name="list_brands">List Brands</string>
+	<string name="brand">Brand</string>
+	<string name="edit_brand">Edit brand</string>
+	<string name="new_brand">New brand</string>
 </resources>
