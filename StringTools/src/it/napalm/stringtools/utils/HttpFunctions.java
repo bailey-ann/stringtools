@@ -1,9 +1,11 @@
 package it.napalm.stringtools.utils;
 
+import it.napalm.stringtools.globalobject.GripText;
 import it.napalm.stringtools.globalobject.RacquetText;
 import it.napalm.stringtools.object.TblBrands;
 import it.napalm.stringtools.object.TblCurrencyUnit;
 import it.napalm.stringtools.object.TblGripSize;
+import it.napalm.stringtools.object.TblGrips;
 import it.napalm.stringtools.object.TblRacquets;
 import it.napalm.stringtools.object.TblRacquetsPattern;
 import it.napalm.stringtools.object.TblRacquetsUser;
@@ -46,6 +48,10 @@ public class HttpFunctions {
     private static String getListRacquetText  = "racquetstext";
     private static String editDataBrand = "editdatabrand";
     private static String newBrand = "newbrand";
+    private static String getListGrips  = "grips";
+    private static String getGripsText  = "gripstext";
+    private static String editDataGrip = "editdatagrip";
+    private static String newGrip= "newgrip";
     
     // constructor
     public HttpFunctions(){
@@ -440,6 +446,73 @@ public class HttpFunctions {
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("tag", newBrand));
         params.add(new BasicNameValuePair("description", item.getDescription()));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        return json.getString("result");
+    }
+    
+    public ArrayList<TblGrips> getListGrips(String url, int id) throws JSONException, ParseException{
+        // Building for TblRacquetsUser
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", getListGrips));
+        params.add(new BasicNameValuePair("id", id+""));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        JSONArray firstList = json.getJSONArray("grips"); 
+        
+        ArrayList<TblGrips> listInside = new ArrayList<TblGrips>();
+        for (int i = 0; i < firstList.length(); i++) {
+            JSONObject catObj = (JSONObject) firstList.get(i);
+            TblGrips element = new TblGrips();
+            element.setId(catObj.getInt("id"));
+            element.setIdTblBrands(catObj.getInt("tbl_brands_id"));
+            element.setModel(catObj.getString("model"));
+            element.setPrice(catObj.getDouble("price"));
+            element.setNote(catObj.getString("note"));
+			listInside.add(element);
+        }
+        return listInside;
+    }
+    
+    public ArrayList<GripText> getGripsText(String url, int id) throws JSONException, ParseException{
+        // Building for TblRacquetsUser
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", getGripsText));
+        params.add(new BasicNameValuePair("id", id+""));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        JSONArray firstList = json.getJSONArray("grips"); 
+        
+        ArrayList<GripText> listInside = new ArrayList<GripText>();
+        for (int i = 0; i < firstList.length(); i++) {
+            JSONObject catObj = (JSONObject) firstList.get(i);
+            GripText element = new GripText();
+            element.setId(catObj.getInt("id"));
+            element.setDescription(catObj.getString("description"));
+			listInside.add(element);
+        }
+        return listInside;
+    }
+    
+    public String editDataGrip(String url, TblGrips item) throws JSONException{
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", editDataGrip));
+        params.add(new BasicNameValuePair("id", item.getId().toString()));
+        params.add(new BasicNameValuePair("tbl_brands_id", item.getIdTblBrands()+""));
+        params.add(new BasicNameValuePair("model", item.getModel()));
+        Log.d("in query", String.format( "%.2f", item.getPrice()));
+        params.add(new BasicNameValuePair("price", String.format( "%.2f", item.getPrice()).replace(',', '.')));
+        params.add(new BasicNameValuePair("note", item.getNote()));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        return json.getString("result");
+    }
+    
+    public String newGrip(String url, TblGrips item) throws JSONException{
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", newGrip));
+        params.add(new BasicNameValuePair("tbl_brands_id", item.getIdTblBrands()+""));
+        params.add(new BasicNameValuePair("model", item.getModel()));
+        params.add(new BasicNameValuePair("price", String.format( "%.2f", item.getPrice()).replace(',', '.')));
+        params.add(new BasicNameValuePair("note", item.getNote()));
         JSONObject json = jsonParser.getJSONFromUrl(url, params);
         return json.getString("result");
     }

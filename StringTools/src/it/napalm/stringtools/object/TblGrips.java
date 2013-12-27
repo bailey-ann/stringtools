@@ -9,23 +9,23 @@ import java.math.BigDecimal;
 public class TblGrips implements java.io.Serializable {
 
 	private Integer id;
-	private TblBrands tblBrands;
+	private int idTblBrands;
 	private String model;
-	private BigDecimal price;
+	private double price;
 	private String note;
 
 	public TblGrips() {
 	}
 
-	public TblGrips(TblBrands tblBrands, String model, BigDecimal price) {
-		this.tblBrands = tblBrands;
+	public TblGrips(int idTblBrands, String model, double price) {
+		this.idTblBrands = idTblBrands;
 		this.model = model;
 		this.price = price;
 	}
 
-	public TblGrips(TblBrands tblBrands, String model, BigDecimal price,
+	public TblGrips(int idTblBrands, String model, double price,
 			String note) {
-		this.tblBrands = tblBrands;
+		this.idTblBrands = idTblBrands;
 		this.model = model;
 		this.price = price;
 		this.note = note;
@@ -39,12 +39,12 @@ public class TblGrips implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public TblBrands getTblBrands() {
-		return this.tblBrands;
+	public int getIdTblBrands() {
+		return this.idTblBrands;
 	}
 
-	public void setTblBrands(TblBrands tblBrands) {
-		this.tblBrands = tblBrands;
+	public void setIdTblBrands(int idTblBrands) {
+		this.idTblBrands = idTblBrands;
 	}
 
 	public String getModel() {
@@ -55,12 +55,12 @@ public class TblGrips implements java.io.Serializable {
 		this.model = model;
 	}
 
-	public BigDecimal getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
+	public void setPrice(double d) {
+		this.price = d;
 	}
 
 	public String getNote() {

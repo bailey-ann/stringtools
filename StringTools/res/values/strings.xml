@@ -66,4 +66,9 @@
 	<string name="brand">Brand</string>
 	<string name="edit_brand">Edit brand</string>
 	<string name="new_brand">New brand</string>
+	<string name="list_grips">List grips</string>
+	<string name="grips">Grips</string>
+	<string name="edit_grip">Edit grip</string>
+	<string name="new_grip">New grip</string>
+	<string name="cost">Cost</string>
 </resources>

@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 public class TblOvergrips implements java.io.Serializable {
 
 	private Integer id;
-	private TblBrands tblBrands;
+	private int idTblBrands;
 	private String model;
 	private BigDecimal price;
 	private String note;
@@ -17,15 +17,15 @@ public class TblOvergrips implements java.io.Serializable {
 	public TblOvergrips() {
 	}
 
-	public TblOvergrips(TblBrands tblBrands, String model, BigDecimal price) {
-		this.tblBrands = tblBrands;
+	public TblOvergrips(int idTblBrands, String model, BigDecimal price) {
+		this.idTblBrands = idTblBrands;
 		this.model = model;
 		this.price = price;
 	}
 
-	public TblOvergrips(TblBrands tblBrands, String model, BigDecimal price,
+	public TblOvergrips(int idTblBrands, String model, BigDecimal price,
 			String note) {
-		this.tblBrands = tblBrands;
+		this.idTblBrands = idTblBrands;
 		this.model = model;
 		this.price = price;
 		this.note = note;
@@ -39,12 +39,12 @@ public class TblOvergrips implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public TblBrands getTblBrands() {
-		return this.tblBrands;
+	public int getIdTblBrands() {
+		return this.idTblBrands;
 	}
 
-	public void setTblBrands(TblBrands tblBrands) {
-		this.tblBrands = tblBrands;
+	public void setIdTblBrands(int idTblBrands) {
+		this.idTblBrands = idTblBrands;
 	}
 
 	public String getModel() {

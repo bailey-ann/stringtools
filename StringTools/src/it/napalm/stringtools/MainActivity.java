@@ -3,9 +3,12 @@ package it.napalm.stringtools;
 
 import it.napalm.stringtools.object.PositionMenu;
 import it.napalm.stringtools.object.TblBrands;
+import it.napalm.stringtools.object.TblGrips;
 import it.napalm.stringtools.object.TblUsers;
 import it.napalm.stringtools.settings.BrandDataActivity;
 import it.napalm.stringtools.settings.BrandsFragment;
+import it.napalm.stringtools.settings.GripDataActivity;
+import it.napalm.stringtools.settings.GripsFragment;
 import it.napalm.stringtools.user.CustomerDataActivity;
 import it.napalm.stringtools.user.CustomerRacquetActivity;
 import it.napalm.stringtools.user.CustomersFragment;
@@ -36,6 +39,7 @@ public class MainActivity extends Activity {
 	
 	private static final int MOD_DATA_USER = 1;
 	private static final int MOD_DATA_BRAND = 2;
+	private static final int MOD_DATA_GRIPS = 3;
 	private ListView mDrawerList;
 	private DrawerLayout mDrawerLayout;
 	private String[] mTitles;
@@ -157,6 +161,9 @@ public class MainActivity extends Activity {
     	else if(position == PositionMenu.BRANDS_LIST){
     		fragment = BrandsFragment.newInstance(position);
     	}
+    	else if(position == PositionMenu.GRIPS_LIST){
+    		fragment = GripsFragment.newInstance(position);
+    	}
     	else if(position == PositionMenu.LOGOUT){
     		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         	SharedPreferences.Editor editor = prefs.edit();
@@ -234,6 +241,8 @@ public class MainActivity extends Activity {
                 } 
             case MOD_DATA_BRAND:
             	selectItem(PositionMenu.BRANDS_LIST);
+            case MOD_DATA_GRIPS:
+            	selectItem(PositionMenu.GRIPS_LIST);
             default:
                 break;
         }
@@ -291,6 +300,16 @@ public class MainActivity extends Activity {
 		personalData.putExtra("brand", item);
 		personalData.putExtra("position", PositionMenu.BRANDS_LIST);
 		startActivityForResult(personalData, MOD_DATA_BRAND);
+		
+    }
+    
+    public void callEditDataGrips(int id){
+    	mDrawerList.setItemChecked(-1, true);
+        mDrawerLayout.closeDrawer(mDrawerList);
+    	Intent personalData = new Intent(this, GripDataActivity.class);
+		personalData.putExtra("id", id);
+		personalData.putExtra("position", PositionMenu.GRIPS_LIST);
+		startActivityForResult(personalData, MOD_DATA_GRIPS);
 		
     }
     

@@ -57,4 +57,9 @@
 	<string name="brand">Marchio</string>
 	<string name="edit_brand">Modifica marchio</string>
 	<string name="new_brand">Nuovo marchio</string>
+	<string name="list_grips">Lista grips</string>
+	<string name="grips">Grips</string>
+	<string name="edit_grip">Modifica grip</string>
+	<string name="new_grip">Nuovo grip</string>
+	<string name="cost">Prezzo</string>
 </resources>
