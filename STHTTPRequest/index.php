@@ -189,6 +189,14 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
 		$result = $db->removeRacquetCustomer($_POST);
         $response["result"] = $result."";
     	echo json_encode($response);
+    }else if ($tag == 'editdatabrand') {
+		$result = $db->editDataBrand($_POST);
+		$response["result"] = $result."";
+		echo json_encode($response);
+    }else if ($tag == 'newbrand') {
+		$result = $db->newBrand($_POST);
+		$response["result"] = $result."";
+		echo json_encode($response);
     }else {
         echo "Invalid Request";
     }

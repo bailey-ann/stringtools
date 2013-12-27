@@ -528,6 +528,20 @@
     	$result = mysql_query($query) or die(mysql_error());
     	return $result;   		
     }
+    
+    public function editDataBrand($value){
+    	$query = "update tbl_brands set description =  '" . $value["description"] . 
+    			"' where id = ". $value["id"];
+    	$result = mysql_query($query) or die(mysql_error());
+    	return $result;
+    }
+    
+    public function newBrand($value){
+    	$query = "insert into tbl_brands (id,description) values(  " .
+    			" null,  '". $value["description"]."')";
+    	$result = mysql_query($query) or die(mysql_error());
+    	return $result;
+    }
 
 }
 ?>
