@@ -34,7 +34,7 @@
 	<string name="attention">Attention</string>
 	<string name="edit_customer">Edit data</string>
 	<string name="new_customer">New customer</string>
-	<string name="list_customer_racquet">List racquet</string>
+	<string name="list_racquets">List racquets</string>
 	<string name="serial">Seriale</string>	
 	<string name="BrandName">Brand Name</string>
 	<string name="Pattern">Pattern</string>
@@ -75,4 +75,6 @@
 	<string name="overgrips">Overgrips</string>
 	<string name="edit_overgrip">Edit overgrip</string>
 	<string name="new_overgrip">New overgrip</string>
+	<string name="edit_racquet">Edit racquet</string>
+	<string name="new_racquet">New racquet</string>
 </resources>

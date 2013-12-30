@@ -5,10 +5,11 @@
         <item>Logout</item>
         <item>User Data</item>
         <item>Customers</item>
-        <item>User Racquet</item>
-        <item>Brand</item>
+        <item>User Racquets</item>
+        <item>Brands</item>
         <item>Grips</item>
         <item>Overgrips</item>
+        <item>Racquets</item>
     </string-array>
 
 </resources>

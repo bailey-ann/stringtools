@@ -57,7 +57,7 @@ public class CustomerRacquetActivity extends Activity implements OnItemSelectedL
 	    customer = (TblUsers)intent.getSerializableExtra("customer");
 	    position = intent.getIntExtra("position", PositionMenu.CUSTOMERS_LIST_RACQUET);
 	    
-	    getActionBar().setTitle(getResources().getString(R.string.list_customer_racquet));
+	    getActionBar().setTitle(getResources().getString(R.string.list_racquets));
         getActionBar().setSubtitle(customer.getName() + " " + customer.getSurname());
 	    
 	    new GetListCustomerRacquet().execute();

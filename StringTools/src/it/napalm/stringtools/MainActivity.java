@@ -11,6 +11,8 @@ import it.napalm.stringtools.settings.GripDataActivity;
 import it.napalm.stringtools.settings.GripsFragment;
 import it.napalm.stringtools.settings.OvergripDataActivity;
 import it.napalm.stringtools.settings.OvergripsFragment;
+import it.napalm.stringtools.settings.RacquetDataActivity;
+import it.napalm.stringtools.settings.RacquetsFragment;
 import it.napalm.stringtools.user.CustomerDataActivity;
 import it.napalm.stringtools.user.CustomerRacquetActivity;
 import it.napalm.stringtools.user.CustomersFragment;
@@ -43,6 +45,7 @@ public class MainActivity extends Activity {
 	private static final int MOD_DATA_BRAND = 2;
 	private static final int MOD_DATA_GRIPS = 3;
 	private static final int MOD_DATA_OVERGRIPS = 4;
+	private static final int MOD_DATA_RACQUETS = 5;
 	private ListView mDrawerList;
 	private DrawerLayout mDrawerLayout;
 	private String[] mTitles;
@@ -170,6 +173,9 @@ public class MainActivity extends Activity {
     	else if(position == PositionMenu.OVERGRIPS_LIST){
     		fragment = OvergripsFragment.newInstance(position);
     	}
+    	else if(position == PositionMenu.RACQUETS_LIST){
+    		fragment = RacquetsFragment.newInstance(position);
+    	}
     	else if(position == PositionMenu.LOGOUT){
     		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         	SharedPreferences.Editor editor = prefs.edit();
@@ -246,11 +252,17 @@ public class MainActivity extends Activity {
                 	}
                 } 
             case MOD_DATA_BRAND:
-            	selectItem(PositionMenu.BRANDS_LIST);
+            	if (resultCode == RESULT_OK)
+            		selectItem(PositionMenu.BRANDS_LIST);
             case MOD_DATA_GRIPS:
-            	selectItem(PositionMenu.GRIPS_LIST);
+            	if (resultCode == RESULT_OK)
+            		selectItem(PositionMenu.GRIPS_LIST);
             case MOD_DATA_OVERGRIPS:
-            	selectItem(PositionMenu.OVERGRIPS_LIST);
+            	if (resultCode == RESULT_OK)
+            		selectItem(PositionMenu.OVERGRIPS_LIST);
+            case MOD_DATA_RACQUETS:
+            	if (resultCode == RESULT_OK)
+            		selectItem(PositionMenu.RACQUETS_LIST);
             default:
                 break;
         }
@@ -290,8 +302,8 @@ public class MainActivity extends Activity {
 		
     }
     
-    public void callShowCustomerRacquet(Boolean close, TblUsers customer){
-    	if(close){
+    public void callShowCustomerRacquet(Boolean closeMenu, TblUsers customer){
+    	if(closeMenu){
     		mDrawerList.setItemChecked(-1, true);
         	mDrawerLayout.closeDrawer(mDrawerList);
 		}
@@ -302,17 +314,14 @@ public class MainActivity extends Activity {
     }
     
     public void callEditDataBrand(TblBrands item){
-    	mDrawerList.setItemChecked(-1, true);
         mDrawerLayout.closeDrawer(mDrawerList);
     	Intent personalData = new Intent(this, BrandDataActivity.class);
 		personalData.putExtra("brand", item);
 		personalData.putExtra("position", PositionMenu.BRANDS_LIST);
-		startActivityForResult(personalData, MOD_DATA_BRAND);
-		
+		startActivityForResult(personalData, MOD_DATA_BRAND);		
     }
     
     public void callEditDataGrips(int id){
-    	mDrawerList.setItemChecked(-1, true);
         mDrawerLayout.closeDrawer(mDrawerList);
     	Intent personalData = new Intent(this, GripDataActivity.class);
 		personalData.putExtra("id", id);
@@ -321,12 +330,19 @@ public class MainActivity extends Activity {
     }
     
     public void callEditDataOvergrips(int id){
-    	mDrawerList.setItemChecked(-1, true);
         mDrawerLayout.closeDrawer(mDrawerList);
     	Intent personalData = new Intent(this, OvergripDataActivity.class);
 		personalData.putExtra("id", id);
 		personalData.putExtra("position", PositionMenu.OVERGRIPS_LIST);
 		startActivityForResult(personalData, MOD_DATA_OVERGRIPS);	
+    }
+    
+    public void callEditDataRacquets(int id){
+        mDrawerLayout.closeDrawer(mDrawerList);
+    	Intent personalData = new Intent(this, RacquetDataActivity.class);
+		personalData.putExtra("id", id);
+		personalData.putExtra("position", PositionMenu.RACQUETS_LIST);
+		startActivityForResult(personalData, MOD_DATA_RACQUETS);
     }
     
     

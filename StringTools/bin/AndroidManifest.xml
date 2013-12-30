@@ -131,6 +131,16 @@
 	            android:name="android.support.PARENT_ACTIVITY"
 	            android:value="it.napalm.stringtools.MainActivity" />
         </activity>
+        <activity
+            android:label="@string/personal_data"
+            android:name="it.napalm.stringtools.settings.RacquetDataActivity"
+            android:parentActivityName="it.napalm.stringtools.MainActivity" 
+            android:theme="@android:style/Theme.Holo.Light" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+	        <meta-data
+	            android:name="android.support.PARENT_ACTIVITY"
+	            android:value="it.napalm.stringtools.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
