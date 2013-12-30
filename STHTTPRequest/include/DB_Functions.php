@@ -214,23 +214,6 @@
         return $response;
     }
     
-     public function getListGauges() {
-        $response = array();
-		$response["listgauges"] = array();
-     
-		$result = mysql_query("select * from FROM tbl_gauges order by id") or die(mysql_error());
-
-		while($row = mysql_fetch_array($result)){
-			$tmp = array();
-			
-			$tmp["id"] = $row["id"];
-            $tmp["usa"] = $row["usa"];
-            $tmp["diameter"] = $row["diameter"];
-			array_push($response["listgauges"], $tmp);
-		}
-		
-        return $response;
-    }
     
     public function getListGripSize($id) {
         $response = array();
@@ -288,22 +271,6 @@
         return $response;
     }
     
-    public function getStringType() {
-        $response = array();
-		$response["stringtype"] = array();
-     
-		$result = mysql_query("select * from tbl_string_type order by description") or die(mysql_error());
-
-		while($row = mysql_fetch_array($result)){
-			$tmp = array();
-			$tmp["id"] = $row["id"];
-			$tmp["description"] = $row["description"];
-			array_push($response["stringtype"], $tmp);
-		}
-		
-        return $response;
-    }
-    
     public function getRacquetsPattern($id) {
         $response = array();
 		$response["racquetspattern"] = array();
@@ -319,31 +286,6 @@
 			$tmp["id"] = $row["id"];
 			$tmp["description"] = $row["description"];
 			array_push($response["racquetspattern"], $tmp);
-		}
-		
-        return $response;
-    }
-    
-    public function getStrings($id) {
-        $response = array();
-		$response["strings"] = array();
-		
-		$query = "select * from tbl_strings order by id";
-		if($id != 0)
-			$query = "select * from tbl_strings  where id = " . $id;
-     
-		$result = mysql_query($query) or die(mysql_error());
-
-		while($row = mysql_fetch_array($result)){
-			$tmp = array();
-			$tmp["id"] = $row["id"];
-			$tmp["tbl_brands_id"] = $row["tbl_brands_id"];
-			$tmp["tbl_gauges_id"] = $row["tbl_gauges_id"];
-			$tmp["tbl_string_type_id"] = $row["tbl_string_type_id"];
-			$tmp["model"] = $row["model"];
-			$tmp["code"] = $row["code"];
-			$tmp["exact_gauge"] = $row["exact_gauge"];
-			array_push($response["strings"], $tmp);
 		}
 		
         return $response;
@@ -660,6 +602,102 @@
     	$result = mysql_query($query) or die(mysql_error());
     	return $result;
     		
+    }
+    
+    public function getStringText() {
+    	$response = array();
+    	$response["strings"] = array();
+    
+    	$query = "select tbl_strings.id, concat(tbl_brands.description, ' ', tbl_strings.model, ' ', tbl_gauges.usa, '(', tbl_gauges.diameter, ')') as description from tbl_strings
+			inner join tbl_brands on tbl_brands.id = tbl_strings.tbl_brands_id
+    		inner join tbl_gauges on tbl_gauges.id = tbl_strings.tbl_gauges_id
+			order by tbl_brands.description, tbl_strings.model";
+    
+    	$result = mysql_query($query) or die(mysql_error());
+    
+    	while($row = mysql_fetch_array($result)){
+    		$tmp = array();
+    		$tmp["id"] = $row["id"];
+    		$tmp["description"] = $row["description"];
+    		array_push($response["strings"], $tmp);
+    	}
+    
+    	return $response;
+    }
+    
+    public function getListStrings($values) {
+    	$response = array();
+    	$response["strings"] = array();
+    
+    	$query = "select * from tbl_strings order by id";
+    	if($values['id'] != 0)
+    		$query = "select * from tbl_strings  where id = " . $values['id'];
+    	 
+    	$result = mysql_query($query) or die(mysql_error());
+    
+    	while($row = mysql_fetch_array($result)){
+    		$tmp = array();
+    		$tmp["id"] = $row["id"];
+    		$tmp["tbl_brands_id"] = $row["tbl_brands_id"];
+    		$tmp["tbl_gauges_id"] = $row["tbl_gauges_id"];
+    		$tmp["tbl_string_type_id"] = $row["tbl_string_type_id"];
+    		$tmp["model"] = $row["model"];
+    		$tmp["code"] = $row["code"];
+    		$tmp["exact_gauge"] = $row["exact_gauge"];
+    		$tmp["price"] = 0;
+    		
+    		
+    		$query2 = "select price from rel_string_price where  id_stringer = " . $values['idUser'] . " and id_strings = " . $tmp["id"] ;
+    		$result2 = mysql_query($query2) or die(mysql_error());
+    		while($row2 = mysql_fetch_array($result2)){
+    			$tmp["price"] = $row2["price"];
+    		}
+    		
+    		array_push($response["strings"], $tmp);
+    	}
+    
+    	return $response;
+    }
+    
+    public function getGauges($id) {
+    	$response = array();
+    	$response["gauges"] = array();
+    
+    	$query = "select * from tbl_gauges order by id";
+    	if($id != 0)
+    		$query = "select * from tbl_gauges  where id = " . $id;
+    	 
+    	$result = mysql_query($query) or die(mysql_error());
+    
+    	while($row = mysql_fetch_array($result)){
+    		$tmp = array();
+    		$tmp["id"] = $row["id"];
+    		$tmp["usa"] = $row["usa"];
+    		$tmp["diameter"] = $row["diameter"];
+    		array_push($response["gauges"], $tmp);
+    	}
+    
+    	return $response;
+    }
+    
+    public function getStringType($id) {
+    	$response = array();
+    	$response["stringtype"] = array();
+    
+    	$query = "select * from tbl_string_type order by id";
+    	if($id != 0)
+    		$query = "select * from tbl_string_type  where id = " . $id;
+    
+    	$result = mysql_query($query) or die(mysql_error());
+    
+    	while($row = mysql_fetch_array($result)){
+    		$tmp = array();
+    		$tmp["id"] = $row["id"];
+    		$tmp["description"] = $row["description"];
+    		array_push($response["stringtype"], $tmp);
+    	}
+    
+    	return $response;
     }
 
 }

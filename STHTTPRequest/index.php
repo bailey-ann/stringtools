@@ -138,9 +138,6 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
     }else if ($tag == 'listbrand') {
 		$response = $db->getListBrands($_POST['id']);
 		echo json_encode($response);
-    }else if ($tag == 'listgauges') {
-		$response = $db->getListGauges();
-		echo json_encode($response);
     }else if ($tag == 'listgripsize') {
 		$response = $db->getListGripSize($_POST['id']);
 		echo json_encode($response);
@@ -150,14 +147,8 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
     }else if ($tag == 'stringingjobtype') {
 		$response = $db->getStringingJobType();
 		echo json_encode($response);
-    }else if ($tag == 'stringtype') {
-		$response = $db->getStringType();
-		echo json_encode($response);
     }else if ($tag == 'racquetspattern') {
 		$response = $db->getRacquetsPattern($_POST['id']);
-		echo json_encode($response);
-    }else if ($tag == 'strings') {
-		$response = $db->getStrings($_POST['id']);
 		echo json_encode($response);
     }else if ($tag == 'stringingmachines') {
 		$response = $db->getStringingMachines($_POST['id']);
@@ -226,6 +217,18 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
     }else if ($tag == 'editracquet') {
 		$result = $db->editRacquet($_POST);
 		$response["result"] = $result."";
+		echo json_encode($response);
+    }else if ($tag == 'stringstext') {
+		$response = $db->getStringText();
+		echo json_encode($response);
+    }else if ($tag == 'strings') {
+		$response = $db->getListStrings($_POST);
+		echo json_encode($response);
+    }else if ($tag == 'gauges') {
+		$response = $db->getGauges($_POST['id']);
+		echo json_encode($response);
+    }else if ($tag == 'stringtype') {
+		$response = $db->getStringType($_POST['id']);
 		echo json_encode($response);
     }else {
         echo "Invalid Request";
