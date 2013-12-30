@@ -4,7 +4,6 @@ package it.napalm.stringtools.user;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.text.DecimalFormat;
 import java.util.Locale;
 import java.util.Random;
 

@@ -12,8 +12,6 @@ import it.napalm.stringtools.object.TblUsers;
 import it.napalm.stringtools.utils.HttpFunctions;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources.NotFoundException;
 import android.os.AsyncTask;

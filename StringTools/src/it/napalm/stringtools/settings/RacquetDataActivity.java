@@ -1,27 +1,19 @@
 package it.napalm.stringtools.settings;
 
-import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Locale;
 
 import org.json.JSONException;
 
 import it.napalm.stringtools.R;
-import it.napalm.stringtools.globalobject.CustomerRacquet;
 import it.napalm.stringtools.object.TblBrands;
-import it.napalm.stringtools.object.TblGripSize;
 import it.napalm.stringtools.object.TblRacquets;
 import it.napalm.stringtools.object.TblRacquetsPattern;
-import it.napalm.stringtools.object.TblRacquetsUser;
 import it.napalm.stringtools.utils.Function;
 import it.napalm.stringtools.utils.HttpFunctions;
-import android.R.bool;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,14 +25,10 @@ import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 public class RacquetDataActivity extends Activity  {
 

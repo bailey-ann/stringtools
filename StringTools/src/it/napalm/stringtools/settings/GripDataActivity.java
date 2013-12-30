@@ -1,27 +1,17 @@
 package it.napalm.stringtools.settings;
 
-
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Locale;
-import java.util.Random;
 
 import org.json.JSONException;
 
 import it.napalm.stringtools.R;
 import it.napalm.stringtools.object.PositionMenu;
 import it.napalm.stringtools.object.TblBrands;
-import it.napalm.stringtools.object.TblGripSize;
 import it.napalm.stringtools.object.TblGrips;
-import it.napalm.stringtools.object.TblUsers;
-import it.napalm.stringtools.user.NewCustomerRacquetActivity;
 import it.napalm.stringtools.utils.Function;
 import it.napalm.stringtools.utils.HttpFunctions;
-import android.R.integer;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -43,7 +33,6 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 public class GripDataActivity extends Activity implements OnItemSelectedListener  {
 

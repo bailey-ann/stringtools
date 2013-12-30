@@ -1,18 +1,10 @@
 package it.napalm.stringtools.settings;
 
-
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.text.DecimalFormat;
-import java.util.Random;
-
 import org.json.JSONException;
 
 import it.napalm.stringtools.R;
 import it.napalm.stringtools.object.PositionMenu;
 import it.napalm.stringtools.object.TblBrands;
-import it.napalm.stringtools.object.TblUsers;
 import it.napalm.stringtools.utils.HttpFunctions;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -32,7 +24,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class BrandDataActivity extends Activity implements OnItemSelectedListener  {
 

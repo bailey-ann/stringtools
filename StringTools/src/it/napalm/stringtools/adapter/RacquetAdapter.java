@@ -95,6 +95,7 @@ public class RacquetAdapter extends BaseAdapter{
 
 	    }
 
+			@SuppressWarnings("unchecked")
 			@Override
 			protected void publishResults(CharSequence arg0, FilterResults arg1) {
 				clear();

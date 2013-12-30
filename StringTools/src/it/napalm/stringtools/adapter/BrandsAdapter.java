@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import it.napalm.stringtools.R;
-import it.napalm.stringtools.globalobject.RacquetText;
 import it.napalm.stringtools.object.TblBrands;
 import android.app.Activity;
 import android.content.Context;
@@ -96,6 +95,7 @@ public class BrandsAdapter extends BaseAdapter{
 
 	    }
 
+			@SuppressWarnings("unchecked")
 			@Override
 			protected void publishResults(CharSequence arg0, FilterResults arg1) {
 				clear();

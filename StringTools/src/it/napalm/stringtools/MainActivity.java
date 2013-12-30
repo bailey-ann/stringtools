@@ -3,7 +3,6 @@ package it.napalm.stringtools;
 
 import it.napalm.stringtools.object.PositionMenu;
 import it.napalm.stringtools.object.TblBrands;
-import it.napalm.stringtools.object.TblGrips;
 import it.napalm.stringtools.object.TblUsers;
 import it.napalm.stringtools.settings.BrandDataActivity;
 import it.napalm.stringtools.settings.BrandsFragment;

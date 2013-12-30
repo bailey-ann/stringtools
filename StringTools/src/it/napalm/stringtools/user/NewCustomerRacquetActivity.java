@@ -9,8 +9,6 @@ import java.util.Date;
 import org.json.JSONException;
 
 import it.napalm.stringtools.R;
-import it.napalm.stringtools.globalobject.CustomerRacquet;
-import it.napalm.stringtools.globalobject.Racquet;
 import it.napalm.stringtools.object.TblBrands;
 import it.napalm.stringtools.object.TblGripSize;
 import it.napalm.stringtools.object.TblRacquets;
@@ -101,7 +99,8 @@ public class NewCustomerRacquetActivity extends Activity  {
         mPickDate = (Button) findViewById(R.id.buttonSelectTime);
         
         mPickDate.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            @SuppressWarnings("deprecation")
+			public void onClick(View v) {
                 showDialog(0);
             }
         });
@@ -320,60 +319,6 @@ public class NewCustomerRacquetActivity extends Activity  {
 	    protected Void doInBackground(TblRacquetsUser... arg0) {
 	    	try {
 	    		return_type = function.editRacquetCustomer(getResources().getString(R.string.URL), arg0[0]);
-			} catch (NotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        return null;
-	    }
-	 
-	    @Override
-	    protected void onPostExecute(Void result) {
-	        super.onPostExecute(result);
-	        if (pDialog.isShowing())
-	            pDialog.dismiss();
-	        if(return_type.equals("1")){
-		        Intent output = new Intent();
-		        setResult(RESULT_OK, output);
-		        finish();
-	        }else{
-	        	AlertDialog.Builder builder1 = new AlertDialog.Builder(NewCustomerRacquetActivity.this);
-	        	builder1.setMessage(getResources().getString(R.string.wrong_save))
-	        		.setTitle(getResources().getString(R.string.attention));
-	            builder1.setCancelable(true);
-	            builder1.setPositiveButton("Ok",
-	                    new DialogInterface.OnClickListener() {
-	                public void onClick(DialogInterface dialog, int id) {
-	                    dialog.cancel();
-	                }
-	            });
-
-	            AlertDialog alert11 = builder1.create();
-	            alert11.show();
-	        }
-	    }
-	 
-	}
-	
-	private class DeleteRacquet extends AsyncTask<TblRacquetsUser, Void, Void> {
-		private ProgressDialog pDialog ;
-		private String return_type = "";
-	    @Override
-	    protected void onPreExecute() {
-	        super.onPreExecute();	
-	        pDialog = new ProgressDialog(NewCustomerRacquetActivity.this);
-	        pDialog.setMessage(getResources().getString(R.string.wait_save));
-	        pDialog.setCancelable(false);
-	        pDialog.show();
-	    }
-	 
-	    @Override
-	    protected Void doInBackground(TblRacquetsUser... arg0) {
-	    	try {
-	    		return_type = function.removeRacquetCustomer(getResources().getString(R.string.URL), arg0[0]);
 			} catch (NotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

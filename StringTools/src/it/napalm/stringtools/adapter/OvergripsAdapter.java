@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import it.napalm.stringtools.R;
-import it.napalm.stringtools.globalobject.GripText;
 import it.napalm.stringtools.globalobject.OvergripText;
-import it.napalm.stringtools.globalobject.RacquetText;
-import it.napalm.stringtools.object.TblBrands;
-import it.napalm.stringtools.object.TblGrips;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -99,6 +95,7 @@ public class OvergripsAdapter extends BaseAdapter{
 
 	    }
 
+			@SuppressWarnings("unchecked")
 			@Override
 			protected void publishResults(CharSequence arg0, FilterResults arg1) {
 				clear();

@@ -83,7 +83,8 @@ public class EditCustomerRacquetActivity extends Activity  {
         mPickDate = (Button) findViewById(R.id.buttonSelectTime);
         
         mPickDate.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            @SuppressWarnings("deprecation")
+			public void onClick(View v) {
                 showDialog(0);
             }
         });
