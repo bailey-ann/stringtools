@@ -219,6 +219,14 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
 		$result = $db->newOvergrip($_POST);
 		$response["result"] = $result."";
 		echo json_encode($response);
+    }else if ($tag == 'saveracquet') {
+		$result = $db->saveRacquet($_POST);
+		$response["result"] = $result."";
+		echo json_encode($response);
+    }else if ($tag == 'editracquet') {
+		$result = $db->editRacquet($_POST);
+		$response["result"] = $result."";
+		echo json_encode($response);
     }else {
         echo "Invalid Request";
     }

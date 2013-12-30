@@ -632,6 +632,35 @@
     	$result = mysql_query($query) or die(mysql_error());
     	return $result;
     }
+    
+    public function saveRacquet($value){
+    	$query = "insert into tbl_racquets (id, tbl_brands_id, tbl_racquets_pattern_id, model, head_size, length, weight_unstrung, weight_strung, balance, swingweight, stiffness, beam_width, note, date_modify) " .
+    			"VALUES (null, ".$value["tbl_brands_id"].",'".$value["tbl_racquets_pattern_id"]."','".$value["model"]."','".$value["head_size"]."','".$value["length"]."','".$value["weight_unstrung"]."'," .
+    			"'".$value["weight_strung"]."','".$value["balance"]."','".$value["swingweight"]."','".$value["stiffness"]."','".$value["beam_width"]."','".$value["note"]."', 'now()')";
+    	$result = mysql_query($query) or die(mysql_error());
+    	return $result;
+    		
+    }
+    
+    public function editRacquet($value){
+    	$query = "update tbl_racquets set tbl_brands_id = ".$value["tbl_brands_id"].", " .
+    			" tbl_racquets_pattern_id = '".$value["tbl_racquets_pattern_id"]."', " .
+    			" model = '".$value["model"]."', " .
+    			" head_size = '".$value["head_size"]."', " .
+    			" length = '".$value["length"]."', " .
+    			"weight_unstrung = '".$value["weight_unstrung"]."', " .
+    			"weight_strung = '".$value["weight_strung"]."', " .
+    			"balance = '".$value["balance"]."', " .
+    			"swingweight = '".$value["swingweight"]."', " .
+    			"stiffness = '".$value["stiffness"]."', " .
+    			"beam_width = '".$value["beam_width"]."', " .
+    			"note = '".$value["note"]."', " .
+    			"date_modify = 'now()' " .
+    			" where id = ". $value["id"];
+    	$result = mysql_query($query) or die(mysql_error());
+    	return $result;
+    		
+    }
 
 }
 ?>
