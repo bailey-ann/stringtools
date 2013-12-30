@@ -99,7 +99,7 @@ public class RacquetDataActivity extends Activity  {
 		    case android.R.id.home:
 		    	backTo();
 	            return true;
-	        case R.id.save:
+	        case R.id.action_save:
 	        	saveRacquet();
 	            return true;
 	        default:
@@ -108,13 +108,15 @@ public class RacquetDataActivity extends Activity  {
 	}
 	
 	private void saveRacquet(){
-		if(NEW)
+		if(NEW){
 			item = new TblRacquets();
+			item.setId(0);
+		}
 		TblBrands tblBrands = (TblBrands) spinBrandName.getItemAtPosition(spinBrandName.getSelectedItemPosition());
 		item.setTblBrands(tblBrands.getId());
 		TblRacquetsPattern tblRacquetsPattern = (TblRacquetsPattern) spinPattern.getItemAtPosition(spinPattern.getSelectedItemPosition());
 		item.setTblRacquetsPattern(tblRacquetsPattern.getId());
-		item.setModel(((EditText) findViewById(R.id.model)).getText().toString());
+		item.setModel(((EditText) findViewById(R.id.Model)).getText().toString());
 		item.setHeadSize(Function.stringToDouble( ((EditText) findViewById(R.id.HeadSize)).getText().toString()));
 		item.setLength(Function.stringToDouble( ((EditText) findViewById(R.id.Length)).getText().toString()));
 		item.setWeightUnstrung(Function.stringToDouble( ((EditText) findViewById(R.id.WeightUnstrung)).getText().toString()));	
@@ -125,7 +127,7 @@ public class RacquetDataActivity extends Activity  {
 		item.setBeamWidth(((EditText) findViewById(R.id.BeamWidth)).getText().toString());
 		item.setNote(((EditText) findViewById(R.id.Note)).getText().toString());
 		
-		new SaveData().execute(item);
+		new SaveData().execute();
 	}
 
 	private void backTo(){
@@ -257,7 +259,10 @@ public class RacquetDataActivity extends Activity  {
 	    @Override
 	    protected Void doInBackground(Void... arg0) {
 	    	try {
-	    		//return_type = function.saveRacquet(getResources().getString(R.string.URL), item);
+	    		if(!NEW)
+	    			return_type = function.editRacquet(getResources().getString(R.string.URL), item);
+	    		else
+	    			return_type = function.saveRacquet(getResources().getString(R.string.URL), item);
 			} catch (NotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

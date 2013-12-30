@@ -58,6 +58,8 @@ public class HttpFunctions {
     private static String getOvergripsText  = "overgripstext";
     private static String editDataOvergrip = "editdataovergrip";
     private static String newOvergrip = "newovergrip";
+    private static String saveRacquet = "saveracquet";
+    private static String editRacquet = "editracquet";
     
     // constructor
     public HttpFunctions(){
@@ -584,6 +586,47 @@ public class HttpFunctions {
         params.add(new BasicNameValuePair("model", item.getModel()));
         params.add(new BasicNameValuePair("price", String.format( "%.2f", item.getPrice()).replace(',', '.')));
         params.add(new BasicNameValuePair("note", item.getNote()));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        return json.getString("result");
+    }
+    
+    public String saveRacquet(String url, TblRacquets value) throws JSONException{
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", saveRacquet));
+        params.add(new BasicNameValuePair("tbl_brands_id", value.getTblBrands()+""));
+        params.add(new BasicNameValuePair("tbl_racquets_pattern_id", value.getTblRacquetsPattern()+""));
+        params.add(new BasicNameValuePair("model", value.getModel()));
+        params.add(new BasicNameValuePair("head_size", String.format( "%.2f", value.getHeadSize()).replace(',', '.')));
+        params.add(new BasicNameValuePair("length", String.format( "%.2f", value.getLength()).replace(',', '.')));
+        params.add(new BasicNameValuePair("weight_unstrung", String.format( "%.2f", value.getWeightUnstrung()).replace(',', '.')));
+        params.add(new BasicNameValuePair("weight_strung", String.format( "%.2f", value.getWeightStrung()).replace(',', '.')));
+        params.add(new BasicNameValuePair("balance", String.format( "%.2f", value.getBalance()).replace(',', '.')));
+        params.add(new BasicNameValuePair("swingweight", String.format( "%.2f", value.getSwingweight()).replace(',', '.')));
+        params.add(new BasicNameValuePair("stiffness",String.format( "%.2f", value.getStiffness() ).replace(',', '.')));
+        params.add(new BasicNameValuePair("beam_width", value.getBeamWidth()));
+        params.add(new BasicNameValuePair("note", value.getNote()));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        return json.getString("result");
+    }
+    
+    public String editRacquet(String url, TblRacquets value) throws JSONException{
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", editRacquet));
+        params.add(new BasicNameValuePair("id", value.getId()+""));
+        params.add(new BasicNameValuePair("tbl_brands_id", value.getTblBrands()+""));
+        params.add(new BasicNameValuePair("tbl_racquets_pattern_id", value.getTblRacquetsPattern()+""));
+        params.add(new BasicNameValuePair("model", value.getModel()));
+        params.add(new BasicNameValuePair("head_size", String.format( "%.2f", value.getHeadSize()).replace(',', '.')));
+        params.add(new BasicNameValuePair("length", String.format( "%.2f", value.getLength()).replace(',', '.')));
+        params.add(new BasicNameValuePair("weight_unstrung", String.format( "%.2f", value.getWeightUnstrung()).replace(',', '.')));
+        params.add(new BasicNameValuePair("weight_strung", String.format( "%.2f", value.getWeightStrung()).replace(',', '.')));
+        params.add(new BasicNameValuePair("balance", String.format( "%.2f", value.getBalance()).replace(',', '.')));
+        params.add(new BasicNameValuePair("swingweight", String.format( "%.2f", value.getSwingweight()).replace(',', '.')));
+        params.add(new BasicNameValuePair("stiffness",String.format( "%.2f", value.getStiffness() ).replace(',', '.')));
+        params.add(new BasicNameValuePair("beam_width", value.getBeamWidth()));
+        params.add(new BasicNameValuePair("note", value.getNote()));
         JSONObject json = jsonParser.getJSONFromUrl(url, params);
         return json.getString("result");
     }
