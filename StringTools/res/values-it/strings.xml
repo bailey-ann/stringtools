@@ -68,4 +68,11 @@
 	<string name="new_overgrip">Nuovo overgrip</string>
 	<string name="edit_racquet">Modifica racchetta</string>
 	<string name="new_racquet">Nuova racchetta</string>
+	<string name="edit_string">Modifica corda</string>
+	<string name="new_string">Nuova corda</string>
+	<string name="list_strings">Lista corde</string>
+	<string name="code">Codice</string>
+	<string name="Gauges">Diametro</string>
+	<string name="ExactGauges">Diametro esatto</string>
+	<string name="StringType">Tipo materiale</string>
 </resources>

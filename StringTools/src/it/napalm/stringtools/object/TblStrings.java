@@ -10,12 +10,13 @@ import java.util.Set;
 public class TblStrings implements java.io.Serializable {
 
 	private Integer id;
-	private TblGauges tblGauges;
-	private TblBrands tblBrands;
-	private TblStringType tblStringType;
+	private int tblGauges;
+	private int tblBrands;
+	private int tblStringType;
 	private String model;
 	private String code;
-	private float exactGauge;
+	private double exactGauge;
+	private double price;
 	private Set tblStringingJobsesForTblStringsIdCross = new HashSet(0);
 	private Set relStringPrices = new HashSet(0);
 	private Set tblStringingJobsesForTblStringsIdMain = new HashSet(0);
@@ -23,9 +24,9 @@ public class TblStrings implements java.io.Serializable {
 	public TblStrings() {
 	}
 
-	public TblStrings(TblGauges tblGauges, TblBrands tblBrands,
-			TblStringType tblStringType, String model, String code,
-			float exactGauge) {
+	public TblStrings(int tblGauges, int tblBrands,
+			int tblStringType, String model, String code,
+			double exactGauge) {
 		this.tblGauges = tblGauges;
 		this.tblBrands = tblBrands;
 		this.tblStringType = tblStringType;
@@ -34,9 +35,9 @@ public class TblStrings implements java.io.Serializable {
 		this.exactGauge = exactGauge;
 	}
 
-	public TblStrings(TblGauges tblGauges, TblBrands tblBrands,
-			TblStringType tblStringType, String model, String code,
-			float exactGauge, Set tblStringingJobsesForTblStringsIdCross,
+	public TblStrings(int tblGauges, int tblBrands,
+			int tblStringType, String model, String code,
+			double exactGauge, Set tblStringingJobsesForTblStringsIdCross,
 			Set relStringPrices, Set tblStringingJobsesForTblStringsIdMain) {
 		this.tblGauges = tblGauges;
 		this.tblBrands = tblBrands;
@@ -57,27 +58,27 @@ public class TblStrings implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public TblGauges getTblGauges() {
+	public int getTblGauges() {
 		return this.tblGauges;
 	}
 
-	public void setTblGauges(TblGauges tblGauges) {
+	public void setTblGauges(int tblGauges) {
 		this.tblGauges = tblGauges;
 	}
 
-	public TblBrands getTblBrands() {
+	public int getTblBrands() {
 		return this.tblBrands;
 	}
 
-	public void setTblBrands(TblBrands tblBrands) {
+	public void setTblBrands(int tblBrands) {
 		this.tblBrands = tblBrands;
 	}
 
-	public TblStringType getTblStringType() {
+	public int getTblStringType() {
 		return this.tblStringType;
 	}
 
-	public void setTblStringType(TblStringType tblStringType) {
+	public void setTblStringType(int tblStringType) {
 		this.tblStringType = tblStringType;
 	}
 
@@ -97,38 +98,20 @@ public class TblStrings implements java.io.Serializable {
 		this.code = code;
 	}
 
-	public float getExactGauge() {
+	public double getExactGauge() {
 		return this.exactGauge;
 	}
 
-	public void setExactGauge(float exactGauge) {
+	public void setExactGauge(double exactGauge) {
 		this.exactGauge = exactGauge;
 	}
 
-	public Set getTblStringingJobsesForTblStringsIdCross() {
-		return this.tblStringingJobsesForTblStringsIdCross;
+	public double getPrice() {
+		return this.price;
 	}
 
-	public void setTblStringingJobsesForTblStringsIdCross(
-			Set tblStringingJobsesForTblStringsIdCross) {
-		this.tblStringingJobsesForTblStringsIdCross = tblStringingJobsesForTblStringsIdCross;
-	}
-
-	public Set getRelStringPrices() {
-		return this.relStringPrices;
-	}
-
-	public void setRelStringPrices(Set relStringPrices) {
-		this.relStringPrices = relStringPrices;
-	}
-
-	public Set getTblStringingJobsesForTblStringsIdMain() {
-		return this.tblStringingJobsesForTblStringsIdMain;
-	}
-
-	public void setTblStringingJobsesForTblStringsIdMain(
-			Set tblStringingJobsesForTblStringsIdMain) {
-		this.tblStringingJobsesForTblStringsIdMain = tblStringingJobsesForTblStringsIdMain;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 }

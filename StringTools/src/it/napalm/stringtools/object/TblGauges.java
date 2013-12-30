@@ -51,13 +51,12 @@ public class TblGauges implements java.io.Serializable {
 	public void setDiameter(String diameter) {
 		this.diameter = diameter;
 	}
-
-	public Set getTblStringses() {
-		return this.tblStringses;
+	
+	public String getDescription() {
+		return getUsa() + "(" + getDiameter() + ")";
 	}
-
-	public void setTblStringses(Set tblStringses) {
-		this.tblStringses = tblStringses;
+	
+	public String toString() {
+		return getUsa() + "(" + getDiameter() + ")";
 	}
-
 }

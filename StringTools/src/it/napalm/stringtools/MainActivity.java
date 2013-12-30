@@ -12,6 +12,8 @@ import it.napalm.stringtools.settings.OvergripDataActivity;
 import it.napalm.stringtools.settings.OvergripsFragment;
 import it.napalm.stringtools.settings.RacquetDataActivity;
 import it.napalm.stringtools.settings.RacquetsFragment;
+import it.napalm.stringtools.settings.StringDataActivity;
+import it.napalm.stringtools.settings.StringsFragment;
 import it.napalm.stringtools.user.CustomerDataActivity;
 import it.napalm.stringtools.user.CustomerRacquetActivity;
 import it.napalm.stringtools.user.CustomersFragment;
@@ -45,6 +47,7 @@ public class MainActivity extends Activity {
 	private static final int MOD_DATA_GRIPS = 3;
 	private static final int MOD_DATA_OVERGRIPS = 4;
 	private static final int MOD_DATA_RACQUETS = 5;
+	private static final int MOD_DATA_STRINGS = 6;
 	private ListView mDrawerList;
 	private DrawerLayout mDrawerLayout;
 	private String[] mTitles;
@@ -175,6 +178,9 @@ public class MainActivity extends Activity {
     	else if(position == PositionMenu.RACQUETS_LIST){
     		fragment = RacquetsFragment.newInstance(position);
     	}
+    	else if(position == PositionMenu.STRINGS_LIST){
+    		fragment = StringsFragment.newInstance(position);
+    	}
     	else if(position == PositionMenu.LOGOUT){
     		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         	SharedPreferences.Editor editor = prefs.edit();
@@ -262,6 +268,9 @@ public class MainActivity extends Activity {
             case MOD_DATA_RACQUETS:
             	if (resultCode == RESULT_OK)
             		selectItem(PositionMenu.RACQUETS_LIST);
+            case MOD_DATA_STRINGS:
+            	if (resultCode == RESULT_OK)
+            		selectItem(PositionMenu.STRINGS_LIST);
             default:
                 break;
         }
@@ -342,6 +351,15 @@ public class MainActivity extends Activity {
 		personalData.putExtra("id", id);
 		personalData.putExtra("position", PositionMenu.RACQUETS_LIST);
 		startActivityForResult(personalData, MOD_DATA_RACQUETS);
+    }
+    
+    public void callEditDataStrings(int id){
+        mDrawerLayout.closeDrawer(mDrawerList);
+    	Intent personalData = new Intent(this, StringDataActivity.class);
+		personalData.putExtra("id", id);
+		personalData.putExtra("stringer", user);
+		personalData.putExtra("position", PositionMenu.STRINGS_LIST);
+		startActivityForResult(personalData, MOD_DATA_STRINGS);
     }
     
     

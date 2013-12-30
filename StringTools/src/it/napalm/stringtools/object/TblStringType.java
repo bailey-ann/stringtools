@@ -48,5 +48,9 @@ public class TblStringType implements java.io.Serializable {
 	public void setTblStringses(Set tblStringses) {
 		this.tblStringses = tblStringses;
 	}
+	
+	public String toString(){
+		return this.description;
+	}
 
 }

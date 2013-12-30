@@ -77,4 +77,13 @@
 	<string name="new_overgrip">New overgrip</string>
 	<string name="edit_racquet">Edit racquet</string>
 	<string name="new_racquet">New racquet</string>
+	<string name="edit_string">Modifica string</string>
+	<string name="new_string">Nuova string</string>
+	<string name="list_strings">Lista strings</string>
+	
+	<string name="code">Code</string>
+	<string name="Gauges">Gauges</string>
+	<string name="ExactGauges">Exact Gauges</string>
+	<string name="StringType">Type</string>
+	
 </resources>

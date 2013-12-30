@@ -3,14 +3,18 @@ package it.napalm.stringtools.utils;
 import it.napalm.stringtools.globalobject.GripText;
 import it.napalm.stringtools.globalobject.OvergripText;
 import it.napalm.stringtools.globalobject.RacquetText;
+import it.napalm.stringtools.globalobject.StringText;
 import it.napalm.stringtools.object.TblBrands;
 import it.napalm.stringtools.object.TblCurrencyUnit;
+import it.napalm.stringtools.object.TblGauges;
 import it.napalm.stringtools.object.TblGripSize;
 import it.napalm.stringtools.object.TblGrips;
 import it.napalm.stringtools.object.TblOvergrips;
 import it.napalm.stringtools.object.TblRacquets;
 import it.napalm.stringtools.object.TblRacquetsPattern;
 import it.napalm.stringtools.object.TblRacquetsUser;
+import it.napalm.stringtools.object.TblStringType;
+import it.napalm.stringtools.object.TblStrings;
 import it.napalm.stringtools.object.TblUsers;
 import it.napalm.stringtools.object.TblWeightUnit;
 
@@ -60,6 +64,10 @@ public class HttpFunctions {
     private static String newOvergrip = "newovergrip";
     private static String saveRacquet = "saveracquet";
     private static String editRacquet = "editracquet";
+    private static String getListStringText  = "stringstext";
+    private static String getListStrings  = "strings";
+    private static String getGauges  = "gauges";
+    private static String getStringType  = "stringtype";
     
     // constructor
     public HttpFunctions(){
@@ -629,5 +637,88 @@ public class HttpFunctions {
         params.add(new BasicNameValuePair("note", value.getNote()));
         JSONObject json = jsonParser.getJSONFromUrl(url, params);
         return json.getString("result");
+    }
+    
+    public ArrayList<StringText> getListStringText(String url) throws JSONException, ParseException{
+        // Building for TblRacquetsUser
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", getListStringText));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        JSONArray firstList = json.getJSONArray("strings"); 
+        
+        ArrayList<StringText> listInside = new ArrayList<StringText>();
+        for (int i = 0; i < firstList.length(); i++) {
+            JSONObject catObj = (JSONObject) firstList.get(i);
+            StringText element = new StringText();
+            element.setId(catObj.getInt("id"));
+            element.setDescription(catObj.getString("description"));
+			listInside.add(element);
+        }
+        return listInside;
+    }
+    
+    public ArrayList<TblStrings> getListStrings(String url, int idUser, int id) throws JSONException, ParseException{
+        // Building for TblRacquetsUser
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", getListStrings));
+        params.add(new BasicNameValuePair("idUser", idUser+""));
+        params.add(new BasicNameValuePair("id", id+""));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        JSONArray firstList = json.getJSONArray("strings"); 
+        
+        ArrayList<TblStrings> listInside = new ArrayList<TblStrings>();
+        for (int i = 0; i < firstList.length(); i++) {
+            JSONObject catObj = (JSONObject) firstList.get(i);
+            TblStrings element = new TblStrings();
+            element.setId(catObj.getInt("id"));
+            element.setTblBrands(catObj.getInt("tbl_brands_id"));
+            element.setTblGauges(catObj.getInt("tbl_gauges_id"));
+            element.setTblStringType(catObj.getInt("tbl_string_type_id"));
+            element.setModel(catObj.getString("model"));
+            element.setCode(catObj.getString("code"));
+            element.setExactGauge(catObj.getDouble("exact_gauge"));
+            element.setPrice(catObj.getDouble("price"));
+			listInside.add(element);
+        }
+        return listInside;
+    }
+    
+    public ArrayList<TblGauges> getGauges(String url, int id) throws JSONException, ParseException{
+        // Building for TblRacquetsUser
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", getGauges));
+        params.add(new BasicNameValuePair("id", id+""));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        JSONArray firstList = json.getJSONArray("gauges"); 
+        
+        ArrayList<TblGauges> listInside = new ArrayList<TblGauges>();
+        for (int i = 0; i < firstList.length(); i++) {
+            JSONObject catObj = (JSONObject) firstList.get(i);
+            TblGauges element = new TblGauges();
+            element.setId(catObj.getInt("id"));
+            element.setUsa(catObj.getString("usa"));
+            element.setDiameter(catObj.getString("diameter"));
+			listInside.add(element);
+        }
+        return listInside;
+    }
+    
+    public ArrayList<TblStringType> getStringType(String url, int id) throws JSONException, ParseException{
+        // Building for TblRacquetsUser
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", getStringType));
+        params.add(new BasicNameValuePair("id", id+""));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        JSONArray firstList = json.getJSONArray("stringtype"); 
+        
+        ArrayList<TblStringType> listInside = new ArrayList<TblStringType>();
+        for (int i = 0; i < firstList.length(); i++) {
+            JSONObject catObj = (JSONObject) firstList.get(i);
+            TblStringType element = new TblStringType();
+            element.setId(catObj.getInt("id"));
+            element.setDescription(catObj.getString("description"));
+			listInside.add(element);
+        }
+        return listInside;
     }
 }

@@ -10,6 +10,7 @@ public class PositionMenu {
 	public static int GRIPS_LIST = 5;
 	public static int OVERGRIPS_LIST = 6;
 	public static int RACQUETS_LIST = 7;
+	public static int STRINGS_LIST = 8;
 	public static int HOME = 100;
 	
 }
