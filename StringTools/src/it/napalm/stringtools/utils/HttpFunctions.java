@@ -68,6 +68,8 @@ public class HttpFunctions {
     private static String getListStrings  = "strings";
     private static String getGauges  = "gauges";
     private static String getStringType  = "stringtype";
+    private static String saveString  = "savestring";
+    private static String editString  = "editstring";
     
     // constructor
     public HttpFunctions(){
@@ -720,5 +722,38 @@ public class HttpFunctions {
 			listInside.add(element);
         }
         return listInside;
+    }
+    
+    public String saveString(String url, TblStrings value, int idStringer) throws JSONException{
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", saveString));
+        params.add(new BasicNameValuePair("stringer", idStringer+""));
+        params.add(new BasicNameValuePair("tbl_brands_id", value.getTblBrands()+""));
+        params.add(new BasicNameValuePair("tbl_gauges_id", value.getTblGauges()+""));
+        params.add(new BasicNameValuePair("tbl_string_type_id", value.getTblStringType()+""));
+        params.add(new BasicNameValuePair("model", value.getModel()));
+        params.add(new BasicNameValuePair("code", value.getCode()));
+        params.add(new BasicNameValuePair("exact_gauge", String.format( "%.2f", value.getExactGauge()).replace(',', '.')));
+        params.add(new BasicNameValuePair("price", String.format( "%.2f", value.getPrice()).replace(',', '.')));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        return json.getString("result");
+    }
+    
+    public String editString(String url, TblStrings value, int idStringer) throws JSONException{
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", editString));
+        params.add(new BasicNameValuePair("stringer", idStringer+""));
+        params.add(new BasicNameValuePair("id", value.getId()+""));
+        params.add(new BasicNameValuePair("tbl_brands_id", value.getTblBrands()+""));
+        params.add(new BasicNameValuePair("tbl_gauges_id", value.getTblGauges()+""));
+        params.add(new BasicNameValuePair("tbl_string_type_id", value.getTblStringType()+""));
+        params.add(new BasicNameValuePair("model", value.getModel()));
+        params.add(new BasicNameValuePair("code", value.getCode()));
+        params.add(new BasicNameValuePair("exact_gauge", String.format( "%.2f", value.getExactGauge()).replace(',', '.')));
+        params.add(new BasicNameValuePair("price", String.format( "%.2f", value.getPrice()).replace(',', '.')));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        return json.getString("result");
     }
 }

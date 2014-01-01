@@ -9,8 +9,6 @@ import org.json.JSONException;
 import it.napalm.stringtools.R;
 import it.napalm.stringtools.object.TblBrands;
 import it.napalm.stringtools.object.TblGauges;
-import it.napalm.stringtools.object.TblRacquets;
-import it.napalm.stringtools.object.TblRacquetsPattern;
 import it.napalm.stringtools.object.TblStringType;
 import it.napalm.stringtools.object.TblStrings;
 import it.napalm.stringtools.object.TblUsers;
@@ -106,26 +104,22 @@ public class StringDataActivity extends Activity  {
 	}
 	
 	private void save(){
-		/*if(NEW){
-			item = new TblRacquets();
+		if(NEW){
+			item = new TblStrings();
 			item.setId(0);
 		}
-		TblBrands tblBrands = (TblBrands) spinBrandName.getItemAtPosition(spinBrandName.getSelectedItemPosition());
+		TblBrands tblBrands = (TblBrands) spinTblBrands.getItemAtPosition(spinTblBrands.getSelectedItemPosition());
 		item.setTblBrands(tblBrands.getId());
-		TblRacquetsPattern tblRacquetsPattern = (TblRacquetsPattern) spinPattern.getItemAtPosition(spinPattern.getSelectedItemPosition());
-		item.setTblRacquetsPattern(tblRacquetsPattern.getId());
+		TblGauges tlGauges = (TblGauges) spinTblGauges.getItemAtPosition(spinTblGauges.getSelectedItemPosition());
+		item.setTblGauges(tlGauges.getId());
+		TblStringType tblStringType = (TblStringType) spinTblStringType.getItemAtPosition(spinTblStringType.getSelectedItemPosition());
+		item.setTblStringType(tblStringType.getId());
 		item.setModel(((EditText) findViewById(R.id.Model)).getText().toString());
-		item.setHeadSize(Function.stringToDouble( ((EditText) findViewById(R.id.HeadSize)).getText().toString()));
-		item.setLength(Function.stringToDouble( ((EditText) findViewById(R.id.Length)).getText().toString()));
-		item.setWeightUnstrung(Function.stringToDouble( ((EditText) findViewById(R.id.WeightUnstrung)).getText().toString()));	
-		item.setWeightStrung(Function.stringToDouble( ((EditText) findViewById(R.id.WeightStrung)).getText().toString()));
-		item.setBalance(Function.stringToDouble( ((EditText) findViewById(R.id.Balance)).getText().toString()));
-		item.setSwingweight(Function.stringToDouble( ((EditText) findViewById(R.id.Swingweight)).getText().toString()));
-		item.setStiffness(Function.stringToDouble( ((EditText) findViewById(R.id.Stiffness)).getText().toString()));	
-		item.setBeamWidth(((EditText) findViewById(R.id.BeamWidth)).getText().toString());
-		item.setNote(((EditText) findViewById(R.id.Note)).getText().toString());
+		item.setCode(((EditText) findViewById(R.id.Code)).getText().toString());		
+		item.setExactGauge(Function.stringToDouble( ((EditText) findViewById(R.id.ExactGauges)).getText().toString()));
+		item.setPrice(Function.stringToDouble( ((EditText) findViewById(R.id.Price)).getText().toString()));
 		
-		new SaveData().execute();*/
+		new SaveData().execute();
 	}
 
 	private void backTo(){
@@ -259,7 +253,12 @@ public class StringDataActivity extends Activity  {
 	 
 	    @Override
 	    protected Void doInBackground(Void... arg0) {
-
+	    	try{
+	    		if(NEW)
+		    		return_type = function.saveString(getResources().getString(R.string.URL), item, stringer.getId());
+		    	else
+		    		return_type = function.editString(getResources().getString(R.string.URL), item, stringer.getId());
+	    	}catch(Exception e){}
 	        return null;
 	    }
 	 
