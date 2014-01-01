@@ -699,6 +699,45 @@
     
     	return $response;
     }
+    
+    public function saveString($value){
+    	$query = "insert into tbl_strings (id, tbl_brands_id, tbl_gauges_id, tbl_string_type_id, model, code, exact_gauge) " .
+    			"VALUES (null, ".$value["tbl_brands_id"].",'".$value["tbl_gauges_id"]."','".$value["tbl_string_type_id"]."','".$value["model"]."','".$value["code"]."','".$value["exact_gauge"]."')";
+    	$result = mysql_query($query) or die(mysql_error());
+    	if($result){
+    		$lastId = mysql_insert_id();
+    		$query = "insert into rel_string_price (id_strings, id_stringer, price) values " .
+    				"(".$lastId.", '".$value["stringer"]."', '".$value["price"]."')";
+    		$result = mysql_query($query) or die(mysql_error());
+    		return $result;
+    	}else
+    		return $result;
+    	return $result;
+    
+    }
+    
+    public function editString($value){
+    	$query = "update tbl_strings set tbl_brands_id = ".$value["tbl_brands_id"].", " .
+    			" tbl_gauges_id = '".$value["tbl_gauges_id"]."', " .
+    			" tbl_string_type_id = '".$value["tbl_string_type_id"]."', " .
+    			" model = '".$value["model"]."', " .
+    			" code = '".$value["code"]."', " .
+    			"exact_gauge = '".$value["exact_gauge"]."' " .
+    			" where id = ". $value["id"];
+    	$result = mysql_query($query) or die(mysql_error());
+    	if($result){
+    		$lastId = mysql_insert_id();
+    		$query = "delete from rel_string_price where id_strings = " . $value["id"] . " and id_stringer = ". $value["stringer"];
+    		$result = mysql_query($query) or die(mysql_error());
+    		$query = "insert into rel_string_price (id_strings, id_stringer, price) values " .
+    				"(". $value["id"].", '".$value["stringer"]."', '".$value["price"]."')";
+    		$result = mysql_query($query) or die(mysql_error());
+    		return $result;
+    	}else
+    		return $result;
+    	return $result;
+    
+    }
 
 }
 ?>

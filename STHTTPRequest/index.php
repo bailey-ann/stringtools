@@ -230,6 +230,14 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
     }else if ($tag == 'stringtype') {
 		$response = $db->getStringType($_POST['id']);
 		echo json_encode($response);
+    }else if ($tag == 'savestring') {
+		$result = $db->saveString($_POST);
+		$response["result"] = $result."";
+		echo json_encode($response);
+    }else if ($tag == 'editstring') {
+		$result = $db->editString($_POST);
+		$response["result"] = $result."";
+		echo json_encode($response);
     }else {
         echo "Invalid Request";
     }
