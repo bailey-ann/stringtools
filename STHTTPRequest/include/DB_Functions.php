@@ -242,8 +242,12 @@
     public function getStringingMachineType() {
         $response = array();
 		$response["stringingmachinetype"] = array();
+		
+		$query = "select * from tbl_stringing_machine_type order by description";
+		if($id != 0)
+			$query = "select * from tbl_stringing_machine_type  where id = " . $id;
      
-		$result = mysql_query("select * from tbl_stringing_machine_type order by description") or die(mysql_error());
+		$result = mysql_query($query) or die(mysql_error());
 
 		while($row = mysql_fetch_array($result)){
 			$tmp = array();
@@ -291,13 +295,13 @@
         return $response;
     }
     
-    public function getStringingMachines($id) {
+    public function getStringingMachines($value) {
         $response = array();
 		$response["stringingmachines"] = array();
 		
 		$query = "select * from tbl_stringing_machines order by id";
-		if($id != 0)
-			$query = "select * from tbl_stringing_machines  where id = " . $id;
+		if($value["id"] != 0)
+			$query = "select * from tbl_stringing_machines  where id = " . $value["id"];
      
 		$result = mysql_query($query) or die(mysql_error());
 
@@ -307,6 +311,23 @@
 			$tmp["tbl_brands_id"] = $row["tbl_brands_id"];
 			$tmp["tbl_stringing_machine_type_id"] = $row["tbl_stringing_machine_type_id"];
 			$tmp["model"] = $row["model"];
+			
+			//setto valori a 0
+			$tmp["serial"] = "";
+			$tmp["date_buy"] = date("Y-m-d H:i:s", time());  
+			$tmp["date_calibration"] = date("Y-m-d H:i:s", time());  
+			$tmp["note"] = "";
+			
+			//recupero valori
+			$query2 = "select serial, date_buy, date_calibration, note from rel_stringer_stringing_machine where  id_stringer = " . $value['idUser'] . " and id_stringing_machine = " . $tmp["id"] ;
+			$result2 = mysql_query($query2) or die(mysql_error());
+			while($row2 = mysql_fetch_array($result2)){
+				$tmp["serial"] = $row2["serial"];
+				$tmp["date_buy"] = $row2["date_buy"];
+				$tmp["date_calibration"] = $row2["date_calibration"];
+				$tmp["note"] = $row2["note"];
+			}
+			
 			array_push($response["stringingmachines"], $tmp);
 		}
 		
@@ -737,6 +758,28 @@
     		return $result;
     	return $result;
     
+    }
+    
+    public function getListStringingMachinesText() {
+    	$response = array();
+    	$response["stringingmachines"] = array();
+    
+    	$query = "select tbl_stringing_machines.id, concat(tbl_brands.description, ' ', tbl_stringing_machines.model) as description 
+    			 from tbl_stringing_machines 
+			inner join tbl_brands on tbl_brands.id = tbl_stringing_machines.tbl_brands_id
+    		inner join tbl_stringing_machine_type on tbl_stringing_machine_type.id = tbl_stringing_machines.tbl_stringing_machine_type_id
+			order by tbl_brands.description, tbl_stringing_machines.model";
+    
+    	$result = mysql_query($query) or die(mysql_error());
+    
+    	while($row = mysql_fetch_array($result)){
+    		$tmp = array();
+    		$tmp["id"] = $row["id"];
+    		$tmp["description"] = $row["description"];
+    		array_push($response["stringingmachines"], $tmp);
+    	}
+    
+    	return $response;
     }
 
 }

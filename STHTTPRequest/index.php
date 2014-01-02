@@ -142,7 +142,7 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
 		$response = $db->getListGripSize($_POST['id']);
 		echo json_encode($response);
     }else if ($tag == 'stringingmachinetype') {
-		$response = $db->getStringingMachineType();
+		$response = $db->getStringingMachineType($_POST['id']);
 		echo json_encode($response);
     }else if ($tag == 'stringingjobtype') {
 		$response = $db->getStringingJobType();
@@ -151,7 +151,7 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
 		$response = $db->getRacquetsPattern($_POST['id']);
 		echo json_encode($response);
     }else if ($tag == 'stringingmachines') {
-		$response = $db->getStringingMachines($_POST['id']);
+		$response = $db->getStringingMachines($_POST);
 		echo json_encode($response);
     }else if ($tag == 'overgrips') {
 		$response = $db->getOvergrips($_POST['id']);
@@ -237,6 +237,9 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
     }else if ($tag == 'editstring') {
 		$result = $db->editString($_POST);
 		$response["result"] = $result."";
+		echo json_encode($response);
+    }else if ($tag == 'stringingmachinestext') {
+		$response = $db->getListStringingMachinesText();
 		echo json_encode($response);
     }else {
         echo "Invalid Request";
