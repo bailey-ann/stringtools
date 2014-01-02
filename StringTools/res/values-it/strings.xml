@@ -75,4 +75,9 @@
 	<string name="Gauges">Diametro</string>
 	<string name="ExactGauges">Diametro esatto</string>
 	<string name="StringType">Tipo materiale</string>
+	<string name="list_stringing_machines">Lista macchine incordatrici</string>	
+	<string name="edit_stringing_machine">Modifica macchina incordatrice</string>
+	<string name="new_stringing_machine">Nuova macchina incordatrice</string>
+	<string name="Type">Tipologia</string>
+	<string name="DateCalibration">Data calibrazione</string>
 </resources>

@@ -4,6 +4,7 @@ import it.napalm.stringtools.globalobject.GripText;
 import it.napalm.stringtools.globalobject.OvergripText;
 import it.napalm.stringtools.globalobject.RacquetText;
 import it.napalm.stringtools.globalobject.StringText;
+import it.napalm.stringtools.globalobject.StringingMachinesText;
 import it.napalm.stringtools.object.TblBrands;
 import it.napalm.stringtools.object.TblCurrencyUnit;
 import it.napalm.stringtools.object.TblGauges;
@@ -14,6 +15,8 @@ import it.napalm.stringtools.object.TblRacquets;
 import it.napalm.stringtools.object.TblRacquetsPattern;
 import it.napalm.stringtools.object.TblRacquetsUser;
 import it.napalm.stringtools.object.TblStringType;
+import it.napalm.stringtools.object.TblStringingMachineType;
+import it.napalm.stringtools.object.TblStringingMachines;
 import it.napalm.stringtools.object.TblStrings;
 import it.napalm.stringtools.object.TblUsers;
 import it.napalm.stringtools.object.TblWeightUnit;
@@ -70,6 +73,9 @@ public class HttpFunctions {
     private static String getStringType  = "stringtype";
     private static String saveString  = "savestring";
     private static String editString  = "editstring";
+    private static String getListStringingMachinesText  = "stringingmachinestext";
+    private static String getStriningMachineType = "stringingmachinetype";
+    private static String getListStringMachines  = "stringingmachines";
     
     // constructor
     public HttpFunctions(){
@@ -755,5 +761,74 @@ public class HttpFunctions {
         params.add(new BasicNameValuePair("price", String.format( "%.2f", value.getPrice()).replace(',', '.')));
         JSONObject json = jsonParser.getJSONFromUrl(url, params);
         return json.getString("result");
+    }
+    
+    public ArrayList<StringingMachinesText> getListStringingMachinesText(String url) throws JSONException, ParseException{
+        // Building for TblRacquetsUser
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", getListStringingMachinesText));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        JSONArray firstList = json.getJSONArray("stringingmachines"); 
+        
+        ArrayList<StringingMachinesText> listInside = new ArrayList<StringingMachinesText>();
+        for (int i = 0; i < firstList.length(); i++) {
+            JSONObject catObj = (JSONObject) firstList.get(i);
+            StringingMachinesText element = new StringingMachinesText();
+            element.setId(catObj.getInt("id"));
+            element.setDescription(catObj.getString("description"));
+			listInside.add(element);
+        }
+        return listInside;
+    }
+    
+    public ArrayList<TblStringingMachineType> getStriningMachineType(String url, int id) throws JSONException, ParseException{
+        // Building for TblRacquetsUser
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", getStriningMachineType));
+        params.add(new BasicNameValuePair("id", id+""));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        JSONArray firstList = json.getJSONArray("stringingmachinetype"); 
+        
+        ArrayList<TblStringingMachineType> listInside = new ArrayList<TblStringingMachineType>();
+        for (int i = 0; i < firstList.length(); i++) {
+            JSONObject catObj = (JSONObject) firstList.get(i);
+            TblStringingMachineType element = new TblStringingMachineType();
+            element.setId(catObj.getInt("id"));
+            element.setDescription(catObj.getString("description"));
+			listInside.add(element);
+        }
+        return listInside;
+    }
+    
+    public ArrayList<TblStringingMachines> getListStringMachines(String url, int idUser, int id) throws JSONException, ParseException{
+        // Building for TblRacquetsUser
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("tag", getListStringMachines));
+        params.add(new BasicNameValuePair("idUser", idUser+""));
+        params.add(new BasicNameValuePair("id", id+""));
+        JSONObject json = jsonParser.getJSONFromUrl(url, params);
+        JSONArray firstList = json.getJSONArray("stringingmachines"); 
+        
+        ArrayList<TblStringingMachines> listInside = new ArrayList<TblStringingMachines>();
+        for (int i = 0; i < firstList.length(); i++) {
+            JSONObject catObj = (JSONObject) firstList.get(i);
+            TblStringingMachines element = new TblStringingMachines();
+            element.setId(catObj.getInt("id"));
+            element.setTblBrands(catObj.getInt("tbl_brands_id"));
+            element.setTblStringingMachineType(catObj.getInt("tbl_stringing_machine_type_id"));
+            element.setModel(catObj.getString("model"));
+            
+            element.setSerial(catObj.getString("serial"));           
+            String dateStr = catObj.getString("date_buy");
+			Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(dateStr);
+			element.setDateBuy(date);
+			dateStr = catObj.getString("date_calibration");
+			date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(dateStr);
+			element.setDateCalibration(date);
+			element.setNote(catObj.getString("note"));
+            
+			listInside.add(element);
+        }
+        return listInside;
     }
 }

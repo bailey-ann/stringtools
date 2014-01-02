@@ -8,6 +8,7 @@ import it.napalm.stringtools.globalobject.RacquetText;
 import it.napalm.stringtools.globalobject.StringText;
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,7 @@ public class StringAdapter extends BaseAdapter{
 	
 	
 	
-	private void clear() {
+	public void clear() {
 		data = new ArrayList<StringText>();
 	}
 	
@@ -76,6 +77,7 @@ public class StringAdapter extends BaseAdapter{
 	        protected FilterResults performFiltering(CharSequence constraint) {
 	             constraint = constraint.toString().toLowerCase(Locale.ENGLISH);
 	             FilterResults result = new FilterResults();
+	             Log.d("constraint", constraint.toString());
 	                if (constraint != null && constraint.toString().length() > 0) {
 	                  ArrayList<StringText> founded = new ArrayList<StringText>();
 	                  for(StringText item: originalData){

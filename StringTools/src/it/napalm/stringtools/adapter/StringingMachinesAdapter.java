@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import it.napalm.stringtools.R;
-import it.napalm.stringtools.globalobject.RacquetText;
+import it.napalm.stringtools.globalobject.StringingMachinesText;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,14 +14,14 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.TextView;
 
-public class RacquetAdapter extends BaseAdapter{
+public class StringingMachinesAdapter extends BaseAdapter{
 	
 	private Activity activity;
-	private ArrayList<RacquetText> data;
-	private ArrayList<RacquetText> originalData;
+	private ArrayList<StringingMachinesText> data;
+	private ArrayList<StringingMachinesText> originalData;
 	private static LayoutInflater inflater=null;
 	
-	public RacquetAdapter(Activity a, ArrayList<RacquetText> list){
+	public StringingMachinesAdapter(Activity a, ArrayList<StringingMachinesText> list){
 		activity = a;
 		data = list;
 		originalData = list;
@@ -46,10 +46,10 @@ public class RacquetAdapter extends BaseAdapter{
 	
 	
 	public void clear() {
-		data = new ArrayList<RacquetText>();
+		data = new ArrayList<StringingMachinesText>();
 	}
 	
-	private void add(RacquetText item) {
+	private void add(StringingMachinesText item) {
 		// TODO Auto-generated method stub
 		data.add(item);
 	}
@@ -58,11 +58,11 @@ public class RacquetAdapter extends BaseAdapter{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View vi=convertView;
 	    if(convertView==null)
-	    	vi = inflater.inflate(R.layout.list_row_racquet, null);
+	    	vi = inflater.inflate(R.layout.list_row_string, null);
 	 
 	    TextView firstLine = (TextView)vi.findViewById(R.id.firstLine); 
 	    TextView secondLine = (TextView)vi.findViewById(R.id.secondLine); 
-	    RacquetText racquet = data.get(position); 
+	    StringingMachinesText racquet = data.get(position); 
 	    firstLine.setText(racquet.getDescription());
 	    secondLine.setText("");
         return vi;
@@ -76,8 +76,8 @@ public class RacquetAdapter extends BaseAdapter{
 	             constraint = constraint.toString().toLowerCase(Locale.ENGLISH);
 	             FilterResults result = new FilterResults();
 	                if (constraint != null && constraint.toString().length() > 0) {
-	                  ArrayList<RacquetText> founded = new ArrayList<RacquetText>();
-	                  for(RacquetText item: originalData){
+	                  ArrayList<StringingMachinesText> founded = new ArrayList<StringingMachinesText>();
+	                  for(StringingMachinesText item: originalData){
 	                	  String testo = item.getDescription();
 	                      if(testo.toString().toLowerCase(Locale.ENGLISH).contains(constraint)){
 	                    	  founded.add(item);
@@ -99,7 +99,7 @@ public class RacquetAdapter extends BaseAdapter{
 			@Override
 			protected void publishResults(CharSequence arg0, FilterResults arg1) {
 				clear();
-		        for (RacquetText item : (ArrayList<RacquetText>) arg1.values) {
+		        for (StringingMachinesText item : (ArrayList<StringingMachinesText>) arg1.values) {
 		        	add(item);
 		        }
 				notifyDataSetChanged();

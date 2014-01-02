@@ -7,8 +7,12 @@ import org.json.JSONException;
 
 import it.napalm.stringtools.MainActivity;
 import it.napalm.stringtools.R;
-import it.napalm.stringtools.adapter.OvergripsAdapter;
-import it.napalm.stringtools.globalobject.OvergripText;
+import it.napalm.stringtools.adapter.RacquetAdapter;
+import it.napalm.stringtools.adapter.StringAdapter;
+import it.napalm.stringtools.adapter.StringingMachinesAdapter;
+import it.napalm.stringtools.globalobject.RacquetText;
+import it.napalm.stringtools.globalobject.StringText;
+import it.napalm.stringtools.globalobject.StringingMachinesText;
 import it.napalm.stringtools.utils.HttpFunctions;
 import android.app.Fragment;
 import android.app.ProgressDialog;
@@ -16,7 +20,6 @@ import android.content.res.Resources.NotFoundException;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,24 +33,23 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 
-public class OvergripsFragment extends Fragment {
+public class StringingMachinesFragment extends Fragment {
 	
 	protected static final int MOD_DATA = 0;
 	int position;
 	ListView list;
-	ArrayList<OvergripText> listItem;
-	OvergripsAdapter adapter;
+	ArrayList<StringingMachinesText> listItem;
+	StringingMachinesAdapter adapter;
     HttpFunctions function;
     View rootView;
     EditText inputSearch;
     
-	public OvergripsFragment(){	
-	}
+	public StringingMachinesFragment(){	}
 	
 
-	public static OvergripsFragment newInstance
+	public static StringingMachinesFragment newInstance
 	(int position) {
-		OvergripsFragment fragment = new OvergripsFragment();
+		StringingMachinesFragment fragment = new StringingMachinesFragment();
 	    fragment.position = position;
 	    return fragment;
 	}
@@ -64,20 +66,19 @@ public class OvergripsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 		
-		rootView = inflater.inflate(R.layout.overgrips_list, container, false);
+		rootView = inflater.inflate(R.layout.stringing_machines_list, container, false);
         function = new HttpFunctions();
-        list = (ListView)rootView.findViewById(R.id.listOvergrips);
-        list.setFilterText("");
         new GetList().execute();
         
 		return rootView;
     }
 	
 	private void populateList() {
-		list = (ListView)rootView.findViewById(R.id.listOvergrips);
+		list = (ListView)rootView.findViewById(R.id.list);
 		 
-        adapter = new OvergripsAdapter(getActivity(), listItem);
+        adapter = new StringingMachinesAdapter(getActivity(), listItem);
         list.setAdapter(adapter);
+        adapter.getFilter().filter("");
  
         // Click event for single list row
         list.setOnItemClickListener(new OnItemClickListener() {
@@ -87,16 +88,16 @@ public class OvergripsFragment extends Fragment {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				// TODO Auto-generated method stub
-				OvergripText item = (OvergripText)adapter.getItem(arg2);
+				StringingMachinesText item = (StringingMachinesText)adapter.getItem(arg2);
 				
-				((MainActivity)getActivity()).callEditDataOvergrips(item.getId());
+				((MainActivity)getActivity()).callEditDataStringingMachines(item.getId());
 			}
         });
 	}
 	
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.menu_overgrips_sah, menu);
-		SearchView searchView = (SearchView) menu.findItem(R.id.search_overgrips).getActionView();
+		inflater.inflate(R.menu.menu_stringingmachine_sah, menu);
+		SearchView searchView = (SearchView) menu.findItem(R.id.search_stringing_machines).getActionView();
 	    searchView.setOnQueryTextListener(listener);
 	    searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
         super.onCreateOptionsMenu(menu, inflater);
@@ -134,7 +135,7 @@ public class OvergripsFragment extends Fragment {
 	        	((MainActivity)getActivity()).backToHome();
 	            return super.onOptionsItemSelected(item);
 	        case R.id.newCustomer:
-	        	((MainActivity)getActivity()).callEditDataOvergrips(0);
+	        	((MainActivity)getActivity()).callEditDataStringingMachines(0);
 	            return super.onOptionsItemSelected(item);
 	        default:
 	            return super.onOptionsItemSelected(item);
@@ -167,7 +168,7 @@ public class OvergripsFragment extends Fragment {
 	    	
 	    	try {
 	    		try {
-					listItem = function.getOvergripsText(getResources().getString(R.string.URL), 0);
+					listItem = function.getListStringingMachinesText(getResources().getString(R.string.URL));
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -188,7 +189,7 @@ public class OvergripsFragment extends Fragment {
 	    @Override
 	    protected void onPostExecute(Void result) {
 	        super.onPostExecute(result);
-	        ((MainActivity) getActivity()).setTitle(R.string.list_overgrips, "");
+	        ((MainActivity) getActivity()).setTitle(R.string.list_stringing_machines, "");
 	        populateList();
 	        if (pDialog.isShowing())
 	            pDialog.dismiss();

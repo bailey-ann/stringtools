@@ -41,6 +41,11 @@ public class TblStringingMachineType implements java.io.Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	@Override
+	public String toString(){
+		return this.description;
+	}
 
 	public Set getTblStringingMachineses() {
 		return this.tblStringingMachineses;

@@ -45,7 +45,7 @@ public class GripsAdapter extends BaseAdapter{
 	
 	
 	
-	private void clear() {
+	public void clear() {
 		data = new ArrayList<GripText>();
 	}
 	

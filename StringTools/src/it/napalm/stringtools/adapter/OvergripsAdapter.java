@@ -7,6 +7,7 @@ import it.napalm.stringtools.R;
 import it.napalm.stringtools.globalobject.OvergripText;
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,7 @@ public class OvergripsAdapter extends BaseAdapter{
 	
 	
 	
-	private void clear() {
+	public void clear() {
 		data = new ArrayList<OvergripText>();
 	}
 	
@@ -75,6 +76,7 @@ public class OvergripsAdapter extends BaseAdapter{
 	        protected FilterResults performFiltering(CharSequence constraint) {
 	             constraint = constraint.toString().toLowerCase(Locale.ENGLISH);
 	             FilterResults result = new FilterResults();
+	             Log.d("overgrips getFilter", constraint.toString());
 	                if (constraint != null && constraint.toString().length() > 0) {
 	                  ArrayList<OvergripText> founded = new ArrayList<OvergripText>();
 	                  for(OvergripText item: originalData){

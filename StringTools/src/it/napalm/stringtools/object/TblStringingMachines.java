@@ -1,6 +1,7 @@
 package it.napalm.stringtools.object;
 // Generated 12-dic-2013 10.48.19 by Hibernate Tools 3.4.0.CR1
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,27 +11,30 @@ import java.util.Set;
 public class TblStringingMachines implements java.io.Serializable {
 
 	private Integer id;
-	private TblBrands tblBrands;
-	private TblStringingMachineType tblStringingMachineType;
+	private int tblBrands;
+	private int tblStringingMachineType;
 	private String model;
-	private Set tblStringingJobses = new HashSet(0);
+	
+	private String serial;
+	private Date dateBuy;
+	private Date dateCalibration;
+	private String note;
+
 
 	public TblStringingMachines() {
 	}
 
-	public TblStringingMachines(TblBrands tblBrands,
-			TblStringingMachineType tblStringingMachineType) {
+	public TblStringingMachines(int tblBrands,
+			int tblStringingMachineType) {
 		this.tblBrands = tblBrands;
 		this.tblStringingMachineType = tblStringingMachineType;
 	}
 
-	public TblStringingMachines(TblBrands tblBrands,
-			TblStringingMachineType tblStringingMachineType, String model,
-			Set tblStringingJobses) {
+	public TblStringingMachines(int tblBrands,
+			int tblStringingMachineType, String model) {
 		this.tblBrands = tblBrands;
 		this.tblStringingMachineType = tblStringingMachineType;
 		this.model = model;
-		this.tblStringingJobses = tblStringingJobses;
 	}
 
 	public Integer getId() {
@@ -41,20 +45,20 @@ public class TblStringingMachines implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public TblBrands getTblBrands() {
+	public int getTblBrands() {
 		return this.tblBrands;
 	}
 
-	public void setTblBrands(TblBrands tblBrands) {
+	public void setTblBrands(int tblBrands) {
 		this.tblBrands = tblBrands;
 	}
 
-	public TblStringingMachineType getTblStringingMachineType() {
+	public int getTblStringingMachineType() {
 		return this.tblStringingMachineType;
 	}
 
 	public void setTblStringingMachineType(
-			TblStringingMachineType tblStringingMachineType) {
+			int tblStringingMachineType) {
 		this.tblStringingMachineType = tblStringingMachineType;
 	}
 
@@ -65,13 +69,38 @@ public class TblStringingMachines implements java.io.Serializable {
 	public void setModel(String model) {
 		this.model = model;
 	}
-
-	public Set getTblStringingJobses() {
-		return this.tblStringingJobses;
+	
+	public String getSerial() {
+		return this.serial;
 	}
 
-	public void setTblStringingJobses(Set tblStringingJobses) {
-		this.tblStringingJobses = tblStringingJobses;
+	public void setSerial(String serial) {
+		this.serial = serial;
 	}
+	
+	public String getNote() {
+		return this.note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+	
+	public Date getDateBuy() {
+		return this.dateBuy;
+	}
+
+	public void setDateBuy(Date dateBuy) {
+		this.dateBuy = dateBuy;
+	}
+	
+	public Date getDateCalibration() {
+		return this.dateCalibration;
+	}
+
+	public void setDateCalibration(Date dateCalibration) {
+		this.dateCalibration = dateCalibration;
+	}
+
 
 }

@@ -13,6 +13,8 @@ import it.napalm.stringtools.settings.OvergripsFragment;
 import it.napalm.stringtools.settings.RacquetDataActivity;
 import it.napalm.stringtools.settings.RacquetsFragment;
 import it.napalm.stringtools.settings.StringDataActivity;
+import it.napalm.stringtools.settings.StringingMachineDataActivity;
+import it.napalm.stringtools.settings.StringingMachinesFragment;
 import it.napalm.stringtools.settings.StringsFragment;
 import it.napalm.stringtools.user.CustomerDataActivity;
 import it.napalm.stringtools.user.CustomerRacquetActivity;
@@ -48,6 +50,7 @@ public class MainActivity extends Activity {
 	private static final int MOD_DATA_OVERGRIPS = 4;
 	private static final int MOD_DATA_RACQUETS = 5;
 	private static final int MOD_DATA_STRINGS = 6;
+	private static final int MOD_DATA_STRINGING_MACHINE = 7;
 	private ListView mDrawerList;
 	private DrawerLayout mDrawerLayout;
 	private String[] mTitles;
@@ -180,6 +183,9 @@ public class MainActivity extends Activity {
     	}
     	else if(position == PositionMenu.STRINGS_LIST){
     		fragment = StringsFragment.newInstance(position);
+    	}
+    	else if(position == PositionMenu.STRINGING_MACHINES_LIST){
+    		fragment = StringingMachinesFragment.newInstance(position);
     	}
     	else if(position == PositionMenu.LOGOUT){
     		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
@@ -360,6 +366,15 @@ public class MainActivity extends Activity {
 		personalData.putExtra("stringer", user);
 		personalData.putExtra("position", PositionMenu.STRINGS_LIST);
 		startActivityForResult(personalData, MOD_DATA_STRINGS);
+    }
+    
+    public void callEditDataStringingMachines(int id){
+        mDrawerLayout.closeDrawer(mDrawerList);
+    	Intent personalData = new Intent(this, StringingMachineDataActivity.class);
+		personalData.putExtra("id", id);
+		personalData.putExtra("stringer", user);
+		personalData.putExtra("position", PositionMenu.STRINGING_MACHINES_LIST);
+		startActivityForResult(personalData, MOD_DATA_STRINGING_MACHINE);
     }
     
     

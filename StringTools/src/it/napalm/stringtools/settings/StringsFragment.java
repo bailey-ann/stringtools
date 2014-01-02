@@ -66,16 +66,18 @@ public class StringsFragment extends Fragment {
 		
 		rootView = inflater.inflate(R.layout.strings_list, container, false);
         function = new HttpFunctions();
+        list = (ListView)rootView.findViewById(R.id.listStrings);
         new GetList().execute();
         
 		return rootView;
     }
 	
 	private void populateList() {
-		list = (ListView)rootView.findViewById(R.id.list);
+		list = (ListView)rootView.findViewById(R.id.listStrings);
 		 
         adapter = new StringAdapter(getActivity(), listItem);
         list.setAdapter(adapter);
+        adapter.getFilter().filter("");
  
         // Click event for single list row
         list.setOnItemClickListener(new OnItemClickListener() {
@@ -93,8 +95,8 @@ public class StringsFragment extends Fragment {
 	}
 	
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.menu_sah, menu);
-		SearchView searchView = (SearchView) menu.findItem(R.id.grid_default_search).getActionView();
+		inflater.inflate(R.menu.menu_strings_sah, menu);
+		SearchView searchView = (SearchView) menu.findItem(R.id.search_strings).getActionView();
 	    searchView.setOnQueryTextListener(listener);
 	    searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
         super.onCreateOptionsMenu(menu, inflater);
@@ -186,10 +188,11 @@ public class StringsFragment extends Fragment {
 	    @Override
 	    protected void onPostExecute(Void result) {
 	        super.onPostExecute(result);
-	        if (pDialog.isShowing())
-	            pDialog.dismiss();
 	        ((MainActivity) getActivity()).setTitle(R.string.list_strings, "");
 	        populateList();
+	        if (pDialog.isShowing())
+	            pDialog.dismiss();
+	       
 	    }
 	}
 }
