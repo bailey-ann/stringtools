@@ -60,6 +60,7 @@ class Customers extends TPage
 		$this->New->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/new-customer.gif';
 		$this->Save->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/save.gif';
 		$this->Cancel_2->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/cancel.gif';
+		$this->Change->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/send.gif';
         if(!$this->IsPostBack)
         {
             $this->DataGridCustomers->DataSource=$this->Data;
@@ -161,6 +162,27 @@ class Customers extends TPage
 		$this->CreateArray('','');
 		$this->DataGridCustomers->DataSource=$this->Data;
         $this->DataGridCustomers->dataBind();
+	}
+	
+	protected function sortData($data,$key)
+	{
+		$compare = create_function('$a,$b','if ($a["'.$key.'"] == $b["'.$key.'"]) {return 0;}else {return ($a["'.$key.'"] > $b["'.$key.'"]) ? 1 : -1;}');
+		usort($data,$compare) ;
+		return $data ;
+	}
+	
+	public function sortDataGrid($sender,$param)
+	{
+		$this->DataGridCustomers->DataSource=$this->sortData($this->Data,$param->SortExpression);
+		$this->DataGridCustomers->dataBind();
+	}
+	
+	public function changePageSize($sender,$param)
+	{
+		$this->DataGridCustomers->PageSize=TPropertyValue::ensureInteger($this->PageSize->Text);
+		$this->DataGridCustomers->CurrentPageIndex=0;
+		$this->DataGridCustomers->DataSource=$this->Data;
+		$this->DataGridCustomers->dataBind();
 	}
 }
 

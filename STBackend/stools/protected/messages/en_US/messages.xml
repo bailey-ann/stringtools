@@ -954,6 +954,16 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <source><![CDATA[Prestretch]]></source>
 <target><![CDATA[]]>Prestretch</target>
 </trans-unit>
+
+<trans-unit id="189">
+<source><![CDATA[Confirm]]></source>
+<target><![CDATA[]]>Conferma</target>
+</trans-unit>
+
+<trans-unit id="190">
+<source><![CDATA[PageSize]]></source>
+<target><![CDATA[]]>Elementi per pagina</target>
+</trans-unit>
 </body>
  </file>
 </xliff>
