@@ -962,6 +962,21 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <source><![CDATA[PageSize]]></source>
 <target><![CDATA[]]>Elementi per pagina</target>
 </trans-unit>
+
+<trans-unit id="191">
+<source><![CDATA[DataGlobal]]></source>
+<target><![CDATA[]]>Dati totali</target>
+</trans-unit>
+
+<trans-unit id="192">
+<source><![CDATA[DataGlobalMouth]]></source>
+<target><![CDATA[]]>Dati mensili</target>
+</trans-unit>
+
+<trans-unit id="193">
+<source><![CDATA[COUNT_LIST_STRINGING_MONTH]]></source>
+<target><![CDATA[]]>Numero incordature mensili effettuate</target>
+</trans-unit>
 </body>
  </file>
 </xliff>

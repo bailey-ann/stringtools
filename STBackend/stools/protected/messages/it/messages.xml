@@ -257,7 +257,7 @@
 
 <trans-unit id="52">
 <source><![CDATA[List Jobs]]></source>
-<target><![CDATA[]]>Lista Incordature</target>
+<target><![CDATA[]]>Nuova Incordatura</target>
 </trans-unit>
 
 <trans-unit id="53">
@@ -857,7 +857,7 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 
 <trans-unit id="169">
 <source><![CDATA[COUNT_LIST_STRINGING]]></source>
-<target><![CDATA[]]>Numero incordature effettuate</target>
+<target><![CDATA[]]>Numero incordature totali effettuate</target>
 </trans-unit>
 
 <trans-unit id="170">
@@ -963,6 +963,21 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <trans-unit id="190">
 <source><![CDATA[PageSize]]></source>
 <target><![CDATA[]]>Elementi per pagina</target>
+</trans-unit>
+
+<trans-unit id="191">
+<source><![CDATA[DataGlobal]]></source>
+<target><![CDATA[]]>Dati totali</target>
+</trans-unit>
+
+<trans-unit id="192">
+<source><![CDATA[DataGlobalMouth]]></source>
+<target><![CDATA[]]>Dati mensili</target>
+</trans-unit>
+
+<trans-unit id="193">
+<source><![CDATA[COUNT_LIST_STRINGING_MONTH]]></source>
+<target><![CDATA[]]>Numero incordature mensili effettuate</target>
 </trans-unit>
 </body>
  </file>

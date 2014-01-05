@@ -23,6 +23,14 @@
 	</tr>
 	<tr>
 		<td>
+			<%= Prado::localize('COUNT_LIST_STRINGING_MONTH')%>:
+		</td>
+		<td>
+			<com:TLabel ID="COUNT_LIST_STRINGING_MONTH" />
+		</td>
+	</tr>
+	<tr>
+		<td>
 			<%= Prado::localize('COUNT_LIST_STRINGING')%>:
 		</td>
 		<td>
@@ -39,7 +47,73 @@
 	</tr>
 	<tr>
 		<td>
+			<h3><%= Prado::localize('DataGlobalMouth') %></h3>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<com:TRepeater ID="RepeaterStringTypeMouth" EnableViewState="false">
+				<table >
+				<prop:HeaderTemplate>
+					
+						<tr style="color:white;background-color:black">
+						  <th><%= Prado::localize('TYPE_STRING')%></th>
+						  <th><%= Prado::localize('NUMBER_OF_STRINGING')%></th>
+						</tr>
+				</prop:HeaderTemplate>
+				<prop:ItemTemplate>
+						<tr style="background-color:#BFCFFF">
+							<td><%#$this->Data['description']%></td>
+							<td><%#$this->Data['value']%></td>
+						</tr>
+				</prop:ItemTemplate>
+				 
+				<prop:AlternatingItemTemplate>
+						<tr style="background-color:#E6ECFF">
+							<td><%#$this->Data['description']%></td>
+							<td><%#$this->Data['value']%></td>
+						</tr>
+					
+				</prop:AlternatingItemTemplate>
+				</table>
+			</com:TRepeater>
+		</td>
+	</tr>
+	<tr>
+		<td>
 			<br/>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<com:TRepeater ID="RepeaterStringMouth" EnableViewState="false">
+				<table >
+				<prop:HeaderTemplate>
+						<tr style="color:white;background-color:black">
+						  <th><%= Prado::localize('MODEL_STRING')%></th>
+						  <th><%= Prado::localize('NUMBER_OF_STRINGING')%></th>
+						</tr>
+				</prop:HeaderTemplate>
+				<prop:ItemTemplate>
+						<tr style="background-color:#BFCFFF">
+							<td><%#$this->Data['description']%></td>
+							<td><%#$this->Data['value']%></td>
+						</tr>
+				</prop:ItemTemplate>
+				 
+				<prop:AlternatingItemTemplate>
+						<tr style="background-color:#E6ECFF">
+							<td><%#$this->Data['description']%></td>
+							<td><%#$this->Data['value']%></td>
+						</tr>					
+				</prop:AlternatingItemTemplate>
+				</table>
+			</com:TRepeater>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<h3><%= Prado::localize('DataGlobal') %></h3>
 		</td>
 	</tr>
 	<tr>

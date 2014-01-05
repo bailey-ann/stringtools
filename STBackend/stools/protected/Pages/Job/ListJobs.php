@@ -286,10 +286,13 @@ class ListJobs extends FunctionList
 		$pdf->AddPage();
 		
 		//immagine utente
-		if (file_exists('themes/White/images/logo/'.$this->User->UserDB->id.".jpg")) 
-			$pdf->Image('themes/White/images/logo/'.$this->User->UserDB->id.".jpg",10,6,40);
+		$urlJpg = 'themes/White/images/logo/'.$this->User->UserDB->id.".jpg";
+		//$urlPng = 'themes/White/images/logo/'.$this->User->UserDB->id.".png";
+		if (file_exists($urlJpg)) 
+			$pdf->Image($urlJpg,10,6,40);
 		else
 			$pdf->Image('themes/White/images/logo-st-www.jpg',10,6,40);
+		//$pdf->Image('themes/White/images/logo-st-www.jpg',10,6,40, '', '', 'http://www.tcpdf.org', '', false, 300);
 			
 		$pdf->Ln(5);
 			
@@ -315,6 +318,8 @@ class ListJobs extends FunctionList
 		$pdf->SetFont('times', '', 13);
 		$pdf->writeHTML($this->makeHtmlJob($job), true, false, true, false, '');
 		
+		header('Content-type: application/pdf');
+		header('Content-Disposition: attachment; filename="'.$stringJob.'.pdf"');
 		$pdf->Output($stringJob.'.pdf', 'D');
 
 		/*$pdf = new FPDF(); // Creo nuova classe

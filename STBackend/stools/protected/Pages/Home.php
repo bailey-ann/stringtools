@@ -20,6 +20,12 @@ class Home extends FunctionList
 	   			$numberCustomers = $arraNumberCustomers[0];	   		
 	   		$this->COUNT_LIST_CUSTOMERS->Text = $numberCustomers;
 	   		
+	   		$numberJobMonth = 0;
+	   		$arraNumberJobMonth = $sqlmap->queryForList("CountListJobByStringerMonth",$this->User->UserDB->id);
+	   		if(count($arraNumberJobMonth) > 0)
+	   			$numberJobMonth = $arraNumberJobMonth[0];
+	   		$this->COUNT_LIST_STRINGING_MONTH->Text = $numberJobMonth;
+	   		
 	   		$numberJob = 0;
 	   		$arraNumberJob = $sqlmap->queryForList("CountListJobByStringer",$this->User->UserDB->id);
 	   		if(count($arraNumberJob) > 0)
@@ -43,6 +49,17 @@ class Home extends FunctionList
 	   		$criteria['brand'] = "%%";
 	   		$criteria['model'] = "%%";
 	   		$listJob = $sqlmap->queryForList("SelectTblStringingJobsForStringer",$criteria);
+	   		$listJobMonth = $sqlmap->queryForList("SelectTblStringingJobsForStringerMonth",$criteria);
+	   		
+	   		$DataTypeString= $this->GetListOfTypeStringUsed($listJobMonth);
+	   		$this->RepeaterStringTypeMouth->DataSource=$DataTypeString;
+	   		$this->RepeaterStringTypeMouth->dataBind();
+	   		
+	   		$DataString= $this->GetListOfStringUsed($listJobMonth);
+	   		$this->RepeaterStringMouth->DataSource=$DataString;
+	   		$this->RepeaterStringMouth->dataBind();
+	   		
+	   		
 	   		
 	   		$DataTypeString= $this->GetListOfTypeStringUsed($listJob);
 	   		$this->RepeaterStringType->DataSource=$DataTypeString;

@@ -32,6 +32,17 @@ class PersonalData extends TPage
         	$this->DDLCurrencyUnit->dataBind();
 			$this->DDLCurrencyUnit->SelectedValue = $user->tbl_currency_unit_id;
 			$this->Piva->Text = $user->piva;
+
+			$urlJpg = 'themes/White/images/logo/'.$this->User->UserDB->id.".jpg";
+			$urlPng = 'themes/White/images/logo/'.$this->User->UserDB->id.".png";
+
+			if (!file_exists($urlJpg))
+				//if (!file_exists($urlPng))
+					$this->ImageLogo->ImageUrl = $this->Page->Theme->BaseUrl.'/images/logo-st-www.jpg';
+				//else 
+					//$this->ImageLogo->ImageUrl = $urlPng;
+			else 
+				$this->ImageLogo->ImageUrl = $urlJpg;
         }
     }
     
@@ -74,9 +85,23 @@ class PersonalData extends TPage
 			$ext = substr($fileName, $pos);
 			
 			$fileName = $this->User->UserDB->id .$ext;
+			$fileNameJpg = $this->User->UserDB->id . ".jpg";
 			$n_filename = strtolower(str_replace(" ", "_", $fileName));
+			$n_fileNameJpg= strtolower(str_replace(" ", "_", $fileNameJpg));
 			$this->fuTest->saveAs($i_dir . $n_filename);
+			
+			if($ft == 'image/png'){
+				$this->png2jpg($i_dir . $n_filename, $i_dir . $n_fileNameJpg, 100);
+			}
+			
+			$this->Response->redirect($this->Service->constructUrl('User.PersonalData'));
 		}
+	}
+	
+	function png2jpg($originalFile, $outputFile, $quality) {
+		$image = imagecreatefrompng($originalFile);
+		imagejpeg($image, $outputFile, $quality);
+		imagedestroy($image);
 	}
 	
 	public function cancelSelect(){

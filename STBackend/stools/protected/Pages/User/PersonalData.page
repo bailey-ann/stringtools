@@ -100,8 +100,10 @@
 <br/>
 <span class="input-label"><%= Prado::localize('PersonalLogo') %></span>
 <br/>
+<com:TImage Id="ImageLogo" Width="284px" Height="45px" />
+<br/>
 <com:TFileUpload ID="fuTest"/>			  
-<com:TRegularExpressionValidator Display="Dynamic" ControlToValidate="fuTest" RegularExpression="(.*\.jpg)|(.*\.jpeg)|(.*\.png)|(.*\.bmp)|(.*\.JPG)|(.*\.JPEG)|(.*\.PNG)|(.*\.BMP)" Text="<br /><%= Prado::localize('CorrectImage') %>"  />			
+<com:TRegularExpressionValidator Display="Dynamic" ControlToValidate="fuTest" RegularExpression="(.*\.jpg)|(.*\.png)" Text="<br /><%= Prado::localize('CorrectImage') %>"  />			
 <com:TImageButton ID="btnUpload" Text="Upload" onClick="btnUpload_Click"  />  
        
 <br/>
