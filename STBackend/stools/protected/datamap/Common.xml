@@ -28,6 +28,39 @@
 			order by tbl_stringing_jobs.date_stringing desc,tbl_brands.description desc, tbl_racquets.model desc, tbl_racquets_user.serial  desc 
 	</select>
 	
+	<select id="SelectTblStringingJobsByStringer" resultClass="TblStringingJobs">
+		SELECT
+			tbl_stringing_jobs.*
+			FROM
+			tbl_stringing_jobs
+			INNER JOIN tbl_racquets_user ON tbl_stringing_jobs.tbl_racquets_user_id = tbl_racquets_user.id
+			INNER JOIN tbl_racquets ON tbl_racquets_user.tbl_racquets_id = tbl_racquets.id
+			INNER JOIN tbl_brands ON tbl_racquets.tbl_brands_id = tbl_brands.id
+			where tbl_stringing_jobs.tbl_users_id_stringer = #id# 
+			AND tbl_racquets_user.serial LIKE #serial#   
+			AND tbl_brands.description LIKE #brand#
+			AND tbl_racquets.model LIKE #model#
+			AND tbl_racquets_user.active = 1
+			order by tbl_stringing_jobs.date_stringing desc,tbl_brands.description desc, tbl_racquets.model desc, tbl_racquets_user.serial  desc 
+	</select>
+	
+	<select id="SelectTblStringingJobsByStringerOrderName" resultClass="TblStringingJobs">
+		SELECT
+			tbl_stringing_jobs.*
+			FROM
+			tbl_stringing_jobs
+			INNER JOIN tbl_racquets_user ON tbl_stringing_jobs.tbl_racquets_user_id = tbl_racquets_user.id
+			INNER JOIN tbl_users ON tbl_racquets_user.tbl_users_id = tbl_users.id
+			INNER JOIN tbl_racquets ON tbl_racquets_user.tbl_racquets_id = tbl_racquets.id
+			INNER JOIN tbl_brands ON tbl_racquets.tbl_brands_id = tbl_brands.id
+			where tbl_stringing_jobs.tbl_users_id_stringer = #id# 
+			AND tbl_racquets_user.serial LIKE #serial#   
+			AND tbl_brands.description LIKE #brand#
+			AND tbl_racquets.model LIKE #model#
+			AND tbl_racquets_user.active = 1
+			order by tbl_users.name asc, tbl_stringing_jobs.date_stringing desc,tbl_brands.description desc, tbl_racquets.model desc, tbl_racquets_user.serial  desc 
+	</select>
+	
 	<select id="SelectTblStringingJobsForStringer" resultClass="TblStringingJobs">
 		SELECT
 			tbl_stringing_jobs.*

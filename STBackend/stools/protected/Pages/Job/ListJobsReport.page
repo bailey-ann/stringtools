@@ -1,0 +1,96 @@
+<%@ Title="Gestione Incordature Report" %>
+<com:TContent ID="sidebar">
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+<hr />
+
+</com:TContent>
+
+<com:TContent ID="zone_list_jobs">
+<h3><com:TLabel ID="LBL_LIST_JOB"  /></h3>
+
+<com:TLabel Text="<%= Prado::localize('BrandName') %>" /> 
+<com:TFilterCollection Id="FilterCollection_brand" >
+	<com:TFilterText  DataField="description" />
+</com:TFilterCollection>
+
+<com:TLabel Text="<%= Prado::localize('Model') %>" /> 
+<com:TFilterCollection Id="FilterCollection_model" >
+	<com:TFilterText  DataField="model" />
+</com:TFilterCollection>
+<br/>
+<com:TLabel Text="<%= Prado::localize('Serial') %>" /> 
+<com:TFilterCollection Id="FilterCollection_serial" >
+	<com:TFilterText  DataField="serial" />
+</com:TFilterCollection>
+<br/>
+<com:TImageButton ID="SearchRacquet" onClick="onSearchRacquet" />
+<com:TImageButton ID="CancelRacquet" onClick="onClearRacquet" "/>
+
+<com:TFilterDataGrid
+	SkinID="datagrid_1_little_10"
+	
+    ID="DataGridListJobs"
+    CellPadding="2"
+    DataKeyField="id"
+    OnSelectedIndexChanged="selectJob"
+    OnPageIndexChanged="changePageJob"
+    OnPagerCreated="pagerCreatedJob"
+    OnItemCommand="onItemCommand"
+    
+    AllowSorting="true"
+    OnSortCommand="sortDataGrid"
+    >
+    <com:TBoundColumn
+    	ID="IDJobColumn"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	ID="DateStringingJobColumn"
+        HeaderText="<%= Prado::localize('Date') %>"
+        DataField="date_stringing"
+        DataFormatString="#date('d/m/Y',strtotime({0}))"
+        />
+    <com:TBoundColumn
+    	SortExpression="name"
+    	ID="name"
+        HeaderText="<%= Prado::localize('Name') %>"
+        DataField="user_racquet.customer.name"
+        />
+    <com:TBoundColumn
+    	ID="surname"
+        HeaderText="<%= Prado::localize('Surname') %>"
+        DataField="user_racquet.customer.surname"
+        />
+    <com:TBoundColumn
+    	ID="brand_name"
+        HeaderText="<%= Prado::localize('BrandName') %>"
+        DataField="user_racquet.racquet.brand_name"
+        />
+    <com:TBoundColumn
+    	ID="model"
+        HeaderText="<%= Prado::localize('Model') %>"
+        DataField="user_racquet.racquet.model"
+        />
+    <com:TBoundColumn
+    	ID="serial"
+        HeaderText="<%= Prado::localize('Serial') %>"
+        DataField="user_racquet.serial"
+        />
+    <com:TButtonColumn
+        HeaderText=""
+        Text="<%= Prado::localize('CLAIM_CHECK') %>"
+        ImageUrl="themes/White/images/pdf.png"
+        ButtonType="ImageButton"
+        ItemStyle.HorizontalAlign="Center"
+        ID="PDFJob"
+        CommandName="pdf"
+        />
+</com:TFilterDataGrid>
+<br/>
+<hr />
+</com:TContent>
+
+<com:TContent ID="rightbar">
+</com:TContent>
