@@ -67,8 +67,12 @@ class ListJobsReport extends FunctionList
 	    $param['model'] = "%".$model."%";
     	
 		$sqlmap = Prado::getApplication()->Modules['sqlmap']->Client;
-		if($order == 'name')
+		if($order == 'date')
+	    	$this->_data_jobs_customer = $sqlmap->queryForList("SelectTblStringingJobsByStringerOrderDate", $param);
+		else if($order == 'name')
 	    	$this->_data_jobs_customer = $sqlmap->queryForList("SelectTblStringingJobsByStringerOrderName", $param);
+		else if($order == 'surname')
+	    	$this->_data_jobs_customer = $sqlmap->queryForList("SelectTblStringingJobsByStringerOrderSurname", $param);
 		else
 			$this->_data_jobs_customer = $sqlmap->queryForList("SelectTblStringingJobsByStringer", $param);
 

@@ -27,7 +27,7 @@
 <com:TImageButton ID="CancelRacquet" onClick="onClearRacquet" "/>
 
 <com:TFilterDataGrid
-	SkinID="datagrid_1_little_10"
+	SkinID="datagrid_1_little_15"
 	
     ID="DataGridListJobs"
     CellPadding="2"
@@ -47,6 +47,7 @@
         Visible="false"
         />
     <com:TBoundColumn
+    	SortExpression="date"
     	ID="DateStringingJobColumn"
         HeaderText="<%= Prado::localize('Date') %>"
         DataField="date_stringing"
@@ -59,6 +60,7 @@
         DataField="user_racquet.customer.name"
         />
     <com:TBoundColumn
+    	SortExpression="surname"
     	ID="surname"
         HeaderText="<%= Prado::localize('Surname') %>"
         DataField="user_racquet.customer.surname"

@@ -979,6 +979,11 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <source><![CDATA[COUNT_LIST_STRINGING_MONTH]]></source>
 <target><![CDATA[]]>Numero incordature mensili effettuate</target>
 </trans-unit>
+
+<trans-unit id="194">
+<source><![CDATA[List Jobs Report]]></source>
+<target><![CDATA[]]>Lista Incordature</target>
+</trans-unit>
 </body>
  </file>
 </xliff>
