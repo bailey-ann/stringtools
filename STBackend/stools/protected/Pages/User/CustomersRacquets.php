@@ -124,6 +124,19 @@ class CustomersRacquets extends TPage
         $param->Pager->Controls->insertAt(0,Prado::localize('Page').': ');
     }
     
+    protected function sortData($data,$key)
+    {
+    	$compare = create_function('$a,$b','if ($a["'.$key.'"] == $b["'.$key.'"]) {return 0;}else {return ($a["'.$key.'"] > $b["'.$key.'"]) ? 1 : -1;}');
+    	usort($data,$compare) ;
+    	return $data ;
+    }
+    
+    public function sortDataGrid($sender,$param)
+    {
+    	$this->DataGridCustomers->DataSource=$this->sortData($this->Data,$param->SortExpression);
+    	$this->DataGridCustomers->dataBind();
+    }
+    
     public function onSearch($param){
 		$this->ResetAll();
 		$this->CreateArray($this->FilterCollection_name->getCondition(), $this->FilterCollection_surname->getCondition() );
