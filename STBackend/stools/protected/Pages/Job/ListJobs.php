@@ -289,12 +289,12 @@ class ListJobs extends FunctionList
 		$urlJpg = 'themes/White/images/logo/'.$this->User->UserDB->id.".jpg";
 		//$urlPng = 'themes/White/images/logo/'.$this->User->UserDB->id.".png";
 		if (file_exists($urlJpg)) 
-			$pdf->Image($urlJpg,10,6,40);
+			$pdf->Image($urlJpg,10,6,40,15,'JPG','www.stringtools.it','', true, 150, '', false, false, 0);
 		else
-			$pdf->Image('themes/White/images/logo-st-www.jpg',10,6,40);
+			$pdf->Image('themes/White/images/logo-st-www.jpg',10,6,40,15,'JPG','www.stringtools.it','', true, 150, '', false, false, 0);
 		//$pdf->Image('themes/White/images/logo-st-www.jpg',10,6,40, '', '', 'http://www.tcpdf.org', '', false, 300);
 			
-		$pdf->Ln(5);
+		$pdf->Ln(15);
 			
 		$pdf->Cell(0, 0, $this->User->UserDB->surname . " " . $this->User->UserDB->name, 0, 1, 'L', 0, '', 0);
 		if($this->User->UserDB->telephone != "")
