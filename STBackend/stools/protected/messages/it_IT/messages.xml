@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-01-05T17:48:16Z" product-name="messages">
+ <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-01-06T15:04:48Z" product-name="messages">
   <body>
   
 <trans-unit id="1">
@@ -983,6 +983,26 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <trans-unit id="194">
 <source><![CDATA[List Jobs Report]]></source>
 <target><![CDATA[]]>Lista Incordature</target>
+</trans-unit>
+
+<trans-unit id="195">
+<source><![CDATA[DONATE]]></source>
+<target><![CDATA[]]>Stringtools.it è un servizio gratuito, se ti piace e vuoi darmi un aiuto puoi effettuare una donazione con paypal, qualunque essa sia sarà apprezzata per gli sviluppi futuri. Grazie :-)</target>
+</trans-unit>
+
+<trans-unit id="196">
+<source><![CDATA[DONATE_1]]></source>
+<target><![CDATA[]]>Stringtools.it è un servizio gratuito, se ti piace </target>
+</trans-unit>
+
+<trans-unit id="197">
+<source><![CDATA[DONATE_2]]></source>
+<target><![CDATA[]]>e vuoi darmi un aiuto puoi effettuare una donazione con paypal,</target>
+</trans-unit>
+
+<trans-unit id="198">
+<source><![CDATA[DONATE_3]]></source>
+<target><![CDATA[]]>qualunque essa sia sarà apprezzata per gli sviluppi futuri. Grazie :-)</target>
 </trans-unit>
 </body>
  </file>
