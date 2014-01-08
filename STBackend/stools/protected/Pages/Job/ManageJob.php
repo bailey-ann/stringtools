@@ -217,6 +217,17 @@ class ManageJob extends FunctionList
         $this->DDLStriningMachine->DataSource=$striningMachineArray;
         $this->DDLStriningMachine->dataBind();
         
+        //macchina di default
+        $idDefault = 1;
+        
+        $arrayPersonalMachine = RelStringerStringingMachine::finder()->findAll('id_stringer = ?', $this->User->UserDB->id);
+        if($arrayPersonalMachine != null){
+        	foreach($arrayPersonalMachine as $row){
+        		if($row->default == 1)
+        			$idDefault = $row->id_stringing_machine;
+        	}
+        }
+        $this->DDLStriningMachine->SelectedValue = $idDefault;
         
         $i = 0;
         $brand_name = array();
