@@ -27,7 +27,7 @@
 <com:TImageButton ID="CancelRacquet" onClick="onClearRacquet" "/>
 
 <com:TFilterDataGrid
-	SkinID="datagrid_1_little_15"
+	SkinID="datagrid_1_little_10"
 	
     ID="DataGridListJobs"
     CellPadding="2"

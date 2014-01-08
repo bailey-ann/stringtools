@@ -276,10 +276,6 @@ class ListJobsReport extends FunctionList
 	
 	public function exportExcel()
 	{					
-		$workbook = new Spreadsheet_Excel_Writer();
-		$worksheet = $workbook->addWorksheet("Cov");
-		$workbook->send("test.xls");
-		$workbook->close();	
 	}
 	
 	public function exportPdf()
