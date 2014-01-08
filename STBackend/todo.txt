@@ -1,0 +1,19 @@
+SVILUPPI
+
+-- estrazione excel
+
+-- Un totale dei ricavi in home page è possibile metterlo
+
+-- Codice Fiscale 
+
+-- Sarebbe possibile Flaggare (si dice così) la propria macchina incordatrice in modo da renderla quella di default così da non doverla reinserire nella nuova incordatura?
+
+-- Sarebbe comodo anche poter inserire automaticamnete la stessa corda per orizzontali e verticali, nelle incordature
+
+-- clonazione racchette
+
+-- pulsante invio
+
+BUG
+
+-- Quando cerco una racchetta da inserire ad un cliente per marca, se mi da più pagine da leggere quando clicco sulla pagina successiva mi riporta all'elenco iniziale.
