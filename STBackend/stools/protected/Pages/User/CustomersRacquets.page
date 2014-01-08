@@ -113,7 +113,7 @@
 
 
 <com:TFilterDataGrid
-	SkinID="datagrid_1"
+	SkinID="datagrid_10"
 	
     ID="DataGridUserRacquets"
     CellPadding="2"

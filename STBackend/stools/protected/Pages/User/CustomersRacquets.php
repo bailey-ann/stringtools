@@ -453,11 +453,12 @@ class CustomersRacquets extends TPage
     
     protected function loadDataAddRacquets()
     {
-        if(($this->_data_add_racquets=$this->getViewState('DataAddRacquets',null))===null)
-        {			
-	    	$this->CreateArrayAddRacquets();
+        //if(($this->_data_add_racquets=$this->getViewState('DataAddRacquets',null))===null)
+        //{			
+	    	$this->CreateArrayAddRacquets($this->FilterCollection_brand_add_racquet->getCondition(),
+				 $this->FilterCollection_model_add_racquet->getCondition() );
             $this->saveDataAddRacquets();
-        }
+        //}
     }
     
     protected function saveDataAddRacquets()
@@ -518,7 +519,8 @@ class CustomersRacquets extends TPage
 	
 	 public function onSearchAddRacquet($param){
 		$this->editable->Visible = false;
-		$this->CreateArrayAddRacquets($this->FilterCollection_brand_add_racquet->getCondition(), $this->FilterCollection_model_add_racquet->getCondition() );
+		$this->CreateArrayAddRacquets($this->FilterCollection_brand_add_racquet->getCondition(),
+				 $this->FilterCollection_model_add_racquet->getCondition() );
 		$this->DataGridAddRacquets->DataSource=$this->DataAddRacquets;
         $this->DataGridAddRacquets->dataBind();
         
