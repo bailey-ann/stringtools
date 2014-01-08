@@ -68,6 +68,7 @@ class StringingMachines extends TPage
     /* funzione che crea la gui per editare l'oggetto */
     public function selectStringingMachine($sender,$param)
     {
+    	$this->DefaultMachine->Checked = false;
     	$this->editable->Visible = true;
     	$this->TypeEdit->Text = Prado::localize('Edit stringing machine');
     	$this->machine = TblStringingMachines::finder()->findBy_id($param->Item->IDColumn->Text);
@@ -102,6 +103,10 @@ class StringingMachines extends TPage
         		$this->DateCalibration->enabled = false;
         		$this->ActivateDateCalibration->Checked = false;
         	}
+        	if($personalMachine->default == 1)
+        		$this->DefaultMachine->Checked = true;
+        	else 
+        		$this->DefaultMachine->Checked = false;
         }else{
         	$this->Serial->Text = "";
         	$this->Note->Text = "";
@@ -172,7 +177,21 @@ class StringingMachines extends TPage
     	if($this->ActivateDateCalibration->Checked)
     		$personalMachine->date_calibration=$this->DateCalibration->getDataOk();
     	$personalMachine->note = $this->Note->Text;
+    	if($this->DefaultMachine->Checked)
+    		$personalMachine->default = 1;
+    	else
+    		$personalMachine->default = 0;
     	$personalMachine->save();
+    	
+    	if($this->DefaultMachine->Checked){
+    		$arrayMachine = RelStringerStringingMachine::finder()->findAll('id_stringer = ? AND id_stringing_machine != ?', $this->User->UserDB->id, $this->machine->id);
+    		if($arrayMachine != null){
+    			foreach($arrayMachine as $row){
+    				$row->default = 0;
+    				$row->save();
+    			}
+    		}
+    	}
     	
     	
     	$this->editable->Visible = false;

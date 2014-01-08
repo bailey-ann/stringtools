@@ -96,6 +96,10 @@
 <com:OPSDatePicker ID="DateCalibration" ShowHours="false" ShowMinutes="false" />
 <com:TCheckBox ID="ActivateDateCalibration" OnCheckedChanged="ActivateDateCalibrationClicked" AutoPostBack="true" Text="Activate date"  />
 <br/>
+<span class="input-label">Default</span>
+<br/>
+<com:TCheckBox ID="DefaultMachine" />
+<br/>
 <span class="input-label"><%= Prado::localize('Note') %></span>
 <br/>
 <com:TTextBox ID="Note" />
