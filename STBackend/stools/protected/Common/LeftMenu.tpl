@@ -25,7 +25,13 @@
 <div><%= Prado::localize('Stringing Iobs') %></div>
 <ul>
     <li><a href="?page=Job.ListJobs"><%= Prado::localize('List Jobs') %></a></li>
-    <li><a href="?page=Job.ListJobsReport"><%= Prado::localize('List Jobs Report') %></a></li>
+</ul>
+</div>
+
+<div class="topic">
+<div>Report</div>
+<ul>
+    <li><a href="?page=Report.ListJobsReport"><%= Prado::localize('List Jobs Report') %></a></li>
 </ul>
 </div>
 
