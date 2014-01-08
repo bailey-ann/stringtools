@@ -23,6 +23,7 @@ class TblUsers extends TActiveRecord
 	public $tbl_currency_unit_id;
 	public $tbl_weight_unit_id;
 	public $piva;
+	public $codice_fiscale;
 	
 	public $currency_unit;
 	public $weight_unit;
