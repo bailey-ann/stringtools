@@ -8,6 +8,7 @@ class CustomersRacquets extends TPage
 	private $userSelect;
 	private $racquetSelect;
 	private $userRacquetSelect;
+	private $sort;
 	
 	/*** inizio zona lista customers ***/
 	
@@ -18,7 +19,7 @@ class CustomersRacquets extends TPage
         return $this->_data;
     }
     
-    protected function CreateArray($name = '', $surname = ''){
+    protected function CreateArray($name = '', $surname = '', $order = ''){
 	    $sqlmap = $this->Application->Modules['sqlmap']->Database;
 		$sqlmap->Active = true;
 		$sql = "SELECT tbl_users.* FROM tbl_users INNER JOIN rel_stringer_customer ON rel_stringer_customer.id_customer = tbl_users.id where rel_stringer_customer.id_stringer = " . $this->User->UserDB->id;
@@ -29,6 +30,10 @@ class CustomersRacquets extends TPage
     		$stringCriteria .= " AND " . $surname;
     	}
     	$sql .= $stringCriteria;
+    	if($order == 'name')
+    		$sql .= " order by name";
+    	else if($order == 'surname')
+    		$sql .= " order by surname";
     	$command = $sqlmap->createCommand($sql);
     	$this->_data = $command->query()->readAll();
     }
@@ -45,7 +50,7 @@ class CustomersRacquets extends TPage
     protected function RefreshData()
     {
         $sqlmap = Prado::getApplication()->Modules['sqlmap']->Client;
-	   	$this->_data = $sqlmap->queryForList("SelectCustomersByStringer",$this->User->UserDB->id);
+	   	$this->CreateArray();
         $this->saveData();
     }
  
@@ -113,8 +118,10 @@ class CustomersRacquets extends TPage
     
     public function changePage($sender,$param)
     {
-    	$this->ResetAll();
+    	//$this->ResetAll();
         $this->DataGridCustomers->CurrentPageIndex=$param->NewPageIndex;
+        $this->CreateArray($this->FilterCollection_name->getCondition(),
+        		$this->FilterCollection_surname->getCondition() ,$this->getViewState('sort',''));
         $this->DataGridCustomers->DataSource=$this->Data;
         $this->DataGridCustomers->dataBind();
     }
@@ -127,12 +134,16 @@ class CustomersRacquets extends TPage
     protected function sortData($data,$key)
     {
     	$compare = create_function('$a,$b','if ($a["'.$key.'"] == $b["'.$key.'"]) {return 0;}else {return ($a["'.$key.'"] > $b["'.$key.'"]) ? 1 : -1;}');
-    	usort($data,$compare) ;
+    	//usort($data,$compare) ;
     	return $data ;
     }
     
     public function sortDataGrid($sender,$param)
     {
+    	$this->sort = $param->SortExpression;
+    	$this->setViewState('sort',$this->sort);
+    	$this->CreateArray($this->FilterCollection_name->getCondition(), $this->FilterCollection_surname->getCondition() ,$this->sort);
+    	
     	$this->DataGridCustomers->DataSource=$this->sortData($this->Data,$param->SortExpression);
     	$this->DataGridCustomers->dataBind();
     }

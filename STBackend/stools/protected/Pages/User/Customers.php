@@ -46,7 +46,7 @@ class Customers extends TPage
     protected function RefreshData()
     {
         $sqlmap = Prado::getApplication()->Modules['sqlmap']->Client;
-	   	$this->_data = $sqlmap->queryForList("SelectCustomersByStringer",$this->User->UserDB->id);
+	   	$this->CreateArray();
         $this->saveData();
     }
  
