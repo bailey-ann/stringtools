@@ -233,5 +233,52 @@ class Racquets extends TPage
 		$this->DataGridRacquets->DataSource=$this->Data;
         $this->DataGridRacquets->dataBind();
 	}
+	
+	public function onItemCommand($sender,$param)
+	{
+		switch ($param->getCommandName())
+		{
+			case "clonazione":
+				$this->Clona($sender,$param);
+				break;
+		}
+	}
+	
+	public function Clona($sender,$param)
+	{
+		$item = $param->Item;
+		
+		$this->setViewState('racquet',null);
+		$this->DataGridRacquets->SelectedItemIndex=-1;
+		$this->editable->Visible = true;
+		$this->TypeEdit->Text = Prado::localize('Insert new racquet');
+		
+		$racquetClone = TblRacquets::finder()->findBy_id($param->Item->IDColumn->Text);
+		 
+		$criteria = new TActiveRecordCriteria;
+		$criteria->OrdersBy['description'] = 'asc';
+		$brands = TblBrands::finder()->findAll($criteria);
+		$this->DDLBrands->DataSource=$brands;
+		$this->DDLBrands->dataBind();
+		$this->DDLBrands->SelectedValue = $racquetClone->tbl_brands_id;
+		
+		$criteria = new TActiveRecordCriteria;
+		$criteria->OrdersBy['description'] = 'asc';
+		$patterns = TblRacquetsPattern::finder()->findAll($criteria);
+		$this->DDLPatterns->DataSource=$patterns;
+		$this->DDLPatterns->dataBind();
+		$this->DDLPatterns->SelectedValue = $racquetClone->tbl_racquets_pattern_id;
+		
+		$this->Model->Text = $racquetClone->model;
+		$this->HeadSize->Text = $racquetClone->head_size;
+		$this->Length->Text = $racquetClone->length;
+		$this->WeightUnstrung->Text = $racquetClone->weight_unstrung;
+		$this->WeightStrung->Text = $racquetClone->weight_strung;
+		$this->Balance->Text = $racquetClone->balance;
+		$this->Swingweight->Text = $racquetClone->swingweight;
+		$this->Stiffness->Text = $racquetClone->stiffness;
+		$this->BeamWidth->Text = $racquetClone->beam_width;
+		$this->Note->Text = $racquetClone->note;
+	}
 }
 

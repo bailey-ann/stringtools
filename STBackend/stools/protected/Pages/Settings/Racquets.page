@@ -32,6 +32,8 @@
     OnPageIndexChanged="changePage"
     OnPagerCreated="pagerCreated"
     OnSelectedIndexChanged="selectRacquet"
+    
+    OnItemCommand="onItemCommand"
     >
     <com:TBoundColumn
     	ID="IDColumn"
@@ -61,6 +63,15 @@
         ButtonType="ImageButton"
         ID="SelectCustomer"
         CommandName="select"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Clone') %>"
+        Text="<%= Prado::localize('Clone') %>"
+        ID="CloneJob"
+        ImageUrl="themes/White/images/clone.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        CommandName="clonazione"
         />
 </com:TFilterDataGrid>
 <br/>
