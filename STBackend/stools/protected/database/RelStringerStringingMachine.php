@@ -12,6 +12,7 @@ class RelStringerStringingMachine extends TActiveRecord
 	public $date_buy;
 	public $date_calibration;
 	public $note;
+	public $default;
 
 	public static function finder($className=__CLASS__)
 	{
