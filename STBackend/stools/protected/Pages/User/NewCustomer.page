@@ -145,6 +145,11 @@
 <com:TTextBox ID="Piva" />
 <br/>
 
+<span class="input-label"><%= Prado::localize('CodiceFiscale') %></span>
+<br/>
+<com:TTextBox ID="CodiceFiscale" />
+<br/>
+
 <span class="input-label"><%= Prado::localize('Fax') %></span>
 <br/>
 <com:TTextBox ID="Fax" />

@@ -55,6 +55,7 @@ class NewCustomer extends TPage
 			$userRecord->cost = $this->Cost->Text;
 			$userRecord->date_insert = date("c");
 			$userRecord->piva = $this->Piva->Text;
+			$userRecord->codice_fiscale = $this->CodiceFiscale->Text;
 			$userRecord->Save();
 			
 			$relSC = new RelStringerCustomer();

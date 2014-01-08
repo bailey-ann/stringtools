@@ -427,8 +427,11 @@ class ManageJob extends FunctionList
      
      public function ActivateStringCrossClicked(){
      	$this->DDLStringCross->enabled = $this->ActivateStringCross->Checked;
+     	$this->DDLStringCross->SelectedValue = $this->DDLStringMains->SelectedValue;
      	$this->WeightCross->enabled = $this->ActivateStringCross->Checked;
+     	$this->WeightCross->Text = $this->WeightMains->Text;
      	$this->PrestretchCross->enabled = $this->ActivateStringCross->Checked;
+     	$this->PrestretchCross->Text = $this->PrestretchMain->Text;
      }
      
      public function checkPrice(){

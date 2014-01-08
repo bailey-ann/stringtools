@@ -86,6 +86,7 @@ class Customers extends TPage
     		$this->Fax->Text = $this->userEdit->fax;
     		$this->Cost->Text = $this->userEdit->cost;
     		$this->Piva->Text = $this->userEdit->piva;
+    		$this->CodiceFiscale->Text = $this->userEdit->codice_fiscale;
     		$this->setViewState('userEdit',$this->userEdit);
     	}
     }
@@ -115,6 +116,7 @@ class Customers extends TPage
 		$this->userEdit->cost = $this->Cost->Text;
 		$this->userEdit->date_insert = date('c');
 		$this->userEdit->piva = $this->Piva->Text;
+		$this->userEdit->codice_fiscale = $this->CodiceFiscale->Text;
 		$this->userEdit->save();
 		
     	$this->RefreshData();
