@@ -982,6 +982,36 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <source><![CDATA[List Jobs Report]]></source>
 <target><![CDATA[]]>Lista Incordature</target>
 </trans-unit>
+
+<trans-unit id="195">
+<source><![CDATA[DONATE]]></source>
+<target><![CDATA[]]>Stringtools.it è un servizio gratuito, se ti piace e vuoi darmi un aiuto puoi effettuare una donazione con paypal, qualunque essa sia sarà apprezzata per gli sviluppi futuri. Grazie :-)</target>
+</trans-unit>
+
+<trans-unit id="196">
+<source><![CDATA[DONATE_1]]></source>
+<target><![CDATA[]]>Stringtools.it è un servizio gratuito, se ti piace </target>
+</trans-unit>
+
+<trans-unit id="197">
+<source><![CDATA[DONATE_2]]></source>
+<target><![CDATA[]]>e vuoi darmi un aiuto puoi effettuare una donazione con paypal,</target>
+</trans-unit>
+
+<trans-unit id="198">
+<source><![CDATA[DONATE_3]]></source>
+<target><![CDATA[]]>qualunque essa sia sarà apprezzata per gli sviluppi futuri. Grazie :-)</target>
+</trans-unit>
+
+<trans-unit id="199">
+<source><![CDATA[export]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="200">
+<source><![CDATA[CodiceFiscale]]></source>
+<target><![CDATA[]]>Codice Fiscale</target>
+</trans-unit>
 </body>
  </file>
 </xliff>
