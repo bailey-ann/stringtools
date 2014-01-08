@@ -70,6 +70,14 @@
 	</tr>
 	<tr>
 		<td>
+			<%= Prado::localize('INCASSO_MONTH')%>:
+		</td>
+		<td>
+			<com:TLabel ID="INCASSO_MONTH" />
+		</td>
+	</tr>
+	<tr>
+		<td>
 			<%= Prado::localize('DATA_LAST_STRINGING')%>:
 		</td>
 		<td>

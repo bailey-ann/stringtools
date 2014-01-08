@@ -33,6 +33,12 @@ class Home extends FunctionList
 	   			$numberJobMonth = $arraNumberJobMonth[0];
 	   		$this->COUNT_LIST_STRINGING_MONTH->Text = $numberJobMonth;
 	   		
+	   		$incassoMonth = 0;
+	   		$arraIncassoMonth = $sqlmap->queryForList("IncassoByStringerMonth",$this->User->UserDB->id);
+	   		if(count($arraIncassoMonth) > 0)
+	   			$incassoMonth = $arraIncassoMonth[0];
+	   		$this->INCASSO_MONTH->Text = $incassoMonth;
+	   		
 	   		$numberJob = 0;
 	   		$arraNumberJob = $sqlmap->queryForList("CountListJobByStringer",$this->User->UserDB->id);
 	   		if(count($arraNumberJob) > 0)

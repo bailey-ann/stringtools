@@ -122,6 +122,17 @@
 			order by tbl_stringing_jobs.date_stringing desc,tbl_brands.description desc, tbl_racquets.model desc, tbl_racquets_user.serial  desc 
 	</select>
 	
+	<select id="IncassoByStringerMonth" resultClass="string">
+		SELECT
+			SUM( tbl_stringing_jobs.total_price ) AS totale
+			FROM
+			tbl_stringing_jobs
+			INNER JOIN tbl_racquets_user ON tbl_stringing_jobs.tbl_racquets_user_id = tbl_racquets_user.id
+			where tbl_stringing_jobs.tbl_users_id_stringer = #id# 
+			AND tbl_racquets_user.active = 1
+			AND tbl_stringing_jobs.date_stringing BETWEEN DATE_FORMAT( NOW( ) ,  '%Y-%m-01' ) AND NOW( ) 			 
+	</select>
+	
 	<select id="SelectTblRacquetUser" resultClass="TblRacquetsUser">
 		SELECT
 			tbl_racquets_user.*
