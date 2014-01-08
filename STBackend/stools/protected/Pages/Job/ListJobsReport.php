@@ -1,6 +1,6 @@
 <?php
-
 require_once('tcpdf.php');
+//require_once 'Writer.php';
 
 class ListJobsReport extends FunctionList
 {
@@ -15,7 +15,11 @@ class ListJobsReport extends FunctionList
     	parent::onLoad($param);
     	$this->Page->Title = Prado::localize('ListJobs');
 		$this->SearchRacquet->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/search.gif';
-		$this->CancelRacquet->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/cancel.gif';				
+		$this->CancelRacquet->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/cancel.gif';	
+		$this->Excel->ImageUrl = $this->Page->Theme->BaseUrl.'/images/excel-64.png';	
+		$this->Pdf->ImageUrl = $this->Page->Theme->BaseUrl.'/images/pdf-64.png';
+		$this->Excel->Visible = false;	
+		$this->Pdf->Visible = false;		
 		if(!$this->IsPostBack)
 		{
         	$this->ShowListJobs();
@@ -270,7 +274,18 @@ class ListJobsReport extends FunctionList
 		$pdf->Output($this->formatJob($param->Item->IDJobColumn->Text).'.pdf','D');*/
 	}
 	
+	public function exportExcel()
+	{					
+		$workbook = new Spreadsheet_Excel_Writer();
+		$worksheet = $workbook->addWorksheet("Cov");
+		$workbook->send("test.xls");
+		$workbook->close();	
+	}
 	
+	public function exportPdf()
+	{
+		
+	}
 	
 	
 	/*** zone zona lista job customer ***/

@@ -156,4 +156,13 @@
 </com:TContent>
 
 <com:TContent ID="rightbar">
+<h3><com:TLabel Text="<%= Prado::localize('export') %>" /> </h3>
+<br/>
+<com:TImageButton 
+	OnClick="exportExcel"	
+	ID="Excel" />
+<br/>
+<com:TImageButton 
+	OnClick="exportPdf"	
+	ID="Pdf" />
 </com:TContent>
