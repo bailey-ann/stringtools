@@ -56,16 +56,16 @@ class Racquets extends TPage
     
     protected function loadData()
     {
-        if(($this->_data=$this->getViewState('Data',null))===null)
-        {
-        	$this->CreateArray();
+        //if(($this->_data=$this->getViewState('Data',null))===null)
+       // {
+        	$this->CreateArray($this->FilterCollection_brand->getCondition(), $this->FilterCollection_model->getCondition());
             $this->saveData();
-        }
+       // }
     }
     
     protected function RefreshData()
     {
-        $this->CreateArray();
+        $this->CreateArray($this->FilterCollection_brand->getCondition(), $this->FilterCollection_model->getCondition());
         $this->saveData();
     }
  
