@@ -1,15 +1,16 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', TRUE);
-ini_set('display_startup_errors', TRUE);
+//error_reporting(E_ALL);
+//ini_set('display_errors', TRUE);
+//ini_set('display_startup_errors', TRUE);
 require_once('tcpdf.php');
-require_once 'PHPExcel.php';
+//require_once 'PHPExcel.php';
 
 class ListJobs extends FunctionList
 {
 	private $_data=null;
 	private $userSelect=null;
 	private $_data_jobs_customer=null;
+	private $sort;
 	
 	protected function getData()
     {
@@ -18,7 +19,7 @@ class ListJobs extends FunctionList
         return $this->_data;
     }
     
-    protected function CreateArray($name = '', $surname = ''){
+    protected function CreateArray($name = '', $surname = '', $order = ''){
 	    $sqlmap = $this->Application->Modules['sqlmap']->Database;
 		$sqlmap->Active = true;
 		$sql = "SELECT tbl_users.* FROM tbl_users INNER JOIN rel_stringer_customer ON rel_stringer_customer.id_customer = tbl_users.id where rel_stringer_customer.id_stringer = " . $this->User->UserDB->id;
@@ -29,6 +30,10 @@ class ListJobs extends FunctionList
     		$stringCriteria .= " AND " . $surname;
     	}
     	$sql .= $stringCriteria;
+    	if($order == 'name')
+    		$sql .= " order by name";
+    	else if($order == 'surname')
+    		$sql .= " order by surname";
     	$command = $sqlmap->createCommand($sql);
     	$this->_data = $command->query()->readAll();
     }
@@ -65,7 +70,7 @@ class ListJobs extends FunctionList
 		$this->SearchRacquet->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/search.gif';
 		$this->CancelRacquet->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/cancel.gif';		
 		$this->btnAddJob->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/add_job.gif';
-			
+		$this->Change->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/send.gif';
         if(!$this->IsPostBack)
         {
         	$this->zone_list_jobs->Visible = false;
@@ -95,6 +100,8 @@ class ListJobs extends FunctionList
     public function changePage($sender,$param)
     {
         $this->DataGridCustomers->CurrentPageIndex=$param->NewPageIndex;
+        $this->CreateArray($this->FilterCollection_name->getCondition(),
+        		$this->FilterCollection_surname->getCondition() ,$this->getViewState('sort',''));
         $this->DataGridCustomers->DataSource=$this->Data;
         $this->DataGridCustomers->dataBind();
     }
@@ -116,6 +123,32 @@ class ListJobs extends FunctionList
 		$this->CreateArray('','');
 		$this->DataGridCustomers->DataSource=$this->Data;
         $this->DataGridCustomers->dataBind();
+	}
+	
+	protected function sortData($data,$key)
+	{
+		$compare = create_function('$a,$b','if ($a["'.$key.'"] == $b["'.$key.'"]) {return 0;}else {return ($a["'.$key.'"] > $b["'.$key.'"]) ? 1 : -1;}');
+		//usort($data,"") ;
+		return $data ;
+	}
+	
+	public function sortDataGrid($sender,$param)
+	{
+		$this->sort = $param->SortExpression;
+		$this->setViewState('sort',$this->sort);
+		$this->CreateArray($this->FilterCollection_name->getCondition(), $this->FilterCollection_surname->getCondition() ,$this->sort);
+		$this->DataGridCustomers->DataSource=$this->sortData($this->Data,$param->SortExpression);
+		$this->DataGridCustomers->dataBind();
+	}
+	
+	public function changePageSize($sender,$param)
+	{
+		$this->DataGridCustomers->PageSize=TPropertyValue::ensureInteger($this->PageSize->Text);
+		$this->DataGridCustomers->CurrentPageIndex=0;
+		$this->CreateArray($this->FilterCollection_name->getCondition(),
+				$this->FilterCollection_surname->getCondition() ,$this->getViewState('sort',''));
+		$this->DataGridCustomers->DataSource=$this->Data;
+		$this->DataGridCustomers->dataBind();
 	}
 	
 	public function selectCustomer($sender, $param){
