@@ -1,19 +1,51 @@
-SVILUPPI
+SVILUPPI	
+
+-- Un totale dei ricavi in home page è possibile metterlo
+( inserito totale incasso  mensile )
+DEVELOP Site
+
+
+-- Codice Fiscale 
+DEVELOP Site
+
+-- Sarebbe possibile Flaggare (si dice così) la propria macchina incordatrice in modo da renderla quella di default così da non doverla reinserire nella nuova incordatura?
+DEVELOP Site
+
+-- Sarebbe comodo anche poter inserire automaticamnete la stessa corda per orizzontali e verticali, nelle incordature
+DEVELOP Site
+
+-- clonazione racchette
+DEVELOP Site
+
+-- La sezione Gestione Incordature --> Nuova incordatura è possibile renderla uguale alla sezione Dati Personali--> Clienti??  
+Ossia più utenti per pagina (eventualmente 10-20-30 etc) e possibilità di ordine alfabetico?
+ 
+DEVELOP Site
+
+-- Report
+	annuale develop
 
 -- estrazione excel
 
--- Un totale dei ricavi in home page è possibile metterlo
-
--- Codice Fiscale 
-
--- Sarebbe possibile Flaggare (si dice così) la propria macchina incordatrice in modo da renderla quella di default così da non doverla reinserire nella nuova incordatura?
-
--- Sarebbe comodo anche poter inserire automaticamnete la stessa corda per orizzontali e verticali, nelle incordature
-
--- clonazione racchette
-
+<h3><com:TLabel Text="<%= Prado::localize('export') %>" /> </h3>
+<br/>
+<com:TImageButton 
+	OnClick="exportExcel"	
+	ID="Excel" />
+<br/>
+<com:TImageButton 
+	OnClick="exportPdf"	
+	ID="Pdf" />
+	
 -- pulsante invio
+
+
+
 
 BUG
 
 -- Quando cerco una racchetta da inserire ad un cliente per marca, se mi da più pagine da leggere quando clicco sulla pagina successiva mi riporta all'elenco iniziale.
+FIX
+
+-- Altro "problema" quando metto in ordine alfabetico i clienti se mi sposto nella pagina successiva mi sballa tutto e li mischia nuovamente, in pratica li rimette in ordine di inserimento cronologico.
+FIX
