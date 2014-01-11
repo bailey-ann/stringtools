@@ -1017,6 +1017,41 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <source><![CDATA[INCASSO_MONTH]]></source>
 <target><![CDATA[]]>Incasso Mensile</target>
 </trans-unit>
+
+<trans-unit id="202">
+<source><![CDATA[ListCashMonth]]></source>
+<target><![CDATA[]]>Incassi Mensili</target>
+</trans-unit>
+
+<trans-unit id="203">
+<source><![CDATA[Year]]></source>
+<target><![CDATA[]]>Anno</target>
+</trans-unit>
+
+<trans-unit id="204">
+<source><![CDATA[Stringing]]></source>
+<target><![CDATA[]]>Incordature</target>
+</trans-unit>
+
+<trans-unit id="205">
+<source><![CDATA[Amount]]></source>
+<target><![CDATA[]]>Incasso</target>
+</trans-unit>
+
+<trans-unit id="206">
+<source><![CDATA[ListCashYear]]></source>
+<target><![CDATA[]]>Incassi Annuali</target>
+</trans-unit>
+
+<trans-unit id="207">
+<source><![CDATA[Month]]></source>
+<target><![CDATA[]]>Mese</target>
+</trans-unit>
+
+<trans-unit id="208">
+<source><![CDATA[All]]></source>
+<target><![CDATA[]]>Tutti</target>
+</trans-unit>
 </body>
  </file>
 </xliff>

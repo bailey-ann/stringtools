@@ -154,13 +154,15 @@
         />
 </com:TFilterDataGrid>
 <br/>
-<com:TImageButton 
-	OnClick="addJob"	
-	ID="btnAddJob" />
-<hr />
+
 </com:TContent>
 
 <com:TContent ID="rightbar">
+<com:TImageButton 
+	OnClick="addJob"	
+	ID="btnAddJob" />
+<br/>
+<hr />
 <com:TPanel GroupingText="<%= Prado::localize('PageSize') %>" Width="50px">
 	<com:TTextBox ID="PageSize" Text="10" /><br/>
 	<com:TImageButton ID="Change" OnClick="changePageSize" />

@@ -32,6 +32,7 @@
 <div>Report</div>
 <ul>
     <li><a href="?page=Report.ListJobsReport"><%= Prado::localize('List Jobs Report') %></a></li>
+    <li><a href="?page=Report.ListCashYear"><%= Prado::localize('ListCashYear') %></a></li>
 </ul>
 </div>
 

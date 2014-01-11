@@ -75,6 +75,7 @@ class ListJobs extends FunctionList
         {
         	$this->zone_list_jobs->Visible = false;
         	$this->zone_label->Visible = false;
+        	$this->btnAddJob->Visible = false;
             $this->DataGridCustomers->DataSource=$this->Data;
             $this->DataGridCustomers->dataBind();
             
@@ -155,8 +156,9 @@ class ListJobs extends FunctionList
 		$this->setViewState('userSelect',null);
 		$item = $param->Item;		
 		$this->userSelect = TblUsers::finder()->findBy_id($param->Item->IDColumn->Text);
-		$userRacquet = TblRacquetsUser::finder()->findAll("tbl_users_id = ?", $this->userSelect->id);
+		$userRacquet = TblRacquetsUser::finder()->findAll("tbl_users_id = ? and active = 1", $this->userSelect->id);
 		$this->HideListJob();
+		
 		if(count($userRacquet)>0)
 			$this->ShowListJobs();
 		else
@@ -183,6 +185,7 @@ class ListJobs extends FunctionList
 		$this->LBL_LIST_JOB->Text = Prado::localize('List_Jobs_Customer') . " " . $this->userSelect->name . " " . $this->userSelect->surname;		
 		$this->setViewState('userSelect',$this->userSelect);
 		$this->zone_list_jobs->Visible = true;
+		$this->btnAddJob->Visible = true;
 		$this->loadDataJobsCustomer();
 		
 		//if($this->User->UserDB->id == 6)
