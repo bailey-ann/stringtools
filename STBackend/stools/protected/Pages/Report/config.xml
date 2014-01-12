@@ -2,6 +2,6 @@
 
 <configuration>
   <authorization>
-    <deny pages="ListJobsReport,ListCashYear,ListCashMonth" users="?" />
+    <deny pages="ListJobsReport,ListCashYear,ListCashMonth,ListCashClient" users="?" />
   </authorization>
 </configuration>

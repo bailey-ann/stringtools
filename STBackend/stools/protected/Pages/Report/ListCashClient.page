@@ -1,0 +1,69 @@
+<%@ Title="Gestione Incordature Report" %>
+<com:TContent ID="sidebar">
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+<hr />
+
+</com:TContent>
+
+<com:TContent ID="zone_list_jobs">
+<h3><com:TLabel ID="LBL_LIST"  /></h3>
+<com:TLabel Text="<%= Prado::localize('Name') %>" /> 
+<com:TTextBox ID="filter_name" />
+<com:TLabel Text="<%= Prado::localize('Surname') %>" /> 
+<com:TTextBox ID="filter_surname" />
+<br>
+<com:TImageButton ID="Search" onClick="onSearch" />
+<com:TImageButton ID="Cancel" onClick="onClear" "/>
+<com:TFilterDataGrid
+	SkinID="datagrid_10"
+	
+    ID="DataGridList"
+    CellPadding="2"
+    OnSelectedIndexChanged="select"
+    OnPageIndexChanged="changePage"
+    OnPagerCreated="pagerCreated"
+    OnItemCommand="onItemCommand"
+    
+    AllowSorting="true"
+    OnSortCommand="sortDataGrid"
+    >
+    <com:TBoundColumn
+    	SortExpression="name"
+    	ID="name"
+        HeaderText="<%= Prado::localize('Name') %>"
+        DataField="name"
+        />
+    <com:TBoundColumn
+    	SortExpression="surname"
+    	ID="surname"
+        HeaderText="<%= Prado::localize('Surname') %>"
+        DataField="surname"
+        />
+    <com:TBoundColumn
+    	SortExpression="stringing"
+    	ID="stringing"
+        HeaderText="<%= Prado::localize('Stringing') %>"
+        DataField="stringing"
+        />
+    <com:TBoundColumn
+    	SortExpression="amount"
+    	ID="amount"
+        HeaderText="<%= Prado::localize('Amount') %>"
+        DataField="amount"
+        />
+</com:TFilterDataGrid>
+<br/>
+<hr />
+</com:TContent>
+
+<com:TContent ID="rightbar">
+<h3><com:TLabel Text="<%= Prado::localize('export') %>" /> </h3>
+<br/>
+<com:TImageButton 
+	OnClick="exportExcel"	
+	ID="Excel" />
+<br/>
+<com:TImageButton 
+	OnClick="exportPdf"	
+	ID="Pdf" />
+</com:TContent>

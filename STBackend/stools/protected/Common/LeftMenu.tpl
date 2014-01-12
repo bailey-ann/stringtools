@@ -34,6 +34,7 @@
     <li><a href="?page=Report.ListJobsReport"><%= Prado::localize('List Jobs Report') %></a></li>
     <li><a href="?page=Report.ListCashYear"><%= Prado::localize('ListCashYear') %></a></li>
     <li><a href="?page=Report.ListCashMonth"><%= Prado::localize('ListCashMonth') %></a></li>
+    <li><a href="?page=Report.ListCashClient"><%= Prado::localize('ListCashClient') %></a></li>
 </ul>
 </div>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-01-11T11:22:56Z" product-name="messages">
+ <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-01-12T21:07:55Z" product-name="messages">
   <body>
   
 <trans-unit id="1">
@@ -1007,7 +1007,7 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 
 <trans-unit id="199">
 <source><![CDATA[export]]></source>
-<target><![CDATA[]]></target>
+<target><![CDATA[]]>Esporta</target>
 </trans-unit>
 
 <trans-unit id="200">
@@ -1053,6 +1053,16 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <trans-unit id="208">
 <source><![CDATA[All]]></source>
 <target><![CDATA[]]>Tutti</target>
+</trans-unit>
+
+<trans-unit id="209">
+<source><![CDATA[month]]></source>
+<target><![CDATA[]]>mese</target>
+</trans-unit>
+
+<trans-unit id="210">
+<source><![CDATA[ListCashClient]]></source>
+<target><![CDATA[]]> Incassi Cliente</target>
 </trans-unit>
 </body>
  </file>
