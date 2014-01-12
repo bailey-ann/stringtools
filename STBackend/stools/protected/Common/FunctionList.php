@@ -126,6 +126,60 @@ class FunctionList extends TPage
 		return $addFirst.$id;
 	}
 	
+	function getMountName($culture, $month){
+		$returnMonth = $month;
+		if($culture == 'it_IT' || $culture == 'it'|| $culture == 'fr_FR'|| $culture == 'es_ES'){
+			$mesi["January"]="Gennaio";
+			$mesi["February"]="Febbraio";
+			$mesi["March"]="Marzo";
+			$mesi["April"]="Aprile";
+			$mesi["May"]="Maggio";
+			$mesi["June"]="Giugno";
+			$mesi["July"]="Luglio";
+			$mesi["August"]="Agosto";
+			$mesi["September"]="Settembre";
+			$mesi["October"]="Ottobre";
+			$mesi["November"]="Novembre";
+			$mesi["December"]="Dicembre";
+			
+			$returnMonth = $mesi[$month];
+		}
+		return $returnMonth;
+	}
+	
+	function getArrayForDDLMount($culture){
+		$arrayMonth = array();
+		$arrayMonth[] = array('id'=>0,'month'=>Prado::localize('All'));
+		if($culture == 'it_IT' || $culture == 'it'|| $culture == 'fr_FR'|| $culture == 'es_ES'){
+			$arrayMonth[] = array('id'=>1,'month'=>'Gennaio');
+			$arrayMonth[] = array('id'=>2,'month'=>'Febbraio');
+			$arrayMonth[] = array('id'=>3,'month'=>'Marzo');
+			$arrayMonth[] = array('id'=>4,'month'=>'Aprile');
+			$arrayMonth[] = array('id'=>5,'month'=>'Maggio');
+			$arrayMonth[] = array('id'=>6,'month'=>'Giugno');
+			$arrayMonth[] = array('id'=>7,'month'=>'Luglio');
+			$arrayMonth[] = array('id'=>8,'month'=>'Agosto');
+			$arrayMonth[] = array('id'=>9,'month'=>'Settembre');
+			$arrayMonth[] = array('id'=>10,'month'=>'Ottobre');
+			$arrayMonth[] = array('id'=>11,'month'=>'Novembre');
+			$arrayMonth[] = array('id'=>12,'month'=>'Dicembre');
+		}else{
+			$arrayMonth[] = array('id'=>1,'month'=>'January');
+			$arrayMonth[] = array('id'=>2,'month'=>'February');
+			$arrayMonth[] = array('id'=>3,'month'=>'March');
+			$arrayMonth[] = array('id'=>4,'month'=>'April');
+			$arrayMonth[] = array('id'=>5,'month'=>'May');
+			$arrayMonth[] = array('id'=>6,'month'=>'June');
+			$arrayMonth[] = array('id'=>7,'month'=>'July');
+			$arrayMonth[] = array('id'=>8,'month'=>'August');
+			$arrayMonth[] = array('id'=>9,'month'=>'September');
+			$arrayMonth[] = array('id'=>10,'month'=>'October');
+			$arrayMonth[] = array('id'=>11,'month'=>'November');
+			$arrayMonth[] = array('id'=>12,'month'=>'December');
+		}
+		return $arrayMonth;
+	}
+	
 	function makeHtmlJob($job){ //.''.   '..'
 		$stringJob = $this->formatJob($job->id);
 		
