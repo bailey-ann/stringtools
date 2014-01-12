@@ -4,7 +4,7 @@
   	<alias id="PHPMAILER" path="..\..\PHPMailer_5.2.4" />
   	<alias id="FPDF" path="..\..\fpdf17" />
   	<alias id="TCPDF" path="..\..\tcpdf" />
-  	<alias id="EXCEL" path="..\..\Spreadsheet\Excel" />
+  	<alias id="EXCEL" path="..\..\PHPExcel" />
   	
     <using namespace="Application.Common.*" />
     <using namespace="Application.DbMapping.*" />

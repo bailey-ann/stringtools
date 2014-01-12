@@ -1,6 +1,9 @@
 <?php
-require_once('tcpdf.php');
-//require_once 'Writer.php';
+//error_reporting(E_ALL);
+//ini_set('display_errors', TRUE);
+//ini_set('display_startup_errors', TRUE);
+require_once 'tcpdf.php' ;
+require_once 'PHPExcel.php';
 
 class ListJobsReport extends FunctionList
 {

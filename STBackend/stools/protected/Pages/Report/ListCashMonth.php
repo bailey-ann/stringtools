@@ -1,9 +1,9 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', TRUE);
-ini_set('display_startup_errors', TRUE);
-//require_once('tcpdf.php');
-//require_once 'Writer.php';
+//error_reporting(E_ALL);
+//ini_set('display_errors', TRUE);
+//ini_set('display_startup_errors', TRUE);
+require_once 'tcpdf.php' ;
+require_once 'PHPExcel.php';
 
 class ListCashMonth extends FunctionList
 {
@@ -17,7 +17,7 @@ class ListCashMonth extends FunctionList
     	$this->Page->Title = Prado::localize('ListCashMonth');		
     	$this->Excel->ImageUrl = $this->Page->Theme->BaseUrl.'/images/excel-64.png';	
 		$this->Pdf->ImageUrl = $this->Page->Theme->BaseUrl.'/images/pdf-64.png';
-		$this->Excel->Visible = false;	
+		//$this->Excel->Visible = false;	
 		$this->Pdf->Visible = false;		
 		if(!$this->IsPostBack)
 		{
@@ -176,7 +176,43 @@ class ListCashMonth extends FunctionList
 	
 	
 	public function exportExcel()
-	{					
+	{				
+		$objPHPExcel = new PHPExcel();
+		$row = 1;
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $row, Prado::localize('Year'));
+		$objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $row, Prado::localize('Stringing'));
+		$objPHPExcel->getActiveSheet()->getStyle('B1')->getFont()->setBold(true);
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $row, Prado::localize('Stringing'));
+		$objPHPExcel->getActiveSheet()->getStyle('C1')->getFont()->setBold(true);
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $row, Prado::localize('Amount'));
+		$objPHPExcel->getActiveSheet()->getStyle('D1')->getFont()->setBold(true);
+		$row++;
+		$this->CreateArray($this->getViewState('sort','') );
+		for($j=0;$j<count($this->_data);$j++){
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $row, $this->_data[$j]["year"]);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $row, $this->_data[$j]["month"]);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $row, $this->_data[$j]["stringing"]);			
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $row, $this->_data[$j]["amount"]);
+			$objPHPExcel->getActiveSheet()->getStyle('D'.$row)->getNumberFormat()->setFormatCode('0.00');
+			$row++;
+		}		
+		
+		$objPHPExcel->getActiveSheet()->setTitle(Prado::localize('ListCashMonth'));
+		
+		$objPHPExcel->setActiveSheetIndex(0);
+		
+		header('Content-Type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment;filename="export.xls"');
+		header('Cache-Control: max-age=0');
+		header('Cache-Control: max-age=1');		
+		header ('Expires: Mon, 26 Jul 2030 05:00:00 GMT');
+		header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
+		header ('Cache-Control: cache, must-revalidate');
+		header ('Pragma: public'); 
+		
+		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+		$objWriter->save('php://output');
 	}
 	
 	public function exportPdf()
