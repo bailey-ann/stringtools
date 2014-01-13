@@ -4,6 +4,8 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 require_once 'tcpdf.php' ;
 require_once 'PHPExcel.php';
+require_once ('jpgraph.php');
+require_once ('jpgraph_bar.php');
 
 class ListCashYear extends FunctionList
 {
@@ -113,8 +115,96 @@ class ListCashYear extends FunctionList
 		$this->DataGridList->DataSource=$this->Data;
         $this->DataGridList->dataBind();
 	}
-
 	
+	public function loadStringingGraph(){
+		$dataStringing =array();
+		$label = array();
+		for($j=0;$j<count($this->Data);$j++){
+			$dataStringing[] = $this->Data[$j]['stringing'];
+			$label[] = $this->Data[$j]['year'];
+		}
+		
+
+
+		// Create the graph. These two calls are always required
+		$graph = new Graph(350,220,'auto');
+		$graph->SetScale("textlin");
+		$graph->graph_theme = null;
+		$graph->SetFrame(false);
+		
+
+		$graph->xaxis->SetTickLabels($label);
+		
+		// Create the bar plots
+		$b1plot = new BarPlot($dataStringing);
+		
+		//$gbplot = new GroupBarPlot(array($b1plot,$b2plot));
+		
+		// ...and add it to the graPH
+		$b1plot->value->Show();
+		$b1plot->value->SetFormat('%01.0f'); 
+		$graph->Add($b1plot);
+		
+		
+		$b1plot->SetColor("white");
+		$b1plot->SetFillColor("#cc1111");
+		
+		$graph->title->Set(Prado::localize('Stringing'));
+		
+		// Display the graph
+		$stringingFileName = "stringing". $this->User->UserDB->id .".png";
+		$this->Session['stringing_graph'] = $stringingFileName;
+		$graph->Stroke($this->Application->Parameters["PATH_CUSTOM_IMAGES"].$stringingFileName);
+	}
+	
+	public function getStringingPathGrahFile(){
+		return $this->Application->Parameters["PATH_CUSTOM_IMAGES"].
+												$this->Session['stringing_graph'];
+	}
+	
+	public function loadAmountGraph(){
+		$dataAmount =array();
+		$label = array();
+		for($j=0;$j<count($this->Data);$j++){
+			$dataAmount[] = $this->Data[$j]['amount'];
+			$label[] = $this->Data[$j]['year'];
+		}
+		
+
+
+		// Create the graph. These two calls are always required
+		$graph = new Graph(350,220,'auto');
+		$graph->SetScale("textlin");
+		$graph->graph_theme = null;
+		$graph->SetFrame(false);
+
+		$graph->xaxis->SetTickLabels($label);
+		
+		// Create the bar plots
+		$b2plot = new BarPlot($dataAmount);
+		
+		//$gbplot = new GroupBarPlot(array($b1plot,$b2plot));
+		
+		// ...and add it to the graPH
+		$b2plot->value->Show();
+		$b2plot->value->SetFormat('%01.2f'); 
+		$graph->Add($b2plot);
+		
+		$b2plot->SetColor("white");
+		$b2plot->SetFillColor("#11cccc");
+
+		
+		$graph->title->Set(Prado::localize('Amounts'));
+		
+		$amountFileName = "amount". $this->User->UserDB->id .".png";
+		$this->Session['amount_graph'] = $amountFileName;
+		$graph->Stroke($this->Application->Parameters["PATH_CUSTOM_IMAGES"].$amountFileName);
+	}
+
+	public function getAmountPathGrahFile(){
+		return $this->Application->Parameters["PATH_CUSTOM_IMAGES"].
+												$this->Session['amount_graph'];
+	}
 	
 	
 	public function exportExcel()

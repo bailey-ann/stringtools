@@ -41,6 +41,19 @@
         />
 </com:TFilterDataGrid>
 <br/>
+<table border="0" width="90%">
+	<tr>
+		<td align="center" width="100%"><%% echo $this->loadStringingGraph(); %>	
+			<IMG SRC= <%% echo $this->getStringingPathGrahFile(); %> />
+		</td>
+	</tr>
+	<tr>
+		<td align="center" width="100%"><%% echo $this->loadAmountGraph(); %>
+			<IMG SRC= <%% echo $this->getAmountPathGrahFile(); %> />
+		</td>
+	</tr>
+</table>
+<br/>
 <hr />
 </com:TContent>
 

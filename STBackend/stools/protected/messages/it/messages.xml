@@ -1064,6 +1064,51 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <source><![CDATA[ListCashClient]]></source>
 <target><![CDATA[]]> Incassi Cliente</target>
 </trans-unit>
+
+<trans-unit id="211">
+<source><![CDATA[HOME_1]]></source>
+<target><![CDATA[]]>Benvenuto su stringtools.it :-)</target>
+</trans-unit>
+
+<trans-unit id="212">
+<source><![CDATA[HOME_2]]></source>
+<target><![CDATA[]]>Per chi?</target>
+</trans-unit>
+
+<trans-unit id="213">
+<source><![CDATA[HOME_3]]></source>
+<target><![CDATA[]]>Questo sito si pone come il punto di riferimento per tutti gli incordatori che vogliono tenere sott'occhio il resoconto delle proprie incordature e la gestione del proprio portfolio clienti e magazzino.</target>
+</trans-unit>
+
+<trans-unit id="214">
+<source><![CDATA[HOME_4]]></source>
+<target><![CDATA[]]>Sarà possibile inserire i propri clienti con la relative racchette, sarà possibile inserire l'incordatura con tutte le note del caso e stampare la "claimcheck" in formato pdf in modo da riconsegnare racchetta e i dati di essa.</target>
+</trans-unit>
+
+<trans-unit id="215">
+<source><![CDATA[HOME_5]]></source>
+<target><![CDATA[]]>Per ogni racchetta cliente è possibile inserire la storicità delle modifiche effettuate in modo da avere sempre sott'occhio tutti i dati di essa senza dover avere miriadi di fogliettini sparsi con il rischio di dimenticarsi qualche dato fondamentale.</target>
+</trans-unit>
+
+<trans-unit id="216">
+<source><![CDATA[HOME_6]]></source>
+<target><![CDATA[]]>Reportisca in tempo reale ed estrazione in formato excel permettono una visione globale del proprio operato su tutti i fronti.</target>
+</trans-unit>
+
+<trans-unit id="217">
+<source><![CDATA[HOME_7]]></source>
+<target><![CDATA[]]>Non sei un incordatore ma vuoi tenere registrate le incordature del tue racchette oppure le modifiche fatte ad essa, sei nel posto giusto! Anche per te sarà possibile inserire tutti i tuoi dati in estrema facilità.</target>
+</trans-unit>
+
+<trans-unit id="218">
+<source><![CDATA[HOME_8]]></source>
+<target><![CDATA[]]>Registrati adesso, è GRATIS!! :-)</target>
+</trans-unit>
+
+<trans-unit id="219">
+<source><![CDATA[Amounts]]></source>
+<target><![CDATA[]]>Incassi</target>
+</trans-unit>
 </body>
  </file>
 </xliff>

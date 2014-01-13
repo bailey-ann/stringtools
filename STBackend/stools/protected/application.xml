@@ -5,6 +5,7 @@
   	<alias id="FPDF" path="..\..\fpdf17" />
   	<alias id="TCPDF" path="..\..\tcpdf" />
   	<alias id="EXCEL" path="..\..\PHPExcel" />
+  	<alias id="JPGraph" path="..\..\jpgraph-3.5.0b1" />
   	
     <using namespace="Application.Common.*" />
     <using namespace="Application.DbMapping.*" />
@@ -16,6 +17,8 @@
 	<using namespace="FPDF.*" />
 	<using namespace="TCPDF.*" />
 	<using namespace="EXCEL.*" />
+	<using namespace="JPGraph.*" />
+	<using namespace="JPGraph.src.*" />
   </paths>
   <!-- modules configured and loaded for all services -->
   <modules>
@@ -72,6 +75,7 @@
 	<parameter id="EMAIL_ADMIN" value="amministrazione@stringtools.it" />
 	<parameter id="EMAIL_ASSISTENZE" value="assistenza@stringtools.it" />
 	<parameter id="SITE_LINK" value="http://www.stringtools.it/stools" />
+	<parameter id="PATH_CUSTOM_IMAGES" value="./themes/White/images/graph" />
 	<parameter id="languages" value="('en'=>'English','it'=>'Italian')" />
   </parameters>
 </application>
