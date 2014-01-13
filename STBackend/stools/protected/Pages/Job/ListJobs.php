@@ -1,9 +1,9 @@
 <?php
-//error_reporting(E_ALL);
-//ini_set('display_errors', TRUE);
-//ini_set('display_startup_errors', TRUE);
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
 require_once('tcpdf.php');
-//require_once 'PHPExcel.php';
+require_once 'PHPExcel.php';
 
 class ListJobs extends FunctionList
 {
@@ -71,11 +71,13 @@ class ListJobs extends FunctionList
 		$this->CancelRacquet->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/cancel.gif';		
 		$this->btnAddJob->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/add_job.gif';
 		$this->Change->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/send.gif';
-        if(!$this->IsPostBack)
+        $this->Excel->ImageUrl = $this->Page->Theme->BaseUrl.'/images/excel-64.png';
+		if(!$this->IsPostBack)
         {
         	$this->zone_list_jobs->Visible = false;
         	$this->zone_label->Visible = false;
         	$this->btnAddJob->Visible = false;
+        	$this->Excel->Visible = false;
             $this->DataGridCustomers->DataSource=$this->Data;
             $this->DataGridCustomers->dataBind();
             
@@ -186,6 +188,7 @@ class ListJobs extends FunctionList
 		$this->setViewState('userSelect',$this->userSelect);
 		$this->zone_list_jobs->Visible = true;
 		$this->btnAddJob->Visible = true;
+		$this->Excel->Visible = true;
 		$this->loadDataJobsCustomer();
 		
 		//if($this->User->UserDB->id == 6)
@@ -360,96 +363,137 @@ class ListJobs extends FunctionList
 		header('Content-type: application/pdf');
 		header('Content-Disposition: attachment; filename="'.$stringJob.'.pdf"');
 		$pdf->Output($stringJob.'.pdf', 'D');
-
-		/*$pdf = new FPDF(); // Creo nuova classe
-		$pdf->SetAuthor("www.stringtools.it"); // L'autore del documento
-		$pdf->AddPage(); // Aggiunge una pagina default
-		
-		//immagine utente
-		if (file_exists('themes/White/images/logo/'.$this->User->UserDB->id.".jpg")) 
-			$pdf->Image('themes/White/images/logo/'.$this->User->UserDB->id.".jpg",10,6,40);
-		else
-			$pdf->Image('themes/White/images/logo-st-www.jpg',10,6,40);
-		
-		//dati utente
-		$y = 40;
-		
-		$pdf->SetFont('Arial','',12); // Set del font arial grassetto 12px
-		
-		$pdf->Text(10,$y,$this->User->UserDB->surname . " " . $this->User->UserDB->name);
-		$y  = $y + 5;
-		
-		if($this->User->UserDB->telephone != ""){
-			$pdf->Text(10,$y,$this->User->UserDB->telephone);
-			$y  = $y + 5;
-		}
-		
-		if($this->User->UserDB->mobile_telephone != ""){
-			$pdf->Text(10,$y,$this->User->UserDB->mobile_telephone);
-			$y  = $y + 5;
-		}
-		
-		if($this->User->UserDB->email != ""){
-			$pdf->Text(10,$y,$this->User->UserDB->email);
-			$y  = $y + 5;
-		}
-		
-		$y  = $y + 5;
-		
-		$pdf->Text(10,$y,Prado::localize('CLAIM_CHECK'));
-		
-		
-		$pdf->Output($this->formatJob($param->Item->IDJobColumn->Text).'.pdf','D');*/
 	}
 	
 	public function exportExcel()
-	{					
-		// Create new PHPExcel object
+	{				
 		$objPHPExcel = new PHPExcel();
+		$row = 1;
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $row, Prado::localize('JobID'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $row, Prado::localize('Date Stringing'));	
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $row, Prado::localize('Customer'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $row, Prado::localize('Racquet'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4, $row, Prado::localize('SerialRacquet'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5, $row, Prado::localize('Stringer'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6, $row, Prado::localize('StringingMachine'));
 		
-		// Set document properties
-		$objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
-									 ->setLastModifiedBy("Maarten Balliauw")
-									 ->setTitle("Office 2007 XLSX Test Document")
-									 ->setSubject("Office 2007 XLSX Test Document")
-									 ->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.")
-									 ->setKeywords("office 2007 openxml php")
-									 ->setCategory("Test result file");
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7, $row, Prado::localize('StringMains'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8, $row, Prado::localize('Tension'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9, $row, Prado::localize('Prestretch'));
 		
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(10, $row, Prado::localize('StringCross'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(11, $row, Prado::localize('Tension'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(12, $row, Prado::localize('Prestretch'));
 		
-		// Add some data
-		$objPHPExcel->setActiveSheetIndex(0)
-		            ->setCellValue('A1', 'Hello')
-		            ->setCellValue('A2', 'GIGI!')
-		            ->setCellValue('B2', 'world!')
-		            ->setCellValue('C1', 'Hello')
-		            ->setCellValue('D2', 'world!');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(13, $row, Prado::localize('StringingType'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(14, $row, Prado::localize('DynamicTension'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(15, $row, Prado::localize('Stencyl'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(16, $row, Prado::localize('GrommetsGuard'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(17, $row, Prado::localize('Grips'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(18, $row, Prado::localize('Overgrips'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(19, $row, Prado::localize('TotalPrice'));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(20, $row, Prado::localize('NoteStringing'));
+		$objPHPExcel->getActiveSheet()->getStyle('A1:Z1')->getFont()->setBold(true);
 		
-		// Miscellaneous glyphs, UTF-8
-		$objPHPExcel->setActiveSheetIndex(0)
-		            ->setCellValue('A4', 'Miscellaneous glyphs')
-		            ->setCellValue('A5', 'éàèùâêîôûëïüÿäöüç');
+		$this->CreateArrayJobsCustomer($this->FilterCollection_brand->getNoFieldCondition(),
+			$this->FilterCollection_model->getNoFieldCondition(), 
+			$this->FilterCollection_serial->getNoFieldCondition() );
+			
+		$row = $row + 2;
 		
-		// Rename worksheet
-		$objPHPExcel->getActiveSheet()->setTitle('Simple');
+			
+		for($j=0;$j<count($this->DataJobsCustomer);$j++){
+			
+			$job = $this->DataJobsCustomer[$j];
+			$stringJob = $this->formatJob($job->id);
 		
+			$racquetCustomer = TblRacquetsUser::finder()->findBy_id($job->tbl_racquets_user_id);
+			
+			$customer = TblUsers::finder()->findBy_id($racquetCustomer->tbl_users_id);
+			
+			$racquetModel = TblRacquets::finder()->findBy_id($racquetCustomer->tbl_racquets_id);
+			$brandRacquet = TblBrands::finder()->findBy_id($racquetModel->tbl_brands_id);
+			
+			$stringingMachine = TblStringingMachines::finder()->findBy_id($job->tbl_stringing_machines_id);
+			$brandStringingMachine = TblBrands::finder()->findBy_id($stringingMachine->tbl_brands_id);
+			
+			$mainString = TblStrings::finder()->findBy_id($job->tbl_strings_id_main);
+			$brandMainString = TblBrands::finder()->findBy_id($mainString->tbl_brands_id);
+			$gaugeMainString = TblGauges::finder()->findBy_id($mainString->tbl_gauges_id);
+			//$row->gauge_desc = $gauge->usa . " (" . $gauge->diameter.")";
+			
+			$crossString = TblStrings::finder()->findBy_id($job->tbl_strings_id_cross);
+			$brandCrossString = TblBrands::finder()->findBy_id($crossString->tbl_brands_id);
+			$gaugeCrossString = TblGauges::finder()->findBy_id($crossString->tbl_gauges_id);
+			
+			$stringingJobType = TblStringingJobType::finder()->findBy_id($job->tbl_stringing_type_id);
+			
+			$stencyl = Prado::localize('No');
+			if($job->stencyl == 1)
+				$stencyl = Prado::localize('Yes');
+				
+			$grommet = Prado::localize('No');
+			if($job->grommets_guard == 1)
+				$grommet = Prado::localize('Yes');
+							
+			$gripString = Prado::localize('No');
+			if($job->tbl_grip_id != 0){
+				$grip = TblGrips::finder()->findBy_id($job->tbl_grip_id);
+				$brand = TblBrands::finder()->findBy_id($grip->tbl_brands_id);
+				$gripString = $brand->description . " " . $grip->model;
+			}
+					
+			$overgripString = Prado::localize('No');
+			if($job->tbl_overgrip_id != null){
+				$overgrip = TblOvergrips::finder()->findBy_id($job->tbl_overgrip_id->id);
+				$brand = TblBrands::finder()->findBy_id($overgrip->tbl_brands_id);
+				$overgripString = $brand->description . " " . $overgrip->model;
+			}
+			
+			$y = substr($job->date_stringing, 0, 4);
+			$m = substr($job->date_stringing, 5, 2);
+			$d = substr($job->date_stringing, 8, 2);
+			$dateString = $d . "-".$m."-".$y;
+				
+			
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $row, $stringJob);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $row, $dateString);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $row, $customer->name . ' ' . $customer->surname);			
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $row, $brandRacquet->description. ' ' . $racquetModel->model);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4, $row, $racquetCustomer->serial);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5, $row, $this->User->UserDB->name . ' ' . $this->User->UserDB->surname);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(6, $row, $brandStringingMachine->description . ' ' . $stringingMachine->model);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(7, $row, $brandMainString->description . ' ' . $mainString->model);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(8, $row, $job->weight_main. ' ' . $this->User->UserDB->weight_unit->description);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(9, $row, $job->prestretch_main.' %');
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(10, $row, $brandCrossString->description . ' ' . $crossString->model);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(11, $row, $job->wieght_cross . ' ' . $this->User->UserDB->weight_unit->description);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(12, $row, $job->prestretch_cross.' %');
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(13, $row, $stringingJobType->description);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(14, $row, $job->dynamic_tension);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(15, $row, $stencyl);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(16, $row, $grommet);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(17, $row, $gripString);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(18, $row, $overgripString);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(19, $row, $job->total_price);
+			//$objPHPExcel->getActiveSheet()->getStyle('D'.$row)->getNumberFormat()->setFormatCode('0.00');
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(20, $row, $job->note);
+			
+			$row++;
+		}
 		
-		// Set active sheet index to the first sheet, so Excel opens this as the first sheet
+		$objPHPExcel->getActiveSheet()->setTitle(Prado::localize('CLAIM_CHECK'));
+		
 		$objPHPExcel->setActiveSheetIndex(0);
 		
-		
-		// Redirect output to a client’s web browser (Excel5)
 		header('Content-Type: application/vnd.ms-excel');
-		header('Content-Disposition: attachment;filename="01simple.xls"');
+		header('Content-Disposition: attachment;filename="export.xls"');
 		header('Cache-Control: max-age=0');
-		// If you're serving to IE 9, then the following may be needed
-		header('Cache-Control: max-age=1');
-		
-		// If you're serving to IE over SSL, then the following may be needed
-		header ('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
-		header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
-		header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
-		header ('Pragma: public'); // HTTP/1.0
+		header('Cache-Control: max-age=1');		
+		header ('Expires: Mon, 26 Jul 2030 05:00:00 GMT');
+		header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
+		header ('Cache-Control: cache, must-revalidate');
+		header ('Pragma: public'); 
 		
 		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 		$objWriter->save('php://output');

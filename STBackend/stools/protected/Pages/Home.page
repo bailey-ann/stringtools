@@ -8,42 +8,68 @@
 </com:TContent>
 
 <com:TContent ID="reg_ok">
-<h3><%= Prado::localize('NOT_LOGIN_HOME_TEXT')%></h3>
+<table width="90%">
+	<tr>
+		<td>
+			<h3><%= Prado::localize('HOME_1')%></h3>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br/><br/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= Prado::localize('HOME_2')%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= Prado::localize('HOME_3')%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= Prado::localize('HOME_4')%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= Prado::localize('HOME_5')%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= Prado::localize('HOME_6')%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= Prado::localize('HOME_7')%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<h3><%= Prado::localize('HOME_8')%></h3>
+		</td>
+	</tr>
+</table>
 </com:TContent>
 <com:TContent ID="content">
 <br/>
 
 <table>
-	<tr>
-		<td colspan="2">
-			<b><%= Prado::localize('DONATE_1')%></b>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<b><%= Prado::localize('DONATE_2')%></b>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<b><%= Prado::localize('DONATE_3')%></b>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2" align="center">
-			<com:TImageButton ID="Paypal" >
-				<prop:Attributes.onclick>
-					var finestra = window.open("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=luigi%2epiccione%40gmail%2ecom&lc=IT&item_name=stringtools&item_number=123456&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted");
-					finestra.focus();
-				</prop:Attributes.onclick>
-			</com:TImageButton>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<br><br>
-		</td>
-	</tr>
 	<tr>
 		<td>
 			<%= Prado::localize('COUNT_LIST_CUSTOMERS')%>:
@@ -214,6 +240,36 @@
 				</prop:AlternatingItemTemplate>
 				</table>
 			</com:TRepeater>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<br><br>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<b><%= Prado::localize('DONATE_1')%></b>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<b><%= Prado::localize('DONATE_2')%></b>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<b><%= Prado::localize('DONATE_3')%></b>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+			<com:TImageButton ID="Paypal" >
+				<prop:Attributes.onclick>
+					var finestra = window.open("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=luigi%2epiccione%40gmail%2ecom&lc=IT&item_name=stringtools&item_number=123456&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted");
+					finestra.focus();
+				</prop:Attributes.onclick>
+			</com:TImageButton>
 		</td>
 	</tr>
 </table>

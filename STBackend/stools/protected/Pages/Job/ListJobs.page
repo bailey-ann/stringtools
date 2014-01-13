@@ -158,14 +158,18 @@
 </com:TContent>
 
 <com:TContent ID="rightbar">
-<com:TImageButton 
-	OnClick="addJob"	
-	ID="btnAddJob" />
-<br/>
-<hr />
 <com:TPanel GroupingText="<%= Prado::localize('PageSize') %>" Width="50px">
 	<com:TTextBox ID="PageSize" Text="10" /><br/>
 	<com:TImageButton ID="Change" OnClick="changePageSize" />
 </com:TPanel>
+<br/>
+<com:TImageButton 
+	OnClick="addJob"	
+	ID="btnAddJob" />
+<br/><br/>
+<com:TImageButton 
+	OnClick="exportExcel"	
+	ID="Excel" />
+
 
 </com:TContent>
