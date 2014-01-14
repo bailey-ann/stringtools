@@ -4,6 +4,8 @@
 //ini_set('display_startup_errors', TRUE);
 require_once 'tcpdf.php' ;
 require_once 'PHPExcel.php';
+require_once ('jpgraph.php');
+require_once ('jpgraph_bar.php');
 
 class ListCashMonth extends FunctionList
 {
@@ -170,6 +172,193 @@ class ListCashMonth extends FunctionList
 		$this->CreateArray($this->sort  );
 		$this->DataGridList->DataSource=$this->Data;
         $this->DataGridList->dataBind();
+	}
+	
+	
+	
+	public function loadStringingGraph(){
+		
+		
+				
+		
+		$arrayMonth = $this->getArrayMountLabel($this->getApplication()->getGlobalization()->Culture);
+		$arrayMonthShort = $this->getArrayMountLabelShort($this->getApplication()->getGlobalization()->Culture);
+		
+		
+		$arrayYear = array();
+		$arryColor = array("#cc1111", "#11cccc", "#1111cc");
+		$dataStringing =array();
+
+		$arrayPlot = array();
+		
+		
+		for($j=0;$j<count($this->Data);$j++){
+			$year = $this->Data[$j]['year'];
+			if (in_array($year, $arrayYear)) {
+			}else {
+				$arrayYear[] = $year;
+			}
+		}
+		for($j=0;$j<count($arrayYear);$j++){
+			$yearFirst = $arrayYear[$j];
+
+			$arrayValue = array();
+			
+			for($i=0;$i<count($this->Data);$i++){
+				$yearSecond = $this->Data[$i]['year'];
+				
+				if($yearFirst == $yearSecond){
+					//ok
+					$monthFirst = $this->Data[$i]['month'];
+					
+					for($z=0;$z<count($arrayMonth);$z++){
+						$monthSecondo = $arrayMonth[$z];
+						if($monthFirst == $monthSecondo)
+							$arrayValue[$z] = $monthFirst = $this->Data[$i]['stringing'];
+						//else
+						//	$arrayValue[] = 0;
+					}
+				}
+			}
+			for($z=0;$z<count($arrayMonth);$z++){
+				if($arrayValue[$z] == null)
+					$arrayValue[$z] = 0;
+			}
+			
+			$plot = new BarPlot($arrayValue);
+			$plot->value->Show();
+			$plot->value->SetFormat('%01.0f');
+			$plot->value->HideZero();
+			$plot->SetColor("white");
+			$plot->SetFillColor($arryColor[$j]);
+			$plot->SetLegend($yearFirst);
+			$arrayPlot[] = $plot;
+		}
+		
+
+
+		// Create the graph. These two calls are always required
+		$graph = new Graph(550,300,'auto');
+		$graph->SetScale("textlin");
+		$graph->graph_theme = null;
+		$graph->SetFrame(false);
+		
+
+		$graph->xaxis->SetTickLabels($arrayMonthShort);
+
+		
+		$gbplot = new GroupBarPlot($arrayPlot);
+		 
+		$graph->Add($gbplot);
+		
+		
+		
+		
+		$graph->title->Set(Prado::localize('Stringing'));
+		$graph->legend->SetFrameWeight(1);
+		$graph->legend->SetColumns(6);
+		$graph->legend->SetColor('#4E4E4E','#00A78A');
+		$graph->legend->SetPos(0.5,0.99,'center','bottom');
+		
+		// Display the graph
+		$stringingFileName = "stringing". $this->User->UserDB->id .".png";
+		$this->Session['stringing_graph'] = $stringingFileName;
+		$graph->Stroke($this->Application->Parameters["PATH_CUSTOM_IMAGES"].$stringingFileName);
+	}
+	
+	public function getStringingPathGrahFile(){
+		return $this->Application->Parameters["PATH_CUSTOM_IMAGES"].
+												$this->Session['stringing_graph'];
+	}
+	
+	public function loadAmountGraph(){
+		$arrayMonth = $this->getArrayMountLabel($this->getApplication()->getGlobalization()->Culture);
+		$arrayMonthShort = $this->getArrayMountLabelShort($this->getApplication()->getGlobalization()->Culture);
+		
+		
+		$arrayYear = array();
+		$arryColor = array("#cc1111", "#11cccc", "#1111cc");
+		$dataStringing =array();
+
+		$arrayPlot = array();
+		
+		
+		for($j=0;$j<count($this->Data);$j++){
+			$year = $this->Data[$j]['year'];
+			if (in_array($year, $arrayYear)) {
+			}else {
+				$arrayYear[] = $year;
+			}
+		}
+		for($j=0;$j<count($arrayYear);$j++){
+			$yearFirst = $arrayYear[$j];
+
+			$arrayValue = array();
+			
+			for($i=0;$i<count($this->Data);$i++){
+				$yearSecond = $this->Data[$i]['year'];
+				
+				if($yearFirst == $yearSecond){
+					//ok
+					$monthFirst = $this->Data[$i]['month'];
+					
+					for($z=0;$z<count($arrayMonth);$z++){
+						$monthSecondo = $arrayMonth[$z];
+						if($monthFirst == $monthSecondo)
+							$arrayValue[$z] = $monthFirst = $this->Data[$i]['amount'];
+						//else
+						//	$arrayValue[] = 0;
+					}
+				}
+			}
+			for($z=0;$z<count($arrayMonth);$z++){
+				if($arrayValue[$z] == null)
+					$arrayValue[$z] = 0;
+			}
+			
+			$plot = new BarPlot($arrayValue);
+			$plot->value->Show();
+			$plot->value->SetFormat('%01.0f');
+			$plot->value->HideZero();
+			$plot->SetColor("white");
+			$plot->SetFillColor($arryColor[$j]);
+			$plot->SetLegend($yearFirst);
+			$arrayPlot[] = $plot;
+		}
+		
+
+
+		// Create the graph. These two calls are always required
+		$graph = new Graph(550,300,'auto');
+		$graph->SetScale("textlin");
+		$graph->graph_theme = null;
+		$graph->SetFrame(false);
+		
+		$graph->xaxis->SetTickLabels($arrayMonthShort);
+
+		
+		$gbplot = new GroupBarPlot($arrayPlot);
+		 
+		$graph->Add($gbplot);
+		
+		
+		$graph->title->Set(Prado::localize('amount_graph'));
+		$graph->legend->SetFrameWeight(1);
+		$graph->legend->SetColumns(6);
+		$graph->legend->SetColor('#4E4E4E','#00A78A');
+		$graph->legend->SetPos(0.5,0.99,'center','bottom');
+		
+		// Display the graph
+		$graph->title->Set(Prado::localize('Amounts'));
+		
+		$amountFileName = "amount". $this->User->UserDB->id .".png";
+		$this->Session['amount_graph'] = $amountFileName;
+		$graph->Stroke($this->Application->Parameters["PATH_CUSTOM_IMAGES"].$amountFileName);
+	}
+
+	public function getAmountPathGrahFile(){
+		return $this->Application->Parameters["PATH_CUSTOM_IMAGES"].
+												$this->Session['amount_graph'];
 	}
 
 	

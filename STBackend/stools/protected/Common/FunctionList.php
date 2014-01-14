@@ -180,6 +180,70 @@ class FunctionList extends TPage
 		return $arrayMonth;
 	}
 	
+	function getArrayMountLabel($culture){
+		$arrayMonth = array();
+		if($culture == 'it_IT' || $culture == 'it'|| $culture == 'fr_FR'|| $culture == 'es_ES'){
+			$arrayMonth[] = 'Gennaio';
+			$arrayMonth[] = 'Febbraio';
+			$arrayMonth[] = 'Marzo';
+			$arrayMonth[] = 'Aprile';
+			$arrayMonth[] = 'Maggio';
+			$arrayMonth[] = 'Giugno';
+			$arrayMonth[] = 'Luglio';
+			$arrayMonth[] = 'Agosto';
+			$arrayMonth[] = 'Settembre';
+			$arrayMonth[] = 'Ottobre';
+			$arrayMonth[] = 'Novembre';
+			$arrayMonth[] = 'Dicembre';
+		}else{
+			$arrayMonth[] = 'January';
+			$arrayMonth[] = 'February';
+			$arrayMonth[] = 'March';
+			$arrayMonth[] = 'April';
+			$arrayMonth[] = 'May';
+			$arrayMonth[] = 'June';
+			$arrayMonth[] = 'July';
+			$arrayMonth[] = 'August';
+			$arrayMonth[] = 'September';
+			$arrayMonth[] = 'October';
+			$arrayMonth[] = 'November';
+			$arrayMonth[] = 'December';
+		}
+		return $arrayMonth;
+	}
+	
+	function getArrayMountLabelShort($culture){
+		$arrayMonth = array();
+		if($culture == 'it_IT' || $culture == 'it'|| $culture == 'fr_FR'|| $culture == 'es_ES'){
+			$arrayMonth[] = 'Gen';
+			$arrayMonth[] = 'Feb';
+			$arrayMonth[] = 'Mar';
+			$arrayMonth[] = 'Apr';
+			$arrayMonth[] = 'Mag';
+			$arrayMonth[] = 'Giu';
+			$arrayMonth[] = 'Lug';
+			$arrayMonth[] = 'Ago';
+			$arrayMonth[] = 'Set';
+			$arrayMonth[] = 'Ott';
+			$arrayMonth[] = 'Nov';
+			$arrayMonth[] = 'Dic';
+		}else{
+			$arrayMonth[] = 'Jan';
+			$arrayMonth[] = 'Feb';
+			$arrayMonth[] = 'Mar';
+			$arrayMonth[] = 'Apr';
+			$arrayMonth[] = 'May';
+			$arrayMonth[] = 'Jun';
+			$arrayMonth[] = 'Jul';
+			$arrayMonth[] = 'Aug';
+			$arrayMonth[] = 'Sep';
+			$arrayMonth[] = 'Oct';
+			$arrayMonth[] = 'Nov';
+			$arrayMonth[] = 'Dec';
+		}
+		return $arrayMonth;
+	}
+	
 	function makeHtmlJob($job){ //.''.   '..'
 		$stringJob = $this->formatJob($job->id);
 		
