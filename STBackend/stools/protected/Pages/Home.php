@@ -9,7 +9,7 @@ class Home extends FunctionList
     {
     	$this->Paypal->ImageUrl = 'https://www.paypalobjects.com/en_US/IT/i/btn/btn_donateCC_LG.gif';
     	
-    	if($_POST['cmd'] != null)
+    	if(isset($_POST['cmd']))
     	{
     		//paypal
     		$url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=luigi%2epiccione%40gmail%2ecom&lc=IT&item_name=stringtools&item_number=123456&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted';
