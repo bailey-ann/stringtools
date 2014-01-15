@@ -117,10 +117,16 @@ class ListCashYear extends FunctionList
 	}
 	
 	public function loadStringingGraph(){
+		
+		$maxValue = 0;
+		
 		$dataStringing =array();
 		$label = array();
 		for($j=0;$j<count($this->Data);$j++){
-			$dataStringing[] = $this->Data[$j]['stringing'];
+			$value = $this->Data[$j]['stringing'];
+			if($value > $maxValue)
+				$maxValue = $value;
+			$dataStringing[] = $value;
 			$label[] = $this->Data[$j]['year'];
 		}
 		
@@ -143,6 +149,7 @@ class ListCashYear extends FunctionList
 		// ...and add it to the graPH
 		$b1plot->value->Show();
 		$b1plot->value->SetFormat('%01.0f'); 
+		$b1plot->value->SetColor("black","darkred"); 
 		$graph->Add($b1plot);
 		
 		
@@ -150,6 +157,8 @@ class ListCashYear extends FunctionList
 		$b1plot->SetFillColor("#cc1111");
 		
 		$graph->title->Set(Prado::localize('Stringing'));
+		//$graph->yscale->SetAutoTicks(); 
+		//$graph->yscale->SetAutoMax($maxValue+3);
 		
 		// Display the graph
 		$stringingFileName = "stringing". $this->User->UserDB->id .".png";
@@ -188,6 +197,8 @@ class ListCashYear extends FunctionList
 		// ...and add it to the graPH
 		$b2plot->value->Show();
 		$b2plot->value->SetFormat('%01.2f'); 
+		//$b2plot->value->SetFont(FS_BOLD); 
+		$b2plot->value->SetColor("black","darkred"); 
 		$graph->Add($b2plot);
 		
 		$b2plot->SetColor("white");
