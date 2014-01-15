@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);  
 //error_reporting(E_ALL);
 //ini_set('display_errors', TRUE);
 //ini_set('display_startup_errors', TRUE);
@@ -220,10 +221,11 @@ class ListCashMonth extends FunctionList
 					}
 				}
 			}
-			for($z=0;$z<count($arrayMonth);$z++){
+			var_dump($arrayMonth);
+			/*for($z=0;$z<count($arrayMonth);$z++){
 				if($arrayValue[$z] == null)
 					$arrayValue[$z] = 0;
-			}
+			}*/
 			
 			$plot = new BarPlot($arrayValue);
 			$plot->value->Show();
