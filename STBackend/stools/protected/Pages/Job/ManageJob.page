@@ -79,7 +79,7 @@
 	Display="Dynamic"
 	ValidationGroup="user" />
 	
-<table>
+<table width="89%">
 	<tr>
 		<td>
 			<span class="input-label"><%= Prado::localize('Date Stringing') %></span>
@@ -96,16 +96,19 @@
 			<com:TDropDownList ID="DDLStriningMachine"  />
 		</td>
 	</tr>
+	
+	
+	<tr><td colspan="2">
+	<com:TPanel GroupingText="<%= Prado::localize('StringMains') %>" >
+	<Table>
+	
 	<tr>
-		<td>
-			<span class="input-label"><%= Prado::localize('StringMains') %></span>
-		</td>
-		<td>
+		<td colspan="2">
 			<com:TDropDownList ID="DDLStringMains"  /> <com:TTextBox ID="WeightMains" Columns="5" AutoTrim="true" /> <%= $this->User->UserDB->weight_unit->description %>
 		</td>
 	</tr>
 	<tr>
-		<td>
+		<td width="1%">
 			<span class="input-label"><%= Prado::localize('Prestretch') %></span>
 		</td>
 		<td>
@@ -126,16 +129,23 @@
 			    Text="<%= Prado::localize('You must enter a floating number.') %>" />
 		</td>
 	</tr>
+	
+	</table>
+	</com:TPanel>
+	</td></tr>
+	
+	
+	<tr><td colspan="2">
+	<com:TPanel GroupingText="<%= Prado::localize('StringCross') %>" >
+	<Table>
+	
 	<tr>
-		<td>
-			<span class="input-label"><%= Prado::localize('StringCross') %></span>
-		</td>
-		<td>
+		<td colspan="2">
 			<com:TDropDownList ID="DDLStringCross"  /> <com:TTextBox ID="WeightCross" Columns="5" AutoTrim="true" /> <%= $this->User->UserDB->weight_unit->description %> <com:TCheckBox ID="ActivateStringCross" OnCheckedChanged="ActivateStringCrossClicked" AutoPostBack="true"  />
 		</td>
 	</tr>
 	<tr>
-		<td>
+		<td width="1%">
 			<span class="input-label"><%= Prado::localize('Prestretch') %></span>
 		</td>
 		<td>
@@ -151,6 +161,11 @@
 			    Text="<%= Prado::localize('You must enter a floating number.') %>" />
 		</td>
 	</tr>
+	
+	</table>
+	</com:TPanel>
+	</td></tr>
+	
 	<tr>
 		<td>
 			<span class="input-label"><%= Prado::localize('StringingType') %></span>
