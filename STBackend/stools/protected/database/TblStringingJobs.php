@@ -27,6 +27,10 @@ class TblStringingJobs extends TActiveRecord
 	public $paid;
 	public $prestretch_main;
 	public $prestretch_cross;
+	public $broken;
+	public $cut;
+	public $duration_string;
+	public $note_customer;
 	
 	
 	public $customer;
