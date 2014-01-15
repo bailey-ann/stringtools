@@ -79,7 +79,7 @@
 	Display="Dynamic"
 	ValidationGroup="user" />
 	
-<table width="89%">
+<table width="80%">
 	<tr>
 		<td>
 			<span class="input-label"><%= Prado::localize('Date Stringing') %></span>
@@ -100,7 +100,7 @@
 	
 	<tr><td colspan="2">
 	<com:TPanel GroupingText="<%= Prado::localize('StringMains') %>" >
-	<Table>
+	<Table width="80%">
 	
 	<tr>
 		<td colspan="2">
@@ -137,7 +137,7 @@
 	
 	<tr><td colspan="2">
 	<com:TPanel GroupingText="<%= Prado::localize('StringCross') %>" >
-	<Table>
+	<Table >
 	
 	<tr>
 		<td colspan="2">
@@ -236,7 +236,7 @@
 	</tr>
 	<tr>
 		<td colspan="2">
-			<com:TTextBox ID="Note" TextMode="MultiLine" Rows="6" Columns="60" />
+			<com:TTextBox ID="Note" TextMode="MultiLine" Rows="6" Columns="68" />
 		</td>
 	</tr>
 	<tr>
@@ -257,6 +257,51 @@
 			    ControlToValidate="TotalPrice"
 			    DataType="Float"
 			    Text="<%= Prado::localize('You must enter a floating number.') %>" />
+		</td>
+	</tr>
+	<tr><td colspan="2">
+	<com:TPanel GroupingText="<%= Prado::localize('Duration') %>" >
+		<Table>
+			<tr>
+				<td>
+					<com:TRadioButton ID="Broken" GroupName="RadioGroup" />
+				</td>
+				<td>
+					<span class="input-label"><%= Prado::localize('Broken') %></span>
+				</td>
+				<td>
+					<com:TRadioButton ID="Cut" GroupName="RadioGroup" />
+				</td>
+				<td>
+					<span class="input-label"><%= Prado::localize('Cut') %></span>
+				</td>
+				<td>
+					<com:TTextBox ID="DurationString" Columns="5" AutoTrim="true" />
+				</td>
+				<td>
+					<span class="input-label"><%= Prado::localize('DurationInHour') %></span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="6">
+					<com:TDataTypeValidator
+					    ValidationGroup="user"
+					    ControlToValidate="DurationString"
+					    DataType="Float"
+					    Text="<%= Prado::localize('You must enter a floating number.') %>" />
+				</td>
+			</tr>
+		</table>
+	</com:TPanel>
+	</td></tr>
+	<tr>
+		<td colspan="2">
+			<span class="input-label"><%= Prado::localize('NoteCustomer') %></span>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<com:TTextBox ID="NoteCustomer" TextMode="MultiLine" Rows="6" Columns="68" />
 		</td>
 	</tr>
 </table>

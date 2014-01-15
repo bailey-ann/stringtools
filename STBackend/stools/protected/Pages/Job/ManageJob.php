@@ -306,6 +306,11 @@ class ManageJob extends FunctionList
         
         $this->TotalPrice->Text = "0";
         
+        $this->Broken->Checked = false;  
+        $this->Cut->Checked = false;  
+        $this->DurationString->Text = "0";       
+        $this->NoteCustomer->Text = "";
+        
      }
      
      
@@ -434,6 +439,11 @@ class ManageJob extends FunctionList
         
         $this->TotalPrice->Text = $job->total_price;
         
+        $this->Broken->Checked = $job->broken;  
+        $this->Cut->Checked = $job->cut;    
+        $this->DurationString->Text = $job->duration_string;      
+        $this->NoteCustomer->Text = $job->note_customer;
+        
      }
      
      public function ActivateStringCrossClicked(){
@@ -559,6 +569,10 @@ class ManageJob extends FunctionList
      	$job->note = $this->Note->Text;
      	$job->total_price = $this->TotalPrice->Text;
      	$job->paid = 0;
+     	$job->broken = $this->Broken->Checked;
+        $job->cut = $this->Cut->Checked;
+        $job->duration_string =  $this->DurationString->Text;   
+        $job->note_customer = $this->NoteCustomer->Text;
      	$job->save();
      		
      	$this->Response->redirect($this->Service->constructUrl('Job.ListJobs', array('idUser'=>$this->getViewState('customer',null)->id), false));

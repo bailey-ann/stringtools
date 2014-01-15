@@ -1092,7 +1092,7 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 
 <trans-unit id="216">
 <source><![CDATA[HOME_6]]></source>
-<target><![CDATA[]]>Reportisca in tempo reale ed estrazione in formato excel permettono una visione globale del proprio operato su tutti i fronti.</target>
+<target><![CDATA[]]>Reportistica in tempo reale ed estrazione in formato excel permettono una visione globale del proprio operato su tutti i fronti.</target>
 </trans-unit>
 
 <trans-unit id="217">
@@ -1108,6 +1108,36 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <trans-unit id="219">
 <source><![CDATA[Amounts]]></source>
 <target><![CDATA[]]>Incassi</target>
+</trans-unit>
+
+<trans-unit id="220">
+<source><![CDATA[amount_graph]]></source>
+<target><![CDATA[]]></target>
+</trans-unit>
+
+<trans-unit id="221">
+<source><![CDATA[Duration]]></source>
+<target><![CDATA[]]>Durata incordatura</target>
+</trans-unit>
+
+<trans-unit id="222">
+<source><![CDATA[Broken]]></source>
+<target><![CDATA[]]>Rotta</target>
+</trans-unit>
+
+<trans-unit id="223">
+<source><![CDATA[Cut]]></source>
+<target><![CDATA[]]>Tagliata</target>
+</trans-unit>
+
+<trans-unit id="224">
+<source><![CDATA[DurationInHour]]></source>
+<target><![CDATA[]]>Ore di gioco</target>
+</trans-unit>
+
+<trans-unit id="225">
+<source><![CDATA[NoteCustomer]]></source>
+<target><![CDATA[]]>Note Cliente</target>
 </trans-unit>
 </body>
  </file>
