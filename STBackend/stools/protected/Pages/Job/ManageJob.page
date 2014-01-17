@@ -65,9 +65,7 @@
         CommandName="select"
         />
 </com:TFilterDataGrid>
-<com:TImageButton 
-		ID="Back"
-		OnClick="backClicked"/>
+
 </com:TContent>
 
 <com:TContent ID="editable">
@@ -318,5 +316,12 @@
 		ID="Delete"
 		OnClick="DeleteJob"/>
 		
+
+</com:TContent>
+
+<com:TContent ID="rightbar">
+<com:TImageButton 
+		ID="Back"
+		OnClick="backClicked"/>
 
 </com:TContent>
