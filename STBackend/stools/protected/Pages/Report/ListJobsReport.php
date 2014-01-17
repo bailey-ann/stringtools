@@ -65,9 +65,9 @@ class ListJobsReport extends FunctionList
         $this->setViewState('DataJobsCustomer',$this->_data_jobs_customer);
     }
     
-    protected function CreateArrayJobsCustomer($brand = '', $model = '', $serial = '', $order = '')
+    protected function CreateArrayJobsCustomer($order = '')
     {
-    	$param = array();
+    	/*$param = array();
 	    $param['id'] = $this->User->UserDB->id;
 	    $param['serial'] = "%".$serial."%";
 	    $param['brand'] = "%".$brand."%";
@@ -98,7 +98,52 @@ class ListJobsReport extends FunctionList
         	$row->stringing_type = TblStringingJobType::finder()->findBy_id($row->tbl_stringing_type_id);
         	$row->grip = TblGrips::finder()->findBy_id($row->tbl_grip_id);
         	$row->tbl_overgrip_id = TblOvergrips::finder()->findBy_id($row->tbl_overgrip_id);
-        }
+        }*/
+    	
+    	$sqlmap = $this->Application->Modules['sqlmap']->Database;
+    	$sqlmap->Active = true;
+    	
+    	$sql = "SELECT
+			tbl_stringing_jobs.id,
+			tbl_stringing_jobs.date_stringing,
+			concat(tbl_users.name, ' ', tbl_users.surname) as customer,
+			concat(tbl_brands.description, ' ', tbl_racquets.model) as racquet,
+			concat(BSM.description, ' ', SM.model, ' ', tbl_stringing_jobs.weight_main, ' ', tbl_weight_unit.description) as string_main,
+			concat(BSC.description, ' ', SC.model, ' ', tbl_stringing_jobs.wieght_cross, ' ', tbl_weight_unit.description) as string_cross,
+			tbl_stringing_jobs.dynamic_tension
+			FROM
+			tbl_stringing_jobs
+			INNER JOIN tbl_racquets_user ON tbl_stringing_jobs.tbl_racquets_user_id = tbl_racquets_user.id
+			INNER JOIN tbl_users ON tbl_racquets_user.tbl_users_id = tbl_users.id
+			INNER JOIN tbl_racquets ON tbl_racquets_user.tbl_racquets_id = tbl_racquets.id
+			INNER JOIN tbl_brands ON tbl_racquets.tbl_brands_id = tbl_brands.id
+			
+			INNER JOIN tbl_strings SM ON tbl_stringing_jobs.tbl_strings_id_main = SM.id 
+			INNER JOIN tbl_brands BSM ON SM.tbl_brands_id = BSM.id 
+			
+			INNER JOIN tbl_strings SC ON tbl_stringing_jobs.tbl_strings_id_main = SC.id 
+			INNER JOIN tbl_brands BSC ON SC.tbl_brands_id = BSC.id 
+			
+			INNER JOIN tbl_users STRINGER ON tbl_stringing_jobs.tbl_users_id_stringer = STRINGER.id 
+			INNER JOIN tbl_weight_unit ON tbl_weight_unit.id = STRINGER.tbl_weight_unit_id 
+			
+			where tbl_stringing_jobs.tbl_users_id_stringer = ".$this->User->UserDB->id;
+    	
+    	//filtri
+    	$sql .= " and concat(tbl_users.name, ' ', tbl_users.surname) like '%".$this->filter_customer->Text."%' ";
+    	$sql .= " and concat(tbl_brands.description, ' ', tbl_racquets.model) like '%".$this->filter_Racquet->Text."%' ";
+    	
+    	if($order == '')
+    		$sql .= " order by tbl_stringing_jobs.date_stringing DESC";
+    	else if($order == 'date')
+    		$sql .= " order by tbl_stringing_jobs.date_stringing DESC";
+    	else if($order == 'customer')
+    		$sql .= " order by customer DESC, tbl_stringing_jobs.date_stringing DESC";
+    	else if($order == 'racquet')
+    		$sql .= " order by racquet DESC, tbl_stringing_jobs.date_stringing DESC";
+    	
+    	$command = $sqlmap->createCommand($sql);
+    	$this->_data_jobs_customer = $command->query()->readAll();
     }
     
     public function addJob($param){
@@ -114,9 +159,7 @@ class ListJobsReport extends FunctionList
 	public function changePageJob($sender,$param)
     {
         $this->DataGridListJobs->CurrentPageIndex=$param->NewPageIndex;
-        $this->CreateArrayJobsCustomer($this->FilterCollection_brand->getNoFieldCondition(),
-        		$this->FilterCollection_model->getNoFieldCondition(),
-        		$this->FilterCollection_serial->getNoFieldCondition(),$this->getViewState('sort','') );
+        $this->CreateArrayJobsCustomer($this->getViewState('sort','') );
         $this->DataGridListJobs->DataSource=$this->DataJobsCustomer;
         $this->DataGridListJobs->dataBind();
     }
@@ -127,18 +170,15 @@ class ListJobsReport extends FunctionList
     }
 	
 	public function onSearchRacquet($param){
-		$this->CreateArrayJobsCustomer($this->FilterCollection_brand->getNoFieldCondition(),
-			$this->FilterCollection_model->getNoFieldCondition(), 
-			$this->FilterCollection_serial->getNoFieldCondition() );
+		$this->CreateArrayJobsCustomer($this->getViewState('sort',''));
 			
 		$this->DataGridListJobs->DataSource=$this->DataJobsCustomer;
         $this->DataGridListJobs->dataBind();
 	}
 	
 	public function onClearRacquet($param){
-		$this->FilterCollection_brand->clear();
-		$this->FilterCollection_model->clear();
-		$this->FilterCollection_serial->clear();
+		$this->filter_customer->Text = "";
+		$this->filter_Racquet->Text = "";
 		$this->CreateArrayJobsCustomer();
 		$this->DataGridListJobs->DataSource=$this->DataJobsCustomer;
         $this->DataGridListJobs->dataBind();
@@ -168,9 +208,7 @@ class ListJobsReport extends FunctionList
 	{
 		$this->sort = $param->SortExpression;
 		$this->setViewState('sort',$this->sort);
-		$this->CreateArrayJobsCustomer($this->FilterCollection_brand->getNoFieldCondition(),
-			$this->FilterCollection_model->getNoFieldCondition(), 
-			$this->FilterCollection_serial->getNoFieldCondition(),$this->sort  );
+		$this->CreateArrayJobsCustomer($this->sort  );
 		$this->DataGridListJobs->DataSource=$this->DataJobsCustomer;
         $this->DataGridListJobs->dataBind();
 	}

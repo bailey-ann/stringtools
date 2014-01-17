@@ -8,20 +8,10 @@
 <com:TContent ID="zone_list_jobs">
 <h3><com:TLabel ID="LBL_LIST_JOB"  /></h3>
 
-<com:TLabel Text="<%= Prado::localize('BrandName') %>" /> 
-<com:TFilterCollection Id="FilterCollection_brand" >
-	<com:TFilterText  DataField="description" />
-</com:TFilterCollection>
-
-<com:TLabel Text="<%= Prado::localize('Model') %>" /> 
-<com:TFilterCollection Id="FilterCollection_model" >
-	<com:TFilterText  DataField="model" />
-</com:TFilterCollection>
-<br/>
-<com:TLabel Text="<%= Prado::localize('Serial') %>" /> 
-<com:TFilterCollection Id="FilterCollection_serial" >
-	<com:TFilterText  DataField="serial" />
-</com:TFilterCollection>
+<com:TLabel Text="<%= Prado::localize('Customer') %>" /> 
+<com:TTextBox ID="filter_customer" />
+<com:TLabel Text="<%= Prado::localize('Racquet') %>" /> 
+<com:TTextBox ID="filter_Racquet" />
 <br/>
 <com:TImageButton ID="SearchRacquet" onClick="onSearchRacquet" />
 <com:TImageButton ID="CancelRacquet" onClick="onClearRacquet" "/>
@@ -54,31 +44,31 @@
         DataFormatString="#date('d/m/Y',strtotime({0}))"
         />
     <com:TBoundColumn
-    	SortExpression="name"
-    	ID="name"
-        HeaderText="<%= Prado::localize('Name') %>"
-        DataField="user_racquet.customer.name"
+    	SortExpression="customer"
+    	ID="customer"
+        HeaderText="<%= Prado::localize('Customer') %>"
+        DataField="customer"
         />
     <com:TBoundColumn
-    	SortExpression="surname"
-    	ID="surname"
-        HeaderText="<%= Prado::localize('Surname') %>"
-        DataField="user_racquet.customer.surname"
+    	SortExpression="racquet"
+    	ID="racquet"
+        HeaderText="<%= Prado::localize('Racquet') %>"
+        DataField="racquet"
         />
     <com:TBoundColumn
-    	ID="brand_name"
-        HeaderText="<%= Prado::localize('BrandName') %>"
-        DataField="user_racquet.racquet.brand_name"
+    	ID="string_main"
+        HeaderText="<%= Prado::localize('StringMains') %>"
+        DataField="string_main"
         />
     <com:TBoundColumn
-    	ID="model"
-        HeaderText="<%= Prado::localize('Model') %>"
-        DataField="user_racquet.racquet.model"
+    	ID="string_cross"
+        HeaderText="<%= Prado::localize('StringCross') %>"
+        DataField="string_cross"
         />
     <com:TBoundColumn
-    	ID="serial"
-        HeaderText="<%= Prado::localize('Serial') %>"
-        DataField="user_racquet.serial"
+    	ID="dynamic_tension"
+        HeaderText="<%= Prado::localize('DynamicTension') %>"
+        DataField="dynamic_tension"
         />
     <com:TButtonColumn
         HeaderText=""
