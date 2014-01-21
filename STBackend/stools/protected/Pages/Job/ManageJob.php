@@ -439,11 +439,17 @@ class ManageJob extends FunctionList
         
         $this->TotalPrice->Text = $job->total_price;
         
-        $this->Broken->Checked = $job->broken;  
-        $this->Cut->Checked = $job->cut;    
-        $this->DurationString->Text = $job->duration_string;      
-        $this->NoteCustomer->Text = $job->note_customer;
-        
+        if($clone){
+        	$this->Broken->Checked = false;  
+	        $this->Cut->Checked = false;  
+	        $this->DurationString->Text = "0";       
+	        $this->NoteCustomer->Text = "";
+        }else{
+        	$this->Broken->Checked = $job->broken;  
+        	$this->Cut->Checked = $job->cut;    
+        	$this->DurationString->Text = $job->duration_string;      
+        	$this->NoteCustomer->Text = $job->note_customer;
+        }      
      }
      
      public function ActivateStringCrossClicked(){
