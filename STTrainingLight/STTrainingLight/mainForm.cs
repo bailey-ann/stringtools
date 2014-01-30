@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STTrainingLight.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -66,7 +67,7 @@ namespace STTrainingLight
                     DURATA_ALLENAMENTO = (cbDurataAllenamento.SelectedIndex + 1) * 60;
                     DURATA_PAUSA = (cbDurataPausa.SelectedIndex + 1) * 1000;
                     timerSerialAllenamento.Period = 1;
-                    //timerSerial.Start();
+                    timerSerialAllenamento.Start();
                     timerDurataAllenamento.Start();           
                 }
                 else
@@ -140,7 +141,7 @@ namespace STTrainingLight
                     {
                         serialPortRele.Write(CommandRele.OPEN_ONE);
                         serialPortRele.Write(CommandRele.OPEN_TWO);
-                        System.Threading.Thread.Sleep(200);
+                        System.Threading.Thread.Sleep(100);
                         serialPortRele.Write(CommandRele.STOP_ONE);
                         serialPortRele.Write(CommandRele.STOP_TWO);
                     }
@@ -148,9 +149,9 @@ namespace STTrainingLight
                     {
                         //var arr1 = new[] { 1, 2, 3, 4, 5, 6 };
                         //var rndMember = arr1[random.Next(arr1.Length)];
-                        serialPortRele.Write(CommandRele.OPEN_ONE);
-                        System.Threading.Thread.Sleep(500);
-                        serialPortRele.Write(CommandRele.STOP_ONE);
+                        serialPortRele.Write(CommandRele.OPEN_TWO);
+                        System.Threading.Thread.Sleep(200);
+                        serialPortRele.Write(CommandRele.STOP_TWO);
                     }
 
                     ABILITATO_INVIO = false;
@@ -193,6 +194,7 @@ namespace STTrainingLight
         {
             try
             {
+                serialPortRele.PortName = Settings.Default.COM;
                 if (serialPortRele.IsOpen)
                     serialPortRele.Close();
                 serialPortRele.Open();

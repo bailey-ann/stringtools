@@ -7,3 +7,12 @@ E:\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.Properties.Resour
 E:\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.csproj.GenerateResource.Cache
 E:\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.exe
 E:\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.pdb
+F:\SviluppoNew\STTrainingLight\STTrainingLight\bin\Release\STTrainingLight.exe.config
+F:\SviluppoNew\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.exe
+F:\SviluppoNew\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.pdb
+F:\SviluppoNew\STTrainingLight\STTrainingLight\bin\Release\STTrainingLight.exe
+F:\SviluppoNew\STTrainingLight\STTrainingLight\bin\Release\STTrainingLight.pdb
+F:\SviluppoNew\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.csprojResolveAssemblyReference.cache
+F:\SviluppoNew\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.MainForm.resources
+F:\SviluppoNew\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.Properties.Resources.resources
+F:\SviluppoNew\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.csproj.GenerateResource.Cache

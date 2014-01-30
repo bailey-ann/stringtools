@@ -205,6 +205,7 @@
             // serialPortRele
             // 
             this.serialPortRele.BaudRate = 115200;
+            this.serialPortRele.PortName = "COM44";
             this.serialPortRele.ReadTimeout = 500;
             this.serialPortRele.WriteTimeout = 500;
             // 
