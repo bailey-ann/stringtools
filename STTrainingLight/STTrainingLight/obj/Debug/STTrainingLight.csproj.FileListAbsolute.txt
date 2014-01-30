@@ -1,0 +1,10 @@
+E:\STTrainingLight\STTrainingLight\bin\Debug\STTrainingLight.exe.config
+E:\STTrainingLight\STTrainingLight\bin\Debug\STTrainingLight.exe
+E:\STTrainingLight\STTrainingLight\bin\Debug\STTrainingLight.pdb
+E:\STTrainingLight\STTrainingLight\bin\Debug\Multimedia.dll
+E:\STTrainingLight\STTrainingLight\obj\Debug\STTrainingLight.csprojResolveAssemblyReference.cache
+E:\STTrainingLight\STTrainingLight\obj\Debug\STTrainingLight.MainForm.resources
+E:\STTrainingLight\STTrainingLight\obj\Debug\STTrainingLight.Properties.Resources.resources
+E:\STTrainingLight\STTrainingLight\obj\Debug\STTrainingLight.csproj.GenerateResource.Cache
+E:\STTrainingLight\STTrainingLight\obj\Debug\STTrainingLight.exe
+E:\STTrainingLight\STTrainingLight\obj\Debug\STTrainingLight.pdb
