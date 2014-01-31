@@ -16,3 +16,4 @@ F:\SviluppoNew\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.cspro
 F:\SviluppoNew\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.MainForm.resources
 F:\SviluppoNew\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.Properties.Resources.resources
 F:\SviluppoNew\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.csproj.GenerateResource.Cache
+E:\STTrainingLight\STTrainingLight\obj\Release\STTrainingLight.csprojResolveAssemblyReference.cache

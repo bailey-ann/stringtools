@@ -21,6 +21,12 @@ namespace STTrainingLight
         int DURATA_PAUSA;
         bool ABILITATO_INVIO = false;
         int TYPE_COMMAND = TypeCommand.EMPTY;
+        Random RND = new Random();
+        int[] ARRAY_TRAINING = new int[] { 
+            Training.ONE, Training.TWO, Training.BOTH, 
+            Training.TWO, Training.ONE, Training.BOTH, 
+            Training.ONE, Training.TWO
+        };
 
         public MainForm()
         {
@@ -149,9 +155,26 @@ namespace STTrainingLight
                     {
                         //var arr1 = new[] { 1, 2, 3, 4, 5, 6 };
                         //var rndMember = arr1[random.Next(arr1.Length)];
-                        serialPortRele.Write(CommandRele.OPEN_TWO);
-                        System.Threading.Thread.Sleep(200);
-                        serialPortRele.Write(CommandRele.STOP_TWO);
+                        int rndMember = ARRAY_TRAINING[RND.Next(ARRAY_TRAINING.Length)];
+                        if (rndMember == Training.ONE){
+                            serialPortRele.Write(CommandRele.OPEN_ONE);
+                            System.Threading.Thread.Sleep(200);
+                            serialPortRele.Write(CommandRele.STOP_ONE);
+                        }
+                        else if (rndMember == Training.TWO)
+                        {
+                            serialPortRele.Write(CommandRele.OPEN_TWO);
+                            System.Threading.Thread.Sleep(200);
+                            serialPortRele.Write(CommandRele.STOP_TWO);
+                        }
+                        else if (rndMember == Training.BOTH)
+                        {
+                            serialPortRele.Write(CommandRele.OPEN_ONE);
+                            serialPortRele.Write(CommandRele.OPEN_TWO);
+                            System.Threading.Thread.Sleep(200);
+                            serialPortRele.Write(CommandRele.STOP_ONE);
+                            serialPortRele.Write(CommandRele.STOP_TWO);
+                        }
                     }
 
                     ABILITATO_INVIO = false;
@@ -226,5 +249,12 @@ namespace STTrainingLight
         public static int EMPTY = 0;
         public static int COUNTDOWN = 1;
         public static int TRAINING = 2;
+    }
+
+    public static class Training
+    {
+        public static int ONE = 1;
+        public static int TWO = 2;
+        public static int BOTH = 3;
     }
 }
