@@ -451,7 +451,9 @@ class GestioneJob extends FunctionList
      	
      	$cost = $this->User->UserDB->cost;
      	
-     	$costCustomer = $this->getViewState('customer',null)->cost;
+     	$racquetCustomer = TblRacquetsUser::finder()->findBy_id($this->DDLCustomerRacquets->SelectedValue);
+	    $this->customer = TblUsers::finder()->findBy_id($racquetCustomer->tbl_users_id);;
+     	$costCustomer = $this->customer->cost;
      	
      	if($costCustomer == 0)
      		$totalPrice += $cost;
