@@ -61,7 +61,17 @@
 	</tr>
 	<tr>
 		<td>
-			<h3><%= Prado::localize('HOME_8')%></h3>
+			<%= Prado::localize('HOME_8')%>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<br/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<h3><%= Prado::localize('HOME_9')%></h3>
 		</td>
 	</tr>
 </table>

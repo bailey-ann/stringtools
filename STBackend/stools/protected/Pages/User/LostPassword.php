@@ -8,6 +8,11 @@ class LostPassword extends TPage
     {
     	$this->Page->Title = Prado::localize('LostPassword');
     	$this->Send->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/send.gif';
+    	if($this->User->UserDB->type_user_id == 4){
+        	$this->Send->Visible = false;
+        }else{
+        	$this->Send->Visible = true;
+        }
     }
     
     public function checkEmail($sender,$param)

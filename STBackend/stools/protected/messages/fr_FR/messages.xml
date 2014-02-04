@@ -1102,7 +1102,7 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 
 <trans-unit id="218">
 <source><![CDATA[HOME_8]]></source>
-<target><![CDATA[]]>Registrati adesso, è GRATIS!! :-)</target>
+<target><![CDATA[]]>Vuoi provarlo: usa l'username "demo" e password "demo" per vedere e provare il sito senza iscriverti ;-)</target>
 </trans-unit>
 
 <trans-unit id="219">
@@ -1163,6 +1163,11 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <trans-unit id="230">
 <source><![CDATA[HelpStringMains]]></source>
 <target><![CDATA[]]>Se non trovi una corda nella lista il problema potrebbe essere portato dal fatto che non hai valorizzo il costo della corda ( anche a 0), verifica nella sezione Corde</target>
+</trans-unit>
+
+<trans-unit id="231">
+<source><![CDATA[HOME_9]]></source>
+<target><![CDATA[]]>Registrati adesso, è GRATIS!! :-)</target>
 </trans-unit>
 </body>
  </file>
