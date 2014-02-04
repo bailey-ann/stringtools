@@ -1138,6 +1138,31 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <source><![CDATA[NoteCustomer]]></source>
 <target><![CDATA[]]>Note Cliente</target>
 </trans-unit>
+
+<trans-unit id="226">
+<source><![CDATA[New Job]]></source>
+<target><![CDATA[]]>Nuova Incordatura</target>
+</trans-unit>
+
+<trans-unit id="227">
+<source><![CDATA[Edit Clone Job]]></source>
+<target><![CDATA[]]>Modifica/Clona Incordatura</target>
+</trans-unit>
+
+<trans-unit id="228">
+<source><![CDATA[CustomerRacquets]]></source>
+<target><![CDATA[]]>Racchette Cliente</target>
+</trans-unit>
+
+<trans-unit id="229">
+<source><![CDATA[HelpCustomers]]></source>
+<target><![CDATA[]]>Se non trovi un cliente nella lista il problema potrebbe essere portato dal fatto che non hai associato nessuna raccehtta a quel cliente, verifica nella sezione racchette clienti</target>
+</trans-unit>
+
+<trans-unit id="230">
+<source><![CDATA[HelpStringMains]]></source>
+<target><![CDATA[]]>Se non trovi una corda nella lista il problema potrebbe essere portato dal fatto che non hai valorizzo il costo della corda ( anche a 0), verifica nella sezione Corde</target>
+</trans-unit>
 </body>
  </file>
 </xliff>
