@@ -100,6 +100,14 @@ class CustomersRacquets extends TPage
         
     }
     
+	public function itemCreated($sender, $param) {
+		$item = $param->Item;
+		if($this->User->UserDB->type_user_id == 4)
+			$param->Item->Cells['5']->Visible = false;
+		else
+			$param->Item->Cells['5']->Visible = true;
+    }
+    
     public function selectBackCustomer($id){	
 		
 		$this->zone_list_racquets_customer->Visible = true;

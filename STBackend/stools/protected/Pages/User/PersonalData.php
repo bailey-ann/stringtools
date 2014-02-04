@@ -44,6 +44,16 @@ class PersonalData extends TPage
 			else 
 				$this->ImageLogo->ImageUrl = $urlJpg;
         }
+        
+        if($this->User->UserDB->type_user_id == 4){
+        	$this->Save->Visible = false;
+        	$this->btnCancelSelect->Visible = false;
+        	$this->btnUpload->Visible = false;
+        }else{
+        	$this->Save->Visible = true;
+        	$this->btnCancelSelect->Visible = true;
+        	$this->btnUpload->Visible = true;
+        }
     }
     
 

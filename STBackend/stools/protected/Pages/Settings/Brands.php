@@ -11,6 +11,14 @@ class Brands extends TPage
         return $this->_data;
     }
     
+	public function itemCreated($sender, $param) {
+		$item = $param->Item;
+		if($this->User->UserDB->type_user_id == 4)
+			$param->Item->Cells['1']->Visible = false;
+		else
+			$param->Item->Cells['1']->Visible = true;
+    }
+    
     protected function loadData()
     {
         if(($this->_data=$this->getViewState('Data',null))===null)
@@ -19,6 +27,12 @@ class Brands extends TPage
 			$criteria->OrdersBy['description'] = 'asc';
             $this->_data= TblBrands::finder()->findAll($criteria);
             $this->saveData();
+        }
+        
+    	if($this->User->UserDB->type_user_id == 4){
+        	$this->Save->Visible = false;
+        }else{
+        	$this->Save->Visible = true;
         }
     }
     

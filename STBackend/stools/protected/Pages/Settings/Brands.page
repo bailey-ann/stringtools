@@ -21,6 +21,7 @@
     OnUpdateCommand="saveItem"
     OnCancelCommand="cancelItem"
     OnDeleteCommand="deleteItem"
+    onItemCreated="itemCreated"
     >
     <com:TBoundColumn
     	ID="BrandNameColumn"

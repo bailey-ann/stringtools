@@ -34,6 +34,12 @@ class NewCustomersRacquets extends TPage
             $this->DataGridAddRacquets->DataSource=$this->DataAddRacquets;
             $this->DataGridAddRacquets->dataBind();
         }
+        
+    	if($this->User->UserDB->type_user_id == 4){
+        	$this->Save->Visible = false;
+        }else{
+        	$this->Save->Visible = true;
+        }
     }
 
 	
@@ -47,6 +53,8 @@ class NewCustomersRacquets extends TPage
 		$this->loadDataAddRacquets();
 		$this->DataGridAddRacquets->DataSource=$this->_data_add_racquets;
         $this->DataGridAddRacquets->dataBind();
+        
+		
 	}
 	
 	protected function getDataAddRacquets()

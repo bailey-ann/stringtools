@@ -70,6 +70,12 @@ class Strings extends TPage
         	$this->CreateArray($this->FilterCollection_brand->getCondition(), $this->FilterCollection_model->getCondition());
             $this->saveData();
         //}
+        
+    	if($this->User->UserDB->type_user_id == 4){
+        	$this->Save->Visible = false;
+        }else{
+        	$this->Save->Visible = true;
+        }
     }
     
     protected function RefreshData()

@@ -122,6 +122,7 @@
     OnPagerCreated="pagerCreatedUserRacquets"
     OnSelectedIndexChanged="selectRacquetCustomer"
     OnItemCommand="onItemCommand"
+    onItemCreated="itemCreated"
     >
     <com:TBoundColumn
     	ID="IDColumnUserRacquet"

@@ -36,6 +36,12 @@ class Grips extends TPage
         	$this->CreateArray();
             $this->saveData();
         }
+        
+    	if($this->User->UserDB->type_user_id == 4){
+        	$this->Save->Visible = false;
+        }else{
+        	$this->Save->Visible = true;
+        }
     }
     
     protected function RefreshData()

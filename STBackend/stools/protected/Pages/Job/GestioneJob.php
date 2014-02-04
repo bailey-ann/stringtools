@@ -64,6 +64,14 @@ class GestioneJob extends FunctionList
 	        	$this->Pdf->Visible = false;	
 	        }
     	}
+    	
+   	 	if($this->User->UserDB->type_user_id == 4){
+        	$this->Save->Visible = false;
+        	$this->Delete->Visible = false;
+        }else{
+        	$this->Save->Visible = true;
+        	$this->Delete->Visible = false;
+        }
     }
     
     

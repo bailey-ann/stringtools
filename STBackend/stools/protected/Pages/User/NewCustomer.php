@@ -16,6 +16,14 @@ class NewCustomer extends TPage
     		$this->content->Visible = false;
     		$this->reg_ok->Visible = true;
     	}
+    	
+    	if($this->User->UserDB->type_user_id == 4){
+        	$this->Save->Visible = false;
+        	$this->btnCancelSelect->Visible = false;
+        }else{
+        	$this->Save->Visible = true;
+        	$this->btnCancelSelect->Visible = true;
+        }
     }
     
 	public function checkUsername($sender,$param)
