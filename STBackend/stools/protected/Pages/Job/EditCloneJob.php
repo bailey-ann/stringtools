@@ -5,7 +5,7 @@
 require_once 'tcpdf.php' ;
 require_once 'PHPExcel.php';
 
-class ListJobsReport extends FunctionList
+class EditCloneJob extends FunctionList
 {
 	private $_data=null;
 	private $userSelect=null;
@@ -18,11 +18,7 @@ class ListJobsReport extends FunctionList
     	parent::onLoad($param);
     	$this->Page->Title = Prado::localize('ListJobs');
 		$this->SearchRacquet->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/search.gif';
-		$this->CancelRacquet->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/cancel.gif';	
-		$this->Excel->ImageUrl = $this->Page->Theme->BaseUrl.'/images/excel-64.png';	
-		$this->Pdf->ImageUrl = $this->Page->Theme->BaseUrl.'/images/pdf-64.png';
-		$this->Excel->Visible = false;	
-		$this->Pdf->Visible = false;		
+		$this->CancelRacquet->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/cancel.gif';		
 		if(!$this->IsPostBack)
 		{
         	$this->ShowListJobs();
@@ -36,8 +32,6 @@ class ListJobsReport extends FunctionList
 		$this->LBL_LIST_JOB->Text = Prado::localize('List_Jobs_Customer');
 		$this->zone_list_jobs->Visible = true;
 		$this->loadDataJobsCustomer();
-		
-		$this->PDFJob->Visible = true;
 	}
 	
 	
@@ -67,7 +61,6 @@ class ListJobsReport extends FunctionList
     
     protected function CreateArrayJobsCustomer($order = '')
     {
-    	
     	$sqlmap = $this->Application->Modules['sqlmap']->Database;
     	$sqlmap->Active = true;
     	
@@ -159,6 +152,9 @@ class ListJobsReport extends FunctionList
 			case "clonazione":
 				$this->Clona($sender,$param);
 				break;
+			case "select":
+				$this->Seleziona($sender,$param);
+				break;
 			case "pdf":
 				$this->MakePDF($sender,$param);
 				break;
@@ -181,11 +177,18 @@ class ListJobsReport extends FunctionList
         $this->DataGridListJobs->dataBind();
 	}
 	
+	public function Seleziona($sender,$param)
+	{
+		$item = $param->Item;	
+		$this->Response->redirect($this->Service->constructUrl('Job.GestioneJob', array('idJob'=>$param->Item->IDJobColumn->Text), false));
+	}
+	
 	public function Clona($sender,$param)
 	{
 		$item = $param->Item;	
-		$this->Response->redirect($this->Service->constructUrl('Job.ManageJob', array('idCloneJob'=>$param->Item->IDJobColumn->Text), false));
+		$this->Response->redirect($this->Service->constructUrl('Job.GestioneJob', array('idCloneJob'=>$param->Item->IDJobColumn->Text), false));
 	}
+	
 	
 	public function MakePDF($sender,$param)
 	{
@@ -241,57 +244,5 @@ class ListJobsReport extends FunctionList
 		header('Content-type: application/pdf');
 		header('Content-Disposition: attachment; filename="'.$stringJob.'.pdf"');
 		$pdf->Output($stringJob.'.pdf', 'D');
-
-		/*$pdf = new FPDF(); // Creo nuova classe
-		$pdf->SetAuthor("www.stringtools.it"); // L'autore del documento
-		$pdf->AddPage(); // Aggiunge una pagina default
-		
-		//immagine utente
-		if (file_exists('themes/White/images/logo/'.$this->User->UserDB->id.".jpg")) 
-			$pdf->Image('themes/White/images/logo/'.$this->User->UserDB->id.".jpg",10,6,40);
-		else
-			$pdf->Image('themes/White/images/logo-st-www.jpg',10,6,40);
-		
-		//dati utente
-		$y = 40;
-		
-		$pdf->SetFont('Arial','',12); // Set del font arial grassetto 12px
-		
-		$pdf->Text(10,$y,$this->User->UserDB->surname . " " . $this->User->UserDB->name);
-		$y  = $y + 5;
-		
-		if($this->User->UserDB->telephone != ""){
-			$pdf->Text(10,$y,$this->User->UserDB->telephone);
-			$y  = $y + 5;
-		}
-		
-		if($this->User->UserDB->mobile_telephone != ""){
-			$pdf->Text(10,$y,$this->User->UserDB->mobile_telephone);
-			$y  = $y + 5;
-		}
-		
-		if($this->User->UserDB->email != ""){
-			$pdf->Text(10,$y,$this->User->UserDB->email);
-			$y  = $y + 5;
-		}
-		
-		$y  = $y + 5;
-		
-		$pdf->Text(10,$y,Prado::localize('CLAIM_CHECK'));
-		
-		
-		$pdf->Output($this->formatJob($param->Item->IDJobColumn->Text).'.pdf','D');*/
 	}
-	
-	public function exportExcel()
-	{					
-	}
-	
-	public function exportPdf()
-	{
-		
-	}
-	
-	
-	/*** zone zona lista job customer ***/
 }

@@ -1,0 +1,106 @@
+<%@ Title="Modifica Clona Incordatura" %>
+<com:TContent ID="sidebar">
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+<hr />
+
+</com:TContent>
+
+<com:TContent ID="zone_list_jobs">
+<h3><com:TLabel ID="LBL_LIST_JOB"  /></h3>
+
+<com:TLabel Text="<%= Prado::localize('Customer') %>" /> 
+<com:TTextBox ID="filter_customer" />
+<com:TLabel Text="<%= Prado::localize('Racquet') %>" /> 
+<com:TTextBox ID="filter_Racquet" />
+<br/>
+<com:TImageButton ID="SearchRacquet" onClick="onSearchRacquet" />
+<com:TImageButton ID="CancelRacquet" onClick="onClearRacquet" "/>
+
+<com:TFilterDataGrid
+	SkinID="datagrid_1_little_10"
+	
+    ID="DataGridListJobs"
+    CellPadding="2"
+    DataKeyField="id"
+    OnSelectedIndexChanged="selectJob"
+    OnPageIndexChanged="changePageJob"
+    OnPagerCreated="pagerCreatedJob"
+    OnItemCommand="onItemCommand"
+    
+    AllowSorting="true"
+    OnSortCommand="sortDataGrid"
+    >
+    <com:TBoundColumn
+    	ID="IDJobColumn"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	SortExpression="date"
+    	ID="DateStringingJobColumn"
+        HeaderText="<%= Prado::localize('Date') %>"
+        DataField="date_stringing"
+        DataFormatString="#date('d/m/Y',strtotime({0}))"
+        />
+    <com:TBoundColumn
+    	SortExpression="customer"
+    	ID="customer"
+        HeaderText="<%= Prado::localize('Customer') %>"
+        DataField="customer"
+        />
+    <com:TBoundColumn
+    	SortExpression="racquet"
+    	ID="racquet"
+        HeaderText="<%= Prado::localize('Racquet') %>"
+        DataField="racquet"
+        />
+    <com:TBoundColumn
+    	ID="string_main"
+        HeaderText="<%= Prado::localize('StringMains') %>"
+        DataField="string_main"
+        />
+    <com:TBoundColumn
+    	ID="string_cross"
+        HeaderText="<%= Prado::localize('StringCross') %>"
+        DataField="string_cross"
+        />
+    <com:TBoundColumn
+    	ID="dynamic_tension"
+        HeaderText="<%= Prado::localize('DynamicTension') %>"
+        DataField="dynamic_tension"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Select') %>"
+        Text="<%= Prado::localize('Select') %>"
+        ImageUrl="themes/White/images/select.png"
+        ButtonType="ImageButton"
+        ItemStyle.HorizontalAlign="Center"
+        ID="SelectJob"
+        CommandName="select"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Clone') %>"
+        Text="<%= Prado::localize('Clone') %>"
+        ID="CloneJob"
+        ImageUrl="themes/White/images/clone.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        CommandName="clonazione"
+     />
+     <com:TButtonColumn
+        HeaderText=""
+        Text="<%= Prado::localize('CLAIM_CHECK') %>"
+        ImageUrl="themes/White/images/pdf.png"
+        ButtonType="ImageButton"
+        ItemStyle.HorizontalAlign="Center"
+        ID="PDFJob"
+        CommandName="pdf"
+        />
+</com:TFilterDataGrid>
+<br/>
+<hr />
+</com:TContent>
+
+<com:TContent ID="rightbar">
+</com:TContent>

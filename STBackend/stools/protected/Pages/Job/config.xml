@@ -2,6 +2,6 @@
 
 <configuration>
   <authorization>
-    <deny pages="ListJobs,ManageJob" users="?" />
+    <deny pages="ListJobs,ManageJob,EditCloneJob, GestioneJob" users="?" />
   </authorization>
 </configuration>

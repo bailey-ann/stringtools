@@ -24,6 +24,10 @@ class Help extends TPage
 			$this->Type->Text = Prado::localize('ExplanationString');
 		}else if($type == 'cr'){
 			$this->Type->Text = Prado::localize('ExplanationUserRacquet');
+		}else if($type == 'HelpCustomers'){
+			$this->Type->Text = Prado::localize('HelpCustomers');
+		}else if($type == 'HelpStringMains'){
+			$this->Type->Text = Prado::localize('HelpStringMains');
 		}
     }
     
