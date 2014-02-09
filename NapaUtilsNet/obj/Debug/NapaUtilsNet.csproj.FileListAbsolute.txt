@@ -1,5 +1,0 @@
-F:\SviluppoNew\NapaUtilsNet\NapaUtilsNet\bin\Debug\NapaUtilsNet.dll
-F:\SviluppoNew\NapaUtilsNet\NapaUtilsNet\bin\Debug\NapaUtilsNet.pdb
-F:\SviluppoNew\NapaUtilsNet\NapaUtilsNet\obj\Debug\NapaUtilsNet.csprojResolveAssemblyReference.cache
-F:\SviluppoNew\NapaUtilsNet\NapaUtilsNet\obj\Debug\NapaUtilsNet.dll
-F:\SviluppoNew\NapaUtilsNet\NapaUtilsNet\obj\Debug\NapaUtilsNet.pdb
