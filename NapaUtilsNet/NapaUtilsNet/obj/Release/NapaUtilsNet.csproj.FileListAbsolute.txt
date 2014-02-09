@@ -1,0 +1,5 @@
+F:\SviluppoNew\NapaUtilsNet\NapaUtilsNet\bin\Release\NapaUtilsNet.dll
+F:\SviluppoNew\NapaUtilsNet\NapaUtilsNet\bin\Release\NapaUtilsNet.pdb
+F:\SviluppoNew\NapaUtilsNet\NapaUtilsNet\obj\Release\NapaUtilsNet.dll
+F:\SviluppoNew\NapaUtilsNet\NapaUtilsNet\obj\Release\NapaUtilsNet.pdb
+F:\SviluppoNew\NapaUtilsNet\NapaUtilsNet\obj\Release\NapaUtilsNet.csprojResolveAssemblyReference.cache
