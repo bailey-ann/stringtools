@@ -1,0 +1,8 @@
+F:\SviluppoNew\ServerTermostato\ServerTermostato\bin\Release\ServerTermostato.exe.config
+F:\SviluppoNew\ServerTermostato\ServerTermostato\bin\Release\ServerTermostato.exe
+F:\SviluppoNew\ServerTermostato\ServerTermostato\bin\Release\ServerTermostato.pdb
+F:\SviluppoNew\ServerTermostato\ServerTermostato\obj\Release\ServerTermostato.exe
+F:\SviluppoNew\ServerTermostato\ServerTermostato\obj\Release\ServerTermostato.pdb
+F:\SviluppoNew\ServerTermostato\ServerTermostato\bin\Release\NapaUtilsNet.dll
+F:\SviluppoNew\ServerTermostato\ServerTermostato\bin\Release\NapaUtilsNet.pdb
+F:\SviluppoNew\ServerTermostato\ServerTermostato\obj\Release\ServerTermostato.csprojResolveAssemblyReference.cache
