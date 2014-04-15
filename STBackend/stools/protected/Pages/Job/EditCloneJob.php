@@ -158,6 +158,9 @@ class EditCloneJob extends FunctionList
 			case "pdf":
 				$this->MakePDF($sender,$param);
 				break;
+			case "elimina":
+				$this->Elimina($sender,$param);
+				break;
 		}
 	}
 	
@@ -187,6 +190,16 @@ class EditCloneJob extends FunctionList
 	{
 		$item = $param->Item;	
 		$this->Response->redirect($this->Service->constructUrl('Job.GestioneJob', array('idCloneJob'=>$param->Item->IDJobColumn->Text), false));
+	}
+	
+	public function Elimina($sender,$param)
+	{
+		$item = $param->Item;	
+		$job = TblStringingJobs::finder()->findBy_id($param->Item->IDJobColumn->Text);
+		$job->delete();
+		$this->CreateArrayJobsCustomer('');
+		$this->DataGridListJobs->DataSource=$this->DataJobsCustomer;
+        $this->DataGridListJobs->dataBind();
 	}
 	
 	

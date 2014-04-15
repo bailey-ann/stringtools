@@ -89,6 +89,15 @@
         CommandName="clonazione"
      />
      <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Delete') %>"
+        Text="<%= Prado::localize('Delete') %>"
+        ID="DeleteJob"
+        ImageUrl="themes/White/images/delete.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        CommandName="elimina"
+     />
+     <com:TButtonColumn
         HeaderText=""
         Text="<%= Prado::localize('CLAIM_CHECK') %>"
         ImageUrl="themes/White/images/pdf.png"
