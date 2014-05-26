@@ -19,7 +19,7 @@ class TblRacquetsUser extends TActiveRecord
 	public $date_buy;
 	public $note;
 	public $active;
-	
+	public $tagcode;
 	
 	public $racquet;
 	public $grip;
