@@ -1,6 +1,0 @@
-F:\SviluppoNew\ServerTermostato\ServerTermostato\bin\Debug\ServerTermostato.exe.config
-F:\SviluppoNew\ServerTermostato\ServerTermostato\bin\Debug\ServerTermostato.exe
-F:\SviluppoNew\ServerTermostato\ServerTermostato\bin\Debug\ServerTermostato.pdb
-F:\SviluppoNew\ServerTermostato\ServerTermostato\obj\Debug\ServerTermostato.csprojResolveAssemblyReference.cache
-F:\SviluppoNew\ServerTermostato\ServerTermostato\obj\Debug\ServerTermostato.exe
-F:\SviluppoNew\ServerTermostato\ServerTermostato\obj\Debug\ServerTermostato.pdb
