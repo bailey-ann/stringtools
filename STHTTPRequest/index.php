@@ -241,6 +241,9 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
     }else if ($tag == 'stringingmachinestext') {
 		$response = $db->getListStringingMachinesText();
 		echo json_encode($response);
+    }else if ($tag == 'laststringingbytagcode') {
+		$response = $db->getStringType($_POST['tagcode']);
+		echo json_encode($response);
     }else {
         echo "Invalid Request";
     }
