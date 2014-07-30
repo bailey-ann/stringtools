@@ -11,7 +11,6 @@ class EditCloneJob extends FunctionList
 	private $userSelect=null;
 	private $_data_jobs_customer=null;
 	private $sort;
-	
 	 
 	public function onLoad($param)
     {
@@ -19,13 +18,24 @@ class EditCloneJob extends FunctionList
     	$this->Page->Title = Prado::localize('ListJobs');
 		$this->SearchRacquet->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/search.gif';
 		$this->CancelRacquet->ImageUrl = $this->Page->Theme->BaseUrl.'/images/'.$this->getApplication()->getGlobalization()->Culture.'/cancel.gif';		
-		if(!$this->IsPostBack)
-		{
-        	$this->ShowListJobs();
-        }
-        
-        
-        
+		
+		$idC = null;
+		$idC = (int)$this->Request['idC'];
+		
+		if($idC != null){
+			$this->setViewState('idc',$idC);
+		}
+		
+		$idCR = null;
+		$idCR = (int)$this->Request['idCR'];
+		
+		if($idCR != null){
+			$this->setViewState('idcr',$idCR);
+		}
+		
+		if(!$this->IsPostBack) {
+			$this->ShowListJobs();
+		}
     }
 	
 	public function ShowListJobs(){
@@ -63,6 +73,8 @@ class EditCloneJob extends FunctionList
     {
     	$sqlmap = $this->Application->Modules['sqlmap']->Database;
     	$sqlmap->Active = true;
+    	$idc = $this->getViewState('idc',null);
+    	$idcr = $this->getViewState('idcr',null);
     	
     	$sql = "SELECT
 			tbl_stringing_jobs.id,
@@ -94,6 +106,10 @@ class EditCloneJob extends FunctionList
     	$sql .= " and concat(tbl_users.name, ' ', tbl_users.surname) like '%".$this->filter_customer->Text."%' ";
     	$sql .= " and concat(tbl_brands.description, ' ', tbl_racquets.model) like '%".$this->filter_Racquet->Text."%' ";
     	
+    	if($idc != null)
+    		$sql .= " and tbl_users.id = " . $idc;
+    	if($idcr != null)
+    		$sql .= " and tbl_stringing_jobs.tbl_racquets_user_id = " . $idcr;
     	if($order == '')
     		$sql .= " order by tbl_stringing_jobs.date_stringing DESC";
     	else if($order == 'date')
