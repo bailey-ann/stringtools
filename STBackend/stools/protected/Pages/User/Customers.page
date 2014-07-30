@@ -42,17 +42,21 @@
         DataField="id"
         Visible="false"
         />
-    <com:TBoundColumn
+    <com:THyperLinkColumn
     	SortExpression="name"
     	ID="NameColumn"
+    	DataNavigateUrlField="id"
         HeaderText="<%= Prado::localize('Name') %>"
-        DataField="name"
+        DataTextField="name"
+        DataNavigateUrlFormatString="index.php?page=Job.EditCloneJob&idC=%s"
         />
-    <com:TBoundColumn
+    <com:THyperLinkColumn
     	SortExpression="surname"
     	ID="SurnameColumn"
+    	DataNavigateUrlField="id"
         HeaderText="<%= Prado::localize('Surname') %>"
-        DataField="surname"
+        DataTextField="surname"
+        DataNavigateUrlFormatString="index.php?page=Job.EditCloneJob&idC=%s"
         />
     <com:TBoundColumn
     	ID="EmailColumn"

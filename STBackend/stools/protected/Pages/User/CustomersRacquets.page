@@ -140,10 +140,12 @@
         HeaderText="<%= Prado::localize('Model') %>"
         DataField="racquet.model"
         />
-    <com:TBoundColumn
+    <com:THyperLinkColumn
     	ID="serialColumn"
+    	DataNavigateUrlField="id"
         HeaderText="<%= Prado::localize('Serial') %>"
-        DataField="serial"
+        DataTextField="serial"
+        DataNavigateUrlFormatString="index.php?page=Job.EditCloneJob&idCR=%s"
         />
     <com:TButtonColumn
         HeaderText="<%= Prado::localize('Select') %>"
