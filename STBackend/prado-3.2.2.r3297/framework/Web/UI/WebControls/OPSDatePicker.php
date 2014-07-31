@@ -7,6 +7,14 @@ class OPSDatePicker extends TTemplateControl implements IValidatable{
 			);
 		}
 	}
+	
+	public function setFromYear($date){
+		$this->DatePicker->FromYear = $date;
+	}
+	
+	public function setUpToYear($date){
+		$this->DatePicker->UpToYear = $date;
+	}
 
     public function getDatePicker(){
         $this->ensureChildControls();

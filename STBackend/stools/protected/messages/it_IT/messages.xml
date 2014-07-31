@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-02-04T17:17:37Z" product-name="messages">
+ <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-07-31T12:29:08Z" product-name="messages">
   <body>
   
 <trans-unit id="1">
@@ -1168,6 +1168,21 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <trans-unit id="231">
 <source><![CDATA[HOME_9]]></source>
 <target><![CDATA[]]>Registrati adesso, è GRATIS!! :-)</target>
+</trans-unit>
+
+<trans-unit id="232">
+<source><![CDATA[Classifica]]></source>
+<target><![CDATA[]]>Classifica</target>
+</trans-unit>
+
+<trans-unit id="233">
+<source><![CDATA[Circolo]]></source>
+<target><![CDATA[]]>Circolo</target>
+</trans-unit>
+
+<trans-unit id="234">
+<source><![CDATA[Date nascita]]></source>
+<target><![CDATA[]]>Data Nascita</target>
 </trans-unit>
 </body>
  </file>

@@ -158,6 +158,22 @@
 <br/>
 <com:TTextBox ID="Cost" />
 <br/>
+
+<span class="input-label"><%= Prado::localize('Date nascita') %></span>
+<br/>
+<com:OPSDatePicker ID="DateNascita" ShowHours="false" ShowMinutes="false" FromYear="<%= date('Y') - 80 %>" UpToYear="<%= date('Y') - 5 %>"/>
+<br/>
+
+<span class="input-label"><%= Prado::localize('Classifica') %></span>
+<br/>
+<com:TDropDownList ID="DDLClassifica" DataTextField="classifica" DataValueField="id" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Circolo') %></span>
+<br/>
+<com:TTextBox ID="Circolo" />
+<br/>
+
 <br/>
 <com:TImageButton 
 	ID="Save"

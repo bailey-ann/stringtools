@@ -92,6 +92,18 @@ class Customers extends TPage
     		$this->Cost->Text = $this->userEdit->cost;
     		$this->Piva->Text = $this->userEdit->piva;
     		$this->CodiceFiscale->Text = $this->userEdit->codice_fiscale;
+    		
+    		$criteria = new TActiveRecordCriteria;
+    		$criteria->OrdersBy['id'] = 'desc';
+    		$classifiche = TblClassifica::finder()->findAll($criteria);
+    		$this->DDLClassifica->DataSource=$classifiche;
+    		$this->DDLClassifica->dataBind();
+    		$this->DDLClassifica->SelectedValue = $this->userEdit->tbl_classifica_id;
+    		
+    		$this->Circolo->Text = $this->userEdit->name_circolo;
+    		
+    		$this->DateNascita->setTimeStamp(strtotime($this->userEdit->date_nascita));
+    		
     		$this->setViewState('userEdit',$this->userEdit);
     	}
     }
@@ -122,6 +134,9 @@ class Customers extends TPage
 		$this->userEdit->date_insert = date('c');
 		$this->userEdit->piva = $this->Piva->Text;
 		$this->userEdit->codice_fiscale = $this->CodiceFiscale->Text;
+		$this->userEdit->tbl_classifica_id = $this->DDLClassifica->SelectedValue;
+		$this->userEdit->name_circolo = $this->Circolo->Text;
+		$this->userEdit->date_nascita = $this->DateNascita->getDataOk();
 		$this->userEdit->save();
 		
     	$this->RefreshData();

@@ -1169,6 +1169,20 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <source><![CDATA[HOME_9]]></source>
 <target><![CDATA[]]>Registrati adesso, è GRATIS!! :-)</target>
 </trans-unit>
+<trans-unit id="232">
+<source><![CDATA[Classifica]]></source>
+<target><![CDATA[]]>Classifica</target>
+</trans-unit>
+
+<trans-unit id="233">
+<source><![CDATA[Circolo]]></source>
+<target><![CDATA[]]>Circolo</target>
+</trans-unit>
+
+<trans-unit id="234">
+<source><![CDATA[Date nascita]]></source>
+<target><![CDATA[]]>Data Nascita</target>
+</trans-unit>
 </body>
  </file>
 </xliff>

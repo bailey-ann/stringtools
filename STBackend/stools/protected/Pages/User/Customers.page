@@ -82,7 +82,7 @@
     	ID="CostColumn"
         HeaderText="<%= Prado::localize('Cost') %>"
         DataField="cost"
-        />
+        />   
     <com:TButtonColumn
         HeaderText="<%= Prado::localize('Edit') %>"
         ImageUrl="themes/White/images/edit.png"
@@ -173,10 +173,28 @@
 <br/>
 <com:TTextBox ID="Fax" />
 <br/>
+
 <span class="input-label"><%= Prado::localize('Stringing Cost ** leave blank or 0 if the cost it\'s not special') %></span>
 <br/>
 <com:TTextBox ID="Cost" /><%= $this->User->UserDB->currency_unit->description %>
-<br/><br/>
+<br/>
+
+<span class="input-label"><%= Prado::localize('Date nascita') %></span>
+<br/>
+<com:OPSDatePicker ID="DateNascita" ShowHours="false" ShowMinutes="false" FromYear="<%= date('Y') - 80 %>" UpToYear="<%= date('Y') - 5 %>"/>
+<br/>
+
+<span class="input-label"><%= Prado::localize('Classifica') %></span>
+<br/>
+<com:TDropDownList ID="DDLClassifica" DataTextField="classifica" DataValueField="id" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Circolo') %></span>
+<br/>
+<com:TTextBox ID="Circolo" />
+<br/>
+
+<br/>
 <com:TImageButton 
 	ID="Save"
 	OnClick="saveClicked"/>

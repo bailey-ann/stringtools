@@ -24,6 +24,13 @@ class NewCustomer extends TPage
         	$this->Save->Visible = true;
         	$this->btnCancelSelect->Visible = true;
         }
+        
+        $criteria = new TActiveRecordCriteria;
+        $criteria->OrdersBy['id'] = 'desc';
+        $classifiche = TblClassifica::finder()->findAll($criteria);
+        $this->DDLClassifica->DataSource=$classifiche;
+        $this->DDLClassifica->dataBind();
+        $this->DDLClassifica->SelectedValue = 1;
     }
     
 	public function checkUsername($sender,$param)
@@ -64,6 +71,9 @@ class NewCustomer extends TPage
 			$userRecord->date_insert = date("c");
 			$userRecord->piva = $this->Piva->Text;
 			$userRecord->codice_fiscale = $this->CodiceFiscale->Text;
+			$$userRecord->tbl_classifica_id = $this->DDLClassifica->SelectedValue;
+			$$userRecord->name_circolo = $this->Circolo->Text;
+			$userRecord->date_nascita = $this->DateNascita->getDataOk();
 			$userRecord->Save();
 			
 			$relSC = new RelStringerCustomer();

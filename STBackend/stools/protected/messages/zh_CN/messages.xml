@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="es_ES" datatype="plaintext" original="messages" date="2013-12-22T09:17:29Z" product-name="messages">
+ <file source-language="EN" target-language="zh_CN" datatype="plaintext" original="messages" date="2013-11-22T12:54:15Z" product-name="messages">
   <body>
+  
 <trans-unit id="1">
 <source><![CDATA[LOST_PWD]]></source>
 <target><![CDATA[]]>Password Dimenticata</target>
@@ -833,6 +834,7 @@ Per aggiungere una racchetta al cliente i passi sono i seguenti: selezionato il 
 delle racchette presenti nel database con i dati originali ( da casa madre ) inseriti e altri dati propri della racchetta del cliente; 
 qua potete modificare i dati, facendo salva ritornerete alla vista delle racchette del cliente visualizzando la racchetta appena inserita</target>
 </trans-unit>
+
 <trans-unit id="165">
 <source><![CDATA[SITE_NAME]]></source>
 <target><![CDATA[]]>StringTools la risorsa definitiva per gli incordatori di racchette</target>
@@ -1176,11 +1178,6 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <trans-unit id="233">
 <source><![CDATA[Circolo]]></source>
 <target><![CDATA[]]>Circolo</target>
-</trans-unit>
-
-<trans-unit id="234">
-<source><![CDATA[Date nascita]]></source>
-<target><![CDATA[]]>Data Nascita</target>
 </trans-unit>
 </body>
  </file>
