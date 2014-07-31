@@ -27,6 +27,10 @@ class TblUsers extends TActiveRecord
 	
 	public $currency_unit;
 	public $weight_unit;
+	
+	public $tbl_classifica_id;
+	public $date_nascita;
+	public $name_circolo;
 
 	public static function finder($className=__CLASS__)
 	{
