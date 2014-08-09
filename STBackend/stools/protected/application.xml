@@ -24,7 +24,7 @@
   <modules>
     <!-- Database connection -->
     <module id="db" class="System.Data.TDataSourceConfig">
-       <database ConnectionString="mysql:host=localhost;dbname=stringto_svil" username="stringto_svil" password="stringto_svil1" />
+       <database ConnectionString="mysql:host=localhost;dbname=stringto_svil" username="root" password="gabber" />
     </module>
     
     <!-- Enable Active Record -->
