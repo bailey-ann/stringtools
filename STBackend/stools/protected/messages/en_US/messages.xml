@@ -1184,6 +1184,51 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <source><![CDATA[Date nascita]]></source>
 <target><![CDATA[]]>Data Nascita</target>
 </trans-unit>
+
+<trans-unit id="235">
+<source><![CDATA[List Strings Usrsa]]></source>
+<target><![CDATA[]]>Lista Corde Usrsa</target>
+</trans-unit>
+
+<trans-unit id="236">
+<source><![CDATA[Name String]]></source>
+<target><![CDATA[]]>Corda</target>
+</trans-unit>
+
+<trans-unit id="237">
+<source><![CDATA[Material]]></source>
+<target><![CDATA[]]>Materiale</target>
+</trans-unit>
+
+<trans-unit id="238">
+<source><![CDATA[ListStringsUsrsa]]></source>
+<target><![CDATA[]]>Lista Corde Usrsa</target>
+</trans-unit>
+
+<trans-unit id="239">
+<source><![CDATA[List_Strings_Usrsa]]></source>
+<target><![CDATA[]]>Lista corde Usrsa</target>
+</trans-unit>
+
+<trans-unit id="240">
+<source><![CDATA[Stiffness LbIn]]></source>
+<target><![CDATA[]]>Stiffness Lb/In</target>
+</trans-unit>
+
+<trans-unit id="241">
+<source><![CDATA[Stiffness NM]]></source>
+<target><![CDATA[]]>Stiffness N/M</target>
+</trans-unit>
+
+<trans-unit id="242">
+<source><![CDATA[Tension Loss lbs]]></source>
+<target><![CDATA[]]>Tension Loss lbs</target>
+</trans-unit>
+
+<trans-unit id="243">
+<source><![CDATA[Tension Loss Kg]]></source>
+<target><![CDATA[]]>Tension Loss Kg</target>
+</trans-unit>
 </body>
  </file>
 </xliff>

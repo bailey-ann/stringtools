@@ -1,0 +1,112 @@
+<%@ Title="Gestione Incordature Report" %>
+<com:TContent ID="sidebar">
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+<hr />
+
+</com:TContent>
+
+<com:TContent ID="zone_list_jobs">
+<h3><com:TLabel ID="LBL_LIST_JOB"  /></h3>
+
+<com:TLabel Text="<%= Prado::localize('Name String') %>" /> 
+<com:TTextBox ID="filter_name" />
+<com:TLabel Text="<%= Prado::localize('Material') %>" /> 
+
+<com:TDropDownList ID="filter_Racquet" DataTextField="material" DataValueField="material"  />
+
+
+<br/>
+<com:TImageButton ID="SearchRacquet" onClick="onSearchRacquet" />
+<com:TImageButton ID="CancelRacquet" onClick="onClearRacquet" "/>
+
+<com:TFilterDataGrid
+	SkinID="datagrid_1_little_15"
+	
+    ID="DataGridList"
+    CellPadding="2"
+    DataKeyField="id"
+    OnSelectedIndexChanged="select"
+    OnPageIndexChanged="changePage"
+    OnPagerCreated="pagerCreated"
+    OnItemCommand="onItemCommand"
+    AllowSorting="true"
+    OnSortCommand="sortDataGrid"
+    >
+    <com:TBoundColumn
+    	ID="IDColumn"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	SortExpression="name"
+    	ID="name"
+        HeaderText="<%= Prado::localize('Name String') %>"
+        DataField="name"
+        />
+    <com:TBoundColumn
+    	SortExpression="material"
+    	ID="material"
+        HeaderText="<%= Prado::localize('Material') %>"
+        DataField="material"
+        />
+    <com:TBoundColumn
+    	ID="gauge"
+        HeaderText="<%= Prado::localize('Gauge') %>"
+        DataField="gauge"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Select') %>"
+        Text="<%= Prado::localize('Select') %>"
+        ImageUrl="themes/White/images/select.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        ID="Select"
+        CommandName="select"
+        />
+</com:TFilterDataGrid>
+<br/>
+<hr />
+</com:TContent>
+
+
+<com:TContent ID="editable">
+
+<span class="input-label"><%= Prado::localize('Name String') %></span>
+<br/>
+<com:TTextBox ID="Name" Enabled="false" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Material') %></span>
+<br/>
+<com:TTextBox ID="Material" Enabled="false" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Gauge') %></span>
+<br/>
+<com:TTextBox ID="Gauge" Enabled="false" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Stiffness LbIn') %></span>
+<br/>
+<com:TTextBox ID="Stiffness_lbin" Enabled="false" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Stiffness NM') %></span>
+<br/>
+<com:TTextBox ID="Stiffness_nm" Enabled="false" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Tension Loss lbs') %></span>
+<br/>
+<com:TTextBox ID="Tension_loss_lbs" Enabled="false" />
+<br/>
+
+<span class="input-label"><%= Prado::localize('Tension Loss Kg') %></span>
+<br/>
+<com:TTextBox ID="Tension_loss_kg" Enabled="false" />
+<br/>
+</com:TContent>
+
+<com:TContent ID="rightbar">
+</com:TContent>

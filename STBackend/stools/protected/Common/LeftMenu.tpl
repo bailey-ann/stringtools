@@ -40,5 +40,12 @@
 </ul>
 </div>
 
+<div class="topic">
+<div>Database</div>
+<ul>
+    <li><a href="?page=DB.ListStringsUsrsa"><%= Prado::localize('List Strings Usrsa') %></a></li>
+</ul>
+</div>
+
 
 </div>
