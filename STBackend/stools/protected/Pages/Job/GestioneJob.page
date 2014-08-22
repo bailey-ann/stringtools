@@ -285,4 +285,8 @@
 <com:TImageButton 
 	OnClick="MakePDF"	
 	ID="Pdf" />
+<br/>
+<com:TImageButton 
+	OnClick="SendMail"	
+	ID="SendMail" />
 </com:TContent>

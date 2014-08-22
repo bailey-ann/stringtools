@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-08-22T01:09:14Z" product-name="messages">
+ <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-08-22T06:22:45Z" product-name="messages">
   <body>
   
 <trans-unit id="1">
@@ -1233,6 +1233,11 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <trans-unit id="244">
 <source><![CDATA[NumberOfStringing]]></source>
 <target><![CDATA[]]>N° incordature</target>
+</trans-unit>
+
+<trans-unit id="245">
+<source><![CDATA[StringingMailSubject]]></source>
+<target><![CDATA[]]>Racchetta pronta per il ritiro</target>
 </trans-unit>
 </body>
  </file>

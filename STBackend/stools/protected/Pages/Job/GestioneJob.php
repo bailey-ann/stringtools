@@ -21,7 +21,9 @@ class GestioneJob extends FunctionList
     	$this->Pdf->ImageUrl = $this->Page->Theme->BaseUrl.'/images/pdf-64.png';
     	$this->HelpCustomers->ImageUrl = $this->Page->Theme->BaseUrl.'/images/help-24.png';
     	$this->HelpStringMains->ImageUrl = $this->Page->Theme->BaseUrl.'/images/help-24.png';
+    	$this->SendMail->ImageUrl = $this->Page->Theme->BaseUrl.'/images/mail_send.png';
     	$this->Pdf->Visible = false;	
+    	$this->SendMail->Visible = false;
     	$this->editable->Visible = true;
 		$idJob = null;
     	$idJob = (int)$this->Request['idJob'];
@@ -32,8 +34,8 @@ class GestioneJob extends FunctionList
     	
     	if($idJob != null){
     		
-    		if(!$this->IsPostBack)
-	        {	
+    		//if(!$this->IsPostBack)
+	        //{	
 	        	$this->_edit_job = TblStringingJobs::finder()->findBy_id($idJob);
 	        	$racquetCustomer = TblRacquetsUser::finder()->findBy_id($this->_edit_job->tbl_racquets_user_id);
 	        	$this->customer = TblUsers::finder()->findBy_id($racquetCustomer->tbl_users_id);
@@ -42,7 +44,16 @@ class GestioneJob extends FunctionList
 	    		$this->createEditZone($this->_edit_job, false);
 	    		$this->Delete->visible = true;
 	    		$this->Pdf->Visible = true;	
-	        }
+	    		if($this->customer->email != null && $this->customer->email != "")
+	    			$this->SendMail->Visible = true;
+	        /*}else{
+	        	$this->Pdf->Visible = true;
+	        	$this->_edit_job = TblStringingJobs::finder()->findBy_id($idJob);
+	        	$racquetCustomer = TblRacquetsUser::finder()->findBy_id($this->_edit_job->tbl_racquets_user_id);
+	        	$this->customer = TblUsers::finder()->findBy_id($racquetCustomer->tbl_users_id);
+	        	if($this->customer->email != null && $this->customer->email != "")
+	        		$this->SendMail->Visible = true;
+	        }*/
     	}else if($idCloneJob != null){
     		
     		if(!$this->IsPostBack)
@@ -72,6 +83,8 @@ class GestioneJob extends FunctionList
         	$this->Save->Visible = true;
         	$this->Delete->Visible = false;
         }
+        
+        $this->SendMail->Visible = false;
     }
     
     
@@ -617,6 +630,58 @@ class GestioneJob extends FunctionList
 		header('Content-type: application/pdf');
 		header('Content-Disposition: attachment; filename="'.$stringJob.'.pdf"');
 		$pdf->Output($stringJob.'.pdf', 'D');
+	}
+	
+	public function SendMail()
+	{		
+		$stringJob = $this->formatJob((int)$this->Request['idJob']);
+		$job = TblStringingJobs::finder()->findBy_id((int)$this->Request['idJob']);		
+		$racquetCustomer = TblRacquetsUser::finder()->findBy_id($job->tbl_racquets_user_id);		
+		$customer = TblUsers::finder()->findBy_id($racquetCustomer->tbl_users_id);
+		
+		
+		$mail = new PHPMailer();
+		$mail->IsSMTP(); // enable SMTP
+		$mail->SMTPDebug = 1;  // debugging: 1 = errors and messages, 2 = messages only
+		$mail->SMTPAuth = true;
+		$mail->Host = $this->Application->Parameters['SMTP_HOST'];
+		$mail->Port = $this->Application->Parameters['SMTP_PORT'];
+		$mail->Username = $this->Application->Parameters['SMTP_USERNAME'];
+		$mail->Password = $this->Application->Parameters['SMTP_PASSWORD'];
+		$mail->SetFrom($this->User->UserDB->email, $this->User->UserDB->surname . " " . $this->User->UserDB->name);
+		$mail->Subject = Prado::localize("StringingMailSubject");
+		
+		$body = "Dear " . $customer->name . " " . $customer->surname . "<br>";
+		/*$body .= "Thank you for registering at the StringTools. Before we can activate your account one last step must be taken to complete your registration.";
+		$body .= "<br><br>";
+		$body .= "Please note - you must complete this last step to become a registered member. You will only need to visit this URL once to activate your account.";
+		$body .= "<br><br>";
+		$body .= "To complete your registration, please visit this URL:";
+		$body .= "<br>";
+		$body .= $this->Application->Parameters['SITE_LINK']."/index.php?page=User.Confirm&id=".$userRecord->id."&code=".$userRecord->confirm_code;
+		$body .= "<br><br>";
+		$body .= "Please be sure not to add extra spaces. You will need to type in your username and activation number on the page that appears when you visit the URL.";
+		$body .= "<br><br>";
+		$body .= "Your Username is: ".$userRecord->username;
+		$body .= "<br>";
+		$body .= "Your Activation ID is: ".$userRecord->confirm_code;
+		$body .= "<br><br>";
+		$body .= "If you are still having problems signing up please contact a member of our support staff at ".$this->Application->Parameters['EMAIL_ADMIN'];
+		$body .= "<br><br>";
+		$body .= "All the best,";
+		$body .= $this->Application->Parameters['SITE_LINK'];
+		$mail->IsHTML(true);
+		$mail->Body =$body;
+		$mail->AddAddress($customer->email);
+		if(!$mail->Send()) {
+			echo "errore SendMail:".$mail->ErrorInfo;
+			$error = 'Mail error: '.$mail->ErrorInfo;
+			return false;
+		} else {
+			//echo " SendMail ok";
+			$error = 'Message sent!';
+			return true;
+		}*/
 	}
      
 }

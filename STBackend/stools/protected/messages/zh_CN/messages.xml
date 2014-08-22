@@ -1234,6 +1234,11 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <source><![CDATA[NumberOfStringing]]></source>
 <target><![CDATA[]]>N° incordature</target>
 </trans-unit>
+
+<trans-unit id="245">
+<source><![CDATA[StringingMailSubject]]></source>
+<target><![CDATA[]]>Racchetta pronta per il ritiro</target>
+</trans-unit>
 </body>
  </file>
 </xliff>

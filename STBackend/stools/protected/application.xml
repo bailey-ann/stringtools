@@ -74,7 +74,7 @@
 	<parameter id="SMTP_PASSWORD" value="gabber1979" />
 	<parameter id="EMAIL_ADMIN" value="amministrazione@stringtools.it" />
 	<parameter id="EMAIL_ASSISTENZE" value="assistenza@stringtools.it" />
-	<parameter id="SITE_LINK" value="http://www.stringtools.it/stools" />
+	<parameter id="SITE_LINK" value="http://www.stringtools.it" />
 	<parameter id="PATH_CUSTOM_IMAGES" value="./themes/White/images/graph" />
 	<parameter id="languages" value="('en'=>'English','it'=>'Italian')" />
   </parameters>

@@ -31,6 +31,8 @@ class TblStringingJobs extends TActiveRecord
 	public $cut;
 	public $duration_string;
 	public $note_customer;
+	public $sended_email;
+	public $sended_sms;
 	
 	
 	public $customer;
