@@ -252,6 +252,9 @@ class CustomersRacquets extends TPage
         	$brand_name[$i] = $brand->description;
         	$row->racquet->brand_name = $brand->description;
 		    $model[$i] = $row->racquet->model;
+		    $arraNumber = $sqlmap->queryForList("CountListJobByUserRacquet",$row->id);
+		    if(count($arraNumber) > 0)
+		    	$row->numberOfStringing = $arraNumber[0];
 		    $i++;
         }
     	array_multisort($brand_name,SORT_ASC,SORT_STRING, $model,SORT_ASC,SORT_STRING, $this->_data_user_racquets);

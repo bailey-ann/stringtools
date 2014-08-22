@@ -24,6 +24,8 @@ class TblRacquetsUser extends TActiveRecord
 	public $racquet;
 	public $grip;
 	public $customer;
+	
+	public $numberOfStringing;
 
 	public static function finder($className=__CLASS__)
 	{

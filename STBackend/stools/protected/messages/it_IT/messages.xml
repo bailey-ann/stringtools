@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-08-13T17:53:48Z" product-name="messages">
+ <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-08-22T01:09:14Z" product-name="messages">
   <body>
   
 <trans-unit id="1">
@@ -1228,6 +1228,11 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <trans-unit id="243">
 <source><![CDATA[Tension Loss Kg]]></source>
 <target><![CDATA[]]>Tension Loss Kg</target>
+</trans-unit>
+
+<trans-unit id="244">
+<source><![CDATA[NumberOfStringing]]></source>
+<target><![CDATA[]]>N° incordature</target>
 </trans-unit>
 </body>
  </file>

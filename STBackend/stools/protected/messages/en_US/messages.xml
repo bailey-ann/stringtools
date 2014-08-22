@@ -1229,6 +1229,11 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <source><![CDATA[Tension Loss Kg]]></source>
 <target><![CDATA[]]>Tension Loss Kg</target>
 </trans-unit>
+
+<trans-unit id="244">
+<source><![CDATA[NumberOfStringing]]></source>
+<target><![CDATA[]]>N° incordature</target>
+</trans-unit>
 </body>
  </file>
 </xliff>

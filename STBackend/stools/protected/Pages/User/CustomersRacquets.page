@@ -147,6 +147,13 @@
         DataTextField="serial"
         DataNavigateUrlFormatString="index.php?page=Job.EditCloneJob&idCR=%s"
         />
+    <com:THyperLinkColumn
+    	ID="numberOfStringingColumn"
+    	DataNavigateUrlField="id"
+        HeaderText="<%= Prado::localize('NumberOfStringing') %>"
+        DataTextField="numberOfStringing"
+        DataNavigateUrlFormatString="index.php?page=Job.EditCloneJob&idCR=%s"
+        />
     <com:TButtonColumn
         HeaderText="<%= Prado::localize('Select') %>"
         ImageUrl="themes/White/images/select.png"

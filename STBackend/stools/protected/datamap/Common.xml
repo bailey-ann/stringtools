@@ -164,4 +164,8 @@
 		SELECT tbl_stringing_jobs.date_stringing FROM tbl_stringing_jobs where tbl_stringing_jobs.tbl_users_id_stringer = #id# order by date_stringing desc limit 1
 	</select>
 	
+	<select id="CountListJobByUserRacquet" resultClass="int">
+		select count(*) AS numero from tbl_stringing_jobs where tbl_stringing_jobs.tbl_racquets_user_id = #id# 
+	</select>
+	
 </sqlMapConfig>
