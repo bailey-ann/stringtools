@@ -270,8 +270,19 @@ class EditCloneJob extends FunctionList
 		$pdf->SetFont('times', '', 13);
 		$pdf->writeHTML($this->makeHtmlJob($job), true, false, true, false, '');
 		
+		$filename = $stringJob .'.pdf';
+		
+		header("Content-Description: File Transfer");
+		header('Content-Type: application/octet-stream');
 		header('Content-type: application/pdf');
-		header('Content-Disposition: attachment; filename="'.$stringJob.'.pdf"');
-		$pdf->Output($stringJob.'.pdf', 'D');
+		header('Content-Disposition: attachment; filename='.$filename);
+		header('Content-Transfer-Encoding: binary');
+		header('Expires: 0');
+		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+		header("Cache-Control: private", false); // required for certain browsers
+		header('Pragma: public');
+		//header('Content-Length: ' . filesize($filename));
+		
+		$pdf->Output($filename, 'D');
 	}
 }
