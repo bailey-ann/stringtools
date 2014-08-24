@@ -34,8 +34,8 @@ class GestioneJob extends FunctionList
     	
     	if($idJob != null){
     		
-    		//if(!$this->IsPostBack)
-	        //{	
+    		if(!$this->IsPostBack)
+	        {	
 	        	$this->_edit_job = TblStringingJobs::finder()->findBy_id($idJob);
 	        	$racquetCustomer = TblRacquetsUser::finder()->findBy_id($this->_edit_job->tbl_racquets_user_id);
 	        	$this->customer = TblUsers::finder()->findBy_id($racquetCustomer->tbl_users_id);
@@ -46,14 +46,14 @@ class GestioneJob extends FunctionList
 	    		$this->Pdf->Visible = true;	
 	    		if($this->customer->email != null && $this->customer->email != "")
 	    			$this->SendMail->Visible = true;
-	        /*}else{
+	        }else{
 	        	$this->Pdf->Visible = true;
 	        	$this->_edit_job = TblStringingJobs::finder()->findBy_id($idJob);
 	        	$racquetCustomer = TblRacquetsUser::finder()->findBy_id($this->_edit_job->tbl_racquets_user_id);
 	        	$this->customer = TblUsers::finder()->findBy_id($racquetCustomer->tbl_users_id);
 	        	if($this->customer->email != null && $this->customer->email != "")
 	        		$this->SendMail->Visible = true;
-	        }*/
+	        }
     	}else if($idCloneJob != null){
     		
     		if(!$this->IsPostBack)
