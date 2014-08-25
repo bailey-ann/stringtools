@@ -21,3 +21,4 @@ pagina di gestione
 report
 
 home page
+	aggiungere incasso annuale
