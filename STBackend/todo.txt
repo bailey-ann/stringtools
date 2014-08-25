@@ -1,54 +1,14 @@
 SVILUPPI	
 
--- Un totale dei ricavi in home page è possibile metterlo
-( inserito totale incasso  mensile )
-DEVELOP Site
+-- gestione spese
 
+CREATE TABLE `tbl_spese_stringer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_stringer` int(11) NOT NULL,
+  `descrizione` varchar(50) NOT NULL DEFAULT '',
+  `costo` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `data` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_stringer` (`id_stringer`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Codice Fiscale 
-DEVELOP Site
-
--- Sarebbe possibile Flaggare (si dice così) la propria macchina incordatrice in modo da renderla quella di default così da non doverla reinserire nella nuova incordatura?
-DEVELOP Site
-
--- Sarebbe comodo anche poter inserire automaticamnete la stessa corda per orizzontali e verticali, nelle incordature
-DEVELOP Site
-
--- clonazione racchette
-DEVELOP Site
-
--- La sezione Gestione Incordature --> Nuova incordatura è possibile renderla uguale alla sezione Dati Personali--> Clienti??  
-Ossia più utenti per pagina (eventualmente 10-20-30 etc) e possibilità di ordine alfabetico?
- 
-DEVELOP Site
-
--- Report
-	lavori develop
-	annuale develop
-	mensile develop
-	clienti develop
-
--- estrazione excel
-
-<h3><com:TLabel Text="<%= Prado::localize('export') %>" /> </h3>
-<br/>
-<com:TImageButton 
-	OnClick="exportExcel"	
-	ID="Excel" />
-<br/>
-<com:TImageButton 
-	OnClick="exportPdf"	
-	ID="Pdf" />
-	
--- pulsante invio
-
-
-
-
-BUG
-
--- Quando cerco una racchetta da inserire ad un cliente per marca, se mi da più pagine da leggere quando clicco sulla pagina successiva mi riporta all'elenco iniziale.
-FIX
-
--- Altro "problema" quando metto in ordine alfabetico i clienti se mi sposto nella pagina successiva mi sballa tutto e li mischia nuovamente, in pratica li rimette in ordine di inserimento cronologico.
-FIX
