@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-08-22T06:22:45Z" product-name="messages">
+ <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-08-25T08:24:58Z" product-name="messages">
   <body>
   
 <trans-unit id="1">
@@ -1239,6 +1239,52 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <source><![CDATA[StringingMailSubject]]></source>
 <target><![CDATA[]]>Racchetta pronta per il ritiro</target>
 </trans-unit>
+
+<trans-unit id="246">
+<source><![CDATA[Spese]]></source>
+<target><![CDATA[]]>Spese</target>
+</trans-unit>
+
+<trans-unit id="247">
+<source><![CDATA[Descrizione Spesa]]></source>
+<target><![CDATA[]]>Descrizione Spesa</target>
+</trans-unit>
+
+<trans-unit id="248">
+<source><![CDATA[Valore Spesa]]></source>
+<target><![CDATA[]]>Valore Spesa</target>
+</trans-unit>
+
+<trans-unit id="249">
+<source><![CDATA[Data Spesa]]></source>
+<target><![CDATA[]]>Data Spesa</target>
+</trans-unit>
+
+<trans-unit id="250">
+<source><![CDATA[List Spese]]></source>
+<target><![CDATA[]]>Lista Spese</target>
+</trans-unit>
+
+<trans-unit id="251">
+<source><![CDATA[Insert New Spesa]]></source>
+<target><![CDATA[]]>Inserimento nuova spesa</target>
+</trans-unit>
+
+<trans-unit id="252">
+<source><![CDATA[Please provide your Descrizione spesa address.]]></source>
+<target><![CDATA[]]>Inserisci una descrizione</target>
+</trans-unit>
+
+<trans-unit id="253">
+<source><![CDATA[Please choose a Valore Spesa.]]></source>
+<target><![CDATA[]]>Inserisci un valore</target>
+</trans-unit>
+
+<trans-unit id="254">
+<source><![CDATA[Edit Spesa]]></source>
+<target><![CDATA[]]>Modifica spesa</target>
+</trans-unit>
+
 </body>
  </file>
 </xliff>

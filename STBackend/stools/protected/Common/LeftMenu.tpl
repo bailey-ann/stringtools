@@ -6,6 +6,7 @@
 	<li><a href="?page=User.PersonalData"><%= Prado::localize('Personal Data') %></a></li>
     <li><a href="?page=User.Customers"><%= Prado::localize('Customers') %></a></li>
     <li><a href="?page=User.CustomersRacquets"><%= Prado::localize('Customers Racquets') %></a></li>
+    <li><a href="?page=User.Spese"><%= Prado::localize('Spese') %></a></li>
 </ul>
 </div>
 

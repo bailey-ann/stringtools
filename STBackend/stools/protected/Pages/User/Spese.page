@@ -1,0 +1,144 @@
+<%@ Title="Manage Spese" %>
+<com:TContent ID="sidebar">
+<com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
+<hr />
+
+</com:TContent>
+
+<com:TContent ID="content">
+<h3><%= Prado::localize('List Spese') %></h3>
+
+<com:TLabel Text="<%= Prado::localize('Descrizione Spesa') %>" /> 
+<com:TFilterCollection Id="FilterCollection_descrizione" >
+	<com:TFilterText  DataField="descrizione" />
+</com:TFilterCollection>
+
+<com:TLabel Text="<%= Prado::localize('Year') %>" />
+<com:TDropDownList ID="DDLYear" DataTextField="year" DataValueField="id" AutoPostBack="true"
+    OnSelectedIndexChanged="selectionChangedDDLYear"  />
+<com:TLabel Text="<%= Prado::localize('Month') %>" />
+<com:TDropDownList ID="DDLMonth" DataTextField="month" DataValueField="id" AutoPostBack="true"
+    OnSelectedIndexChanged="selectionChangedDDLMonth"  /> 
+<br>
+<com:TImageButton ID="Search" onClick="onSearch" />
+<com:TImageButton ID="Cancel" onClick="onClear" "/>
+<com:TImageButton ID="New" OnClick="createClicked" />
+
+<com:TFilterDataGrid
+	SkinID="datagrid_1_little_10"
+	
+    ID="DataGridSpese"
+    CellPadding="2"
+    DataKeyField="id"
+    
+    OnSelectedIndexChanged="selectSpesa"
+    OnPageIndexChanged="changePage"
+    OnPagerCreated="pagerCreated"
+    OnItemCommand="onItemCommand"
+    
+    AllowSorting="true"
+    OnSortCommand="sortDataGrid"
+
+    >
+    <com:TBoundColumn
+    	ID="IDColumn"
+        HeaderText="ID"
+        DataField="id"
+        Visible="false"
+        />
+    <com:TBoundColumn
+    	SortExpression="descrizione"
+    	ID="DescrizioneColumn"
+        HeaderText="<%= Prado::localize('Descrizione Spesa') %>"
+        DataField="descrizione"
+        />
+    <com:TBoundColumn
+    	SortExpression="valore_spesa"
+    	ID="ValoreSpesaColumn"
+        HeaderText="<%= Prado::localize('Valore Spesa') %>"
+        DataField="valore_spesa"
+        />
+    <com:TBoundColumn
+    	SortExpression="data"
+    	ID="DataColumn"
+        HeaderText="<%= Prado::localize('Data Spesa') %>"
+        DataField="data"
+        DataFormatString="#date('d/m/Y',strtotime({0}))"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Edit') %>"
+        Text="<%= Prado::localize('Edit') %>"
+        ImageUrl="themes/White/images/edit.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        ID="SelectSpesa"
+        CommandName="select"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Delete') %>"
+        Text="<%= Prado::localize('Delete') %>"
+        ID="DeleteJob"
+        ImageUrl="themes/White/images/delete.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        CommandName="elimina"
+     />
+</com:TFilterDataGrid>
+<br/>
+
+
+</com:TContent>
+
+<com:TContent ID="editable">
+
+<h3><com:TLabel ID="TypeEdit" /></h3>
+
+<com:TValidationSummary
+	Display="Dynamic"
+	ValidationGroup="user" />
+
+<span class="input-label"><%= Prado::localize('Descrizione Spesa') %></span>
+<br/>
+<com:TTextBox ID="DescrizioneSpesa" />
+<com:TRequiredFieldValidator
+	ControlToValidate="DescrizioneSpesa"
+	ValidationGroup="user"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please provide your Descrizione spesa address.') %>"
+	ControlCssClass="input-error1" />
+
+<br/>
+<span class="input-label"><%= Prado::localize('Valore Spesa') %></span>
+<br/>
+<com:TTextBox ID="ValoreSpesa" />
+<com:TRequiredFieldValidator
+	ControlToValidate="ValoreSpesa"
+	ValidationGroup="user"
+	Display="Dynamic"
+	Text="*"
+	ErrorMessage="<%= Prado::localize('Please choose a Valore Spesa.') %>"
+	ControlCssClass="input-error1" />
+<br/>
+
+
+
+<span class="input-label"><%= Prado::localize('Data Spesa') %></span>
+<br/>
+<com:OPSDatePicker ID="DataSpesa" ShowHours="false" ShowMinutes="false" FromYear="<%= date('Y') - 1 %>" UpToYear="<%= date('Y') %>"/>
+<br/>
+
+<br/>
+<com:TImageButton 
+	ID="Save"
+	OnClick="saveClicked"/>
+<com:TImageButton 
+	ID="Cancel_2"
+	OnClick="cancelClicked"/>
+</com:TContent>
+
+<com:TContent ID="rightbar">
+<com:TPanel GroupingText="<%= Prado::localize('PageSize') %>" Width="50px">
+	<com:TTextBox ID="PageSize" Text="10" /><br/>
+	<com:TImageButton ID="Change" OnClick="changePageSize" />
+</com:TPanel>
+</com:TContent>
