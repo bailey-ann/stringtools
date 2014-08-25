@@ -2,6 +2,7 @@ SVILUPPI
 
 -- gestione spese
 
+
 CREATE TABLE `tbl_spese_stringer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_stringer` int(11) NOT NULL,
@@ -12,3 +13,11 @@ CREATE TABLE `tbl_spese_stringer` (
   KEY `id_stringer` (`id_stringer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+voce di menu
+
+pagina di gestione
+
+report
+
+home page
