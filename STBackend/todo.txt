@@ -3,7 +3,7 @@ SVILUPPI
 -- gestione spese
 
 
-CREATE TABLE `tbl_spese_stringer` (
+CREATE TABLE `rel_spese_stringer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_stringer` int(11) NOT NULL,
   `descrizione` varchar(50) NOT NULL DEFAULT '',
