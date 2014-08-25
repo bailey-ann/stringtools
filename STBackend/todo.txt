@@ -7,7 +7,7 @@ CREATE TABLE `rel_spese_stringer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_stringer` int(11) NOT NULL,
   `descrizione` varchar(50) NOT NULL DEFAULT '',
-  `costo` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `valore_spesa` decimal(10,2) NOT NULL DEFAULT '0.00',
   `data` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_stringer` (`id_stringer`)
@@ -17,6 +17,11 @@ CREATE TABLE `rel_spese_stringer` (
 voce di menu
 
 pagina di gestione
+
+/STBackend/stools/protected/database/RelSpeseStringer.php
+/STBackend/stools/protected/Pages/User/Spese.page
+/STBackend/stools/protected/Pages/User/Spese.php
+/STBackend/stools/protected/Common/LeftMenu.tpl
 
 report
 
