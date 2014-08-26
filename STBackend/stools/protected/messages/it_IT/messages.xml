@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-08-26T02:25:10Z" product-name="messages">
+ <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-08-26T02:59:55Z" product-name="messages">
   <body>
   
 <trans-unit id="1">
@@ -1309,6 +1309,11 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <trans-unit id="259">
 <source><![CDATA[ReportCashYear]]></source>
 <target><![CDATA[]]>Report Annuale</target>
+</trans-unit>
+
+<trans-unit id="260">
+<source><![CDATA[ReportCashMonth]]></source>
+<target><![CDATA[]]>Report Mensile</target>
 </trans-unit>
 </body>
  </file>

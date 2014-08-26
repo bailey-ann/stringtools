@@ -1308,6 +1308,11 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <source><![CDATA[ReportCashYear]]></source>
 <target><![CDATA[]]>Report Annuale</target>
 </trans-unit>
+
+<trans-unit id="260">
+<source><![CDATA[ReportCashMonth]]></source>
+<target><![CDATA[]]>Report Mensile</target>
+</trans-unit>
 </body>
  </file>
 </xliff>
