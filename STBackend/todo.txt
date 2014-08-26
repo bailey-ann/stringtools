@@ -23,6 +23,9 @@ pagina di gestione
 /STBackend/stools/protected/Pages/User/Spese.php
 /STBackend/stools/protected/Common/LeftMenu.tpl
 new-spesa.gif
+/STBackend/stools/protected/datamap/Common.xml
+/STBackend/stools/protected/Pages/Home.page
+/STBackend/stools/protected/Pages/Home.php
 
 report
 
