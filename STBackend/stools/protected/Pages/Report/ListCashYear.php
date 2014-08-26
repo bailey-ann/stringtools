@@ -16,7 +16,7 @@ class ListCashYear extends FunctionList
 	public function onLoad($param)
     {
     	parent::onLoad($param);
-    	$this->Page->Title = Prado::localize('ListCashYear');		
+    	$this->Page->Title = Prado::localize('ReportCashYear');		
     	$this->Excel->ImageUrl = $this->Page->Theme->BaseUrl.'/images/excel-64.png';	
 		$this->Pdf->ImageUrl = $this->Page->Theme->BaseUrl.'/images/pdf-64.png';
 		//$this->Excel->Visible = false;	
@@ -31,7 +31,7 @@ class ListCashYear extends FunctionList
     }
 	
 	public function ShowList(){
-		$this->LBL_LIST->Text = Prado::localize('ListCashYear');
+		$this->LBL_LIST->Text = Prado::localize('ReportCashYear');
 		$this->zone_list_jobs->Visible = true;
 		$this->loadData();		
 	}
@@ -78,7 +78,23 @@ class ListCashYear extends FunctionList
     		$sql .= " ORDER BY amount DESC";
     
     	$command = $sqlmap->createCommand($sql);
-    	$this->_data = $command->query()->readAll();
+    	$arrayGlobale = $command->query()->readAll();
+    	
+    	for($j=0;$j<count($arrayGlobale);$j++){
+    		$incasso = $arrayGlobale[$j]["amount"];
+    		$anno = $arrayGlobale[$j]["year"];
+    		
+    		$sql = "SELECT SUM( rel_spese_stringer.valore_spesa ) AS totale FROM rel_spese_stringer where rel_spese_stringer.id_stringer = ". $this->User->UserDB->id . "  AND YEAR ( rel_spese_stringer.data ) = " . $anno;
+    		$command = $sqlmap->createCommand($sql);
+    		$spesaAnno = 0;
+    		$spese = $command->query()->readAll();
+    		$spesaAnno = $spese[0]["totale"];
+    		$saldo = 0;
+    		$arrayGlobale[$j]["spese"] = number_format((float)$spesaAnno, 2, '.', '');
+    		$arrayGlobale[$j]["saldo"] = number_format((float)$incasso - $spesaAnno, 2, '.', '');
+    	}
+    	$this->_data = $arrayGlobale;
+    	
     }
 	
 	public function changePage($sender,$param)
@@ -217,6 +233,100 @@ class ListCashYear extends FunctionList
 												$this->Session['amount_graph'];
 	}
 	
+	public function loadSpeseGraph(){
+		$dataAmount =array();
+		$label = array();
+		for($j=0;$j<count($this->Data);$j++){
+			$dataAmount[] = $this->Data[$j]['spese'];
+			$label[] = $this->Data[$j]['year'];
+		}
+	
+	
+	
+		// Create the graph. These two calls are always required
+		$graph = new Graph(350,220,'auto');
+		$graph->SetScale("textlin");
+		$graph->graph_theme = null;
+		$graph->SetFrame(false);
+	
+		$graph->xaxis->SetTickLabels($label);
+	
+		// Create the bar plots
+		$b2plot = new BarPlot($dataAmount);
+	
+		//$gbplot = new GroupBarPlot(array($b1plot,$b2plot));
+	
+		// ...and add it to the graPH
+		$b2plot->value->Show();
+		$b2plot->value->SetFormat('%01.2f');
+		//$b2plot->value->SetFont(FS_BOLD);
+		$b2plot->value->SetColor("black","darkred");
+		$graph->Add($b2plot);
+	
+		$b2plot->SetColor("white");
+		$b2plot->SetFillColor("#116fcc");
+	
+	
+		$graph->title->Set(Prado::localize('Spese'));
+	
+		$speseFileName = "spese". $this->User->UserDB->id .".png";
+		$this->Session['spese_graph'] = $speseFileName;
+		$graph->Stroke($this->Application->Parameters["PATH_CUSTOM_IMAGES"].$speseFileName);
+	}
+	
+	public function getSpesePathGrahFile(){
+		return $this->Application->Parameters["PATH_CUSTOM_IMAGES"].
+		$this->Session['spese_graph'];
+	}
+	
+	public function loadSaldoGraph(){
+		$dataAmount =array();
+		$label = array();
+		for($j=0;$j<count($this->Data);$j++){
+			$dataAmount[] = $this->Data[$j]['saldo'];
+			$label[] = $this->Data[$j]['year'];
+		}
+	
+	
+	
+		// Create the graph. These two calls are always required
+		$graph = new Graph(350,220,'auto');
+		$graph->SetScale("textlin");
+		$graph->graph_theme = null;
+		$graph->SetFrame(false);
+	
+		$graph->xaxis->SetTickLabels($label);
+	
+		// Create the bar plots
+		$b2plot = new BarPlot($dataAmount);
+	
+		//$gbplot = new GroupBarPlot(array($b1plot,$b2plot));
+	
+		// ...and add it to the graPH
+		$b2plot->value->Show();
+		$b2plot->value->SetFormat('%01.2f');
+		//$b2plot->value->SetFont(FS_BOLD);
+		$b2plot->value->SetColor("black","darkred");
+		$graph->Add($b2plot);
+	
+		$b2plot->SetColor("white");
+		$b2plot->SetFillColor("#cccc11");
+	
+	
+		$graph->title->Set(Prado::localize('Saldo'));
+	
+		$saldoFileName = "saldo". $this->User->UserDB->id .".png";
+		$this->Session['saldo_graph'] = $saldoFileName;
+		$graph->Stroke($this->Application->Parameters["PATH_CUSTOM_IMAGES"].$saldoFileName);
+	}
+	
+	public function getSaldoPathGrahFile(){
+		return $this->Application->Parameters["PATH_CUSTOM_IMAGES"].
+		$this->Session['saldo_graph'];
+	}
+	
+	
+	
 	
 	public function exportExcel()
 	{				
@@ -228,6 +338,10 @@ class ListCashYear extends FunctionList
 		$objPHPExcel->getActiveSheet()->getStyle('B1')->getFont()->setBold(true);
 		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $row, Prado::localize('Amount'));
 		$objPHPExcel->getActiveSheet()->getStyle('C1')->getFont()->setBold(true);
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $row, Prado::localize('Spese'));
+		$objPHPExcel->getActiveSheet()->getStyle('D1')->getFont()->setBold(true);
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4, $row, Prado::localize('Saldo'));
+		$objPHPExcel->getActiveSheet()->getStyle('E1')->getFont()->setBold(true);
 		$row++;
 		$this->CreateArray($this->getViewState('sort','') );
 		for($j=0;$j<count($this->_data);$j++){
@@ -235,6 +349,10 @@ class ListCashYear extends FunctionList
 			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $row, $this->_data[$j]["stringing"]);			
 			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $row, $this->_data[$j]["amount"]);
 			$objPHPExcel->getActiveSheet()->getStyle('C'.$row)->getNumberFormat()->setFormatCode('0.00');
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $row, $this->_data[$j]["spese"]);
+			$objPHPExcel->getActiveSheet()->getStyle('D'.$row)->getNumberFormat()->setFormatCode('0.00');
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4, $row, $this->_data[$j]["saldo"]);
+			$objPHPExcel->getActiveSheet()->getStyle('E'.$row)->getNumberFormat()->setFormatCode('0.00');
 			$row++;
 		}		
 		

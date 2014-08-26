@@ -39,6 +39,27 @@ class Home extends FunctionList
 	   			$incassoMonth = $arraIncassoMonth[0];
 	   		$this->INCASSO_MONTH->Text = $incassoMonth;
 	   		
+	   		$speseMonth = 0;
+	   		$arraSpeseMonth = $sqlmap->queryForList("SpeseByStringerMonth",$this->User->UserDB->id);
+	   		if(count($arraSpeseMonth) > 0)
+	   			$speseMonth = $arraSpeseMonth[0];
+	   		$this->SPESE_MONTH->Text = $speseMonth;
+	   		
+	   		$saldoMonth = $incassoMonth - $speseMonth;
+	   		$this->SALDO_MONTH->Text = number_format((float)$saldoMonth, 2, '.', '');   		
+	   		
+	   		$incassoYear = 0;
+	   		$arraIncassoYear = $sqlmap->queryForList("IncassoByStringerYear",$this->User->UserDB->id);
+	   		if(count($arraIncassoYear) > 0)
+	   			$incassoYear = $arraIncassoYear[0];
+	   		
+	   		$speseYear = 0;
+	   		$arraSpeseYear = $sqlmap->queryForList("SpeseByStringerYear",$this->User->UserDB->id);
+	   		if(count($arraSpeseYear) > 0)
+	   			$speseYear= $arraSpeseYear[0];
+	   		
+	   		$this->SALDO_YEAR->Text = number_format((float)$incassoYear - $speseYear, 2, '.', '');
+	   		
 	   		$numberJob = 0;
 	   		$arraNumberJob = $sqlmap->queryForList("CountListJobByStringer",$this->User->UserDB->id);
 	   		if(count($arraNumberJob) > 0)

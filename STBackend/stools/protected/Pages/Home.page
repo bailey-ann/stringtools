@@ -114,6 +114,30 @@
 	</tr>
 	<tr>
 		<td>
+			<%= Prado::localize('SPESE_MONTH')%>:
+		</td>
+		<td>
+			<com:TLabel ID="SPESE_MONTH" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= Prado::localize('SALDO_MONTH')%>:
+		</td>
+		<td>
+			<com:TLabel ID="SALDO_MONTH" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= Prado::localize('SALDO_YEAR')%>:
+		</td>
+		<td>
+			<com:TLabel ID="SALDO_YEAR" />
+		</td>
+	</tr>
+	<tr>
+		<td>
 			<%= Prado::localize('DATA_LAST_STRINGING')%>:
 		</td>
 		<td>
