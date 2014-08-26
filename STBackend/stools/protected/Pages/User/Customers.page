@@ -31,7 +31,7 @@
     OnSelectedIndexChanged="selectCustomer"
     OnPageIndexChanged="changePage"
     OnPagerCreated="pagerCreated"
-    
+    OnItemCommand="onItemCommand"
     AllowSorting="true"
     OnSortCommand="sortDataGrid"
 
@@ -57,11 +57,6 @@
         HeaderText="<%= Prado::localize('Surname') %>"
         DataTextField="surname"
         DataNavigateUrlFormatString="index.php?page=Job.EditCloneJob&idC=%s"
-        />
-    <com:TBoundColumn
-    	ID="EmailColumn"
-        HeaderText="<%= Prado::localize('Email') %>"
-        DataField="email"
         />
     <com:TBoundColumn
     	ID="TelephoneColumn"
@@ -90,6 +85,14 @@
         ButtonType="ImageButton"
         ID="SelectCustomer"
         CommandName="select"
+        />
+    <com:TButtonColumn
+        HeaderText="<%= Prado::localize('Racquets') %>"
+        ImageUrl="themes/White/images/raquet_20.png"
+        ItemStyle.HorizontalAlign="Center"
+        ButtonType="ImageButton"
+        ID="SelectRC"
+        CommandName="selectRC"
         />
 </com:TFilterDataGrid>
 <br/>

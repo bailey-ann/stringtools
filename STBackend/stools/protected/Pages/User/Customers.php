@@ -213,5 +213,15 @@ class Customers extends TPage
 		$this->DataGridCustomers->DataSource=$this->Data;
 		$this->DataGridCustomers->dataBind();
 	}
+	
+	public function onItemCommand($sender,$param)
+	{
+		switch ($param->getCommandName())
+		{
+			case "selectRC":
+				$this->SelectRC($sender,$param);
+				break;
+		}
+	}
 }
 
