@@ -37,7 +37,13 @@ class Home extends FunctionList
 	   		$arraIncassoMonth = $sqlmap->queryForList("IncassoByStringerMonth",$this->User->UserDB->id);
 	   		if(count($arraIncassoMonth) > 0)
 	   			$incassoMonth = $arraIncassoMonth[0];
-	   		$this->INCASSO_MONTH->Text = $incassoMonth;
+	   		$this->INCASSO_MONTH_STRINGING->Text = $incassoMonth;
+	   		
+	   		$incassiVariMonth = 0;
+	   		$arraIncassiVariMonth = $sqlmap->queryForList("IncassiVariByStringerMonth",$this->User->UserDB->id);
+	   		if(count($arraIncassiVariMonth) > 0)
+	   			$incassiVariMonth = $arraIncassiVariMonth[0];
+	   		$this->INCASSO_MONTH_VARI->Text = $incassiVariMonth;
 	   		
 	   		$speseMonth = 0;
 	   		$arraSpeseMonth = $sqlmap->queryForList("SpeseByStringerMonth",$this->User->UserDB->id);
@@ -45,7 +51,9 @@ class Home extends FunctionList
 	   			$speseMonth = $arraSpeseMonth[0];
 	   		$this->SPESE_MONTH->Text = $speseMonth;
 	   		
-	   		$saldoMonth = $incassoMonth - $speseMonth;
+	   		
+	   		
+	   		$saldoMonth = ($incassoMonth + $incassiVariMonth) - $speseMonth;
 	   		$this->SALDO_MONTH->Text = number_format((float)$saldoMonth, 2, '.', '');   		
 	   		
 	   		$incassoYear = 0;
@@ -58,7 +66,14 @@ class Home extends FunctionList
 	   		if(count($arraSpeseYear) > 0)
 	   			$speseYear= $arraSpeseYear[0];
 	   		
-	   		$this->SALDO_YEAR->Text = number_format((float)$incassoYear - $speseYear, 2, '.', '');
+	   		$incassiVariYear = 0;
+	   		$arraIncassiVariYear = $sqlmap->queryForList("IncassiVariByStringerYear",$this->User->UserDB->id);
+	   		if(count($arraIncassiVariYear) > 0)
+	   			$incassiVariYear= $arraIncassiVariYear[0];
+	   		
+	   		$this->SALDO_YEAR->Text = number_format((float)$incassoYear + $incassiVariYear - $speseYear, 2, '.', '');
+	   		
+	   		
 	   		
 	   		$numberJob = 0;
 	   		$arraNumberJob = $sqlmap->queryForList("CountListJobByStringer",$this->User->UserDB->id);

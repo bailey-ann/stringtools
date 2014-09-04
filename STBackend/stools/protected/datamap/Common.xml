@@ -142,6 +142,15 @@
 			AND rel_spese_stringer.data BETWEEN DATE_FORMAT( NOW( ) ,  '%Y-%m-01' ) AND NOW( ) 			 
 	</select>
 	
+	<select id="IncassiVariByStringerMonth" resultClass="string">
+		SELECT
+			SUM( rel_incassi_vari_stringer.valore_incasso ) AS totale
+			FROM
+			rel_incassi_vari_stringer
+			where rel_incassi_vari_stringer.id_stringer = #id# 
+			AND rel_incassi_vari_stringer.data BETWEEN DATE_FORMAT( NOW( ) ,  '%Y-%m-01' ) AND NOW( ) 			 
+	</select>
+	
 	<select id="IncassoByStringerYear" resultClass="string">
 		SELECT
 			SUM( tbl_stringing_jobs.total_price ) AS totale
@@ -160,6 +169,15 @@
 			rel_spese_stringer
 			where rel_spese_stringer.id_stringer = #id# 
 			AND rel_spese_stringer.data BETWEEN DATE_FORMAT( NOW( ) ,  '%Y-01-01' ) AND NOW( ) 			 
+	</select>
+	
+	<select id="IncassiVariByStringerYear" resultClass="string">
+		SELECT
+			SUM( rel_incassi_vari_stringer.valore_incasso ) AS totale
+			FROM
+			rel_incassi_vari_stringer
+			where rel_incassi_vari_stringer.id_stringer = #id# 
+			AND rel_incassi_vari_stringer.data BETWEEN DATE_FORMAT( NOW( ) ,  '%Y-01-01' ) AND NOW( ) 			 
 	</select>
 	
 	<select id="SelectTblRacquetUser" resultClass="TblRacquetsUser">

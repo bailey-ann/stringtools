@@ -106,10 +106,18 @@
 	</tr>
 	<tr>
 		<td>
-			<%= Prado::localize('INCASSO_MONTH')%>:
+			<%= Prado::localize('INCASSO_MONTH_STRINGING')%>:
 		</td>
 		<td>
-			<com:TLabel ID="INCASSO_MONTH" />
+			<com:TLabel ID="INCASSO_MONTH_STRINGING" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= Prado::localize('INCASSO_MONTH_VARI')%>:
+		</td>
+		<td>
+			<com:TLabel ID="INCASSO_MONTH_VARI" />
 		</td>
 	</tr>
 	<tr>

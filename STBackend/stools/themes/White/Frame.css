@@ -1,4 +1,4 @@
-﻿/* Photo Border for All Pages Except the Albums Page */
+/* Photo Border for All Pages Except the Albums Page */
 
 .photo-frame .topx-- {
 	background-image: url(Images/frame-topx--.gif);
@@ -185,7 +185,7 @@ ul {
 	list-style-type: none;
 	list-style-image: url(images/bullet-2.gif);
 	list-style-position: outside;
-	line-height: 2.1em;
+	line-height: 1.7em;
 	vertical-align: middle;
 	margin-left: 1.25em;
 }

@@ -1,4 +1,4 @@
-<%@ Title="Manage Spese" %>
+<%@ Title="Manage Incassi Vari" %>
 <com:TContent ID="sidebar">
 <com:LeftMenu Visible="<%= $this->User->Active == 1 %>" />
 <hr />
@@ -6,9 +6,9 @@
 </com:TContent>
 
 <com:TContent ID="content">
-<h3><%= Prado::localize('List Spese') %></h3>
+<h3><%= Prado::localize('List IncassiVari') %></h3>
 
-<com:TLabel Text="<%= Prado::localize('Descrizione Spesa') %>" /> 
+<com:TLabel Text="<%= Prado::localize('Descrizione IncassiVari') %>" /> 
 <com:TFilterCollection Id="FilterCollection_descrizione" >
 	<com:TFilterText  DataField="descrizione" />
 </com:TFilterCollection>
@@ -27,11 +27,11 @@
 <com:TFilterDataGrid
 	SkinID="datagrid_1_little_10"
 	
-    ID="DataGridSpese"
+    ID="DataGridIncassiVari"
     CellPadding="2"
     DataKeyField="id"
     
-    OnSelectedIndexChanged="selectSpesa"
+    OnSelectedIndexChanged="selectIncassiVari"
     OnPageIndexChanged="changePage"
     OnPagerCreated="pagerCreated"
     OnItemCommand="onItemCommand"
@@ -49,19 +49,19 @@
     <com:TBoundColumn
     	SortExpression="descrizione"
     	ID="DescrizioneColumn"
-        HeaderText="<%= Prado::localize('Descrizione Spesa') %>"
+        HeaderText="<%= Prado::localize('Descrizione IncassiVari') %>"
         DataField="descrizione"
         />
     <com:TBoundColumn
-    	SortExpression="valore_spesa"
-    	ID="ValoreSpesaColumn"
-        HeaderText="<%= Prado::localize('Valore Spesa') %>"
-        DataField="valore_spesa"
+    	SortExpression="valore_incasso"
+    	ID="ValoreIncassiVariColumn"
+        HeaderText="<%= Prado::localize('Valore IncassiVari') %>"
+        DataField="valore_incasso"
         />
     <com:TBoundColumn
     	SortExpression="data"
     	ID="DataColumn"
-        HeaderText="<%= Prado::localize('Data Spesa') %>"
+        HeaderText="<%= Prado::localize('Data IncassiVari') %>"
         DataField="data"
         DataFormatString="#date('d/m/Y',strtotime({0}))"
         />
@@ -71,7 +71,7 @@
         ImageUrl="themes/White/images/edit.png"
         ItemStyle.HorizontalAlign="Center"
         ButtonType="ImageButton"
-        ID="SelectSpesa"
+        ID="SelectIncasso"
         CommandName="select"
         />
     <com:TButtonColumn
@@ -97,34 +97,34 @@
 	Display="Dynamic"
 	ValidationGroup="user" />
 
-<span class="input-label"><%= Prado::localize('Descrizione Spesa') %></span>
+<span class="input-label"><%= Prado::localize('Descrizione IncassiVari') %></span>
 <br/>
-<com:TTextBox ID="DescrizioneSpesa" TextMode="MultiLine" Columns="60" MaxLength="240" />
+<com:TTextBox ID="DescrizioneIncassiVari" TextMode="MultiLine" Columns="60" MaxLength="240" />
 <com:TRequiredFieldValidator
-	ControlToValidate="DescrizioneSpesa"
+	ControlToValidate="DescrizioneIncassiVari"
 	ValidationGroup="user"
 	Text="*"
-	ErrorMessage="<%= Prado::localize('Please provide your Descrizione spesa address.') %>"
+	ErrorMessage="<%= Prado::localize('Please provide your Descrizione IncassiVari address.') %>"
 	ControlCssClass="input-error1" />
 
 <br/>
-<span class="input-label"><%= Prado::localize('Valore Spesa') %></span>
+<span class="input-label"><%= Prado::localize('Valore IncassiVari') %></span>
 <br/>
-<com:TTextBox ID="ValoreSpesa" />
+<com:TTextBox ID="ValoreIncassiVari" />
 <com:TRequiredFieldValidator
-	ControlToValidate="ValoreSpesa"
+	ControlToValidate="ValoreIncassiVari"
 	ValidationGroup="user"
 	Display="Dynamic"
 	Text="*"
-	ErrorMessage="<%= Prado::localize('Please choose a Valore Spesa.') %>"
+	ErrorMessage="<%= Prado::localize('Please choose a Valore IncassiVari.') %>"
 	ControlCssClass="input-error1" />
 <br/>
 
 
 
-<span class="input-label"><%= Prado::localize('Data Spesa') %></span>
+<span class="input-label"><%= Prado::localize('Data IncassiVari') %></span>
 <br/>
-<com:OPSDatePicker ID="DataSpesa" ShowHours="false" ShowMinutes="false" FromYear="<%= date('Y') - 1 %>" UpToYear="<%= date('Y') %>"/>
+<com:OPSDatePicker ID="DataIncassiVari" ShowHours="false" ShowMinutes="false" FromYear="<%= date('Y') - 1 %>" UpToYear="<%= date('Y') %>"/>
 <br/>
 
 <br/>

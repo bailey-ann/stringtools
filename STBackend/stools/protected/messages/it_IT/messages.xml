@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
- <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-08-26T02:59:55Z" product-name="messages">
+ <file source-language="EN" target-language="it_IT" datatype="plaintext" original="messages" date="2014-09-04T02:22:18Z" product-name="messages">
   <body>
   
 <trans-unit id="1">
@@ -1314,6 +1314,61 @@ qua potete modificare i dati, facendo salva ritornerete alla vista delle racchet
 <trans-unit id="260">
 <source><![CDATA[ReportCashMonth]]></source>
 <target><![CDATA[]]>Report Mensile</target>
+</trans-unit>
+
+<trans-unit id="261">
+<source><![CDATA[IncassiVari]]></source>
+<target><![CDATA[]]>Incassi Vari</target>
+</trans-unit>
+
+<trans-unit id="262">
+<source><![CDATA[Descrizione IncassiVari]]></source>
+<target><![CDATA[]]>Descrizione Incassi</target>
+</trans-unit>
+
+<trans-unit id="263">
+<source><![CDATA[Valore IncassiVari]]></source>
+<target><![CDATA[]]>Valore Incassi</target>
+</trans-unit>
+
+<trans-unit id="264">
+<source><![CDATA[Data IncassiVari]]></source>
+<target><![CDATA[]]>Data Incassi</target>
+</trans-unit>
+
+<trans-unit id="265">
+<source><![CDATA[List IncassiVari]]></source>
+<target><![CDATA[]]>Lista Incassi</target>
+</trans-unit>
+
+<trans-unit id="266">
+<source><![CDATA[INCASSO_MONTH_STRINGING]]></source>
+<target><![CDATA[]]>Incasso mensile incordature</target>
+</trans-unit>
+
+<trans-unit id="267">
+<source><![CDATA[INCASSO_MONTH_VARI]]></source>
+<target><![CDATA[]]>Incasso mensile varie</target>
+</trans-unit>
+
+<trans-unit id="268">
+<source><![CDATA[Insert New IncassiVari]]></source>
+<target><![CDATA[]]>Nuovo Incasso</target>
+</trans-unit>
+
+<trans-unit id="269">
+<source><![CDATA[Please provide your Descrizione IncassiVari address.]]></source>
+<target><![CDATA[]]>Inserisci una descrizione</target>
+</trans-unit>
+
+<trans-unit id="270">
+<source><![CDATA[Please choose a Valore IncassiVari.]]></source>
+<target><![CDATA[]]>Inserisci un valore</target>
+</trans-unit>
+
+<trans-unit id="271">
+<source><![CDATA[Edit IncassiVari]]></source>
+<target><![CDATA[]]>Modifica Incasso</target>
 </trans-unit>
 </body>
  </file>
