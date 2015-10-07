@@ -1,0 +1,1 @@
+This program allows you to manage every part of your stringing and your customers, from snowshoeing to the ropes to grips with extraction pdf of your work
